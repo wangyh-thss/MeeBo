@@ -241,7 +241,7 @@ namespace MeeboDb
             {
 			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
 			};
-            return (data.GetData("select * from User where name = @name", prams, tbName));
+            return (data.GetData("select * from User where UName = @UName", prams, tbName));
         }
     }
 }
