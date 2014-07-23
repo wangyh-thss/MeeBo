@@ -24,7 +24,7 @@
         <div class="W_nologin_main">
 			<div class="topboard">
 				<a></a>
-				<br>
+				<br />
 				<style type="text/css">
 					.W_nologin_main .topboard {background-image:url("image/nolog_head.jpg");}
 				</style>
@@ -32,9 +32,9 @@
             <div class="W_login_info clearfix">
 				<div class="leftbox">
 					<div class="slogan">
-						还没有MeeBo帐号？现在加入						<a class="btn_reg_red" href="./register.html" target="_blank" suda-data="key=tblog_weibologin3&value=register"><span>立即注册</span></a>
+						还没有MeeBo帐号？现在加入						<a class="btn_reg_red" onclick="goToRegister()" target="_blank"><span>立即注册</span></a>
 					</div>
-					<div class="show_img" suda-uatrack="key=tblog_weibologin3&value=picture"><img src="image/nolog_left.jpg" /></div>
+					<div class="show_img"><img src="image/nolog_left.jpg" /></div>
                 </div>
 				<div class="loginbox">
                     <div class="login_switch" id="pl_login_form">
