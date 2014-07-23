@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using MeeboDb;
 
 public partial class Register : System.Web.UI.Page
 {
@@ -12,41 +13,38 @@ public partial class Register : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-    /*
+
     protected void btnRegister_Click(object sender, EventArgs e)
     {
-        if (name.Text == string.Empty)
+        string uName = Request.Form["user"];
+        string uPwd = Request.Form["password"];
+        if (uName == string.Empty)
         {
-            name_error.innerText = "用户名不能为空";
-        }
-        if (password.Text == string.Empty)
-        {
-            password_error.innerText = "密码不能为空";
-        }
-        if (confirm.Text == string.Empty)
-        {
-            confirm_error.innerText = "两次输入密码不同";
-        }
-        string uPwd = Request.Form["form-password"];
-        string uName = Request.Form["form-user"];
-        DataTable result = searchByUserName(uName);
-        if (result.Rows.Count > 0)
-        {
-            name_error.innerText = "用户名已被注册";
+            Response.Write("<script type='text/javascript'>$('#error_user').innerText='用户名不可为空'</script>");
             return;
         }
-        user.name = uName;
-        user.password = uPwd;
-        user.nickName = Request.Form["form-nickName"];
-        user.admin = 0;
-        user.email = Request.Form["form-emaim"];
-        user.fansNum = 0;
-        user.likesNum = 0;
-        user.newsNum = 0;
-        user.savesNewsNum = 0;
-        user.msgInNum = 0;
-        user.msgOutNum = 0;
-        Insert(user);
+        if (uPwd == string.Empty)
+        {
+            Response.Write("<script type='text/javascript'>$('#error_password').innerText='密码不能为空'</script>");
+            return;
+        }
+        if (Request.Form["repeat_password"] == string.Empty)
+        {
+            Response.Write("<script type='text/javascript'>$('#error_label').innerText='两次输入密码不同'</script>");
+            return;
+        }
+        UserDB user = new UserDB();
+        DataSet resultSet = user.SearchByName(uName, "result");
+        if (resultSet.Tables["result"].Rows.Count > 0)
+        {
+            Response.Write("<script type='text/javascript'>$('#error_label').innerText='用户名已被注册'</script>");
+            return;
+        }
+        user.Name = uName;
+        user.Password = uPwd;
+        user.Nickname = Request.Form["form-nickName"];
+        user.Email = Request.Form["form-emaim"];
+        user.Birthday = Request.Form["birthday"];
+        user.Insert();
     }
-    */
 }
