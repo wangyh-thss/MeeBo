@@ -27,8 +27,8 @@ namespace MeeboDb
         private string password;
         private string nickname;
         private string email;
-        private string birthday;
-        private string gender;
+        private DateTime birthday;
+        private Boolean gender;
 
         public string Name
         {
@@ -50,12 +50,12 @@ namespace MeeboDb
             get { return email; }
             set { email = value; }
         }
-        public string Birthday
+        public DateTime Birthday
         {
             get { return birthday; }
             set { birthday = value; }
         }
-        public string Gender
+        public Boolean Gender
         {
             get { return gender; }
             set { gender = value; }
@@ -83,10 +83,10 @@ namespace MeeboDb
             row["UState"] = 0;
             row["UInfoNum"] = 0;
            ds.Tables["thisUser"].Rows.Add(row);
-           data.UpdateData("select * from User ",ds,"thisUser");
+           data.UpdateData("select * from [User] ", ds, "thisUser");
         }
 
-        public void ModifyPassword(string thisID,string NewPassword)
+        public void ModifyPassword(Guid thisID, string NewPassword)
         {
             SqlParameter[] prams = 
             {
@@ -94,20 +94,20 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UPassword from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UPassword"] = NewPassword;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void ModifyNickname(string thisID, string NewNickname)
+        public void ModifyNickname(Guid thisID, string NewNickname)
         {
             SqlParameter[] prams = {
 			data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UNickname from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UNickname"] = NewNickname;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void ModifyEmail(string thisID, string NewEmail)
+        public void ModifyEmail(Guid thisID, string NewEmail)
         {
             SqlParameter[] prams = 
             {
@@ -115,10 +115,10 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UEmail from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UEmail"] = NewEmail;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void ModifyBirthday(string thisID, string NewBirthday)
+        public void ModifyBirthday(Guid thisID, DateTime NewBirthday)
         {
             SqlParameter[] prams = 
             {
@@ -126,10 +126,10 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UPassword from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UBirthday"] = NewBirthday;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void Modifygender(string thisID, string NewGender)
+        public void Modifygender(Guid thisID, string NewGender)
         {
             SqlParameter[] prams = 
             {
@@ -137,7 +137,7 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UGender from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UGender"] = NewGender;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
         public void Delete(string MyName)
@@ -148,10 +148,10 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select * from User where UName = @UName", prams, "thisUser");
             ds.Tables["thisUser"].Clear();
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        /* 
+         
          public void addFans(string thisID)
          {
              SqlParameter[] prams = 
@@ -159,8 +159,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UFansNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["UFansNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["UFansNum"] = (int)ds.Tables["thisUser"].Rows[1]["UFansNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addLikes(string thisID)
          {
@@ -169,8 +169,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,ULikesNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["ULikesNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["ULikesNum"] = (int)ds.Tables["thisUser"].Rows[1]["ULikesNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addNews(string thisID)
          {
@@ -179,8 +179,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UNewsNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["UNewsNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["UNewsNum"] = (int)ds.Tables["thisUser"].Rows[1]["UNewsNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addSaveNews(string thisID)
          {
@@ -189,8 +189,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,USaveNewsNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["USaveNewsNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["USaveNewsNum"] = (int)ds.Tables["thisUser"].Rows[1]["USaveNewsNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addMsgIn(string thisID)
          {
@@ -199,8 +199,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UMsgInNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["UMsgInNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["UMsgInNum"] = (int)ds.Tables["thisUser"].Rows[1]["UMsgInNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addMsgOut(string thisID)
          {
@@ -209,8 +209,8 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UMsgOutNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["UMsgOutNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["UMsgOutNum"] = (int)ds.Tables["thisUser"].Rows[1]["UMsgOutNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
          public void addInfo(string thisID)
          {
@@ -219,10 +219,10 @@ namespace MeeboDb
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UInfoNum from User where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[1]["UInfoNum"] ++ ;
-             data.UpdateData("select * from User", ds, "thisUser");
+             ds.Tables["thisUser"].Rows[1]["UInfoNum"] = (int)ds.Tables["thisUser"].Rows[1]["UInfoNum"] + 1;
+             data.UpdateData("select * from [User]", ds, "thisUser");
          }
-         */
+         
         public void changeState(string thisID,int NewState)
         {
             SqlParameter[] prams = 
@@ -231,7 +231,7 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UState from User where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[1]["UState"] = NewState;
-            data.UpdateData("select * from User", ds, "thisUser");
+            data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
 
@@ -241,7 +241,7 @@ namespace MeeboDb
             {
 			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
 			};
-            return (data.GetData("select * from User where UName = @UName", prams, tbName));
+            return (data.GetData("select * from [User] where UName = @UName", prams, tbName));
         }
     }
 }
