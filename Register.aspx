@@ -14,6 +14,10 @@
         .p2 {font-size: 150%; font-family: "华文隶书","Times New Roman"; color: #000000;}
         .submit_zoom {width: 100px; margin:auto;}
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
+        .foot_box {width: 39%; 
+margin: auto;
+            height: 16px;
+        }
     </style>
     <title>注册MeeBo账号</title>
 </head>
@@ -167,6 +171,9 @@
         <div class="submit_zoom">
             <asp:Button runat="server" Text="注册" class="btn-submit" OnClick="btnRegister_Click" tabindex="9"/>
         </div>
+    </div>
+    <div class="foot_box">
+    <a style="margin:auto">Copyright &copy; 2014- MEEBO 清华大学软件学院<span style="margin-left: 4em">尚未提交审查</span></a>
     </div>
 </body>
 </html>
