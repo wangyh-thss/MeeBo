@@ -43,7 +43,7 @@ public partial class Login : System.Web.UI.Page
                     else
                     {
                         //用户名存在，密码错误·
-                        Response.Write("<script type='text/javascript'>$('#error_label').innerText='密码错误'</script>");
+                        ScriptManager.RegisterStartupScript(this.error_label, typeof(string), "error", "document.getElementById('error_label').innerText = '密码错误';", true);
                         return;
                         
                     }
@@ -52,7 +52,7 @@ public partial class Login : System.Web.UI.Page
             else
             {
                 //用户名密码错误
-                Response.Write("<script type='text/javascript'>$('#error_label').innerText='用户不存在'</script>");
+                ScriptManager.RegisterStartupScript(this.error_label, typeof(string), "error", "document.getElementById('error_label').innerText = '用户不存在';", true);
                 return;
             }
         }
