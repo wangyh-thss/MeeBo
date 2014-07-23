@@ -82,7 +82,7 @@ namespace MeeboDb
             data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
             data.MakeInParam("@UPassword",  SqlDbType.VarChar, 50, NewPassword),
 			};
-            return (data.RunProc("update tb_admin set UPassword=@UPassword where UID=@UID", prams));
+            return (data.RunProc("update User set UPassword=@UPassword where UID=@UID", prams));
         }
 
         public int ModifyNickname(string thisID, string NewNickname)
@@ -91,7 +91,7 @@ namespace MeeboDb
             data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
             data.MakeInParam("@UNickname",  SqlDbType.VarChar, 50, NewNickname),
 			};
-            return (data.RunProc("update tb_admin set UNickname=@UNickname where UID=@UID", prams));
+            return (data.RunProc("update User set UNickname=@UNickname where UID=@UID", prams));
         }
 
         public int ModifyEmail(string thisID, string NewEmail)
@@ -100,7 +100,7 @@ namespace MeeboDb
             data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
             data.MakeInParam("@UEmail",  SqlDbType.VarChar, 50, NewEmail),
 			};
-            return (data.RunProc("update tb_admin set UEmail=@UEmail where UID=@UID", prams));
+            return (data.RunProc("update User set UEmail=@UEmail where UID=@UID", prams));
         }
 
         public int ModifyBirthday(string thisID, string NewBirthday)
@@ -109,7 +109,7 @@ namespace MeeboDb
             data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
             data.MakeInParam("@UBirthday",  SqlDbType.Date, 3, NewBirthday),
 			};
-            return (data.RunProc("update tb_admin set UBirthday=@UBirthday where UID=@UID", prams));
+            return (data.RunProc("update User set UBirthday=@UBirthday where UID=@UID", prams));
         }
 
         public int Modifygender(string thisID, string NewGender)
@@ -118,7 +118,15 @@ namespace MeeboDb
             data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
             data.MakeInParam("@UGender",  SqlDbType.Bit, 1, NewGender),
 			};
-            return (data.RunProc("update tb_admin set UGender=@UGender where UID=@UID", prams));
+            return (data.RunProc("update User set UGender=@UGender where UID=@UID", prams));
+        }
+
+        public DataSet SearchByName(string MyName ,string tbName)
+        {
+            SqlParameter[] prams = {
+			data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
+			};
+            return (data.RunProcReturn("select * from User where name = @name", prams, tbName));
         }
     }
 }
