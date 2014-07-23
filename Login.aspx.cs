@@ -9,6 +9,7 @@ using MeeboDb;
 
 public partial class Login : System.Web.UI.Page
 {
+    //protected System.Web.UI.HtmlControls.HtmlGenericControl error_label;
     protected void Page_Load(object sender, EventArgs e)
     {
         UserDB userDb = new UserDB();
@@ -22,7 +23,7 @@ public partial class Login : System.Web.UI.Page
                 //用户名正确 检验密码和身份
                 foreach (DataRow user in resultSet.Tables["result"].Rows)
                 {
-                    if (user["UPassword"] == uPwd)
+                    if (user["UPassword"].ToString() == uPwd)
                     {
                         if (user["UAdmin"].ToString() == "0")
                         {
@@ -42,14 +43,17 @@ public partial class Login : System.Web.UI.Page
                     else
                     {
                         //用户名存在，密码错误·
-                        this.error.InnerText = "密码错误";
+                        Response.Write("<script type='text/javascript'>$('#error_label').innerText='密码错误'</script>");
+                        return;
+                        
                     }
                 }
             }
             else
             {
                 //用户名密码错误
-                this.error.InnerText = "用户不存在";
+                Response.Write("<script type='text/javascript'>$('#error_label').innerText='用户不存在'</script>");
+                return;
             }
         }
     }
