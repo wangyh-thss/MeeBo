@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,10 +14,7 @@
         .p2 {font-size: 150%; font-family: "华文隶书","Times New Roman"; color: #000000;}
         .submit_zoom {width: 100px; margin:auto;}
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
-        .foot_box {width: 39%; 
-margin: auto;
-            height: 16px;
-        }
+        .foot_box {width: 40%; margin-left: 35%;height: 16px;margin-top: 45px; margin-bottom: 30px}
     </style>
     <title>注册MeeBo账号</title>
 </head>
@@ -42,7 +39,7 @@ margin: auto;
                         </th>
                     </tr>
                 </table>
-                <div runat="server" id="error_username" style="color:red; height: 24px;"></div>
+                <div runat="server" id="error_username" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                 <br />
             </li>
             <li>
@@ -59,7 +56,7 @@ margin: auto;
                         </th>
                     </tr>
                 </table>
-                <div runat="server" id="error_password" style="color:red; height: 24px;"></div>
+                <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                 <br />
             </li>
             <li style="margin-left: -1em">
@@ -76,7 +73,7 @@ margin: auto;
                         </th>
                     </tr>
                 </table>
-                <div runat="server" id="error_repeat_password" style="color:red; height: 24px;"></div>
+                <div runat="server" id="error_repeat_password" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                 <br />
             </li>
             <li>
@@ -143,7 +140,7 @@ margin: auto;
                             <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                         </th>
                         <th class="auto-style1">
-                            <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px">选择头像</button>
+                            <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px; padding:3px 3px 3px 3px">选择头像</button>
                         </th>
                     </tr>
                 </table>
@@ -159,18 +156,18 @@ margin: auto;
                             <abbr title="必填，请在此输入验证码">&nbsp 验证码：</abbr>
                         </th>
                         <th>
-                            <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 4500%"/>
+                            <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 60%"/>
                         </th>
                         <th>
-                            <img src="image/" alt="验证码" onclick="change_check_num()" style="width: 150px; height:30px; margin-left:150px"/></th>
+                            <img src="image/" alt="验证码" onclick="change_check_num()" style="width: 150px; height:30px; margin-left:30px"/></th>
                     </tr>
                 </table>
                 <br />
             </li>
         </ul>
-        <div class="submit_zoom">
-            <asp:Button runat="server" Text="注册" class="btn-submit" OnClick="btnRegister_Click" tabindex="9"/>
-        </div>
+        <form runat="server" class="submit_zoom">
+            <asp:Button runat="server" Text="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px" OnClick="btnRegister_Click" tabindex="9"/>
+        </form>
     </div>
     <div class="foot_box">
     <a style="margin:auto">Copyright &copy; 2014- MEEBO 清华大学软件学院<span style="margin-left: 4em">尚未提交审查</span></a>
