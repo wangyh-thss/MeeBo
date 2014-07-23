@@ -36,6 +36,7 @@
 					</div>
 					<div class="show_img"><img src="image/nolog_left.jpg" /></div>
                 </div>
+                <form id="lzform" name="lzform" method="post" action="login.aspx" runat="server">
 				<div class="loginbox">
                     <div class="login_switch" id="pl_login_form">
                         <div class="item">
@@ -52,13 +53,14 @@
                             <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/>
                         </div>
                         <br />
-                        <div runat="server" id="error_label" style="color:red; height: 24px;"></div>
+                        <div runat="server" id="error" style="color:red; height: 24px;"></div>
                         <br />
                         <div class="item">
                             <input type="submit" value="登录" name="user_login" class="btn-submit" tabindex="5"/>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
         <div class="footer_nologin_new">

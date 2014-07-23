@@ -11,11 +11,12 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UserDB userDb = new UserDB();
         if(IsPostBack)
         {
             string uPwd = Request.Form["user"];
             string uName = Request.Form["password"];
-            DataSet resultSet = UserDB.SearchByName(uName, "result");
+            DataSet resultSet = userDb.SearchByName(uName, "result");
             if (resultSet.Tables["result"].Rows.Count > 0)
             {
                 //用户名正确 检验密码和身份
@@ -23,7 +24,7 @@ public partial class Login : System.Web.UI.Page
                 {
                     if (user["UPassword"] == uPwd)
                     {
-                        if (user["UAdmin"] == 0)
+                        if (user["UAdmin"].ToString() == "0")
                         {
                             //普通用户登录
                             Session["role"] = "admin";
@@ -41,14 +42,14 @@ public partial class Login : System.Web.UI.Page
                     else
                     {
                         //用户名存在，密码错误·
-                        this.error_label.InnerText = "密码错误";
+                        this.error.InnerText = "密码错误";
                     }
                 }
             }
             else
             {
                 //用户名密码错误
-                this.error_label.InnerText = "用户不存在";
+                this.error.InnerText = "用户不存在";
             }
         }
     }

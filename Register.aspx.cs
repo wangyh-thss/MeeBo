@@ -8,11 +8,11 @@ using System.Data;
 
 public partial class Register : System.Web.UI.Page
 {
-    User user = new User();
+    //User user = new User();
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+    /*
     protected void btnRegister_Click(object sender, EventArgs e)
     {
         if (name.Text == string.Empty)
@@ -48,5 +48,5 @@ public partial class Register : System.Web.UI.Page
         user.msgOutNum = 0;
         Insert(user);
     }
-
+    */
 }

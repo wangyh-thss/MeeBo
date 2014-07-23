@@ -121,7 +121,7 @@ namespace MeeboDb
             return (data.RunProc("update User set UGender=@UGender where UID=@UID", prams));
         }
 
-        public static DataSet SearchByName(string MyName ,string tbName)
+        public DataSet SearchByName(string MyName ,string tbName)
         {
             SqlParameter[] prams = {
 			data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
