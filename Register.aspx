@@ -136,7 +136,7 @@
                             <abbr title="选填，您的头像，这将会在您发布的每一条消息中显示">&nbsp 头像：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                         </th>
                         <th>
-                            <img id="head_potrait" src="image/head_potrait.jpg" height="80px" width="80px"/>
+                            <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                         </th>
                         <th class="auto-style1">
                             <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px">选择头像</button>
@@ -145,9 +145,27 @@
                 </table>
                 <br />
             </li>
+            <li  style="margin-top: 24px; height: 78px;">
+                <table>
+                    <tr>
+                        <th>
+                            <a style="color: red">*</a>
+                        </th>
+                        <th>
+                            <abbr title="必填，请在此输入验证码">&nbsp 验证码：</abbr>
+                        </th>
+                        <th>
+                            <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 4500%"/>
+                        </th>
+                        <th>
+                            <img src="image/" alt="验证码" onclick="change_check_num()" style="width: 150px; height:30px; margin-left:150px"/></th>
+                    </tr>
+                </table>
+                <br />
+            </li>
         </ul>
         <div class="submit_zoom">
-            <input type="submit" value="注册" name="register" class="btn-submit" tabindex="8"/>
+            <asp:Button runat="server" Text="注册" class="btn-submit" OnClick="btnRegister_Click" tabindex="9"/>
         </div>
     </div>
 </body>
