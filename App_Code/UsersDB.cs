@@ -63,70 +63,80 @@ namespace MeeboDb
 
         DataBase data = new DataBase();
 
-        public int Insert()
+        public void Insert()
         {
-            SqlParameter[] prams = {
-            data.MakeInParam("@UName",  SqlDbType.VarChar, 50,Name),
-            data.MakeInParam("@UPassword",  SqlDbType.VarChar, 50, Password),
-            data.MakeInParam("@UNickname",  SqlDbType.VarChar, 50, nickname),
-            data.MakeInParam("@UEmail",  SqlDbType.VarChar, 50, Email),
-            data.MakeInParam("@UBirthday",  SqlDbType.Date, 3, Birthday),
-            data.MakeInParam("@UGender",  SqlDbType.Bit, 1, Gender),
-			};
-            return (data.RunProc("INSERT INTO User (UName,UPassword,UNickname,UEmail,UBirthday,UGender) VALUES(@UName,@UPassword,@UNickname,@UEmail,@UBirthday,@UGender)", prams));
+           DataSet ds = data.GetData("select * from User ","thisUser");
+           DataRow row = ds.Tables["thisUser"].NewRow();
+           row["UName"] = Name;
+           row["UPassword"] = Password;
+           row["UNickname"] = Nickname;
+           row["UEmail"] = Email;
+           row["UBirthday"] = Birthday;
+           row["UGender"] = Gender;
+           ds.Tables["thisUser"].Rows.Add(row);
+           data.UpdateData("select * from User ",ds,"thisUser");
         }
 
-        public int ModifyPassword(string thisID,string NewPassword)
+        public void ModifyPassword(string thisID,string NewPassword)
         {
-            SqlParameter[] prams = {
-            data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
-            data.MakeInParam("@UPassword",  SqlDbType.VarChar, 50, NewPassword),
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",  SqlDbType.VarChar, 50,thisID),
 			};
-            return (data.RunProc("update User set UPassword=@UPassword where UID=@UID", prams));
+            DataSet ds = data.GetData("select UID,UPassword from User where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Rows[1]["UPassword"] = NewPassword;
+            data.UpdateData("select UID,UPassword from User", ds, "thisUser");
         }
 
-        public int ModifyNickname(string thisID, string NewNickname)
+        public void ModifyNickname(string thisID, string NewNickname)
         {
             SqlParameter[] prams = {
-            data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
-            data.MakeInParam("@UNickname",  SqlDbType.VarChar, 50, NewNickname),
+			data.MakeInParam("@UID",  SqlDbType.VarChar, 50,thisID),
 			};
-            return (data.RunProc("update User set UNickname=@UNickname where UID=@UID", prams));
+            DataSet ds = data.GetData("select UID,UNickname from User where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Rows[1]["UNickname"] = NewNickname;
+            data.UpdateData("select UID,UNickname from User", ds, "thisUser");
         }
 
-        public int ModifyEmail(string thisID, string NewEmail)
+        public void ModifyEmail(string thisID, string NewEmail)
         {
-            SqlParameter[] prams = {
-            data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
-            data.MakeInParam("@UEmail",  SqlDbType.VarChar, 50, NewEmail),
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",  SqlDbType.VarChar, 50,thisID),
 			};
-            return (data.RunProc("update User set UEmail=@UEmail where UID=@UID", prams));
+            DataSet ds = data.GetData("select UID,UEmail from User where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Rows[1]["UEmail"] = NewEmail;
+            data.UpdateData("select UID,UEmail from User", ds, "thisUser");
         }
 
-        public int ModifyBirthday(string thisID, string NewBirthday)
+        public void ModifyBirthday(string thisID, string NewBirthday)
         {
-            SqlParameter[] prams = {
-            data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
-            data.MakeInParam("@UBirthday",  SqlDbType.Date, 3, NewBirthday),
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",  SqlDbType.VarChar, 50,thisID),
 			};
-            return (data.RunProc("update User set UBirthday=@UBirthday where UID=@UID", prams));
+            DataSet ds = data.GetData("select UID,UPassword from User where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Rows[1]["UBirthday"] = NewBirthday;
+            data.UpdateData("select UID,UBirthday from User", ds, "thisUser");
         }
 
-        public int Modifygender(string thisID, string NewGender)
+        public void Modifygender(string thisID, string NewGender)
         {
             SqlParameter[] prams = {
-            data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16, thisID),
-            data.MakeInParam("@UGender",  SqlDbType.Bit, 1, NewGender),
+			data.MakeInParam("@UID",  SqlDbType.VarChar, 50,thisID),
 			};
-            return (data.RunProc("update User set UGender=@UGender where UID=@UID", prams));
+            DataSet ds = data.GetData("select UID,UGender from User where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Rows[1]["UGender"] = NewGender;
+            data.UpdateData("select UID,UGender from User", ds, "thisUser");
         }
 
         public DataSet SearchByName(string MyName ,string tbName)
         {
-            SqlParameter[] prams = {
-			data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
 			};
-            return (data.RunProcReturn("select * from User where name = @name", prams, tbName));
+            return (data.GetData("select * from User where name = @name", prams, tbName));
         }
     }
 }

@@ -88,31 +88,9 @@ namespace MeeboDb
             return dap;
         }
 
-        // 创建一个Command对象以此来执行命令文本
-        private SqlCommand CreateCommand(string procName, SqlParameter[] prams)
-        {
-            // 确认打开连接
-            this.Open();
-            SqlCommand cmd = new SqlCommand(procName, con);
-            cmd.CommandType = CommandType.Text;　　　　 //执行类型：命令文本
-
-            // 依次把参数传入命令文本
-            if (prams != null)
-            {
-                foreach (SqlParameter parameter in prams)
-                    cmd.Parameters.Add(parameter);
-            }
-            // 加入返回参数
-            cmd.Parameters.Add(
-                new SqlParameter("ReturnValue", SqlDbType.Int, 4,
-                ParameterDirection.ReturnValue, false, 0, 0,
-                string.Empty, DataRowVersion.Default, null));
-
-            return cmd;
-        }
 
         //获取数据库数据
-        public DataSet RunProcReturn(string procName, SqlParameter[] prams, string tbName)
+        public DataSet GetData(string procName, SqlParameter[] prams, string tbName)
         {
             SqlDataAdapter dap = CreateDataAdaper(procName, prams);
             DataSet ds = new DataSet();
@@ -122,7 +100,7 @@ namespace MeeboDb
             return ds;
         }
 
-        public DataSet RunProcReturn(string procName, string tbName)
+        public DataSet GetData(string procName, string tbName)
         {
             SqlDataAdapter dap = CreateDataAdaper(procName, null);
             DataSet ds = new DataSet();
@@ -132,23 +110,11 @@ namespace MeeboDb
             return ds;
         }
 
-        //修改数据库数据
-        public int RunProc(string procName, SqlParameter[] prams)
+        public void UpdateData(string procName,DataSet ds, string tbName)
         {
-            SqlCommand cmd = CreateCommand(procName, prams);
-            cmd.ExecuteNonQuery();
-            this.Close();
-            //得到执行成功返回值
-            return (int)cmd.Parameters["ReturnValue"].Value;
-        }
-
-        public int RunProc(string procName)
-        {
-            this.Open();
-            SqlCommand cmd = new SqlCommand(procName, con);
-            cmd.ExecuteNonQuery();
-            this.Close();
-            return 1;
+            SqlDataAdapter dap = CreateDataAdaper(procName, null);
+            SqlCommandBuilder builder = new SqlCommandBuilder(dap);
+            dap.Update(ds, tbName);
         }
     }
 }
