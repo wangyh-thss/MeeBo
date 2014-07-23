@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using MeeBoDB;
+using MeeboDb;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -13,13 +13,13 @@ public partial class Login : System.Web.UI.Page
     {
         if(IsPostBack)
         {
-            string uPwd = Request.Form["form-password"];
-            string uName = Request.Form["form-user"];
-            DataTable result = searchByUserName(uName);
-            if (result.Rows.Count > 0)
+            string uPwd = Request.Form["user"];
+            string uName = Request.Form["password"];
+            DataSet resultSet = UserDB.SearchByName(uName, "result");
+            if (resultSet.Tables["result"].Rows.Count > 0)
             {
                 //用户名正确 检验密码和身份
-                foreach (DataRow user in result.Rows)
+                foreach (DataRow user in resultSet.Tables["result"].Rows)
                 {
                     if (user["UPassword"] == uPwd)
                     {
