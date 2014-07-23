@@ -14,6 +14,10 @@
         .p2 {font-size: 150%; font-family: "华文隶书","Times New Roman"; color: #000000;}
         .submit_zoom {width: 100px; margin:auto;}
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
+        .foot_box {width: 39%; 
+margin: auto;
+            height: 16px;
+        }
     </style>
     <title>注册MeeBo账号</title>
 </head>
@@ -136,7 +140,7 @@
                             <abbr title="选填，您的头像，这将会在您发布的每一条消息中显示">&nbsp 头像：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                         </th>
                         <th>
-                            <img id="head_potrait" src="image/head_potrait.jpg" height="80px" width="80px"/>
+                            <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                         </th>
                         <th class="auto-style1">
                             <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px">选择头像</button>
@@ -145,10 +149,31 @@
                 </table>
                 <br />
             </li>
+            <li  style="margin-top: 24px; height: 78px;">
+                <table>
+                    <tr>
+                        <th>
+                            <a style="color: red">*</a>
+                        </th>
+                        <th>
+                            <abbr title="必填，请在此输入验证码">&nbsp 验证码：</abbr>
+                        </th>
+                        <th>
+                            <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 4500%"/>
+                        </th>
+                        <th>
+                            <img src="image/" alt="验证码" onclick="change_check_num()" style="width: 150px; height:30px; margin-left:150px"/></th>
+                    </tr>
+                </table>
+                <br />
+            </li>
         </ul>
         <div class="submit_zoom">
-            <input type="submit" value="注册" name="register" class="btn-submit" tabindex="8"/>
+            <asp:Button runat="server" Text="注册" class="btn-submit" OnClick="btnRegister_Click" tabindex="9"/>
         </div>
+    </div>
+    <div class="foot_box">
+    <a style="margin:auto">Copyright &copy; 2014- MEEBO 清华大学软件学院<span style="margin-left: 4em">尚未提交审查</span></a>
     </div>
 </body>
 </html>
