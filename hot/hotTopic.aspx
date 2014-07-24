@@ -66,7 +66,7 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx">热门信息</a><br /><br/>
+                <a class="p1" href="hot.aspx">热门信息</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
