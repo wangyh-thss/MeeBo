@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>个人主页</title>
+    <title>信息</title>
     <style type="text/css">
     .background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
     .header {width:100%;position:fixed;background: #244050;height:60px;z-index:3;}
@@ -31,20 +31,20 @@
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
         </div>
         <div class="head_list">
-            <div class="head_item">
-                <a style="color: #fefefe">首页</a>
+             <div class="head_item">
+                <a style="color: #fefefe" href="Read.aspx">首页</a>
             </div>
             <div class="head_item">
                 <a>|</a>
             </div>
             <div class="head_item">
-                <a style="color: #fefefe">热门</a>
+                <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
             </div>
             <div class="head_item">
                 <a>|</a>
             </div>
             <div class="head_item">
-                <a style="color: #fefefe">话题</a>
+                <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
             </div>
             <div class="head_item">
                 <a>|</a>
@@ -66,12 +66,13 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                 <a class="p1" href="PersonalPage.aspx">个人主页</a>
+                 <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
+                 <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" style="color: red">MeeBo消息</a><br /><br/>
+                <a class="p2" href="MeeboInfo.aspx">MeeBo消息</a><br /><br/>
                 <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
                 <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
             </div>
@@ -80,7 +81,7 @@
                 <br />
                 <a class="p2" href="MyFans.aspx">我的粉丝</a><br /><br/>
                 <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                <a class="p2">特别关注</a><br /><br/>
+                 <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
             </div>
             <hr class="line" />
         </div>

@@ -31,20 +31,20 @@
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
         </div>
         <div class="head_list">
-            <div class="head_item">
-                <a style="color: #fefefe">首页</a>
+              <div class="head_item">
+                <a style="color: #fefefe" href="Read.aspx">首页</a>
             </div>
             <div class="head_item">
                 <a>|</a>
             </div>
             <div class="head_item">
-                <a style="color: #fefefe">热门</a>
+                <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
             </div>
             <div class="head_item">
                 <a>|</a>
             </div>
             <div class="head_item">
-                <a style="color: #fefefe">话题</a>
+                <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
             </div>
             <div class="head_item">
                 <a>|</a>
@@ -66,7 +66,8 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="PersonalPage.aspx">个人主页</a>
+                <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
+                <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
@@ -78,9 +79,9 @@
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" style="color: red">我的粉丝</a><br /><br/>
+                <a class="p2" href = "MyFans.aspx" style="color: red">我的粉丝</a><br /><br/>
                 <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                <a class="p2">特别关注</a><br /><br/>
+                 <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
             </div>
             <hr class="line" />
         </div>

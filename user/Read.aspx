@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AtMe.aspx.cs" Inherits="user_AtMe" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Read.aspx.cs" Inherits="user_Read" %>
 
 <!DOCTYPE html>
 
@@ -66,7 +66,7 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
+                <a class="p1" href="Read.aspx" style="color: red">浏览首页</a><br /><br/>
                 <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
             </div>
             <hr class="line" />
@@ -74,7 +74,7 @@
                 <br />
                 <a class="p2" href="MeeboInfo.aspx">MeeBo消息</a><br /><br/>
                 <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
-                <a class="p2" href="AtMe.aspx" style="color: red">提到我的</a><br /><br/>
+                <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
@@ -92,3 +92,4 @@
     </div>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AtMe.aspx.cs" Inherits="user_AtMe" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hotMeeBo.aspx.cs" Inherits="hot_hotMeeBo" %>
 
 <!DOCTYPE html>
 
@@ -32,7 +32,7 @@
         </div>
         <div class="head_list">
               <div class="head_item">
-                <a style="color: #fefefe" href="Read.aspx">首页</a>
+                <a style="color: #fefefe" href="../user/Read.aspx">首页</a>
             </div>
             <div class="head_item">
                 <a>|</a>
@@ -66,22 +66,14 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
-                <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
+                <a class="p1" href="Read.aspx" style="color: red">热门信息</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href="MeeboInfo.aspx">MeeBo消息</a><br /><br/>
-                <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
-                <a class="p2" href="AtMe.aspx" style="color: red">提到我的</a><br /><br/>
-            </div>
-            <hr class="line" />
-            <div class="left_item">
-                <br />
-                <a class="p2" href = "MyFans.aspx">我的粉丝</a><br /><br/>
-                <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                 <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
+                <a class="p2" href="hotTopic.aspx">热门话题</a><br /><br/>
+                <a class="p2" href="hotUser.aspx">热门用户</a><br /><br/>
+                <a class="p2" href="hotUser.aspx" style="color: red">热门微博</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
@@ -92,3 +84,4 @@
     </div>
 </body>
 </html>
+
