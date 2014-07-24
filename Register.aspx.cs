@@ -72,12 +72,7 @@ public partial class Register : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.error_username, typeof(string), "errorname", "document.getElementById('error_username').innerText = '用户名已被注册';", true);
             return;
         }
-
-        if (SelectImg.HasFile)
-        {
-            user.HeadPortrait = path;
-        }
-
+        user.HeadPortrait = path;
         user.Name = uName;
         user.Password = uPwd;
         user.Nickname = this.nickname.Text;

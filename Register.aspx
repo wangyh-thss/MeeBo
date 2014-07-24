@@ -22,6 +22,13 @@
         .auto-style2 {
             width: 119px;
         }
+        .auto-style3 {
+            height: 37px;
+        }
+        .auto-style4 {
+            height: 37px;
+            width: 57px;
+        }
     </style>
     <title>注册MeeBo账号</title>
     
@@ -63,7 +70,7 @@
                             </th>
                             <th>
                                 <!-- <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
-                                <asp:TextBox ID="password" runat="server" class="W_input" maxlength="20" tabindex="2" />
+                                <asp:TextBox type="password" ID="password" runat="server" class="W_input" maxlength="20" tabindex="2" />
                             </th>
                         </tr>
                     </table>
@@ -81,7 +88,7 @@
                             </th>
                             <th>
                                 <!-- <input id="repeat_password" name="repeat_password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
-                                <asp:TextBox ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="3" />
+                                <asp:TextBox type="password" ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="3" />
                             </th>
                         </tr>
                     </table>
@@ -134,11 +141,48 @@
                 <li  style="margin-top: 24px">
                     <table>
                         <tr>
-                            <th>
+                            <th class="auto-style3">
                                 <abbr title="选填，您的生日，完善个人信息有助于其它用户更了解您">&nbsp 生日：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
-                            <th>
-                                <input id="birthday" name="birthday" type="text" class="W_input" maxlength="20" tabindex="7"/>
+                            <th class="auto-style4">
+                                &nbsp;<asp:DropDownList ID="year" runat="server">
+                                    <asp:ListItem>1980</asp:ListItem>
+                                    <asp:ListItem>1981</asp:ListItem>
+                                    <asp:ListItem>1982</asp:ListItem>
+                                    <asp:ListItem>1983</asp:ListItem>
+                                    <asp:ListItem>1984</asp:ListItem>
+                                    <asp:ListItem>1985</asp:ListItem>
+                                    <asp:ListItem>1986</asp:ListItem>
+                                    <asp:ListItem>1987</asp:ListItem>
+                                    <asp:ListItem>1988</asp:ListItem>
+                                    <asp:ListItem>1989</asp:ListItem>
+                                    <asp:ListItem>1990</asp:ListItem>
+                                    <asp:ListItem>1991</asp:ListItem>
+                                    <asp:ListItem>1992</asp:ListItem>
+                                    <asp:ListItem>1993</asp:ListItem>
+                                    <asp:ListItem>1994</asp:ListItem>
+                                    <asp:ListItem>1995</asp:ListItem>
+                                    <asp:ListItem>1996</asp:ListItem>
+                                    <asp:ListItem>1997</asp:ListItem>
+                                    <asp:ListItem>1998</asp:ListItem>
+                                    <asp:ListItem>1999</asp:ListItem>
+                                    <asp:ListItem>2000</asp:ListItem>
+                                    <asp:ListItem>2001</asp:ListItem>
+                                    <asp:ListItem>2002</asp:ListItem>
+                                    <asp:ListItem>2003</asp:ListItem>
+                                    <asp:ListItem>2004</asp:ListItem>
+                                    <asp:ListItem>2005</asp:ListItem>
+                                    <asp:ListItem>2006</asp:ListItem>
+                                    <asp:ListItem>2007</asp:ListItem>
+                                    <asp:ListItem>2008</asp:ListItem>
+                                    <asp:ListItem>2009</asp:ListItem>
+                                    <asp:ListItem>2010</asp:ListItem>
+                                    <asp:ListItem>2011</asp:ListItem>
+                                    <asp:ListItem>2012</asp:ListItem>
+                                    <asp:ListItem>2013</asp:ListItem>
+                                    <asp:ListItem>2014</asp:ListItem>
+                                </asp:DropDownList>
+                                年
                             </th>
                         </tr>
                     </table>
