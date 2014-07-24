@@ -33,5 +33,6 @@ public partial class user_ChangePassword : System.Web.UI.Page
             return;
         }
         user.ModifyPassword((Guid)Session["id"], this.change_password.Text);
+        Response.Write("<script>alert('修改密码成功')</script>");
     }
 }

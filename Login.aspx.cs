@@ -39,7 +39,7 @@ public partial class Login : System.Web.UI.Page
                             Session["role"] = "admin";
                             Session["name"] = uName;
                             Session["id"] = new Guid(user["UID"].ToString());
-                            Response.Redirect("~/user/UserInfo.aspx");
+                            Response.Redirect("~/user/PersonalPage.aspx");
                         }
                     }
                     else

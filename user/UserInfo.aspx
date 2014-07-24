@@ -9,7 +9,6 @@
      <style type="text/css">
         .background {background: #c8e1f0}
         .header {width: 80%; margin: auto;}
-        .userInfoform{width: 80%; margin: auto;position:relative;}
         .left_column {width: 15%; height:700px;background:#fefefe; border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:10%; margin-top: 20px; margin-bottom:30px;}
         .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 20px; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}

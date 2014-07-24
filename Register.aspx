@@ -261,7 +261,7 @@
                             </th>
                             <th>
                                 <!-- <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/> -->
-                                <asp:Image ID="head_potrait" runat="server" ImageUrl="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                                <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                             </th>
                             <th class="auto-style1">
                                 <asp:FileUpload ID="SelectImg" runat="server" Width="65px" style="margin-left:35px;" onchange="javascript:__doPostBack('UploadImg','')"/>

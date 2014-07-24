@@ -68,6 +68,7 @@ public partial class UserInfo : System.Web.UI.Page
         {
             user.ModifyHeadPortrait((Guid)Session["id"], path);
         }
+        Response.Write("<script>alert('修改信息成功')</script>");
     }
 
     protected void UploadImg_Click(object sender, EventArgs e)
