@@ -9,24 +9,31 @@ using MeeboDb;
 public partial class UserInfo : System.Web.UI.Page
 {
     protected UserDB user = new UserDB();
+    protected string headOriginPath;
     protected string path;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         user.SearchByName((string)Session["name"], "result");
-        path = user.HeadPortrait;
-        this.nickname.Text = user.Nickname;
-        this.email.Text = user.Email;
-        if (user.Gender == false)
-            this.gender.Items.FindByValue("0").Selected = true;
+        if (IsPostBack)
+        { }
         else
-            this.gender.Items.FindByValue("1").Selected = true;
-        string birthday = user.Birthday.ToString("d");
-        string[] s = birthday.Split(new char[] { '/' });
-        this.year.Items.FindByValue(s[0]).Selected = true;
-        this.month.Items.FindByValue(s[1]).Selected = true;
-        this.day.Items.FindByValue(s[2]).Selected = true;
-        this.head_potrait.ImageUrl = path;
+        {
+            headOriginPath = user.HeadPortrait;
+            path = this.head_potrait.ImageUrl;
+            this.nickname.Text = user.Nickname;
+            this.email.Text = user.Email;
+            if (user.Gender == false)
+                this.gender.Items.FindByValue("0").Selected = true;
+            else
+                this.gender.Items.FindByValue("1").Selected = true;
+            string birthday = user.Birthday.ToString("d");
+            string[] s = birthday.Split(new char[] { '/' });
+            this.year.Items.FindByValue(s[0]).Selected = true;
+            this.month.Items.FindByValue(s[1]).Selected = true;
+            this.day.Items.FindByValue(s[2]).Selected = true;
+            this.head_potrait.ImageUrl = headOriginPath;
+        }
     }
 
     protected void submit_Click(object sender, EventArgs e)
@@ -52,6 +59,10 @@ public partial class UserInfo : System.Web.UI.Page
         if (birthDate != user.Birthday)
         {
             user.ModifyBirthday((Guid)Session["id"], birthDate);
+        }
+        if (path != user.HeadPortrait)
+        {
+            user.ModifyHeadPortrait((Guid)Session["id"], path);
         }
     }
 
