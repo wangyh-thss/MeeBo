@@ -9,6 +9,7 @@ using MeeboDb;
 
 public partial class Register : System.Web.UI.Page
 {
+    protected string path;
     //User user = new User();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,7 +27,7 @@ public partial class Register : System.Web.UI.Page
                 return;
 
             string filename = SelectImg.FileName;
-            string path = "~/headImg/" + this.user.Text + '_' + filename;
+            path = "~/headImg/" + this.user.Text + '_' + filename;
             SelectImg.PostedFile.SaveAs(Server.MapPath(path));
             this.head_potrait.ImageUrl = path;
         }
@@ -74,8 +75,7 @@ public partial class Register : System.Web.UI.Page
 
         if (SelectImg.HasFile)
         {
-            byte[] imgData = this.SelectImg.FileBytes;
-            user.HeadPortrait = imgData;
+            user.HeadPortrait = path;
         }
 
         user.Name = uName;
