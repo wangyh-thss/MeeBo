@@ -78,7 +78,7 @@
             <hr class="line" />
             <div class="right_item">
                 <form id="registerForm" name="regform" method="post" runat="server">
-                    <table class="p3" style="border-spacing:10px 24px; width: 421px; height: 350px; margin-bottom:30px;margin-left:15%; ">
+                    <table class="p3" style="border-spacing:10px 24px; width: 421px; height: 300px; margin-bottom:10px;margin-left:15%; ">
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">当前密码：</th>
                             <th class="auto-style3">
@@ -98,7 +98,7 @@
                             </th>
                         </tr>
                     </table>
-                    <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
+                    <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:-30px;font-size:10px;margin-left:38%;margin-bottom:30px"></div>
                     <asp:Button ID="ChangePassword" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" tabindex="9" OnClick="ChangePassword_Click"/>
                 </form>
             </div>
