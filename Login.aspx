@@ -43,7 +43,7 @@
                             <h4>用户登录：</h4>
                         </div>
                         <br />
-                        <div class="item">
+                        <div class="item" style="margin-top: 20px">
                             <label>帐号</label>
                             <input id="user" name="user" type="text" class="W_input" maxlength="60"  tabindex="1"/>
                         </div>
@@ -53,10 +53,10 @@
                             <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/>
                         </div>
                         <br />
-                        <div runat="server" id="error_label" style="color:red; height: 24px;"></div>
+                        <div runat="server" id="error_label" style="color:red; height: 24px; margin-left:30%"></div>
                         <br />
                         <div class="item">
-                            <input type="submit" value="登录" name="user_login" class="btn-submit" tabindex="5"/>
+                            <input type="submit" value="登录" name="user_login" class="btn-submit" style="width:100px; height:30px; margin-left:20%" tabindex="3"/>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <a target="_blank" href="about:blank">意见反馈</a>
                 </div>
                 <br />
-                <a class="S_txt2">Copyright &copy; 2014- MEEBO 清华大学软件学院<span class="Icp">尚未提交审查</span></a>
+                <a class="S_txt2">Copyright &copy; 2014-???? MEEBO 清华大学软件学院<span class="Icp">尚未提交审查</span></a>
             </div>
     </div>
 </body>

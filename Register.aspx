@@ -9,12 +9,19 @@
         .background {background: #c8e1f0}
         .header {width: 80%; margin: auto;}
         .register_box {width: 75%; margin: auto; background:#fefefe; padding-top: 20px; padding-left:20px; border: 2px solid; border-radius: 10px; box-shadow: 10px 10px 5px #000000;}
-        .infomation_list {width: 75%; margin: auto;}
+        .infomation_list {width: 45%; margin-left: 10%;}
         .p1 {font-size: 150%; font-family: "Times New Roman";}
         .p2 {font-size: 150%; font-family: "华文隶书","Times New Roman"; color: #000000;}
         .submit_zoom {width: 100px; margin:auto;}
+        .ad_box {width:335px; height: 450px; border: 2px solid #c8e1f0; position:fixed;left:55%;top:14%;border-radius: 10px; box-shadow: 10px 10px 5px #888888; }
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
         .foot_box {width: 40%; margin-left: 35%;height: 16px;margin-top: 45px; margin-bottom: 30px}
+        .auto-style1 {
+            width: 136px;
+        }
+        .auto-style2 {
+            width: 119px;
+        }
     </style>
     <title>注册MeeBo账号</title>
 </head>
@@ -35,7 +42,7 @@
                             <th>
                                 <abbr title="必填，这将是您用于登录的信息之一，注意用户名不能与其他用户重复">&nbsp 用户名：</abbr>
                             </th>
-                            <th>
+                            <th class="auto-style2">
                                 <input id="user" name="user" type="text" class="W_input" maxlength="20" tabindex="1"/>
                             </th>
                         </tr>
@@ -160,13 +167,18 @@
                                 <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 60%"/>
                             </th>
                             <th>
-                                <img src="image/" alt="验证码" onclick="change_check_num()" style="width: 150px; height:30px; margin-left:30px"/></th>
+                                <asp:Image ID="Captcha" runat="server" ImageUrl="~/function/Captcha.aspx" onclick="change_check_num()" style="width: 100px; height:30px; margin-left:10px"/>
+                            </th>
                         </tr>
                     </table>
+                    <div runat="server" id="error_check_num" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                     <br />
                 </li>
             </ul>
-                <input type="submit" value="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px" OnClick="btnRegister_Click" tabindex="9"/>
+            <input type="submit" value="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" onclick="btnRegister_Click" tabindex="9"/>
+            <div class="ad_box">
+                <p>你看到了一个广告</p>
+            </div>
         </div>
     </form>
     <div class="foot_box">
