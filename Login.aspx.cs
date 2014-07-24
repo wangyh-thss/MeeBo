@@ -28,15 +28,17 @@ public partial class Login : System.Web.UI.Page
                         if (user["UAdmin"].ToString() == "0")
                         {
                             //普通用户登录
-                            Session["role"] = "admin";
+                            Session["role"] = "user";
                             Session["name"] = uName;
+                            Session["id"] = new Guid(user["id"].ToString());
                             Response.Redirect("~/UserInfo.aspx");
                         }
                         else
                         {
                             //管理员登录
-                            Session["role"] = "user";
+                            Session["role"] = "admin";
                             Session["name"] = uName;
+                            Session["id"] = new Guid(user["id"].ToString());
                             Response.Redirect("~/UserInfo.aspx");
                         }
                     }

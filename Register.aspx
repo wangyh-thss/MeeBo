@@ -131,8 +131,13 @@
                                 <abbr title="选填，个人资料的一部分">&nbsp 性别：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
-                                <input type="radio" name="gender" value="male" tabindex="5"/> 男
-                                <input type="radio" name="gender" value="female" style="margin-left: 4em" tabindex="6"/> 女
+                                <!-- <input type="radio" name="gender" value="male" tabindex="5"/> 男
+                                <input type="radio" name="gender" value="female" style="margin-left: 4em" tabindex="6"/> 女 -->
+                                <asp:RadioButtonList ID="gender" runat="server" Height="23px" RepeatDirection="Horizontal" Width="134px">
+                                    <asp:ListItem Value="1">男</asp:ListItem>
+                                    <asp:ListItem Value="0">女</asp:ListItem>
+
+                                </asp:RadioButtonList>
                             </th>
                         </tr>
                     </table>

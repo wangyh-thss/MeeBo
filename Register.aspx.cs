@@ -72,12 +72,23 @@ public partial class Register : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.error_username, typeof(string), "errorname", "document.getElementById('error_username').innerText = '用户名已被注册';", true);
             return;
         }
+        string birthday = this.year.Text + '-' + this.month.Text + '-' + this.day.Text;
+        DateTime birthDate = Convert.ToDateTime(birthday).Date;
+        if (this.gender.SelectedValue == "0")
+            user.Gender = false;
+        else
+            user.Gender = true;
         user.HeadPortrait = path;
         user.Name = uName;
         user.Password = uPwd;
         user.Nickname = this.nickname.Text;
         user.Email = this.email.Text;
-        //user.Birthday = Request.Form["birthday"];
-        user.Insert();
+        user.Birthday = birthDate;
+
+        Session["id"] = user.Insert();
+        Session["role"] = "user";
+        Session["name"] = uName;
+        
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 }
