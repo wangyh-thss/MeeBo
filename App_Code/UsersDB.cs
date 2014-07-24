@@ -30,7 +30,7 @@ namespace MeeboDb
         public string Email{get;set;}
         public DateTime Birthday{get;set;}
         public Boolean Gender{get;set;}
-        public Byte[] HeadPortrait {get; set;}
+        public string HeadPortrait {get; set;}
 
         DataBase data = new DataBase();
 
@@ -50,8 +50,8 @@ namespace MeeboDb
             row["UBirthday"] = Birthday;
             row["UGender"] = Gender;
             row["UHeadPortrait"] = HeadPortrait;
-           ds.Tables["thisUser"].Rows.Add(row);
-           data.UpdateData("select * from [User] ", ds, "thisUser");
+            ds.Tables["thisUser"].Rows.Add(row);
+            data.UpdateData("select * from [User] ", ds, "thisUser");
         }
 
         public void ModifyPassword(Guid thisID, string NewPassword)
@@ -273,6 +273,16 @@ namespace MeeboDb
             if (ds.Tables["thisUser"].Rows.Count == 1)
             {
                 return ds.Tables["thisUser"].Rows[0]["UName"].ToString();
+            }
+            else return null;
+        }
+
+        public string getPasswordByID(Guid myID)
+        {
+            DataSet ds = SearchByID(myID, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                return ds.Tables["thisUser"].Rows[0]["UPassword"].ToString();
             }
             else return null;
         }
