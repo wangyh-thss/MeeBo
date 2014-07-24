@@ -23,13 +23,6 @@ namespace MeeboDb
             // TODO: 在此处添加构造函数逻辑
             //
         }
-        private string name;
-        private string password;
-        private string nickname;
-        private string email;
-        private DateTime birthday;
-        private Boolean gender;
-        private Byte[] headPortrait;
 
         public string Name{get;set;}
         public string Password{ get; set; }
