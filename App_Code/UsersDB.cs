@@ -67,8 +67,13 @@ namespace MeeboDb
         {
             DataSet ds = data.GetData("select * from [User] ","thisUser");
             DataRow row = ds.Tables["thisUser"].NewRow();
+            row["UID"] = Guid.NewGuid();
             row["UName"] = Name;
             row["UPassword"] = Password;
+            if (Nickname == null)
+            {
+                Nickname = Name;
+            }
             row["UNickname"] = Nickname;
             row["UEmail"] = Email;
             row["UBirthday"] = Birthday;
