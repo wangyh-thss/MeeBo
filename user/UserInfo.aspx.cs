@@ -18,4 +18,6 @@ public partial class UserInfo : System.Web.UI.Page
     }
 
     protected void UploadImg_Click(object sender, EventArgs e)
+    {
+    }
 }
