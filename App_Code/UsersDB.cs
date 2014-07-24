@@ -46,8 +46,14 @@ namespace MeeboDb
                 Nickname = Name;
             }
             row["UNickname"] = Nickname;
-            row["UEmail"] = Email;
-            row["UBirthday"] = Birthday;
+            if (Email != "")
+            {
+                row["UEmail"] = Email;
+            }
+            if (Birthday != null)
+            {
+                row["UBirthday"] = Birthday;
+            }
             row["UGender"] = Gender;
             row["UHeadPortrait"] = HeadPortrait;
             ds.Tables["thisUser"].Rows.Add(row);
