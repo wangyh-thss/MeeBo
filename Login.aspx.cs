@@ -30,16 +30,16 @@ public partial class Login : System.Web.UI.Page
                             //普通用户登录
                             Session["role"] = "user";
                             Session["name"] = uName;
-                            Session["id"] = new Guid(user["id"].ToString());
-                            Response.Redirect("~/UserInfo.aspx");
+                            Session["id"] = new Guid(user["UID"].ToString());
+                            Response.Redirect("~/user/UserInfo.aspx");
                         }
                         else
                         {
                             //管理员登录
                             Session["role"] = "admin";
                             Session["name"] = uName;
-                            Session["id"] = new Guid(user["id"].ToString());
-                            Response.Redirect("~/UserInfo.aspx");
+                            Session["id"] = new Guid(user["UID"].ToString());
+                            Response.Redirect("~/user/UserInfo.aspx");
                         }
                     }
                     else
