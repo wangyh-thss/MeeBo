@@ -13,7 +13,7 @@
         .p1 {font-size: 150%; font-family: "Times New Roman";}
         .p2 {font-size: 150%; font-family: "华文隶书","Times New Roman"; color: #000000;}
         .submit_zoom {width: 100px; margin:auto;}
-        .ad_box {width:335px; height: 450px; border: 2px solid #c8e1f0; position:fixed;left:55%;top:14%;border-radius: 10px; box-shadow: 10px 10px 5px #888888; }
+        .ad_box {width:335px; height: 440px; border: 2px solid #c8e1f0; position:fixed;left:55%;top:14%;border-radius: 10px; box-shadow: 10px 10px 5px #888888; }
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
         .foot_box {width: 40%; margin-left: 35%;height: 16px;margin-top: 45px; margin-bottom: 30px}
         .auto-style1 {
@@ -141,11 +141,11 @@
                 <li  style="margin-top: 24px">
                     <table>
                         <tr>
-                            <th class="auto-style3">
+                            <th>
                                 <abbr title="选填，您的生日，完善个人信息有助于其它用户更了解您">&nbsp 生日：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
-                            <th class="auto-style4">
-                                &nbsp;<asp:DropDownList ID="year" runat="server">
+                            <th>
+                                    <asp:DropDownList ID="year" runat="server">
                                     <asp:ListItem>1980</asp:ListItem>
                                     <asp:ListItem>1981</asp:ListItem>
                                     <asp:ListItem>1982</asp:ListItem>
@@ -182,7 +182,66 @@
                                     <asp:ListItem>2013</asp:ListItem>
                                     <asp:ListItem>2014</asp:ListItem>
                                 </asp:DropDownList>
+                            </th>
+                            <th>
                                 年
+                            </th>
+                            <th>
+                                <asp:DropDownList ID="month" runat="server">
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
+                                    <asp:ListItem>4</asp:ListItem>
+                                    <asp:ListItem>5</asp:ListItem>
+                                    <asp:ListItem>6</asp:ListItem>
+                                    <asp:ListItem>7</asp:ListItem>
+                                    <asp:ListItem>8</asp:ListItem>
+                                    <asp:ListItem>9</asp:ListItem>
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>11</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                </asp:DropDownList>
+                            </th>
+                            <th>
+                                月
+                            </th>
+                            <th>
+                                <asp:DropDownList ID="day" runat="server">
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
+                                    <asp:ListItem>4</asp:ListItem>
+                                    <asp:ListItem>5</asp:ListItem>
+                                    <asp:ListItem>6</asp:ListItem>
+                                    <asp:ListItem>7</asp:ListItem>
+                                    <asp:ListItem>8</asp:ListItem>
+                                    <asp:ListItem>9</asp:ListItem>
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>11</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                    <asp:ListItem>13</asp:ListItem>
+                                    <asp:ListItem>14</asp:ListItem>
+                                    <asp:ListItem>15</asp:ListItem>
+                                    <asp:ListItem>16</asp:ListItem>
+                                    <asp:ListItem>17</asp:ListItem>
+                                    <asp:ListItem>18</asp:ListItem>
+                                    <asp:ListItem>19</asp:ListItem>
+                                    <asp:ListItem>20</asp:ListItem>
+                                    <asp:ListItem>21</asp:ListItem>
+                                    <asp:ListItem>22</asp:ListItem>
+                                    <asp:ListItem>23</asp:ListItem>
+                                    <asp:ListItem>24</asp:ListItem>
+                                    <asp:ListItem>25</asp:ListItem>
+                                    <asp:ListItem>26</asp:ListItem>
+                                    <asp:ListItem>27</asp:ListItem>
+                                    <asp:ListItem>28</asp:ListItem>
+                                    <asp:ListItem>29</asp:ListItem>
+                                    <asp:ListItem>30</asp:ListItem>
+                                    <asp:ListItem>31</asp:ListItem>
+                                </asp:DropDownList>
+                            </th>
+                            <th>
+                                日
                             </th>
                         </tr>
                     </table>
@@ -229,7 +288,7 @@
                 </li>
             </ul>
             <!-- <input type="submit" value="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" onclick="btnRegister_Click" tabindex="9"/> -->
-            <asp:Button Text="注册" runat="server" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" OnClick="Register_Click" tabindex="9"/>
+            <asp:Button Text="注册" runat="server" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%;background-color: #e64141;" OnClick="Register_Click" tabindex="9"/>
             <div class="ad_box">
                 <p>你看到了一个广告</p>
             </div>
