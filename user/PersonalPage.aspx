@@ -88,7 +88,7 @@
             <div class="left_item">
                 <br />
                 <a class="p2" href ="UserInfo.aspx">我的信息</a><br /><br/>
-                <a class="p2">修改密码</a><br /><br/>
+                <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
