@@ -105,7 +105,7 @@ namespace MeeboDb
             data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void Modifygender(Guid thisID, string NewGender)
+        public void Modifygender(Guid thisID, bool NewGender)
         {
             SqlParameter[] prams = 
             {
@@ -116,7 +116,7 @@ namespace MeeboDb
             data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void Modifygender(Guid thisID, Byte[] NewHeadPortrait)
+        public void Modifygender(Guid thisID, string NewHeadPortrait)
         {
             SqlParameter[] prams = 
             {
