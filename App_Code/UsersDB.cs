@@ -41,7 +41,7 @@ namespace MeeboDb
             row["UID"] = Guid.NewGuid();
             row["UName"] = Name;
             row["UPassword"] = Password;
-            if (Nickname == null)
+            if (Nickname == "" || Nickname == null)
             {
                 Nickname = Name;
             }
