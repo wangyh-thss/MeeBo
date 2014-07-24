@@ -22,7 +22,7 @@ public partial class UserInfo : System.Web.UI.Page
         else
             this.gender.Items.FindByValue("1").Selected = true;
         string birthday = user.Birthday.ToString("d");
-        string[] s = birthday.Split(new char[] { '-' });
+        string[] s = birthday.Split(new char[] { '/' });
         this.year.Items.FindByValue(s[0]).Selected = true;
         this.month.Items.FindByValue(s[1]).Selected = true;
         this.day.Items.FindByValue(s[2]).Selected = true;

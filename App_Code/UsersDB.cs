@@ -116,7 +116,7 @@ namespace MeeboDb
             data.UpdateData("select * from [User]", ds, "thisUser");
         }
 
-        public void Modifygender(Guid thisID, string NewHeadPortrait)
+        public void ModifyHeadPortrait(Guid thisID, string NewHeadPortrait)
         {
             SqlParameter[] prams = 
             {
@@ -234,7 +234,7 @@ namespace MeeboDb
             Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
             Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
             Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
-            Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString()=="1");
+            Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString()=="True");
             HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
             return ds;
         }
