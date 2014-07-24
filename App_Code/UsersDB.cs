@@ -34,11 +34,12 @@ namespace MeeboDb
 
         DataBase data = new DataBase();
 
-        public void Insert()
+        public Guid Insert()
         {
             DataSet ds = data.GetData("select * from [User] ","thisUser");
             DataRow row = ds.Tables["thisUser"].NewRow();
-            row["UID"] = Guid.NewGuid();
+            Guid newID = Guid.NewGuid();
+            row["UID"] = newID;
             row["UName"] = Name;
             row["UPassword"] = Password;
             if (Nickname == "" || Nickname == null)
@@ -58,6 +59,7 @@ namespace MeeboDb
             row["UHeadPortrait"] = HeadPortrait;
             ds.Tables["thisUser"].Rows.Add(row);
             data.UpdateData("select * from [User] ", ds, "thisUser");
+            return newID;
         }
 
         public void ModifyPassword(Guid thisID, string NewPassword)
