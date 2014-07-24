@@ -82,24 +82,24 @@
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">当前密码：</th>
                             <th class="auto-style3">
-                                <asp:TextBox ID="current_password" runat="server" class="W_input" maxlength="20" tabindex="3" style="margin-left: 0px" Width="200px" />
+                                <asp:TextBox ID="current_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="3" style="margin-left: 0px" Width="200px" />
                             </th>
                         </tr>
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">修改密码：</th>
                             <th class="auto-style3">
-                                <asp:TextBox ID="change_password" runat="server" class="W_input" maxlength="20" tabindex="4" Width="200px" />
+                                <asp:TextBox ID="change_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="4" Width="200px" />
                             </th>
                         </tr>
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">确认密码：</th>
                             <th class="auto-style3">
-                                <asp:TextBox ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="5" Width="200px" />
+                                <asp:TextBox ID="repeat_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="5" Width="200px" />
                             </th>
                         </tr>
                     </table>
                     <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
-                    <asp:Button ID="ChangePassword" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" tabindex="9"/>
+                    <asp:Button ID="ChangePassword" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" tabindex="9" OnClick="ChangePassword_Click"/>
                 </form>
             </div>
         </div>

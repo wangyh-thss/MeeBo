@@ -14,6 +14,8 @@ public partial class UserInfo : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         user.SearchByName((string)Session["name"], "result");
         if (IsPostBack)
         { }
