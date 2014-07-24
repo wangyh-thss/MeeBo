@@ -9,11 +9,12 @@ using MeeboDb;
 
 public partial class Register : System.Web.UI.Page
 {
-    protected string path = "~/image/head_potrait.jpg";
+    protected string path;
     //User user = new User();
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (IsPostBack)
+            path = this.head_potrait.ImageUrl;
     }
 
     protected void UploadImg_Click(object sender, EventArgs e)

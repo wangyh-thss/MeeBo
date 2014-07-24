@@ -15,8 +15,8 @@ public partial class Login : System.Web.UI.Page
         UserDB userDb = new UserDB();
         if(IsPostBack)
         {
-            string uPwd = Request.Form["user"];
-            string uName = Request.Form["password"];
+            string uPwd = Request.Form["password"];
+            string uName = Request.Form["user"];
             DataSet resultSet = userDb.SearchByName(uName, "result");
             if (resultSet.Tables["result"].Rows.Count > 0)
             {
