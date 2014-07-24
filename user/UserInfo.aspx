@@ -44,27 +44,27 @@
     <div class="userInfoForm">
         <div class="left_column">
             <div class="left_item">
-                <p class="p1">个人主页</p>
+                <a class="p1" href="Read.aspx">个人主页</a>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2">MeeBo消息</a><br /><br/>
-                <a class="p2">与我相关</a><br /><br/>
-                <a class="p2">提到我的</a><br /><br/>
+                <a class="p2" href="PersonalPage.aspx">MeeBo消息</a><br /><br/>
+                <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
+                <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2">我的粉丝</a><br /><br/>
-                <a class="p2">我的关注</a><br /><br/>
-                <a class="p2">特别关注</a><br /><br/>
+                <a class="p2" href = "MyFans.aspx">我的粉丝</a><br /><br/>
+                <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
+                <a class="p2" href= "Mysave.aspx">特别关注</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" style="color: red">我的信息</a><br /><br/>
-                <a class="p2">修改密码</a><br /><br/>
+                <a class="p2" href ="UserInfo.aspx" style="color: red">我的信息</a><br /><br/>
+                <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
