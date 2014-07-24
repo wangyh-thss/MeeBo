@@ -80,7 +80,7 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select UID,UNickname from [User] where UID = @UID", prams, "thisUser");
             ds.Tables["thisUser"].Rows[0]["UNickname"] = NewNickname;
-            data.UpdateData("select UID,UNickname from [User] where UID = @UID", ds, "thisUser");
+            data.UpdateData("select UID,UNickname from [User] where UID = @UID", prams,ds, "thisUser");
         }
 
         public void ModifyEmail(Guid thisID, string NewEmail)
@@ -230,12 +230,15 @@ namespace MeeboDb
 			};
             DataSet ds = data.GetData("select * from [User] where UName = @UName", prams, tbName);
             Name = MyName;
-            Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
-            Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
-            Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
-            Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
-            Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString()=="True");
-            HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
+            if (ds.Tables[tbName].Rows.Count > 0)
+            {
+                Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
+                Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
+                Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
+                Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
+                Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
+                HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
+            }
             return ds;
         }
 

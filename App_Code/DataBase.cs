@@ -96,6 +96,7 @@ namespace MeeboDb
             DataSet ds = new DataSet();
             dap.Fill(ds, tbName);
             this.Close();
+            dap.SelectCommand.Parameters.Clear();
             //得到执行成功返回值
             return ds;
         }
@@ -106,6 +107,7 @@ namespace MeeboDb
             DataSet ds = new DataSet();
             dap.Fill(ds, tbName);
             this.Close();
+            dap.SelectCommand.Parameters.Clear();
             //得到执行成功返回值
             return ds;
         }
@@ -115,6 +117,8 @@ namespace MeeboDb
             SqlDataAdapter dap = CreateDataAdaper(procName, null);
             SqlCommandBuilder builder = new SqlCommandBuilder(dap);
             dap.Update(ds, tbName);
+            this.Close();
+            dap.SelectCommand.Parameters.Clear();
         }
 
         public void UpdateData(string procName, SqlParameter[] prams,DataSet ds, string tbName)
@@ -122,6 +126,8 @@ namespace MeeboDb
             SqlDataAdapter dap = CreateDataAdaper(procName, prams);
             SqlCommandBuilder builder = new SqlCommandBuilder(dap);
             dap.Update(ds, tbName);
+            this.Close();
+            dap.SelectCommand.Parameters.Clear();
         }
     }
 }
