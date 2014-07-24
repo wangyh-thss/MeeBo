@@ -18,7 +18,9 @@ public partial class UserInfo : System.Web.UI.Page
             Response.Redirect("~/Login.aspx");
         user.SearchByName((string)Session["name"], "result");
         if (IsPostBack)
-        { }
+        {
+            path = this.head_potrait.ImageUrl;
+        }
         else
         {
             headOriginPath = user.HeadPortrait;
