@@ -208,7 +208,7 @@ namespace MeeboDb
              ds.Tables["thisUser"].Rows[1]["UMsgOutNum"] = (int)ds.Tables["thisUser"].Rows[1]["UMsgOutNum"] + num;
              data.UpdateData("select * from [User]", ds, "thisUser");
          }
-        public void changeInfoNum(Guid thisID,int num)
+        public void changeInfoNum(Guid thisID , int num)
          {
              SqlParameter[] prams = 
              {
@@ -238,6 +238,41 @@ namespace MeeboDb
 			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
 			};
             return (data.GetData("select * from [User] where UName = @UName", prams, tbName));
+        }
+
+        public DataSet Search(string tbName)
+        {
+            string select = "select * from [User] where ";
+            int i = Convert.ToInt32(Name != null) + Convert.ToInt32(Nickname != null) +
+                    Convert.ToInt32(Birthday != null) + Convert.ToInt32(Gender != null);
+            SqlParameter[] prams = new SqlParameter[i];
+            i = 0;
+            if (Name != null)
+            {
+                prams[i] = data.MakeInParam("@UName", SqlDbType.VarChar, 50, Name);
+                i++;
+                select = select + "(UName = @UName) AND ";
+            }
+            if (Nickname != null)
+            {
+                prams[i] = data.MakeInParam("@UNickname", SqlDbType.VarChar, 50, Nickname);
+                i++;
+                select = select + "(UNickname = @UNickname) AND ";
+            }
+            if (Birthday != null)
+            {
+                prams[i] = data.MakeInParam("@UBirthday ", SqlDbType.Date, 3, Birthday);
+                i++;
+                select = select + "(UBirthday  = @UBirthday ) AND ";
+            }
+            if (Gender != null)
+            {
+                prams[i] = data.MakeInParam("@UGender", SqlDbType.Bit, 1, Gender);
+                i++;
+                select = select + "(UGender = @UGender) AND ";
+            }
+            select = select.Substring(0,select.Length - 5);
+            return (data.GetData(select, prams, tbName));
         }
     }
 }
