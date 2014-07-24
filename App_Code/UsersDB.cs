@@ -50,15 +50,6 @@ namespace MeeboDb
             row["UBirthday"] = Birthday;
             row["UGender"] = Gender;
             row["UHeadPortrait"] = HeadPortrait;
-            row["UAdmin"] = 0;
-            row["UFansNum"] = 0;
-            row["ULikesNum"] = 0;
-            row["UNewsNum"] = 0;
-            row["USaveNewsNum"] = 0;
-            row["UMsgInNum"] = 0;
-            row["UMsgOutNum"] = 0;
-            row["UState"] = 0;
-            row["UInfoNum"] = 0;
            ds.Tables["thisUser"].Rows.Add(row);
            data.UpdateData("select * from [User] ", ds, "thisUser");
         }
