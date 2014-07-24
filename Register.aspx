@@ -3,7 +3,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <script src="~/JavaScript/jquery-2.1.1.min.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="css/frame.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
