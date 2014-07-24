@@ -36,6 +36,11 @@ public partial class Register : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this.error_repeat_password, typeof(string), "errorrepeat", "document.getElementById('error_repeat_password').innerText = '两次输入密码不同';", true);
                 return;
             }
+            if (Request.Form["check_num"] != Request.Cookies["CheckCode"].ToString())
+            {
+                ScriptManager.RegisterStartupScript(this.error_repeat_password, typeof(string), "errorrepeat", "document.getElementById('error_check_num').innerText = '验证码错误';", true);
+                return;
+            }
             UserDB user = new UserDB();
             DataSet resultSet = user.SearchByName(uName, "result");
             if (resultSet.Tables["result"].Rows.Count > 0)
