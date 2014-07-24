@@ -44,7 +44,8 @@
     <div class="userInfoForm">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx">个人主页</a>
+                <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
+                <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
@@ -58,7 +59,7 @@
                 <br />
                 <a class="p2" href = "MyFans.aspx">我的粉丝</a><br /><br/>
                 <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                <a class="p2" href= "Mysave.aspx">特别关注</a><br /><br/>
+                <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
