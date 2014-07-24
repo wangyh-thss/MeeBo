@@ -20,6 +20,9 @@
     .left_item{padding-left:2em;margin-top:5px}
     .middle_column {float:left;position: relative;width:45%;margin-left:5%;background: #fefefe;height:600px}
     .right_column {float:left;position: relative;width:18%;margin-left:5%;background: #fefefe;height:600px}
+    a {text-decoration: none;color:black;}
+    a:link {color: #000000}
+    a:hover {color: blue}
     </style>
 </head>
 <body class="background">
@@ -63,27 +66,21 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <p class="p1">个人主页</p>
+                <a class="p1" href="PersonalPage.aspx">个人主页</a>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2">MeeBo消息</a><br /><br/>
+                <a class="p2" href="MeeboInfo.aspx">MeeBo消息</a><br /><br/>
                 <a class="p2" style="color: red">与我相关</a><br /><br/>
-                <a class="p2">提到我的</a><br /><br/>
+                <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2">我的粉丝</a><br /><br/>
-                <a class="p2">我的关注</a><br /><br/>
+                <a class="p2" href="MyFans.aspx">我的粉丝</a><br /><br/>
+                <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
                 <a class="p2">特别关注</a><br /><br/>
-            </div>
-            <hr class="line" />
-            <div class="left_item">
-                <br />
-                <a class="p2">我的信息</a><br /><br/>
-                <a class="p2">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
