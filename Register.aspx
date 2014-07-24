@@ -24,12 +24,13 @@
         }
     </style>
     <title>注册MeeBo账号</title>
+    
 </head>
 <body class="background">
+    <form runat="server">
     <div class="header">
 		<img src="image/logo.jpg" alt="logo(MeeBo)" style="margin:auto" />
     </div>
-     <form id="registerForm" name="regform" method="post" runat="server">
         <div class="register_box">
             <div class="p1">填写以下信息加入<a class="p2">MeeBo</a>：</div>
             <ul class="infomation_list" style="padding-top: 24px">
@@ -43,7 +44,8 @@
                                 <abbr title="必填，这将是您用于登录的信息之一，注意用户名不能与其他用户重复">&nbsp 用户名：</abbr>
                             </th>
                             <th class="auto-style2">
-                                <input id="user" name="user" type="text" class="W_input" maxlength="20" tabindex="1"/>
+                                <!-- <input id="user" name="user" type="text" class="W_input" maxlength="20" tabindex="1"/> -->
+                                <asp:TextBox ID="user" runat="server" class="W_input" maxlength="20" tabindex="1" />
                             </th>
                         </tr>
                     </table>
@@ -60,7 +62,8 @@
                                 <abbr title="必填，这将是您用于登录的信息之一">&nbsp 密码：&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
-                                <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/>
+                                <!-- <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
+                                <asp:TextBox ID="password" runat="server" class="W_input" maxlength="20" tabindex="2" />
                             </th>
                         </tr>
                     </table>
@@ -77,7 +80,8 @@
                                 <abbr title="必填，请确认您输入的密码无误">&nbsp 确认密码：</abbr>
                             </th>
                             <th>
-                                <input id="repeat_password" name="repeat_password" type="password" class="W_input" maxlength="20" tabindex="2"/>
+                                <!-- <input id="repeat_password" name="repeat_password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
+                                <asp:TextBox ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="3" />
                             </th>
                         </tr>
                     </table>
@@ -91,7 +95,8 @@
                                 <abbr title="选填，这将是您用于维护账号安全的必备信息，我们推荐您在注册时完善邮箱信息">&nbsp 邮箱：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
-                                <input id="email" name="email" type="text" class="W_input" maxlength="60" tabindex="3"/>
+                                <!-- <input id="email" name="email" type="text" class="W_input" maxlength="60" tabindex="3"/> -->
+                                <asp:TextBox ID="email" runat="server" class="W_input" maxlength="60" tabindex="4" />
                             </th>
                         </tr>
                     </table>
@@ -105,7 +110,8 @@
                                 <abbr title="选填，这将是你与其他用户进行交际时使用的名称">&nbsp 昵称：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
-                                <input id="nickname" name="nickname" type="text" class="W_input" maxlength="20" tabindex="4"/>
+                                <!-- <input id="nickname" name="nickname" type="text" class="W_input" maxlength="20" tabindex="4"/> -->
+                                <asp:TextBox ID="nickname" runat="server" class="W_input" maxlength="20" tabindex="5" />
                             </th>
                         </tr>
                     </table>
@@ -142,13 +148,15 @@
                     <table>
                         <tr>
                             <th>
-                                <abbr title="选填，您的头像，这将会在您发布的每一条消息中显示">&nbsp 头像：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
+                                <abbr title="选填，您的头像，这将会在您发布的每一条消息中显示,大小限制为1MB">&nbsp 头像：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
-                                <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                                <!-- <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/> -->
+                                <asp:Image ID="head_potrait" runat="server" ImageUrl="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                             </th>
                             <th class="auto-style1">
-                                <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px; padding:3px 3px 3px 3px">选择头像</button>
+                                <asp:FileUpload ID="SelectImg" runat="server" Width="65px" style="margin-left:35px;" onchange="javascript:__doPostBack('UploadImg','')"/>
+                                <asp:LinkButton ID="UploadImg" runat="server" OnClick="UploadImg_Click"></asp:LinkButton>
                             </th>
                         </tr>
                     </table>
@@ -164,7 +172,8 @@
                                 <abbr title="必填，请在此输入验证码">&nbsp 验证码：</abbr>
                             </th>
                             <th>
-                                <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 60%"/>
+                                <!-- <input id="check_num" name="check_num" type="text" class="W_input" maxlength="20" tabindex="8" style="width: 60%"/> -->
+                                <asp:TextBox ID="check_num" runat="server" class="W_input" maxlength="20" tabindex="8" style="width: 60%"/>
                             </th>
                             <th>
                                 <asp:Image ID="Captcha" runat="server" ImageUrl="~/function/Captcha.aspx" onclick="change_check_num()" style="width: 100px; height:30px; margin-left:10px"/>
@@ -175,14 +184,15 @@
                     <br />
                 </li>
             </ul>
-            <input type="submit" value="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" onclick="btnRegister_Click" tabindex="9"/>
+            <!-- <input type="submit" value="注册" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" onclick="btnRegister_Click" tabindex="9"/> -->
+            <asp:Button Text="注册" runat="server" class="btn-submit" style="width:80px; height:30px; margin-bottom:30px; margin-left:20%" OnClick="Register_Click" tabindex="9"/>
             <div class="ad_box">
                 <p>你看到了一个广告</p>
             </div>
         </div>
-    </form>
     <div class="foot_box">
     <a style="margin:auto">Copyright &copy; 2014- MEEBO 清华大学软件学院<span style="margin-left: 4em">尚未提交审查</span></a>
     </div>
+    </form>
 </body>
 </html>
