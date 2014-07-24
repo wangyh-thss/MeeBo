@@ -116,5 +116,12 @@ namespace MeeboDb
             SqlCommandBuilder builder = new SqlCommandBuilder(dap);
             dap.Update(ds, tbName);
         }
+
+        public void UpdateData(string procName, SqlParameter[] prams,DataSet ds, string tbName)
+        {
+            SqlDataAdapter dap = CreateDataAdaper(procName, prams);
+            SqlCommandBuilder builder = new SqlCommandBuilder(dap);
+            dap.Update(ds, tbName);
+        }
     }
 }
