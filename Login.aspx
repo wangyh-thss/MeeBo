@@ -32,7 +32,7 @@
             <div class="W_login_info clearfix">
 				<div class="leftbox">
 					<div class="slogan">
-						还没有MeeBo帐号？现在加入						<a class="btn_reg_red" onclick="goToRegister()" target="_blank"><span>立即注册</span></a>
+						还没有MeeBo帐号？现在加入						<a class="btn_reg_red" href="Register.aspx"><span>立即注册</span></a>
 					</div>
 					<div class="show_img"><img src="image/nolog_left.jpg" /></div>
                 </div>

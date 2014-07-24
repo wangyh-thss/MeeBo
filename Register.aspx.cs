@@ -9,7 +9,7 @@ using MeeboDb;
 
 public partial class Register : System.Web.UI.Page
 {
-    protected string path;
+    protected string path = "~/image/head_potrait.jpg";
     //User user = new User();
     protected void Page_Load(object sender, EventArgs e)
     {
