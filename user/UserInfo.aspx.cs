@@ -11,4 +11,11 @@ public partial class UserInfo : System.Web.UI.Page
     {
 
     }
+
+    protected void submit_Click(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void UploadImg_Click(object sender, EventArgs e)
 }
