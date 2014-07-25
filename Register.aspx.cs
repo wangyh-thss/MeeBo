@@ -24,9 +24,15 @@ public partial class Register : System.Web.UI.Page
         {
             string ext = System.IO.Path.GetExtension(SelectImg.PostedFile.FileName).ToLower();
             if (ext != ".jpg" && ext != ".png" && ext != ".bmp")
-                return;
+            {
+                Response.Write("<script>alert('上传文件格式不正确')</script>");
+                    return;
+            }
             if (SelectImg.PostedFile.ContentLength > 1050000)
+            {
+                Response.Write("<script>alert('文件过大，请上传不超过1MB的图片')</script>");
                 return;
+            }
 
             string filename = SelectImg.FileName;
             path = "~/headImg/" + this.user.Text + '_' + filename;
