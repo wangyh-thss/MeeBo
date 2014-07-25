@@ -108,7 +108,7 @@
                             </th>
                         </tr>
                     </table>
-                    <div runat="server" id="error_email" style="color:red; height: 24px;"></div>
+                    <div runat="server" id="error_email" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                     <br />
                 </li>
                 <li>

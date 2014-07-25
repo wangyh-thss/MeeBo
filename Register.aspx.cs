@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 using System.Data;
 using MeeboDb;
 
@@ -61,6 +62,15 @@ public partial class Register : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.error_repeat_password, typeof(string), "errorrepeat", "document.getElementById('error_repeat_password').innerText = '两次输入密码不同';", true);
             return;
         }
+
+        Regex emailMatch = new Regex("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$");
+        if(!emailMatch.IsMatch(this.email.Text))
+        {
+            ScriptManager.RegisterStartupScript(this.error_email, typeof(string), "erroremail", "document.getElementById('error_email').innerText = '邮箱格式有误';", true);
+            return;
+        }
+
+
         if (this.check_num.Text != Request.Cookies["CheckCode"].Value)
         {
             ScriptManager.RegisterStartupScript(this.error_repeat_password, typeof(string), "errorrepeat", "document.getElementById('error_check_num').innerText = '验证码错误';", true);
