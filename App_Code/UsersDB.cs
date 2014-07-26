@@ -24,6 +24,7 @@ namespace MeeboDb
             //
         }
 
+        public Guid ID {get;set;}
         public string Name{get;set;}
         public string Password{ get; set; }
         public string Nickname{get;set;}
@@ -31,12 +32,24 @@ namespace MeeboDb
         public DateTime Birthday{get;set;}
         public Boolean Gender{get;set;}
         public string HeadPortrait {get; set;}
+        public Boolean Admin {get;set;}
+        public int FansNum { get; set;}
+        public int LikesNum { get; set; }
+        public int NewsNum { get; set; }
+        public int SaveNewsNum { get; set; }
+        public int MsgInNum { get; set; }
+        public int MsgOutNum { get; set; }
+        public int StateNum { get; set; }
+        public int InfoNum { get; set; }
 
         DataBase data = new DataBase();
 
+        public int SearchNumber;
+
+        //插入新用户
         public Guid Insert()
         {
-            DataSet ds = data.GetData("select * from [User] ","thisUser");
+            DataSet ds = data.GetData("select * from [User] ", "thisUser");
             DataRow row = ds.Tables["thisUser"].NewRow();
             Guid newID = Guid.NewGuid();
             row["UID"] = newID;
@@ -60,8 +73,22 @@ namespace MeeboDb
             ds.Tables["thisUser"].Rows.Add(row);
             data.UpdateData("select * from [User] ", ds, "thisUser");
             return newID;
+        
         }
 
+        //注销用户
+        public void Delete(Guid thisID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",SqlDbType.UniqueIdentifier,16,thisID),
+			};
+            DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, "thisUser");
+            ds.Tables["thisUser"].Clear();
+            data.UpdateData("select * from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改密码
         public void ModifyPassword(Guid thisID, string NewPassword)
         {
             SqlParameter[] prams = 
@@ -69,20 +96,29 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UPassword from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UPassword"] = NewPassword;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UPassword"] = NewPassword;
+            }
             data.UpdateData("select UID,UPassword from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
+        //修改昵称
         public void ModifyNickname(Guid thisID, string NewNickname)
         {
-            SqlParameter[] prams = {
-			data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UNickname from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UNickname"] = NewNickname;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UNickname"] = NewNickname;
+            }
             data.UpdateData("select UID,UNickname from [User] where UID = @UID", prams,ds, "thisUser");
         }
 
+        //修改邮箱地址
         public void ModifyEmail(Guid thisID, string NewEmail)
         {
             SqlParameter[] prams = 
@@ -90,10 +126,14 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UEmail from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UEmail"] = NewEmail;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UEmail"] = NewEmail;
+            }
             data.UpdateData("select UID,UEmail from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
+        //修改生日
         public void ModifyBirthday(Guid thisID, DateTime NewBirthday)
         {
             SqlParameter[] prams = 
@@ -101,10 +141,14 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UPassword from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UBirthday"] = NewBirthday;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UBirthday"] = NewBirthday;
+            }
             data.UpdateData("select UID,UPassword from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
+        //修改性别
         public void Modifygender(Guid thisID, bool NewGender)
         {
             SqlParameter[] prams = 
@@ -112,10 +156,14 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UGender from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UGender"] = NewGender;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UGender"] = NewGender;
+            }
             data.UpdateData("select UID,UGender from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
+        //修改头像
         public void ModifyHeadPortrait(Guid thisID, string NewHeadPortrait)
         {
             SqlParameter[] prams = 
@@ -123,134 +171,213 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UHeadPortrait from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UHeadPortrait"] = NewHeadPortrait;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UHeadPortrait"] = NewHeadPortrait;
+            }
             data.UpdateData("select UID,UHeadPortrait from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
-        public void Delete(string MyName)
-        {
-            SqlParameter[] prams = 
-            {
-			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
-			};
-            DataSet ds = data.GetData("select * from [User] where UName = @UName", prams, "thisUser");
-            ds.Tables["thisUser"].Clear();
-            data.UpdateData("select * from [User] where UName = @UName", prams, ds, "thisUser");
-        }
-
-
-        public void changeFansNum(Guid thisID, int num)
+        //修改粉丝数
+        public void ChangeFansNum(Guid thisID, int num)
          {
              SqlParameter[] prams = 
              {
                  data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
              };
              DataSet ds = data.GetData("select UID,UFansNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["UFansNum"] = (int)ds.Tables["thisUser"].Rows[0]["UFansNum"] + num;
+             if (ds.Tables["thisUser"].Rows.Count == 1)
+             {
+                 ds.Tables["thisUser"].Rows[0]["UFansNum"] = (int)ds.Tables["thisUser"].Rows[0]["UFansNum"] + num;
+             }
              data.UpdateData("select UID,UFansNum from [User] where UID = @UID", prams, ds, "thisUser");
          }
 
-        public void changeLikesNum(Guid thisID, int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,ULikesNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["ULikesNum"] = (int)ds.Tables["thisUser"].Rows[0]["ULikesNum"] + num;
-             data.UpdateData("select UID,ULikesNum from [User] where UID = @UID", prams, ds, "thisUser");
-         }
-        public void changeNewsNum(Guid thisID, int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,UNewsNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["UNewsNum"] = (int)ds.Tables["thisUser"].Rows[0]["UNewsNum"] + num;
-             data.UpdateData("select UID,UNewsNum from [User] where UID = @UID", prams, ds, "thisUser");
-         }
-        public void changeSaveNewsNum(Guid thisID, int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,USaveNewsNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["USaveNewsNum"] = (int)ds.Tables["thisUser"].Rows[0]["USaveNewsNum"] + num;
-             data.UpdateData("select UID,USaveNewsNum from [User] where UID = @UID", prams, ds, "thisUser");
-         }
-        public void changeMsgInNum(Guid thisID, int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,UMsgInNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["UMsgInNum"] = (int)ds.Tables["thisUser"].Rows[0]["UMsgInNum"] + num;
-             data.UpdateData("select UID,UMsgInNum from [User] where UID = @UID", prams, ds, "thisUser");
-         }
-        public void changeMsgOutNum(Guid thisID, int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,UMsgOutNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["UMsgOutNum"] = (int)ds.Tables["thisUser"].Rows[0]["UMsgOutNum"] + num;
-             data.UpdateData("select UID,UMsgOutNum from [User] where UID = @UID", prams, ds, "thisUser");
-         }
-        public void changeInfoNum(Guid thisID , int num)
-         {
-             SqlParameter[] prams = 
-             {
-                 data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-             };
-             DataSet ds = data.GetData("select UID,UInfoNum from [User] where UID = @UID", prams, "thisUser");
-             ds.Tables["thisUser"].Rows[0]["UInfoNum"] = (int)ds.Tables["thisUser"].Rows[0]["UInfoNum"] + num;
-             data.UpdateData("select UID,UInfoNum from [User] where UID = @UID", prams, ds, "thisUser");
+        //修改关注人数
+        public void ChangeLikesNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,ULikesNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["ULikesNum"] = (int)ds.Tables["thisUser"].Rows[0]["ULikesNum"] + num;
+            }
+            data.UpdateData("select UID,ULikesNum from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改meebo数
+        public void ChangeNewsNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,UNewsNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UNewsNum"] = (int)ds.Tables["thisUser"].Rows[0]["UNewsNum"] + num;
+            }
+            data.UpdateData("select UID,UNewsNum from [User] where UID = @UID", prams, ds, "thisUser");
          }
 
-        public void changeState(Guid thisID, int NewState)
+        //修改收藏数
+        public void ChangeSaveNewsNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,USaveNewsNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["USaveNewsNum"] = (int)ds.Tables["thisUser"].Rows[0]["USaveNewsNum"] + num;
+            }
+            data.UpdateData("select UID,USaveNewsNum from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改收到的私信数
+        public void ChangeMsgInNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,UMsgInNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UMsgInNum"] = (int)ds.Tables["thisUser"].Rows[0]["UMsgInNum"] + num;
+            }
+            data.UpdateData("select UID,UMsgInNum from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改发出的私信数
+        public void ChangeMsgOutNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,UMsgOutNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UMsgOutNum"] = (int)ds.Tables["thisUser"].Rows[0]["UMsgOutNum"] + num;
+            }
+            data.UpdateData("select UID,UMsgOutNum from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改系统消息数
+        public void ChangeInfoNum(Guid thisID, int num)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
+            };
+            DataSet ds = data.GetData("select UID,UInfoNum from [User] where UID = @UID", prams, "thisUser");
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UInfoNum"] = (int)ds.Tables["thisUser"].Rows[0]["UInfoNum"] + num;
+            }
+            data.UpdateData("select UID,UInfoNum from [User] where UID = @UID", prams, ds, "thisUser");
+        }
+
+        //修改用户状态
+        public void ChangeState(Guid thisID, int NewState)
         {
             SqlParameter[] prams = 
             {
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select UID,UState from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Rows[0]["UState"] = NewState;
+            if (ds.Tables["thisUser"].Rows.Count == 1)
+            {
+                ds.Tables["thisUser"].Rows[0]["UState"] = NewState;
+            }
             data.UpdateData("select UID,UState from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
-        public DataSet SearchByName(string MyName ,string tbName)
+        //通过用户名搜索
+        public DataSet SearchByName(string MyName , string tbName)
         {
             SqlParameter[] prams = 
             {
 			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
 			};
             DataSet ds = data.GetData("select * from [User] where UName = @UName", prams, tbName);
-            Name = MyName;
+            if (MyName == null)
+            {
+                MyName = Name;
+            }
+            else
+            {
+                Name = MyName;
+            }
+            SearchNumber = ds.Tables[tbName].Rows.Count;
             if (ds.Tables[tbName].Rows.Count > 0)
             {
+                ID = new Guid(ds.Tables[tbName].Rows[0]["UID"].ToString());
                 Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
                 Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
                 Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
                 Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
                 Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
                 HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
+                Admin = (ds.Tables[tbName].Rows[0]["Admin"].ToString() == "True");
+                FansNum = (int)ds.Tables[tbName].Rows[0]["FansNum"];
+                LikesNum = (int)ds.Tables[tbName].Rows[0]["LikesNum"];
+                NewsNum = (int)ds.Tables[tbName].Rows[0]["NewsNum"];
+                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["SaveNewsNum"];
+                MsgInNum = (int)ds.Tables[tbName].Rows[0]["MsgInNum"];
+                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["MsgOutNum"];
+                StateNum = (int)ds.Tables[tbName].Rows[0]["StateNum"];
+                InfoNum = (int)ds.Tables[tbName].Rows[0]["InfoNum"];
             }
             return ds;
         }
 
+        //通过ID搜索
         public DataSet SearchByID(Guid myID, string tbName)
         {
             SqlParameter[] prams = 
             {
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16 ,myID),
 			};
-            return (data.GetData("select * from [User] where UID = @UID", prams, tbName));
+            DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, tbName);
+            if (myID == null)
+            {
+                myID = ID;
+            }
+            else
+            {
+                ID = myID;
+            }
+            ID = myID;
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            if (ds.Tables[tbName].Rows.Count > 0)
+            {
+                Name = ds.Tables[tbName].Rows[0]["UName"].ToString();
+                Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
+                Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
+                Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
+                Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
+                Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
+                HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
+                Admin = (ds.Tables[tbName].Rows[0]["Admin"].ToString() == "True");
+                FansNum = (int)ds.Tables[tbName].Rows[0]["FansNum"];
+                LikesNum = (int)ds.Tables[tbName].Rows[0]["LikesNum"];
+                NewsNum = (int)ds.Tables[tbName].Rows[0]["NewsNum"];
+                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["SaveNewsNum"];
+                MsgInNum = (int)ds.Tables[tbName].Rows[0]["MsgInNum"];
+                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["MsgOutNum"];
+                StateNum = (int)ds.Tables[tbName].Rows[0]["StateNum"];
+                InfoNum = (int)ds.Tables[tbName].Rows[0]["InfoNum"];
+            }
+            return ds;
         }
 
+        //搜索
         public DataSet Search(string tbName)
         {
             string select = "select * from [User] where ";
@@ -283,9 +410,34 @@ namespace MeeboDb
                 select = select + "(UGender = @UGender) AND ";
             }
             select = select.Substring(0,select.Length - 5);
-            return (data.GetData(select, prams, tbName));
+            DataSet ds = data.GetData(select, prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds ;
         }
 
+        //判断用户名是否存在
+        public Boolean isInByName(string MyName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
+			};
+            DataSet ds = data.GetData("select * from [User] where UName = @UName", prams, "thisUser");
+            return (ds.Tables["thisUser"].Rows.Count > 0);
+        }
+
+        //判断ID是否存在
+        public Boolean isInByID(Guid myID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16 ,myID),
+			};
+            DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, "thisUser");
+            return (ds.Tables["thisUser"].Rows.Count > 0);
+        }
+
+        //通过ID获取用户名
         public string getNameByID(Guid myID)
         {
             DataSet ds = SearchByID(myID, "thisUser");
@@ -296,6 +448,7 @@ namespace MeeboDb
             else return null;
         }
 
+        //通过ID获取密码
         public string getPasswordByID(Guid myID)
         {
             DataSet ds = SearchByID(myID, "thisUser");
@@ -306,6 +459,7 @@ namespace MeeboDb
             else return null;
         }
 
+        //通过用户名获取ID
         public string getIDByName(string MyName)
         {
             DataSet ds = SearchByName(MyName, "thisUser");

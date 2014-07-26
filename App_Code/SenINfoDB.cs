@@ -23,7 +23,9 @@ namespace MeeboDb
             // TODO: 在此处添加构造函数逻辑
             //
         }
+
         public string SenInfo {get;set;}
+        public Guid SenInfoID { get; set; }
 
         DataBase data = new DataBase();
 
