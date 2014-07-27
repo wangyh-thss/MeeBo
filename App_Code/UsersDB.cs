@@ -345,14 +345,6 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier, 16 ,myID),
 			};
             DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, tbName);
-            if (myID == null)
-            {
-                myID = ID;
-            }
-            else
-            {
-                ID = myID;
-            }
             ID = myID;
             SearchNumber = ds.Tables[tbName].Rows.Count;
             if (ds.Tables[tbName].Rows.Count > 0)
