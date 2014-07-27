@@ -58,6 +58,11 @@ public partial class Register : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.error_password, typeof(string), "emptypassword", "document.getElementById('error_password').innerText = '密码不能为空';", true);
             return;
         }
+        if (uPwd.Length <= 6)
+        {
+            ScriptManager.RegisterStartupScript(this.error_password, typeof(string), "emptypassword", "document.getElementById('error_password').innerText = '密码过于简单，请输入长度大于6位的密码';", true);
+            return;
+        }
         if (this.repeat_password.Text == string.Empty)
         {
             ScriptManager.RegisterStartupScript(this.error_repeat_password, typeof(string), "errorrepeat", "document.getElementById('error_repeat_password').innerText = '请确认密码';", true);

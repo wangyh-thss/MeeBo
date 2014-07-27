@@ -27,6 +27,11 @@ public partial class user_ChangePassword : System.Web.UI.Page
             this.error_password.InnerText = "密码不能为空";
             return;
         }
+        if (this.change_password.Text.Length <= 6)
+        {
+            this.error_password.InnerText = "密码过于简单，请输入长度大于6位的密码";
+            return;
+        }
         if (this.change_password.Text != this.repeat_password.Text)
         {
             this.error_password.InnerText = "两次输入的密码不同";
