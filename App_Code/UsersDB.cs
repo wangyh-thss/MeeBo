@@ -32,15 +32,15 @@ namespace MeeboDb
         public DateTime Birthday{get;set;}
         public Boolean Gender{get;set;}
         public string HeadPortrait {get; set;}
-        public Boolean Admin {get;}
-        public int FansNum { get; }
-        public int LikesNum { get;  }
-        public int NewsNum { get; }
-        public int SaveNewsNum { get; }
-        public int MsgInNum { get; }
-        public int MsgOutNum { get; }
+        public Boolean Admin { get; set; }
+        public int FansNum { get; set; }
+        public int LikesNum { get; set; }
+        public int NewsNum { get; set; }
+        public int SaveNewsNum { get; set; }
+        public int MsgInNum { get; set; }
+        public int MsgOutNum { get; set; }
         public int StateNum { get; set; }
-        public int InfoNum { get; }
+        public int InfoNum { get; set; }
 
         DataBase data = new DataBase();
 
@@ -338,7 +338,7 @@ namespace MeeboDb
         }
 
         //通过ID搜索
-        public DataSet SearchByID(Guid myID, string tbName)
+        public void SearchByID(Guid myID, string tbName)
         {
             SqlParameter[] prams = 
             {
@@ -366,7 +366,6 @@ namespace MeeboDb
                 StateNum = (int)ds.Tables[tbName].Rows[0]["UState"];
                 InfoNum = (int)ds.Tables[tbName].Rows[0]["UInfoNum"];
             }
-            return ds;
         }
 
         //搜索
