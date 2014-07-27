@@ -67,11 +67,11 @@
                                 <a style="color: red">*</a>
                             </th>
                             <th>
-                                <abbr title="必填，这将是您用于登录的信息之一">&nbsp 密码：&nbsp&nbsp&nbsp&nbsp</abbr>
+                                <abbr title="必填，这将是您用于登录的信息之一 请确认您的密码长度在6位以上，且不可含有中文、空格及逗号">&nbsp 密码：&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
                                 <!-- <input id="password" name="password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
-                                <asp:TextBox type="password" ID="password" runat="server" class="W_input" maxlength="20" tabindex="2" />
+                                <asp:TextBox type="password" ID="password" runat="server" class="W_input" maxlength="20" tabindex="2" onkeyup="this.value=this.value.replace(/[, ]/g,'')" style="ime-mode:disabled"/>
                             </th>
                         </tr>
                     </table>
@@ -89,7 +89,7 @@
                             </th>
                             <th>
                                 <!-- <input id="repeat_password" name="repeat_password" type="password" class="W_input" maxlength="20" tabindex="2"/> -->
-                                <asp:TextBox type="password" ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="3" />
+                                <asp:TextBox type="password" ID="repeat_password" runat="server" class="W_input" maxlength="20" tabindex="3" onkeyup="this.value=this.value.replace(/[, ]/g,'')"  style="ime-mode:disabled"/>
                             </th>
                         </tr>
                     </table>

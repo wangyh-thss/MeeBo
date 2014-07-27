@@ -89,13 +89,13 @@
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">修改密码：</th>
                             <th class="auto-style3">
-                                <asp:TextBox ID="change_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="4" Width="200px" />
+                                <asp:TextBox ID="change_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="4" Width="200px" onkeyup="this.value=this.value.replace(/[, ]/g,'')" style="ime-mode:disabled"/>
                             </th>
                         </tr>
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">确认密码：</th>
                             <th class="auto-style3">
-                                <asp:TextBox ID="repeat_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="5" Width="200px" />
+                                <asp:TextBox ID="repeat_password" type="password" runat="server" class="W_input" maxlength="20" tabindex="5" Width="200px" onkeyup="this.value=this.value.replace(/[, ]/g,'')" style="ime-mode:disabled"/>
                             </th>
                         </tr>
                     </table>
