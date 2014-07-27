@@ -10,7 +10,7 @@
     .wrapper {top:70px;width:80%; margin: auto;position:relative;height:700px;z-index:2;}
     .left_column {float:left;position: relative;width:15%;background: #f0f0f0;height:600px;padding-top:1em}
     .left_item{padding-left:2em;margin-top:5px}
-    .middle_column {float:left;position: relative;width:59%;margin-left:1%;background: #f8f8f8;height:600px}
+    .middle_column {float:left;position: relative;width:59%;margin-left:1%;background: #f8f8f8;height:600px;padding-top:10px}
     .right_column {float:left;position: relative;width:19%;margin-left:1%;background: #f4f4f4;height:600px}
      a {text-decoration: none;color:black;}
      a:link {color: #000000}
