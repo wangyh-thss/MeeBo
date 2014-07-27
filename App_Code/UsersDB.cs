@@ -338,7 +338,7 @@ namespace MeeboDb
         }
 
         //通过ID搜索
-        public void SearchByID(Guid myID, string tbName)
+        public DataSet SearchByID(string tbName, Guid myID)
         {
             SqlParameter[] prams = 
             {
@@ -366,6 +366,7 @@ namespace MeeboDb
                 StateNum = (int)ds.Tables[tbName].Rows[0]["UState"];
                 InfoNum = (int)ds.Tables[tbName].Rows[0]["UInfoNum"];
             }
+            return ds;
         }
 
         //搜索

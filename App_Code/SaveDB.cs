@@ -82,7 +82,7 @@ namespace MeeboDb
                 thisNews.ChangeSaveNum(thisNewsID, -1);
                 ds.Tables["thisSave"].Clear();
             }
-            data.UpdateData("select * from [Save] where SID = @SID", prams, ds, "thisSave");
+            data.UpdateData("select * from [Save] where (SUID = @SUID) AND (SNID = @SNID)", prams, ds, "thisSave");
         }
 
         //删除某用户的所有收藏
@@ -120,7 +120,7 @@ namespace MeeboDb
         }
 
         //搜索某条收藏
-        public DataSet SearchByID(string tbName,Guid myID)
+        public DataSet SearchByID(string tbName, Guid myID)
         {
             SqlParameter[] prams = 
             {
