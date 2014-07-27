@@ -3,12 +3,19 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人主页</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .send_MeeBo_Box {width:100%;padding:5px 5px;position:relative}
+        .send_title {width:40%; font-family:"Times New Roman"; font-size:10px;float:left;padding-left:4em}
+        .send_hot {width:40%; font-family:"Times New Roman"; font-size:10px;float:left;margin-left:10%;padding-left:1em}
+        .send_box { width:90%;margin:auto;}
+    </style>
 </head>
 <body class="background">
+    <form id="Form2" name="search" method="post" runat="server">
     <div class="header">
         <div class="logo">
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
@@ -33,7 +40,6 @@
                 <a>|</a>
             </div>
             <div class="head_search">
-                <form id="Form1" name="search" method="post" runat="server">
                     <table style=" margin-top:-5px;">
                         <tr><th>
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
@@ -42,7 +48,6 @@
                             <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
                         </th></tr>
                     </table>
-                </form>
             </div>
         </div>
     </div>
@@ -79,9 +84,25 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
+            <div class="send_MeeBo_Box">
+                <div class="send_title">
+                    <a style="color:#888888">有什么新鲜事想分享吗？</a>
+                </div>
+                <div class="send_hot">
+                    <a style="font-size:12px">今日热门：八次男神宣布将再战影视圈!!</a>
+                </div>
+                <div class="send_box">
+                    <asp:TextBox ID="send_content" runat="server" style="width:100%; height:120px"/>
+                    <asp:FileUpload ID="SelectImg" Text="发布图片" runat="server" Width="70px" style="float:left;margin-left:3%" onchange="javascript:__doPostBack('UploadImg','')"/>
+                    <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%"/>
+                </div>
+            </div>
+            <br />
+            <hr class="line"/>
         </div>
         <div class="right_column">
         </div>
     </div>
+    </form>
 </body>
 </html>
