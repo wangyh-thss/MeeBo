@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 
 public partial class user_ZanMe : System.Web.UI.Page

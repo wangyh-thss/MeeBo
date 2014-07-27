@@ -26,6 +26,8 @@
         .detail-font{color:blue;font-size:10px;}
         .MeeBo_time{float:left;width:40%;margin-bottom:10px}
         .CTA{float:right;margin-bottom:10px}
+        .picture_view{position:relative;width:500px;margin:auto}
+        .single_pic_view{float:left;width:50px;height:50px;margin-left:25px;margin-right:25px}
     </style>
     <script type="text/javascript" src="js/getMeeBo.js"></script>
 </head>
@@ -110,6 +112,14 @@
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
                     <asp:FileUpload ID="SelectImg" Text="发布图片" runat="server" Width="70px" style="float:left;margin-left:3%" onchange="javascript:__doPostBack('UploadImg','')"/>
                     <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%"/>
+                </div>
+                <div class="picture_view">
+                    <!--在此动态添加图片-->
+                    <!--示例>
+                        <div class="single_pic_view">
+                            <asp:Image ID="pic_view1" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 50px; width: 50px"/>
+                        </div>
+                    <-->
                 </div>
             </div>
             <div class="MeeBo_Box">
