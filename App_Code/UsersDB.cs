@@ -428,28 +428,6 @@ namespace MeeboDb
             return (ds.Tables["thisUser"].Rows.Count > 0);
         }
 
-        //通过ID获取用户名
-        public string getNameByID(Guid myID)
-        {
-            DataSet ds = SearchByID(myID, "thisUser");
-            if (ds.Tables["thisUser"].Rows.Count == 1)
-            {
-                return ds.Tables["thisUser"].Rows[0]["UName"].ToString();
-            }
-            else return null;
-        }
-
-        //通过ID获取密码
-        public string getPasswordByID(Guid myID)
-        {
-            DataSet ds = SearchByID(myID, "thisUser");
-            if (ds.Tables["thisUser"].Rows.Count == 1)
-            {
-                return ds.Tables["thisUser"].Rows[0]["UPassword"].ToString();
-            }
-            else return null;
-        }
-
         //通过用户名获取ID
         public string getIDByName(string MyName)
         {

@@ -200,11 +200,21 @@ namespace MeeboDb
             }
         }
 
-        //转发meebo
+       /* //转发meebo
         public Guid Transmit(Guid thisID)
         {
-            DataSet ds = data.GetData("select * from [News] ", "thisNews");
-            DataRow row = ds.Tables["thisUser"].NewRow();
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NID",  SqlDbType.UniqueIdentifier, 16 ,thisID),
+			};
+            DataSet ds = data.GetData("select * from [User] where NID = @NID", prams, "thisNews");
+            ID = thisID;
+            if (ds.Tables["thisNews"].Rows.Count == 1)
+            {
+                ContentT = ds.Tables["thisNews"].Rows[0]["NContentT"].ToString();
+                ContentP = ds.Tables["thisNews"].Rows[0]["NContentP"].ToString();
+            DataSet ds2 = data.GetData("select * from [News] ", "thisNews");
+            DataRow row = ds2.Tables["thisUser"].NewRow();
             ID = Guid.NewGuid();
             row["NID"] = ID;
             if (ContentT != null)
@@ -234,7 +244,7 @@ namespace MeeboDb
             ds.Tables["thisNews"].Rows.Add(row);
             data.UpdateData("select * from [News] ", ds, "thisNews");
             return ID;
-        }
+        }*/
 
     }
 }
