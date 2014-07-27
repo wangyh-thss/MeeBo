@@ -1,29 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Read.aspx.cs" Inherits="user_Read" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ZanMe.aspx.cs" Inherits="user_ZanMe" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>提到我的</title>
-    <style type="text/css">
-    .background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
-    .header {width:100%;position:fixed;background: #244050;height:60px;z-index:3;}
-    .logo {font-family:"华文隶书";font-size:40px;margin-left:15%;margin-top:0px;float:left;width:20%}
-    .head_list {width:45%;font-family:"Times New Roman";font-size:18px;margin-left:5%;margin-top:35px;float:left;position: relative}
-    .head_item {
-        float:left;
-        position: relative;width:10% }
-    .head_search {float:left;position: relative;width:40%}
-    .wrapper {top:70px;width:80%; margin: auto;position:relative;height:700px;z-index:2;}
-    .left_column {float:left;position: relative;width:15%;background: #fefefe;height:600px}
-    .left_item{padding-left:2em;margin-top:5px}
-    .middle_column {float:left;position: relative;width:45%;margin-left:5%;background: #fefefe;height:600px}
-    .right_column {float:left;position: relative;width:18%;margin-left:5%;background: #fefefe;height:600px}
-     a {text-decoration: none;color:black;}
-     a:link {color: #000000}
-     a:hover {color: blue}
-    </style>
+    <title>给我点赞的</title>
+    <link href="css/user.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="background">
     <div class="header">
@@ -32,7 +15,7 @@
         </div>
         <div class="head_list">
               <div class="head_item">
-                <a style="color: #fefefe" href="Read.aspx">首页</a>
+                <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
             </div>
             <div class="head_item">
                 <a>|</a>
@@ -66,22 +49,32 @@
     <div class="wrapper">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx" style="color: red">浏览首页</a><br /><br/>
-                <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
+                <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href="MeeboInfo.aspx">MeeBo消息</a><br /><br/>
-                <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
+                <a class="p2" href="CommentMe.aspx">评论我的</a><br /><br/>
                 <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
+                <a class="p2" href="ZanMe.aspx" style="color: red">赞</a><br /><br/>
+                <a class="p2" href="MySave.aspx">我的收藏</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href = "MyFans.aspx">我的粉丝</a><br /><br/>
-                <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                 <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
+                <a class="p2" href = "MyMessage.aspx">我的私信</a><br /><br/>
+                <a class="p2" href ="MyMeeBo.aspx">我的MeeBo</a><br /><br/>
+            </div>
+            <hr class="line" />
+            <div class="left_item">
+                <br />
+                <a class="p2" href ="MyTeam.aspx">分组</a><br /><br/>
+            </div>
+            <hr class="line" />
+            <div class="left_item">
+                <br />
+                <a class="p2" href ="UserInfo.aspx">个人信息</a><br /><br/>
+                <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
@@ -92,4 +85,3 @@
     </div>
 </body>
 </html>
-
