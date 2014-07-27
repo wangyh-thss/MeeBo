@@ -6,20 +6,14 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人资料</title>
+    <link href="css/user.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
-        .background {background: #c8e1f0}
-        .header {width: 80%; margin: auto;}
-        .left_column {width: 15%; height:700px;background:#fefefe; border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:10%; margin-top: 20px; margin-bottom:30px;}
+        .head_search {float:left;position: relative;width:40%}
         .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 20px; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
         .p3 {font-size: 60%;font-family: "Times New Roman";}
-        .left_item{padding-left:2em;margin-top:5px}
          .right_item {margin-top:5px;margin-left:10%}
-        .line {margin-left:10%;margin-top:5px; width:80%; color:#999999}
-         a {text-decoration: none;}
-         a:link {color: #000000}
-         a:hover {color: blue}
          a:visited {color: #000000}
          .btn_submit {width:80px; height:30px; margin-left:40%;}
          #nickname {
@@ -38,32 +32,70 @@
 </head>
 <body class="background">
     <div class="header">
-		<img src="image/logo.jpg" alt="logo(MeeBo)" style="margin:auto" />
+        <div class="logo">
+		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
+        </div>
+        <div class="head_list">
+              <div class="head_item">
+                <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
+            </div>
+            <div class="head_item">
+                <a>|</a>
+            </div>
+            <div class="head_item">
+                <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
+            </div>
+            <div class="head_item">
+                <a>|</a>
+            </div>
+            <div class="head_item">
+                <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
+            </div>
+            <div class="head_item">
+                <a>|</a>
+            </div>
+            <div class="head_search">
+                <form id="Form1" name="search" method="post" runat="server">
+                    <table style=" margin-top:-5px;">
+                        <tr><th>
+                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
+                        </th>
+                        <th>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
+                        </th></tr>
+                    </table>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="userInfoForm">
         <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="Read.aspx">浏览首页</a><br /><br/>
-                <a class="p1" href="PersonalPage.aspx">个人主页</a><br /><br/>
+                <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href="PersonalPage.aspx">MeeBo消息</a><br /><br/>
-                <a class="p2" href="AboutMe.aspx">与我相关</a><br /><br/>
+                <a class="p2" href="CommentMe.aspx">评论我的</a><br /><br/>
                 <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
+                <a class="p2" href="ZanMe.aspx">赞</a><br /><br/>
+                <a class="p2" href="MySave.aspx">我的收藏</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href = "MyFans.aspx">我的粉丝</a><br /><br/>
-                <a class="p2" href ="MyStars.aspx">我的关注</a><br /><br/>
-                <a class="p2" href= "Mysave.aspx">我的收藏</a><br /><br/>
+                <a class="p2" href = "MyMessage.aspx">我的私信</a><br /><br/>
+                <a class="p2" href ="MyMeeBo.aspx">我的MeeBo</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href ="UserInfo.aspx" style="color: red">我的信息</a><br /><br/>
+                <a class="p2" href ="MyTeam.aspx">分组</a><br /><br/>
+            </div>
+            <hr class="line" />
+            <div class="left_item">
+                <br />
+                <a class="p2" href ="UserInfo.aspx"   style="color: red">个人信息</a><br /><br/>
                 <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
             </div>
             <hr class="line" />

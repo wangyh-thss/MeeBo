@@ -43,7 +43,7 @@ namespace MeeboDb
             row["SID"] = ID;
             row["SUID"] = UserID;
             row["SNID"] = NewsID;
-            ds.Tables["thisUser"].Rows.Add(row);
+            ds.Tables["thisSave"].Rows.Add(row);
             thisUser.ChangeSaveNewsNum(UserID, 1);
             thisNews.ChangeSaveNum(NewsID, 1);
             data.UpdateData("select * from [Save] ", ds, "thisSave");
@@ -58,32 +58,63 @@ namespace MeeboDb
 			    data.MakeInParam("@SID",SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SID = @SID", prams, "thisSave");
-            //thisUser.ChangeSaveNewsNum(thisID, -1);
-            //thisNews.ChangeSaveNum(thisID, -1);
-            ds.Tables["thisSave"].Clear();
+            if (ds.Tables["thisSave"].Rows.Count == 1 )
+            {
+                thisUser.ChangeSaveNewsNum(new Guid(ds.Tables["thisSave"].Rows[0]["SUID"].ToString()), -1);
+                thisNews.ChangeSaveNum(new Guid(ds.Tables["thisSave"].Rows[0]["SNID"].ToString()), -1);
+                ds.Tables["thisSave"].Clear();
+            }
+            data.UpdateData("select * from [Save] where SID = @SID", prams, ds, "thisSave");
+        }
+
+        //删除一条收藏
+        public void Delete(Guid thisUserID, Guid thisNewsID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@SUID",SqlDbType.UniqueIdentifier,16,thisUserID),
+                data.MakeInParam("@SNID",SqlDbType.UniqueIdentifier,16,thisNewsID),
+			};
+            DataSet ds = data.GetData("select * from [Save] where (SUID = @SUID) AND (SNID = @SNID)", prams, "thisSave");
+            if (ds.Tables["thisSave"].Rows.Count == 1)
+            {
+                thisUser.ChangeSaveNewsNum(thisUserID, -1);
+                thisNews.ChangeSaveNum(thisNewsID, -1);
+                ds.Tables["thisSave"].Clear();
+            }
             data.UpdateData("select * from [Save] where SID = @SID", prams, ds, "thisSave");
         }
 
         //删除某用户的所有收藏
-        public void DeleteByUser(Guid UserID)
+        public void DeleteByUser(Guid thisUserID)
         {
             SqlParameter[] prams = 
             {
 			    data.MakeInParam("@SUID",SqlDbType.UniqueIdentifier,16,UserID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SUID = @SUID", prams, "thisSave");
+            foreach (DataRow Save in ds.Tables["thisSave"].Rows)
+            {
+                thisNews.ChangeSaveNum(new Guid(Save["SNID"].ToString()), -1);
+            }
+            thisUser.ChangeSaveNewsNum(thisUserID, -ds.Tables["thisSave"].Rows.Count);
             ds.Tables["thisSave"].Clear();
             data.UpdateData("select * from [Save] where SUID = @SUID", prams, ds, "thisSave");
         }
 
         //删除某条MeeBo的所有收藏
-        public void DeleteByNews(Guid NewsID)
+        public void DeleteByNews(Guid thisNewsID)
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@SNID",SqlDbType.UniqueIdentifier,16,NewsID),
+			    data.MakeInParam("@SNID",SqlDbType.UniqueIdentifier,16,thisNewsID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SNID = @SNID", prams, "thisSave");
+            foreach (DataRow Save in ds.Tables["thisSave"].Rows)
+            {
+                thisUser.ChangeSaveNewsNum(new Guid(Save["SUID"].ToString()), -1);
+            }
+            thisNews.ChangeSaveNum(thisNewsID, -ds.Tables["thisSave"].Rows.Count);
             ds.Tables["thisSave"].Clear();
             data.UpdateData("select * from [Save] where SNID = @SNID", prams, ds, "thisSave");
         }

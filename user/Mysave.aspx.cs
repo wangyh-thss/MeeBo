@@ -8,7 +8,7 @@ using System.Data;
 using MeeboDb;
 using Newtonsoft.Json;
 
-public partial class user_Mysave : System.Web.UI.Page
+public partial class user_MySave : System.Web.UI.Page
 {
     SaveDB saveDb = new SaveDB();
     protected void Page_Load(object sender, EventArgs e)
