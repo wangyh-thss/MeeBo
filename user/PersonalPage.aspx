@@ -27,6 +27,7 @@
         .MeeBo_time{float:left;width:40%;margin-bottom:10px}
         .CTA{float:right;margin-bottom:10px}
     </style>
+    <script type="text/javascript" src="js/getMeeBo.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
@@ -147,7 +148,7 @@
                                 今天15:11
                             </div>
                             <div class="CTA">
-                                <a>赞</a>(100)|<a>转发</a>(2)|<a>评论</a>(3)
+                                <a>赞</a>(100)|<a>转发</a>(2)|<a>评论</a>(3)|<a>收藏</a>(3)
                             </div>
                         </div>
                     </div>
