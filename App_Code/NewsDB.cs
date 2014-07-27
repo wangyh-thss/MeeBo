@@ -43,9 +43,11 @@ namespace MeeboDb
         public string Visible {get; set;}
 
         DataBase data = new DataBase();
+        UserDB thisUser = new UserDB();
 
         public int SearchNumber;
-
+        public string userName { get; set; }
+        public string userNickName { get; set; }
 
         // 发布meebo
         public Guid Insert()
@@ -176,7 +178,7 @@ namespace MeeboDb
             {
 			    data.MakeInParam("@NID",  SqlDbType.UniqueIdentifier, 16 ,myID),
 			};
-            DataSet ds = data.GetData("select * from [User] where NID = @NID", prams, tbName);
+            DataSet ds = data.GetData("select * from [News] where NID = @NID", prams, tbName);
             ID = myID;
             SearchNumber = ds.Tables[tbName].Rows.Count;
             if (ds.Tables[tbName].Rows.Count == 1)
@@ -200,7 +202,7 @@ namespace MeeboDb
             }
         }
 
-       /* //转发meebo
+        //转发meebo
         public Guid Transmit(Guid thisID)
         {
             SqlParameter[] prams = 
@@ -213,8 +215,10 @@ namespace MeeboDb
             {
                 ContentT = ds.Tables["thisNews"].Rows[0]["NContentT"].ToString();
                 ContentP = ds.Tables["thisNews"].Rows[0]["NContentP"].ToString();
-            DataSet ds2 = data.GetData("select * from [News] ", "thisNews");
-            DataRow row = ds2.Tables["thisUser"].NewRow();
+                From = new Guid(ds.Tables["thisNews"].Rows[0]["NFrom"].ToString());
+            }
+            ds = data.GetData("select * from [News] ", "thisNews");
+            DataRow row = ds.Tables["thisNews"].NewRow();
             ID = Guid.NewGuid();
             row["NID"] = ID;
             if (ContentT != null)
@@ -236,15 +240,37 @@ namespace MeeboDb
             {
                 row["NCallNum"] = CallNum;
             }
-            row["NFrom"] = ID;
+            IsTransmit = true;
+            row["NIsTransmit"] = IsTransmit;
+            row["NFrom"] = From;
             if (Visible != null)
             {
                 row["NVisible"] = Visible;
             }
             ds.Tables["thisNews"].Rows.Add(row);
+            if (From == thisID)
+            {
+                ChangeTransmitNum(thisID, 1);
+            }
+            else
+            {
+                ChangeTransmitNum(thisID, 1);
+                ChangeTransmitNum(From, 1);
+            }
             data.UpdateData("select * from [News] ", ds, "thisNews");
             return ID;
-        }*/
+        }
 
+        //按用户ID搜索Meebo
+        public DataSet SearchByUserID(Guid myID, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myID),
+			};
+            DataSet ds = data.GetData("select * from [News] where NUserID = @NUserID", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
     }
 }
