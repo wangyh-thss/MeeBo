@@ -39,15 +39,15 @@ namespace MeeboDb
         {
             DataSet ds = data.GetData("select * from [Save]", "thisSave");
             DataRow row = ds.Tables["thisSave"].NewRow();
-            Guid newID = Guid.NewGuid();
-            row["SID"] = newID;
+            ID = Guid.NewGuid();
+            row["SID"] = ID;
             row["SUID"] = UserID;
             row["SNID"] = NewsID;
             ds.Tables["thisUser"].Rows.Add(row);
             thisUser.ChangeSaveNewsNum(UserID, 1);
             thisNews.ChangeSaveNum(NewsID, 1);
             data.UpdateData("select * from [Save] ", ds, "thisSave");
-            return newID;
+            return ID;
         }
 
         //删除一条收藏

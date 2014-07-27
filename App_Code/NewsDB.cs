@@ -30,20 +30,58 @@ namespace MeeboDb
         public string Topic { get; set; }
         public DateTime Date { get; set; }
         public Guid UserID { get; set; }
-        public int ProNum { get; set; }
-        public int ComNum { get; set; }
-        public int SaveNum { get; set; }
-        public Boolean Delete {get;set;}
-        public Guid DeleteUser {get;set;}
+        public int ProNum { get; }
+        public int ComNum { get; }
+        public int SaveNum { get;  }
+        public Boolean Delete {get;}
+        public Guid DeleteUser {get;}
         public int CallNum { get; set; }
-        public Guid From { get; set; }
+        public int IsTransmit { get; }
+        public Guid From { get; }
         public string TransmitInf { get; set; }
-        public int TransmitNum { get; set; }
-        public string Visible { get; set; }
+        public int TransmitNum { get;}
+        public string Visible {get; set;}
 
         DataBase data = new DataBase();
 
         public int SearchNumber;
+
+
+        // 发布meebo
+        public Guid Insert()
+        {
+            DataSet ds = data.GetData("select * from [News] ", "thisNews");
+            DataRow row = ds.Tables["thisUser"].NewRow();
+            ID = Guid.NewGuid();
+            row["NID"] = ID;
+            if (ContentT != null)
+            {
+                row["NContentT"] = ContentT;
+            }
+            if (ContentP != null)
+            {
+                row["NContentP"] = ContentP;
+            }
+            if (Topic != null)
+            {
+                row["NTopic"] = Topic;
+            }
+            row["NDate"] = DateTime.Now;
+            row["NUserID"] = UserID;
+            row["NDeleteUser"] = UserID;
+            if (CallNum != null)
+            {
+                row["NCallNum"] = CallNum;
+            }
+            row["NFrom"] = ID;
+            if(Visible != null)
+            {
+                row["NVisible"] = Visible;
+            }
+            ds.Tables["thisNews"].Rows.Add(row);
+            data.UpdateData("select * from [News] ", ds, "thisNews");
+            return ID;
+        }
 
         //修改收藏数
         public void ChangeSaveNum(Guid thisID, int num)

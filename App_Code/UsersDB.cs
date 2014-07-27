@@ -32,15 +32,15 @@ namespace MeeboDb
         public DateTime Birthday{get;set;}
         public Boolean Gender{get;set;}
         public string HeadPortrait {get; set;}
-        public Boolean Admin {get;set;}
-        public int FansNum { get; set;}
-        public int LikesNum { get; set; }
-        public int NewsNum { get; set; }
-        public int SaveNewsNum { get; set; }
-        public int MsgInNum { get; set; }
-        public int MsgOutNum { get; set; }
+        public Boolean Admin {get;}
+        public int FansNum { get; }
+        public int LikesNum { get;  }
+        public int NewsNum { get; }
+        public int SaveNewsNum { get; }
+        public int MsgInNum { get; }
+        public int MsgOutNum { get; }
         public int StateNum { get; set; }
-        public int InfoNum { get; set; }
+        public int InfoNum { get; }
 
         DataBase data = new DataBase();
 
@@ -51,8 +51,8 @@ namespace MeeboDb
         {
             DataSet ds = data.GetData("select * from [User] ", "thisUser");
             DataRow row = ds.Tables["thisUser"].NewRow();
-            Guid newID = Guid.NewGuid();
-            row["UID"] = newID;
+            ID = Guid.NewGuid();
+            row["UID"] = ID;
             row["UName"] = Name;
             row["UPassword"] = Password;
             if (Nickname == "" || Nickname == null)
@@ -72,7 +72,7 @@ namespace MeeboDb
             row["UHeadPortrait"] = HeadPortrait;
             ds.Tables["thisUser"].Rows.Add(row);
             data.UpdateData("select * from [User] ", ds, "thisUser");
-            return newID;
+            return ID;
         
         }
 
@@ -324,15 +324,15 @@ namespace MeeboDb
                 Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
                 Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
                 HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
-                Admin = (ds.Tables[tbName].Rows[0]["Admin"].ToString() == "True");
-                FansNum = (int)ds.Tables[tbName].Rows[0]["FansNum"];
-                LikesNum = (int)ds.Tables[tbName].Rows[0]["LikesNum"];
-                NewsNum = (int)ds.Tables[tbName].Rows[0]["NewsNum"];
-                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["SaveNewsNum"];
-                MsgInNum = (int)ds.Tables[tbName].Rows[0]["MsgInNum"];
-                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["MsgOutNum"];
-                StateNum = (int)ds.Tables[tbName].Rows[0]["StateNum"];
-                InfoNum = (int)ds.Tables[tbName].Rows[0]["InfoNum"];
+                Admin = (ds.Tables[tbName].Rows[0]["UAdmin"].ToString() == "True");
+                FansNum = (int)ds.Tables[tbName].Rows[0]["UFansNum"];
+                LikesNum = (int)ds.Tables[tbName].Rows[0]["ULikesNum"];
+                NewsNum = (int)ds.Tables[tbName].Rows[0]["UNewsNum"];
+                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["USaveNewsNum"];
+                MsgInNum = (int)ds.Tables[tbName].Rows[0]["UMsgInNum"];
+                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["UMsgOutNum"];
+                StateNum = (int)ds.Tables[tbName].Rows[0]["UState"];
+                InfoNum = (int)ds.Tables[tbName].Rows[0]["UInfoNum"];
             }
             return ds;
         }
@@ -356,15 +356,15 @@ namespace MeeboDb
                 Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
                 Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
                 HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
-                Admin = (ds.Tables[tbName].Rows[0]["Admin"].ToString() == "True");
-                FansNum = (int)ds.Tables[tbName].Rows[0]["FansNum"];
-                LikesNum = (int)ds.Tables[tbName].Rows[0]["LikesNum"];
-                NewsNum = (int)ds.Tables[tbName].Rows[0]["NewsNum"];
-                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["SaveNewsNum"];
-                MsgInNum = (int)ds.Tables[tbName].Rows[0]["MsgInNum"];
-                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["MsgOutNum"];
-                StateNum = (int)ds.Tables[tbName].Rows[0]["StateNum"];
-                InfoNum = (int)ds.Tables[tbName].Rows[0]["InfoNum"];
+                Admin = (ds.Tables[tbName].Rows[0]["UAdmin"].ToString() == "True");
+                FansNum = (int)ds.Tables[tbName].Rows[0]["UFansNum"];
+                LikesNum = (int)ds.Tables[tbName].Rows[0]["ULikesNum"];
+                NewsNum = (int)ds.Tables[tbName].Rows[0]["UNewsNum"];
+                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["USaveNewsNum"];
+                MsgInNum = (int)ds.Tables[tbName].Rows[0]["UMsgInNum"];
+                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["UMsgOutNum"];
+                StateNum = (int)ds.Tables[tbName].Rows[0]["UState"];
+                InfoNum = (int)ds.Tables[tbName].Rows[0]["UInfoNum"];
             }
             return ds;
         }
