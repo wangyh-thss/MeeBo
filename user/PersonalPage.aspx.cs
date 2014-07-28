@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.IO;
+using System.Text;
 using MeeboDb;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,11 +43,15 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     if((bool)singleNews["NDelete"] == true)
                         continue;
                     JObject singleNewsInfo = new JObject();
-                    singleNewsInfo.Add(new JProperty("head", followUser["UHeadPortrait"]));
-                    singleNewsInfo.Add(new JProperty("nickname", followUser["UNickname"]));
+                    singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
+                    singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
                     singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
                     singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
-                    singleNewsInfo.Add(new JProperty("pictures", singleNews["NContentP"]));
+                    if (singleNews["NContentP"].ToString() != string.Empty)
+                    {
+                        string[] picUrl = singleNews["NContentP"].ToString().Split(';');
+                        singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                    }
                     singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
                     singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
                     singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
@@ -57,13 +63,14 @@ public partial class user_PersonalPage : System.Web.UI.Page
             }
             */
             
+            
             DataSet singlePerson = news.SearchByUserID((Guid)Session["id"], "singlePerson");
             foreach (DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
             {
                 if ((bool)singleNews["NDelete"] == true)
                     continue;
                 JObject singleNewsInfo = new JObject();
-                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait));
+                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
@@ -80,14 +87,24 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 JList.Add(singleNewsInfo);
                 num++;
             }
+            
 
             JArray array = new JArray(
                 from item in JList
                 orderby item["time"]
                 select new JObject(item)
                 );
+            
             string json = array.ToString();
-            Page.RegisterClientScriptBlock("getMeebo", "<script>windowLoadGetMeebo(" + json + ")</script>");
+            /*
+            FileStream fs = new FileStream("F://Projects/Homework/CSharp/src/MeeBo/user/js/getMeeBo.json", FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+            sw.Write(json);
+            sw.Close();
+            fs.Close();
+             */
+            //Page.RegisterClientScriptBlock("getJson", "<script>getJson("+ json +")</script>");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
         }
     }
 

@@ -33,7 +33,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 newsDb.SearchByID((Guid)singleAt["AFID"], "news");
                 atUser.SearchByID("atUser", newsDb.UserID);
                 JObject singleNewsInfo = new JObject();
-                singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait));
+                singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
                 singleNewsInfo.Add(new JProperty("type", "MeeBo"));
                 singleNewsInfo.Add(new JProperty("MeeboID", (string)singleAt["AFID"]));
@@ -52,7 +52,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 commentDb.SearchByID((Guid)singleAt["AFID"], "comment");
                 atUser.SearchByID("atUser", commentDb.UserID);
                 JObject singleNewsInfo = new JObject();
-                singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait));
+                singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
                 singleNewsInfo.Add(new JProperty("type", "Comment"));
                 singleNewsInfo.Add(new JProperty("CommentID", (string)singleAt["AFID"]));

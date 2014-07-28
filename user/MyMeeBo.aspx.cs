@@ -25,7 +25,7 @@ public partial class user_MyMeeBo : System.Web.UI.Page
         foreach (DataRow singleNews in newsSet.Tables["news"].Rows)
         {
             JObject singleNewsInfo = new JObject();
-            singleNewsInfo.Add(new JProperty("head", user.HeadPortrait));
+            singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
             singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"]));
             singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));

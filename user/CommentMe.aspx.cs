@@ -27,7 +27,7 @@ public partial class user_CommentMe : System.Web.UI.Page
             comUser.SearchByID("comUser", (Guid)singleComment["CUID"]);
             comNews.SearchByID((Guid)singleComment["CUID"], "comNews");
             JObject singleNewsInfo = new JObject();
-            singleNewsInfo.Add(new JProperty("head", comUser.HeadPortrait));
+            singleNewsInfo.Add(new JProperty("head", comUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", comUser.Nickname));
             singleNewsInfo.Add(new JProperty("MeeboID", (string)singleComment["CNID"]));
             singleNewsInfo.Add(new JProperty("content", comNews.ContentT));
