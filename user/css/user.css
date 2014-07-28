@@ -11,6 +11,7 @@
     .wrapper {top:70px;width:1100px; margin: auto;position:relative;height:700px;z-index:2;}
     .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:600px;padding-top:1em}
     .left_item{padding-left:2em;margin-top:5px}
+    .right_item{padding-left:2em;margin-top:5px}
     .middle_column {float:left;position: relative;width:700px;margin-left:8px;background: #f8f8f8;padding-top:10px}
     .right_column {float:left;position: relative;width:200px;margin-left:8px;background: #f4f4f4;height:600px}
      a {text-decoration: none;color:black;}
