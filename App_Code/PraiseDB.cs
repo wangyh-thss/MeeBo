@@ -29,6 +29,7 @@ namespace MeeboDb
         public Guid NewsID { get; set; }
         public Boolean isCheck { get; set; }
         public Guid NewsUserID { get; set; }
+        public DateTime Date { get; set; }
 
         DataBase data = new DataBase();
 
@@ -46,6 +47,8 @@ namespace MeeboDb
             row["PUID"] = UserID;
             row["PNID"] = NewsID;
             row["PNUID"] = NewsUserID;
+            Date = DateTime.Now;
+            row["PDate"] = Date;
             ds.Tables["thisPraise"].Rows.Add(row);
             thisNews.ChangeProNum(NewsID, 1);
             data.UpdateData("select * from [Praise] ", ds, "thisPraise");
@@ -130,6 +133,7 @@ namespace MeeboDb
                 NewsID = new Guid(ds.Tables[tbName].Rows[0]["PNID"].ToString());
                 isCheck = ((ds.Tables[tbName].Rows[0]["PCheck"].ToString() == "True"));
                 NewsUserID = new Guid(ds.Tables[tbName].Rows[0]["PNUID"].ToString());
+                Date = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["PDate"].ToString()).Date;
             }
             return ds;
         }

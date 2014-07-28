@@ -68,7 +68,8 @@ namespace MeeboDb
             {
                 row["NTopic"] = Topic;
             }
-            row["NDate"] = DateTime.Now;
+            Date = DateTime.Now;
+            row["NDate"] = Date;
             row["NUserID"] = UserID;
             row["NDeleteUser"] = UserID;
             if (CallNum != null)
@@ -172,7 +173,7 @@ namespace MeeboDb
         }
 
         //按ID搜索Meebo
-        public void  SearchByID(Guid myID, string tbName)
+        public DataSet  SearchByID(Guid myID, string tbName)
         {
             SqlParameter[] prams = 
             {
@@ -200,6 +201,7 @@ namespace MeeboDb
                 TransmitNum = (int)ds.Tables[tbName].Rows[0]["NTransmitNum"];
                 Visible = ds.Tables[tbName].Rows[0]["NVisible"].ToString();
             }
+            return ds;
         }
 
         //转发meebo

@@ -27,6 +27,7 @@ namespace MeeboDb
         public Guid ID { get; set; }
         public Guid UserID { get; set; }
         public Guid NewsID { get; set; }
+        public DateTime Date { get; set; }
 
         DataBase data = new DataBase();
 
@@ -43,6 +44,8 @@ namespace MeeboDb
             row["SID"] = ID;
             row["SUID"] = UserID;
             row["SNID"] = NewsID;
+            Date = DateTime.Now;
+            row["SDate"] = Date;
             ds.Tables["thisSave"].Rows.Add(row);
             thisUser.ChangeSaveNewsNum(UserID, 1);
             thisNews.ChangeSaveNum(NewsID, 1);
@@ -133,6 +136,7 @@ namespace MeeboDb
             {
                 UserID = new Guid(ds.Tables[tbName].Rows[0]["SUID"].ToString());
                 NewsID = new Guid(ds.Tables[tbName].Rows[0]["SNID"].ToString());
+                Date = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["SDate"].ToString()).Date;
             }
             return ds;
         }
