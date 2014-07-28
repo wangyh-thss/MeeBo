@@ -93,12 +93,12 @@ namespace MeeboDb
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@SUID",SqlDbType.UniqueIdentifier,16,UserID),
+			    data.MakeInParam("@SUID",SqlDbType.UniqueIdentifier,16,thisUserID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SUID = @SUID", prams, "thisSave");
-            foreach (DataRow Save in ds.Tables["thisSave"].Rows)
+            foreach (DataRow SaveRow in ds.Tables["thisSave"].Rows)
             {
-                thisNews.ChangeSaveNum(new Guid(Save["SNID"].ToString()), -1);
+                thisNews.ChangeSaveNum(new Guid(SaveRow["SNID"].ToString()), -1);
             }
             thisUser.ChangeSaveNewsNum(thisUserID, -ds.Tables["thisSave"].Rows.Count);
             ds.Tables["thisSave"].Clear();
@@ -113,9 +113,9 @@ namespace MeeboDb
 			    data.MakeInParam("@SNID",SqlDbType.UniqueIdentifier,16,thisNewsID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SNID = @SNID", prams, "thisSave");
-            foreach (DataRow Save in ds.Tables["thisSave"].Rows)
+            foreach (DataRow SaveRow in ds.Tables["thisSave"].Rows)
             {
-                thisUser.ChangeSaveNewsNum(new Guid(Save["SUID"].ToString()), -1);
+                thisUser.ChangeSaveNewsNum(new Guid(SaveRow["SUID"].ToString()), -1);
             }
             thisNews.ChangeSaveNum(thisNewsID, -ds.Tables["thisSave"].Rows.Count);
             ds.Tables["thisSave"].Clear();

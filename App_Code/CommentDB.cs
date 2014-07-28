@@ -148,6 +148,21 @@ namespace MeeboDb
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
+
+        //被评论用户查看过这条评论
+        public void checkComment(Guid myID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@CID",SqlDbType.UniqueIdentifier,16,myID),
+			};
+            DataSet ds = data.GetData("select * from [Comment] where CID = @CID", prams, "thisComment");
+            if (ds.Tables["thisComment"].Rows.Count == 1)
+            {
+                ds.Tables["thisComment"].Rows[0]["CCheck"] = 1;
+                data.UpdateData("select * from [Comment] where CID = @CID", prams, ds, "thisComment");
+            }
+        }
     }
 }
    

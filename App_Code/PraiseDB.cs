@@ -96,9 +96,9 @@ namespace MeeboDb
 			    data.MakeInParam("@PUID",SqlDbType.UniqueIdentifier,16,thisUserID),
 			};
             DataSet ds = data.GetData("select * from [Praise] where PUID = @PUID", prams, "thisPraise");
-            foreach (DataRow Save in ds.Tables["thisPraise"].Rows)
+            foreach (DataRow PraiseRow in ds.Tables["thisPraise"].Rows)
             {
-                thisNews.ChangeProNum(new Guid(Save["PUID"].ToString()), -1);
+                thisNews.ChangeProNum(new Guid(PraiseRow["PUID"].ToString()), -1);
             }
             ds.Tables["thisPraise"].Clear();
             data.UpdateData("select * from [Praise] where PUID = @PUID", prams, ds, "thisPraise");
