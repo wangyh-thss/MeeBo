@@ -25,10 +25,9 @@ namespace MeeboDb
         }
 
         public Guid ID {get;set;}
-        public string Name{get;set;}
+        public string Name{get;set;}//邮箱
         public string Password{ get; set; }
         public string Nickname{get;set;}
-        public string Email{get;set;}
         public DateTime Birthday{get;set;}
         public Boolean Gender{get;set;}
         public string HeadPortrait {get; set;}
@@ -60,10 +59,6 @@ namespace MeeboDb
                 Nickname = Name;
             }
             row["UNickname"] = Nickname;
-            if (Email != "")
-            {
-                row["UEmail"] = Email;
-            }
             if (Birthday != null)
             {
                 row["UBirthday"] = Birthday;
@@ -116,21 +111,6 @@ namespace MeeboDb
                 ds.Tables["thisUser"].Rows[0]["UNickname"] = NewNickname;
             }
             data.UpdateData("select UID,UNickname from [User] where UID = @UID", prams,ds, "thisUser");
-        }
-
-        //修改邮箱地址
-        public void ModifyEmail(Guid thisID, string NewEmail)
-        {
-            SqlParameter[] prams = 
-            {
-			    data.MakeInParam("@UID",  SqlDbType.UniqueIdentifier,16,thisID),
-			};
-            DataSet ds = data.GetData("select UID,UEmail from [User] where UID = @UID", prams, "thisUser");
-            if (ds.Tables["thisUser"].Rows.Count == 1)
-            {
-                ds.Tables["thisUser"].Rows[0]["UEmail"] = NewEmail;
-            }
-            data.UpdateData("select UID,UEmail from [User] where UID = @UID", prams, ds, "thisUser");
         }
 
         //修改生日
@@ -303,7 +283,7 @@ namespace MeeboDb
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50,MyName),
+			    data.MakeInParam("@UName",  SqlDbType.VarChar, 50, MyName),
 			};
             DataSet ds = data.GetData("select * from [User] where UName = @UName", prams, tbName);
             if (MyName == null)
@@ -320,7 +300,6 @@ namespace MeeboDb
                 ID = new Guid(ds.Tables[tbName].Rows[0]["UID"].ToString());
                 Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
                 Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
-                Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
                 Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
                 Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
                 HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
@@ -347,12 +326,11 @@ namespace MeeboDb
             DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, tbName);
             ID = myID;
             SearchNumber = ds.Tables[tbName].Rows.Count;
-            if (ds.Tables[tbName].Rows.Count > 0)
+            if (ds.Tables[tbName].Rows.Count == 1)
             {
                 Name = ds.Tables[tbName].Rows[0]["UName"].ToString();
                 Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
                 Nickname = ds.Tables[tbName].Rows[0]["UNickname"].ToString();
-                Email = ds.Tables[tbName].Rows[0]["UEmail"].ToString();
                 Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
                 Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
                 HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
@@ -369,36 +347,47 @@ namespace MeeboDb
             return ds;
         }
 
-        //搜索
-        public DataSet Search(string tbName)
+        //通过昵称搜索
+        public DataSet SearchByNickName(string tbName, string myNickName)
         {
-            string select = "select * from [User] where ";
-            int i = Convert.ToInt32(Name != null) + Convert.ToInt32(Nickname != null) +
-                    Convert.ToInt32(Birthday != null);
-            SqlParameter[] prams = new SqlParameter[i];
-            i = 0;
-            if (Name != null)
+            SqlParameter[] prams = 
             {
-                prams[i] = data.MakeInParam("@UName", SqlDbType.VarChar, 50, Name);
-                i++;
-                select = select + "(UName = @UName) AND ";
-            }
-            if (Nickname != null)
-            {
-                prams[i] = data.MakeInParam("@UNickname", SqlDbType.VarChar, 50, Nickname);
-                i++;
-                select = select + "(UNickname = @UNickname) AND ";
-            }
-            if (Birthday != null)
-            {
-                prams[i] = data.MakeInParam("@UBirthday ", SqlDbType.Date, 3, Birthday);
-                i++;
-                select = select + "(UBirthday  = @UBirthday ) AND ";
-            }
-            select = select.Substring(0,select.Length - 5);
-            DataSet ds = data.GetData(select, prams, tbName);
+			    data.MakeInParam("@UNickName", SqlDbType.VarChar, 50, myNickName),
+			};
+            DataSet ds = data.GetData("select * from [User] where UNickName = @UNickName", prams, tbName);
+            Nickname = myNickName;
             SearchNumber = ds.Tables[tbName].Rows.Count;
-            return ds ;
+            if (ds.Tables[tbName].Rows.Count == 1)
+            {
+                ID = new Guid(ds.Tables[tbName].Rows[0]["UID"].ToString());
+                Name = ds.Tables[tbName].Rows[0]["UName"].ToString();
+                Password = ds.Tables[tbName].Rows[0]["UPassword"].ToString();
+                Birthday = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["UBirthday"].ToString()).Date;
+                Gender = (ds.Tables[tbName].Rows[0]["UGender"].ToString() == "True");
+                HeadPortrait = ds.Tables[tbName].Rows[0]["UHeadPortrait"].ToString();
+                Admin = (ds.Tables[tbName].Rows[0]["UAdmin"].ToString() == "True");
+                FansNum = (int)ds.Tables[tbName].Rows[0]["UFansNum"];
+                LikesNum = (int)ds.Tables[tbName].Rows[0]["ULikesNum"];
+                NewsNum = (int)ds.Tables[tbName].Rows[0]["UNewsNum"];
+                SaveNewsNum = (int)ds.Tables[tbName].Rows[0]["USaveNewsNum"];
+                MsgInNum = (int)ds.Tables[tbName].Rows[0]["UMsgInNum"];
+                MsgOutNum = (int)ds.Tables[tbName].Rows[0]["UMsgOutNum"];
+                StateNum = (int)ds.Tables[tbName].Rows[0]["UState"];
+                InfoNum = (int)ds.Tables[tbName].Rows[0]["UInfoNum"];
+            }
+            return ds;
+        }
+
+        //通过昵称模糊搜索
+        public DataSet SearchMoreByNickName(string tbName, string myNickName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@UNickName", SqlDbType.VarChar, 50, "%"+ myNickName + "%"),
+			};
+            DataSet ds = data.GetData("select * from [User] where UNickName like @UNickName", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
         }
 
         //判断用户名是否存在

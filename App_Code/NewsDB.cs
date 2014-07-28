@@ -288,7 +288,7 @@ namespace MeeboDb
         }
 
         //按用户ID搜索被管理员删除Meebo
-        public DataSet SearchUnDeleteByUserID(Guid myUserID, string tbName)
+        public DataSet SearchDeleteByUserID(Guid myUserID, string tbName)
         {
             SqlParameter[] prams = 
             {
@@ -316,7 +316,7 @@ namespace MeeboDb
         }
 
         //按主题搜索未被删除的原创Meebo
-        public DataSet SearchOriginalByUserID(string topic, string tbName)
+        public DataSet SearchOriginalByTopic(string topic, string tbName)
         {
             SqlParameter[] prams = 
             {
