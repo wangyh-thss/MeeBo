@@ -34,7 +34,7 @@ namespace MeeboDb
         DataBase data = new DataBase();
 
         NewsDB thisNews = new NewsDB();
-        UserDB thisUser = new UserDB();
+
         public int SearchNumber;
 
         // 发布评论
@@ -64,6 +64,10 @@ namespace MeeboDb
 			    data.MakeInParam("@CID",SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select * from [Comment] where CID = @CID", prams, "thisComment");
+            if (ds.Tables["thisComment"].Rows.Count == 1)
+            {
+                thisNews.ChangeComNum(new Guid(ds.Tables["thisComment"].Rows[0]["CNID"].ToString()), -1);
+            }
         }
 
         //修改评论

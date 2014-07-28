@@ -77,12 +77,13 @@ namespace MeeboDb
                 row["NVisible"] = Visible;
             }
             ds.Tables["thisNews"].Rows.Add(row);
+            thisUser.ChangeNewsNum(UserID, -1);
             data.UpdateData("select * from [News] ", ds, "thisNews");
             return ID;
         }
 
         //删除meebo
-        public void Delete(Guid thisID)
+        public void Delete(Guid thisID,Guid DeleteUserID)
         {
              SqlParameter[] prams = 
             {
@@ -91,6 +92,8 @@ namespace MeeboDb
             DataSet ds = data.GetData("select * from [News] where NID = @NID", prams, "thisNews");
             if (ds.Tables["thisNews"].Rows.Count == 1)
             {
+                ds.Tables["thisNews"].Rows[0]["NIsDelete"] = true;
+                ds.Tables["thisNews"].Rows[0]["NDeleteUser"] = DeleteUserID;
             }
         }
 
@@ -270,5 +273,6 @@ namespace MeeboDb
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
+
     }
 }

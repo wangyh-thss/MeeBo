@@ -63,11 +63,14 @@ namespace MeeboDb
 			    data.MakeInParam("@MID",SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select * from [Message] where MID = @MID", prams, "thisMessage");
-            if (ds.Tables["thisMessage"].Rows.Count > 0)
+            if (ds.Tables["thisMessage"].Rows.Count == 1)
             {
                 thisUser.ChangeMsgInNum(new Guid(ds.Tables["thisMessage"].Rows[0]["MToUID"].ToString()), -1);
                 thisUser.ChangeMsgOutNum(new Guid(ds.Tables["thisMessage"].Rows[0]["MFromUID"].ToString()), -1);
+                ds.Tables["thisMessage"].Clear();
             }
+
+
         }
 
         //按ID搜索私信
