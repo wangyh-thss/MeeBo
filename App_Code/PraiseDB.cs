@@ -90,7 +90,7 @@ namespace MeeboDb
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@PUID",SqlDbType.UniqueIdentifier,16,UserID),
+			    data.MakeInParam("@PUID",SqlDbType.UniqueIdentifier,16,thisUserID),
 			};
             DataSet ds = data.GetData("select * from [Praise] where PUID = @PUID", prams, "thisPraise");
             foreach (DataRow Save in ds.Tables["thisPraise"].Rows)
