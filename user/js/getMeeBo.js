@@ -1,13 +1,17 @@
-function getMeeBo(json){
-	var a = eval("("+json+")");
+function getMeeBo(){
+    //var a = eval("("+json+")");
+    "js/getMeeBo.json"
+    var a = json;
 	var html = "";
 	for(var i=0; i<a.length; i++){
 		html = html + '<div id="singleMeebo'+ i +'" class="single_MeeBo" MeeboID="'+ a[i].MeeboID +'">' + '<div class="MeeBo_user">' + '<div class="head_potrait">' + '<img class="potrait_img" src="' + a[i].head + '"/>' + '</div>' + '</div>' + '<div class="MeeBo_content">' + '<div class="user_id">' + '<a>' + a[i].nickname + '</a>' + '</div>';
 		
 		html = html + '<div class="text_content">' + a[i].content + '</div>';
-		html = html + '<div class="picture_content">' ;
-		for(var j=0; j<a[i].pictures.number; j++){
-		html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a[i].picture[j] + '"/>' + '</div>'
+		html = html + '<div class="picture_content">';
+		if (a[i].pictures) {
+		    for (var j = 0; j < a[i].pictures.length; j++) {
+		        html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a[i].picture[j] + '"/>' + '</div>'
+		    }
 		}
 		html = html + '</div>';
 	    
@@ -20,6 +24,11 @@ function getMeeBo(json){
 	document.getElementsByClassName("MeeBo_Box")[0].innerHTML = html;
 }
 
+function windowLoadGetMeebo(json) {
+    window.onload = getMeeBo(json);
+}
+
+document.onready = getMeeBo(json);
 //var json='{"MeeBoNum":1,"MeeBo":[{"userHead":"../image/head_potrait.jpg","user":"张导","textContent":"嘿嘿嘿嘿","pictureNum":5,"picture":["./image/logo.jpg","./image/logo.jpg","./image/logo.jpg","./image/logo.jpg","./image/logo.jpg"],"time":"今天15:19","agreeNum":100,"CommentNum":33,"TransNum":17,"SaveNum":5}]}';  
 //MeeBoNum：JSON文件中消息的数目，userHead头像，user用户，textContent：文本内容，pictureNum图片数目，picture数组每个图片的地址，time时间，agreeNum点赞数，CommentNum评论数，TransNum转发数，SaveNum收藏数                  
  

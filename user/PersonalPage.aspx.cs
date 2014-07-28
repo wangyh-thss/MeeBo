@@ -17,6 +17,8 @@ public partial class user_PersonalPage : System.Web.UI.Page
     protected string btnNewsID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         news = new NewsDB();
         user = new UserDB();
         if(IsPostBack)
@@ -26,11 +28,10 @@ public partial class user_PersonalPage : System.Web.UI.Page
         else
         {
             LikeDB like = new LikeDB();
-            JArray array = new JArray();
+            List<JObject> JList = new List<JObject>();
             int num = 0;
-            if (Session["name"] == null)
-                Response.Redirect("~/Login.aspx");
             user.SearchByName((string)Session["name"], "result");
+            /*
             DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
             foreach(DataRow followUser in follow.Tables["follow"].Rows)
             {
@@ -40,23 +41,53 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     if((bool)singleNews["NDelete"] == true)
                         continue;
                     JObject singleNewsInfo = new JObject();
-                    singleNewsInfo.Add(new JProperty("head", (string)followUser["UHeadPortrait"]));
-                    singleNewsInfo.Add(new JProperty("nickname", (string)followUser["UNickname"]));
-                    singleNewsInfo.Add(new JProperty("MeeboID", (string)singleNews["NID"]));
-                    singleNewsInfo.Add(new JProperty("content", (string)singleNews["NContentT"]));
-                    singleNewsInfo.Add(new JProperty("pictures", (string)singleNews["NContentP"]));
-                    singleNewsInfo.Add(new JProperty("time", (string)singleNews["NDate"]));
-                    singleNewsInfo.Add(new JProperty("praise", (string)singleNews["NProNum"]));
-                    singleNewsInfo.Add(new JProperty("comment", (string)singleNews["NComNum"]));
-                    singleNewsInfo.Add(new JProperty("repost", (string)singleNews["NTransmitNum"]));
-                    singleNewsInfo.Add(new JProperty("save", (string)singleNews["NSaveNum"]));
-                    array.Add(singleNewsInfo);
+                    singleNewsInfo.Add(new JProperty("head", followUser["UHeadPortrait"]));
+                    singleNewsInfo.Add(new JProperty("nickname", followUser["UNickname"]));
+                    singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                    singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
+                    singleNewsInfo.Add(new JProperty("pictures", singleNews["NContentP"]));
+                    singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+                    singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                    singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                    singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                    singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                    JList.Add(singleNewsInfo);
                     num++;
                 }
             }
-            array.OrderByDescending(p => p["time"]);
+            */
+            
+            DataSet singlePerson = news.SearchByUserID((Guid)Session["id"], "singlePerson");
+            foreach (DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
+            {
+                if ((bool)singleNews["NDelete"] == true)
+                    continue;
+                JObject singleNewsInfo = new JObject();
+                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait));
+                singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
+                if (singleNews["NContentP"].ToString() != string.Empty)
+                {
+                    string[] picUrl = singleNews["NContentP"].ToString().Split(';');
+                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url)));
+                }
+                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+                singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                JList.Add(singleNewsInfo);
+                num++;
+            }
 
+            JArray array = new JArray(
+                from item in JList
+                orderby item["time"]
+                select new JObject(item)
+                );
             string json = array.ToString();
+            Page.RegisterClientScriptBlock("getMeebo", "<script>windowLoadGetMeebo(" + json + ")</script>");
         }
     }
 
@@ -82,13 +113,30 @@ public partial class user_PersonalPage : System.Web.UI.Page
             news.ContentT = MeeboToSend;
             Regex topicRegex = new Regex("#[^\"]*#");
             news.Topic = topicRegex.Match(MeeboToSend).Value.Replace("#", "");
+            news.UserID = (Guid)Session["id"];
             Regex atRegex = new Regex("@[^\x20]* ");
             MatchCollection atSomeone = atRegex.Matches(MeeboToSend);
-            news.CallNum = atSomeone.Count;
             for (int i = 0; i < atSomeone.Count; i++)
             {
                 string atNickname = atSomeone[i].ToString().Replace("@", "");
             }
+            /*
+            string picPath;
+            if ((int)Session["picNum"] == 0) 
+                ;
+            else if ((int)Session["picNum"] == 1)
+                picPath = this.pic1.ImageUrl;
+            else if ((int)Session["picNum"] == 2)
+                picPath = this.pic1.ImageUrl + ";" + this.pic2.ImageUrl;
+            else if ((int)Session["picNum"] == 3)
+                picPath = this.pic1.ImageUrl + ";" + this.pic2.ImageUrl + ";" + this.pic3.ImageUrl;
+            else if ((int)Session["picNum"] == 4)
+                picPath = this.pic1.ImageUrl + ";" + this.pic2.ImageUrl + ";" + this.pic3.ImageUrl + ";" + this.pic4.ImageUrl;
+            else if ((int)Session["picNum"] == 5)
+                picPath = this.pic1.ImageUrl + ";" + this.pic2.ImageUrl + ";" + this.pic3.ImageUrl + ";" + this.pic4.ImageUrl + ";" + this.pic5.ImageUrl;
+            if (picPath != string.Empty)
+                news.ContentP = picPath;
+             * */
             Session["picNum"] = 0;
             news.Insert();
         }
@@ -174,6 +222,12 @@ public partial class user_PersonalPage : System.Web.UI.Page
         saveDb.Insert();
         NewsDB newsDb = new NewsDB();
         newsDb.ChangeSaveNum(new Guid(this.btnNewsID), 1);
+    }
+
+    protected void search_click(object sender, EventArgs e)
+    {
+        Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
     }
 }
 

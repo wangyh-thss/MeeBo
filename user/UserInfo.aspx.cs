@@ -26,7 +26,6 @@ public partial class UserInfo : System.Web.UI.Page
             headOriginPath = user.HeadPortrait;
             path = this.head_potrait.ImageUrl;
             this.nickname.Text = user.Nickname;
-            this.email.Text = user.Email;
             if (user.Gender == false)
                 this.gender.Items.FindByValue("0").Selected = true;
             else
@@ -45,10 +44,6 @@ public partial class UserInfo : System.Web.UI.Page
         if (this.nickname.Text != user.Nickname)
         {
             user.ModifyNickname((Guid)Session["id"], this.nickname.Text);
-        }
-        if (this.email.Text != user.Email)
-        {
-            user.ModifyEmail((Guid)Session["id"], this.email.Text);
         }
         if (this.gender.SelectedValue == "0" && user.Gender == true)
         {

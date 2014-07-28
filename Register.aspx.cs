@@ -35,7 +35,7 @@ public partial class Register : System.Web.UI.Page
             }
 
             string filename = SelectImg.FileName;
-            path = "~/headImg/" + this.user.Text + '_' + filename;
+            path = "~/headImg/" + this.email.Text + '_' + filename;
             SelectImg.PostedFile.SaveAs(Server.MapPath(path));
             this.head_potrait.ImageUrl = path;
         }
@@ -46,7 +46,7 @@ public partial class Register : System.Web.UI.Page
     }
     protected void Register_Click(object sender, EventArgs e)
     {
-        string uName = this.user.Text;
+        string uName = this.email.Text;
         string uPwd = this.password.Text;
         if (uName == string.Empty)
         {
@@ -75,9 +75,9 @@ public partial class Register : System.Web.UI.Page
         }
 
         Regex emailMatch = new Regex("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$");
-        if(!emailMatch.IsMatch(this.email.Text))
+        if(!emailMatch.IsMatch(uName))
         {
-            ScriptManager.RegisterStartupScript(this.error_email, typeof(string), "erroremail", "document.getElementById('error_email').innerText = '邮箱格式有误';", true);
+            ScriptManager.RegisterStartupScript(this.error_username , typeof(string), "erroremail", "document.getElementById('error_email').innerText = '邮箱格式有误';", true);
             return;
         }
 
@@ -104,7 +104,6 @@ public partial class Register : System.Web.UI.Page
         user.Name = uName;
         user.Password = uPwd;
         user.Nickname = this.nickname.Text;
-        user.Email = this.email.Text;
         user.Birthday = birthDate;
 
         Session["id"] = user.Insert();
