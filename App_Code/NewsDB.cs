@@ -53,7 +53,7 @@ namespace MeeboDb
         public Guid Insert()
         {
             DataSet ds = data.GetData("select * from [News] ", "thisNews");
-            DataRow row = ds.Tables["thisUser"].NewRow();
+            DataRow row = ds.Tables["thisNews"].NewRow();
             ID = Guid.NewGuid();
             row["NID"] = ID;
             if (ContentT != null)
@@ -89,7 +89,14 @@ namespace MeeboDb
         //删除meebo
         public void Delete(Guid thisID)
         {
-
+             SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NID",SqlDbType.UniqueIdentifier,16,thisID),
+			};
+            DataSet ds = data.GetData("select * from [News] where NID = @NID", prams, "thisNews");
+            if (ds.Tables["thisNews"].Rows.Count == 1)
+            {
+            }
         }
 
         //修改meebo
@@ -264,11 +271,11 @@ namespace MeeboDb
         }
 
         //按用户ID搜索Meebo
-        public DataSet SearchByUserID(Guid myID, string tbName)
+        public DataSet SearchByUserID(Guid myUserID, string tbName)
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myID),
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
 			};
             DataSet ds = data.GetData("select * from [News] where NUserID = @NUserID", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
