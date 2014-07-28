@@ -28,7 +28,7 @@ public partial class user_ZanMe : System.Web.UI.Page
             zanUser.SearchByID("zanUser", (Guid)singlePraise["PUID"]);
             zanNews.SearchByID((Guid)singlePraise["PNID"], "zanNews");
             JObject singleNewsInfo = new JObject();
-            singleNewsInfo.Add(new JProperty("head", zanUser.HeadPortrait));
+            singleNewsInfo.Add(new JProperty("head", zanUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", zanUser.Nickname));
             singleNewsInfo.Add(new JProperty("MeeboID", (string)singlePraise["PNID"]));
             singleNewsInfo.Add(new JProperty("content", zanNews.ContentT));
@@ -43,7 +43,7 @@ public partial class user_ZanMe : System.Web.UI.Page
         }
         JArray array = new JArray(
                 from item in JList
-                orderby item["time"]
+                orderby item["time"] descending
                 select new JObject(item)
                 );
         string json = array.ToString();

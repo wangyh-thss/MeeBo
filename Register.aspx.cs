@@ -58,7 +58,7 @@ public partial class Register : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.error_password, typeof(string), "emptypassword", "document.getElementById('error_password').innerText = '密码不能为空';", true);
             return;
         }
-        if (uPwd.Length <= 6)
+        if (uPwd.Length < 6)
         {
             ScriptManager.RegisterStartupScript(this.error_password, typeof(string), "emptypassword", "document.getElementById('error_password').innerText = '密码过于简单，请输入长度大于6位的密码';", true);
             return;
@@ -77,7 +77,7 @@ public partial class Register : System.Web.UI.Page
         Regex emailMatch = new Regex("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$");
         if(!emailMatch.IsMatch(uName))
         {
-            ScriptManager.RegisterStartupScript(this.error_username , typeof(string), "erroremail", "document.getElementById('error_email').innerText = '邮箱格式有误';", true);
+            ScriptManager.RegisterStartupScript(this.error_username, typeof(string), "erroremail", "document.getElementById('error_username').innerText = '邮箱格式有误';", true);
             return;
         }
 
@@ -91,7 +91,13 @@ public partial class Register : System.Web.UI.Page
         DataSet resultSet = user.SearchByName(uName, "result");
         if (resultSet.Tables["result"].Rows.Count > 0)
         {
-            ScriptManager.RegisterStartupScript(this.error_username, typeof(string), "errorname", "document.getElementById('error_username').innerText = '用户名已被注册';", true);
+            ScriptManager.RegisterStartupScript(this.error_username, typeof(string), "errorname", "document.getElementById('error_username').innerText = '该邮箱已被注册';", true);
+            return;
+        }
+        resultSet = user.SearchByNickName("result", this.nickname.Text);
+        if (resultSet.Tables["result"].Rows.Count > 0)
+        {
+            ScriptManager.RegisterStartupScript(this.error_nickname, typeof(string), "errorname", "document.getElementById('error_nickname').innerText = '该昵称已被注册';", true);
             return;
         }
         string birthday = this.year.Text + '-' + this.month.Text + '-' + this.day.Text;

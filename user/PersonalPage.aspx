@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PersonalPage.aspx.cs" Inherits="user_PersonalPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="PersonalPage.aspx.cs" Inherits="user_PersonalPage" %>
 
 <!DOCTYPE html>
 

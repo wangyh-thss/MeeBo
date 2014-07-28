@@ -33,15 +33,13 @@ public partial class user_PersonalPage : System.Web.UI.Page
             List<JObject> JList = new List<JObject>();
             int num = 0;
             user.SearchByName((string)Session["name"], "result");
-            /*
+            
             DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
             foreach(DataRow followUser in follow.Tables["follow"].Rows)
             {
-                DataSet singlePerson = news.SearchByUserID((Guid)followUser["UID"], "singlePerson");
+                DataSet singlePerson = news.SearchByUserID((Guid)followUser["LStarUID"], "singlePerson");
                 foreach(DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
                 {
-                    if((bool)singleNews["NDelete"] == true)
-                        continue;
                     JObject singleNewsInfo = new JObject();
                     singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
                     singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
@@ -61,9 +59,9 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     num++;
                 }
             }
-            */
             
             
+            /*
             DataSet singlePerson = news.SearchByUserID((Guid)Session["id"], "singlePerson");
             foreach (DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
             {
@@ -87,23 +85,15 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 JList.Add(singleNewsInfo);
                 num++;
             }
-            
+            */
 
             JArray array = new JArray(
                 from item in JList
-                orderby item["time"]
+                orderby item["time"] descending
                 select new JObject(item)
                 );
             
             string json = array.ToString();
-            /*
-            FileStream fs = new FileStream("F://Projects/Homework/CSharp/src/MeeBo/user/js/getMeeBo.json", FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-            sw.Write(json);
-            sw.Close();
-            fs.Close();
-             */
-            //Page.RegisterClientScriptBlock("getJson", "<script>getJson("+ json +")</script>");
             Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
         }
     }
@@ -243,7 +233,8 @@ public partial class user_PersonalPage : System.Web.UI.Page
 
     protected void search_click(object sender, EventArgs e)
     {
-        Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
     }
 }

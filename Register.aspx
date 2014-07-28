@@ -100,7 +100,7 @@
                     <table>
                         <tr>
                             <th>
-                                <abbr title="选填，这将是你与其他用户进行交际时使用的名称">&nbsp 昵称：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
+                                <abbr title="选填，这将是你与其他用户进行交际时使用的名称 您和其他人的昵称不可重复 若设置为空，将以您的注册邮箱作为昵称，之后可以再做修改">&nbsp 昵称：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th>
                                 <!-- <input id="nickname" name="nickname" type="text" class="W_input" maxlength="20" tabindex="4"/> -->
@@ -108,6 +108,7 @@
                             </th>
                         </tr>
                     </table>
+                    <div runat="server" id="error_nickname" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                     <br />
                 </li>
                 <li style="margin-top: 24px">
