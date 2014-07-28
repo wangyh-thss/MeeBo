@@ -50,8 +50,8 @@ namespace MeeboDb
             row["CUID"] = UserID;
             row["CNUID"] = NewsUserID;
             row["CNID"] = NewsID;
-            ds.Tables["thisNews"].Rows.Add(row);
-            data.UpdateData("select * from [News] ", ds, "thisNews");
+            ds.Tables["thisComment"].Rows.Add(row);
+            data.UpdateData("select * from [Comment] ", ds, "thisComment");
             thisNews.ChangeComNum(NewsID,1);
             return ID;
         }
@@ -59,7 +59,11 @@ namespace MeeboDb
         //删除评论
         public void Delete(Guid thisID)
         {
-
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@CID",SqlDbType.UniqueIdentifier,16,thisID),
+			};
+            DataSet ds = data.GetData("select * from [Comment] where CID = @CID", prams, "thisComment");
         }
 
         //修改评论
@@ -173,7 +177,7 @@ namespace MeeboDb
                 data.MakeInParam("@CCheck",SqlDbType.Bit,1,false),
 			};
             DataSet ds = data.GetData("select * from [Comment] where (CNUID = @CNUID) AND (CCheck = @CCheck)", prams, "thisComment");
-            foreach (DataRow CommentRow in ds.Tables["thisPraise"].Rows)
+            foreach (DataRow CommentRow in ds.Tables["thisComment"].Rows)
             {
                 CommentRow["CCheck"] = 1;
             }
