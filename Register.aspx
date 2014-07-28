@@ -49,11 +49,11 @@
                                 <a style="color: red">*</a>
                             </th>
                             <th>
-                                <abbr title="必填，这将是您用于登录的信息之一，注意用户名不能与其他用户重复">&nbsp 用户名：</abbr>
+                                <abbr title="必填，这将是您用于登录的信息之一，注意注册邮箱不能与其他用户重复，这将是您找回密码的重要手段">&nbsp 邮箱：&nbsp&nbsp&nbsp&nbsp</abbr>
                             </th>
                             <th class="auto-style2">
                                 <!-- <input id="user" name="user" type="text" class="W_input" maxlength="20" tabindex="1"/> -->
-                                <asp:TextBox ID="user" runat="server" class="W_input" maxlength="20" tabindex="1" />
+                                <asp:TextBox ID="email" runat="server" class="W_input" maxlength="20" tabindex="1" />
                             </th>
                         </tr>
                     </table>
@@ -94,21 +94,6 @@
                         </tr>
                     </table>
                     <div runat="server" id="error_repeat_password" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
-                    <br />
-                </li>
-                <li>
-                    <table>
-                        <tr>
-                            <th>
-                                <abbr title="选填，这将是您用于维护账号安全的必备信息，我们推荐您在注册时完善邮箱信息">&nbsp 邮箱：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</abbr>
-                            </th>
-                            <th>
-                                <!-- <input id="email" name="email" type="text" class="W_input" maxlength="60" tabindex="3"/> -->
-                                <asp:TextBox ID="email" runat="server" class="W_input" maxlength="60" tabindex="4" />
-                            </th>
-                        </tr>
-                    </table>
-                    <div runat="server" id="error_email" style="color:red; height: 24px; margin-left:6em;margin-top:10px"></div>
                     <br />
                 </li>
                 <li>
