@@ -102,7 +102,7 @@ namespace MeeboDb
         }
 
         //删除一个评论中的所有@
-        public void DeleteByNews(Guid thisCommentID)
+        public void DeleteByComment(Guid thisCommentID)
         {
             SqlParameter[] prams = 
             {
@@ -115,7 +115,7 @@ namespace MeeboDb
         }
 
         //删除一个用户中的所有@
-        public void DeleteByUser(Guid thisFromUserID)
+        public void DeleteByFromUser(Guid thisFromUserID)
         {
             SqlParameter[] prams = 
             {

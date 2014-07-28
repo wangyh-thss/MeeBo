@@ -374,7 +374,7 @@ namespace MeeboDb
         {
             string select = "select * from [User] where ";
             int i = Convert.ToInt32(Name != null) + Convert.ToInt32(Nickname != null) +
-                    Convert.ToInt32(Birthday != null) + Convert.ToInt32(Gender != null);
+                    Convert.ToInt32(Birthday != null);
             SqlParameter[] prams = new SqlParameter[i];
             i = 0;
             if (Name != null)
@@ -394,12 +394,6 @@ namespace MeeboDb
                 prams[i] = data.MakeInParam("@UBirthday ", SqlDbType.Date, 3, Birthday);
                 i++;
                 select = select + "(UBirthday  = @UBirthday ) AND ";
-            }
-            if (Gender != null)
-            {
-                prams[i] = data.MakeInParam("@UGender", SqlDbType.Bit, 1, Gender);
-                i++;
-                select = select + "(UGender = @UGender) AND ";
             }
             select = select.Substring(0,select.Length - 5);
             DataSet ds = data.GetData(select, prams, tbName);

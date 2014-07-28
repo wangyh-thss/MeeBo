@@ -35,7 +35,6 @@ namespace MeeboDb
         public int SaveNum { get; set; }
         public Boolean IsDelete { get; set; }
         public Guid DeleteUser { get; set; }
-        public int CallNum { get; set;}
         public Boolean IsTransmit { get; set;}
         public Guid From { get; set;}
         public string TransmitInf { get; set; }
@@ -72,10 +71,6 @@ namespace MeeboDb
             row["NDate"] = Date;
             row["NUserID"] = UserID;
             row["NDeleteUser"] = UserID;
-            if (CallNum != null)
-            {
-                row["NCallNum"] = CallNum;
-            }
             row["NFrom"] = ID;
             if(Visible != null)
             {
@@ -113,7 +108,6 @@ namespace MeeboDb
                 ds.Tables["thisNews"].Rows[0]["NContentP"] = ContentP;
                 ds.Tables["thisNews"].Rows[0]["NTopic"] = Topic;
                 ds.Tables["thisNews"].Rows[0]["NDate"] = DateTime.Now;
-                ds.Tables["thisNews"].Rows[0]["NCallNum"] = CallNum;
                 ds.Tables["thisNews"].Rows[0]["NVisible"] = Visible;
             }
             data.UpdateData("select * from [News] where NID = @NID", prams, ds, "thisNews");
@@ -201,7 +195,6 @@ namespace MeeboDb
                 SaveNum = (int)ds.Tables[tbName].Rows[0]["NSaveNum"];
                 IsDelete = (ds.Tables[tbName].Rows[0]["NDelete"].ToString() == "True");
                 DeleteUser = new Guid(ds.Tables[tbName].Rows[0]["NDeleteUser"].ToString());
-                CallNum = (int)ds.Tables[tbName].Rows[0]["NCallNum"];
                 IsTransmit = (ds.Tables[tbName].Rows[0]["NIsTransmit"].ToString() == "True");
                 From = new Guid(ds.Tables[tbName].Rows[0]["NFrom"].ToString());
                 TransmitInf = ds.Tables[tbName].Rows[0]["NTransmitInf"].ToString();
@@ -245,10 +238,6 @@ namespace MeeboDb
             row["NDate"] = DateTime.Now;
             row["NUserID"] = UserID;
             row["NDeleteUser"] = UserID;
-            if (CallNum != null)
-            {
-                row["NCallNum"] = CallNum;
-            }
             IsTransmit = true;
             row["NIsTransmit"] = IsTransmit;
             row["NFrom"] = From;
