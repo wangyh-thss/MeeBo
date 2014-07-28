@@ -274,5 +274,59 @@ namespace MeeboDb
             return ds;
         }
 
+        //按用户ID搜索未被删除Meebo
+        public DataSet SearchUnDeleteByUserID(Guid myUserID, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
+                data.MakeInParam("@NIsDelete",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where （NUserID = @NUserID）AND (NIsDelete = @NIsDelete)", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
+        //按用户ID搜索被管理员删除Meebo
+        public DataSet SearchUnDeleteByUserID(Guid myUserID, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
+                data.MakeInParam("@NIsDelete",  SqlDbType.Bit, 1 ,true),
+                data.MakeInParam("@NDeleteUser",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
+			};
+            DataSet ds = data.GetData("select * from [News] where （NUserID = @NUserID）AND (NDeleteUser <> @NDeleteUser)", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
+        //按用户ID搜索未被删除的原创Meebo
+        public DataSet SearchOriginalByUserID(Guid myUserID, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
+                data.MakeInParam("@NIsDelete",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where （NUserID = @NUserID）AND (NIsDelete = @NIsDelete) AND (NIsTransmit = @NIsTransmit )", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
+        //按主题搜索未被删除的原创Meebo
+        public DataSet SearchOriginalByUserID(string topic, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,topic),
+                data.MakeInParam("@NIsDelete",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where （NTopic = @NTopic）AND (NIsDelete = @NIsDelete) AND (NIsTransmit = @NIsTransmit )", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
     }
 }
