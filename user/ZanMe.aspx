@@ -81,6 +81,42 @@
         <div class="middle_column">
         </div>
         <div class="right_column">
+            <div class="right_item">
+                <div class ="person_info">
+                    <div class ="person_img">
+                        <img class="potrait_img" src="../image/head_potrait.jpg"/>
+                        </div>
+                    <div class ="person_nickname">
+                         <a>黑黑的张导</a>
+                        </div>
+                    </div>
+                <ul class= "person_data">
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number">
+                                </div>
+                            <div class ="person_data_name">
+                                </div>
+                            </a>
+                        </li>
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number">
+                                </div>
+                            <div class ="person_data_name">
+                                </div>
+                            </a>
+                        </li>
+                    <li class= "data_li_noright">
+                        <a>
+                            <div class ="person_data_number">
+                                </div>
+                            <div class ="person_data_name">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
 </body>
