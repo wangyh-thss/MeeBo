@@ -170,10 +170,10 @@
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
-        <asp:LinkButton ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
-        <asp:LinkButton ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
-        <asp:LinkButton ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
 
     </form>
 </body>
