@@ -163,6 +163,34 @@ namespace MeeboDb
                 data.UpdateData("select * from [Comment] where CID = @CID", prams, ds, "thisComment");
             }
         }
+
+        //将用户的未查看全部设为查看
+        public void clearUncheck(Guid myNewsUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			     data.MakeInParam("@CNUID",  SqlDbType.UniqueIdentifier, 16 ,myNewsUserID),
+                data.MakeInParam("@CCheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [Comment] where (CNUID = @CNUID) AND (CCheck = @CCheck)", prams, "thisComment");
+            foreach (DataRow CommentRow in ds.Tables["thisPraise"].Rows)
+            {
+                CommentRow["CCheck"] = 1;
+            }
+            data.UpdateData("select * from [Comment] where (CNUID = @CNUID) AND (CCheck = @CCheck)", prams, ds, "thisComment");
+        }
+
+        //用户是否有未查看
+        public Boolean haveUncheck(Guid myNewsUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@CNUID",  SqlDbType.UniqueIdentifier, 16 ,myNewsUserID),
+                data.MakeInParam("@CCheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [Comment] where (CNUID = @CNUID) AND (CCheck = @CCheck)", prams, "thisComment");
+            return (ds.Tables["thisComment"].Rows.Count > 0);
+        }
     }
 }
    

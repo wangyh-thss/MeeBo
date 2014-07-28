@@ -218,5 +218,33 @@ namespace MeeboDb
             }
         }
 
+        //将用户的未查看全部设为查看
+        public void clearUncheck(Guid myNewsUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@PNUID",SqlDbType.UniqueIdentifier,16,myNewsUserID),
+                data.MakeInParam("@PCheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [Praise] where (PNUID = @PNUID) AND (PCheck = @PCheck)", prams, "thisPraise");
+            foreach (DataRow PraiseRow in ds.Tables["thisPraise"].Rows)
+            {
+                PraiseRow["PCheck"] = 1;
+            }
+            data.UpdateData("select * from [Praise] where (PNUID = @PNUID) AND (PCheck = @PCheck)", prams, ds, "thisPraise");
+        }
+
+        //用户是否有未查看
+        public Boolean haveUncheck(Guid myNewsUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@PNUID",SqlDbType.UniqueIdentifier,16,myNewsUserID),
+                data.MakeInParam("@PCheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [Praise] where (PNUID = @PNUID) AND (PCheck = @PCheck)", prams, "thisPraise");
+            return (ds.Tables["thisPraise"].Rows.Count > 0);
+        }
+
     }
 }

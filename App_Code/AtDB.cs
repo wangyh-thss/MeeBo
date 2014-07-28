@@ -213,5 +213,33 @@ namespace MeeboDb
                 data.UpdateData("select * from [At] where AID = @AID", prams, ds, "thisAt");
             }
         }
+
+        //将用户的未查看全部设为查看
+        public void clearUncheck(Guid myUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@AUID",SqlDbType.UniqueIdentifier,16,myUserID),
+                data.MakeInParam("@ACheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [At] where (AUID = @AUID) AND (ACheck = @ACheck)", prams, "thisAt");
+            foreach(DataRow AtRow in ds.Tables["thisAt"].Rows)
+            {
+                AtRow["ACheck"] = 1;
+            }
+            data.UpdateData("select * from [At] where (AUID = @AUID) AND (ACheck = @ACheck", prams, ds, "thisAt");
+        }
+
+        //用户是否有未查看
+        public Boolean haveUncheck(Guid myUserID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@AUID",SqlDbType.UniqueIdentifier,16,myUserID),
+                data.MakeInParam("@ACheck",SqlDbType.Bit,1,false),
+			};
+            DataSet ds = data.GetData("select * from [At] where (AUID = @AUID) AND (ACheck = @ACheck)", prams, "thisAt");
+            return (ds.Tables["thisAt"].Rows.Count > 0);
+        }
     }
 }
