@@ -132,6 +132,7 @@
                     </table>
                     <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:-30px;font-size:10px;margin-left:38%;margin-bottom:30px"></div>
                     <asp:Button ID="ChangePassword" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" tabindex="9" OnClick="ChangePassword_Click"/>
+                    <asp:LinkButton ID="LinkButton1" runat="server">LinkButton</asp:LinkButton>
                 </form>
             </div>
         </div>

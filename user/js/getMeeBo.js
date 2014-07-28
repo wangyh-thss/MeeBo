@@ -2,18 +2,19 @@ function getMeeBo(json){
 	var a = eval("("+json+")");
 	var html = "";
 	for(var i=0; i<a.MeeBoNum; i++){
-		html = html + '<div class="single_MeeBo">' + '<div class="MeeBo_user">' + '<div class="head_potrait">' + '<img class="potrait_img" src="' + a.MeeBo[i].userHead + '"/>' + '</div>' + '</div>' + '<div class="MeeBo_content">' + '<div class="user_id">' + '<a>' + a.MeeBo[i].user + '</a>' + '</div>';
+		html = html + '<div id="singleMeebo'+ i +'" class="single_MeeBo" MeeboID="'+ a.MeeBo[i].MeeboID +'">' + '<div class="MeeBo_user">' + '<div class="head_potrait">' + '<img class="potrait_img" src="' + a.MeeBo[i].userHead + '"/>' + '</div>' + '</div>' + '<div class="MeeBo_content">' + '<div class="user_id">' + '<a>' + a.MeeBo[i].user + '</a>' + '</div>';
 		
-			html = html + '<div class="text_content">' + a.MeeBo[i].textContent + '</div>';
-			html = html + '<div class="picture_content">' ;
-			for(var j=0; j<a.MeeBo[i].pictureNum; j++){
-			html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a.MeeBo[i].picture[j] + '"/>' + '</div>'
-			}
-			html = html + '</div>';
+		html = html + '<div class="text_content">' + a.MeeBo[i].textContent + '</div>';
+		html = html + '<div class="picture_content">' ;
+		for(var j=0; j<a.MeeBo[i].pictureNum; j++){
+		html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a.MeeBo[i].picture[j] + '"/>' + '</div>'
+		}
+		html = html + '</div>';
+	    
 		
-		
+
 		html = html + '<div class="MeeBo_detail">' + '<div class="MeeBo_time">' + a.MeeBo[i].time + '</div>';
-		html = html + '<div class="CTA">' + '<a>赞</a>(' + a.MeeBo[i].agreeNum + ')|<a>转发</a>(' + a.MeeBo[i].TransNum + ')|<a>评论</a>(' + a.MeeBo[i].CommentNum + ')' + ')|<a>收藏</a>(' + a.MeeBo[i].SaveNum + ')' + ' </div>';
+		html = html + '<div class="CTA">' + '<a runat="server" id="zan' + i + '" onclick="javascript:__doPostBack(\'zan_btn\',\'' + a.MeeBo[i].MeeboID + '\')">赞</a>(' + a.MeeBo[i].agreeNum + ')|<a runat="server" id="repost' + i + '" onclick="javascript:__doPostBack(\'repost_btn\',\'' + a.MeeBo[i].MeeboID + '\')">转发</a>(' + a.MeeBo[i].TransNum + ')|<a runat="server" id="comment' + i + '" onclick="javascript:__doPostBack(\'comment_btn\',\'' + a.MeeBo[i].MeeboID + '\')">评论</a>(' + a.MeeBo[i].CommentNum + ')' + ')|<a runat="server" id="save' + i + '" onclick="javascript:__doPostBack(\'save_btn\',\'' + a.MeeBo[i].MeeboID + '\')">收藏</a>(' + a.MeeBo[i].SaveNum + ')' + ' </div>';
 		html = html + '</div></div></div></div>';
 	}
 	document.getElementsByClassName("MeeBo_Box")[0].innerHTML = html;

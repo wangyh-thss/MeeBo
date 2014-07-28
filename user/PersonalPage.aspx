@@ -111,7 +111,7 @@
                 <div class="send_box">
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
                     <asp:FileUpload ID="SelectImg" Text="发布图片" runat="server" Width="70px" style="float:left;margin-left:3%" onchange="javascript:__doPostBack('UploadImg','')"/>
-                    <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%"/>
+                    <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%" OnClick="SendOut_Click"/>
                 </div>
                 <div class="picture_view">
                     <!--在此动态添加图片-->
@@ -170,6 +170,11 @@
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+
     </form>
 </body>
 </html>
