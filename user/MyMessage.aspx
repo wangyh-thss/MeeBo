@@ -8,6 +8,11 @@
     <title>我的私信</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .send_box{position:relative;margin-bottom:75px}
+        .select_whom{float:left;font-size:10px;margin-top:5px}
+        .Message_time{float:right;text-align:right;margin-bottom:15px}
+    </style>
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">
@@ -99,6 +104,45 @@
             </div>
         </div>
         <div class="middle_column">
+            <div class="send_MeeBo_Box">
+                <div class="send_title">
+                    <a style="color:#888888">有什么话想对人说吗？</a>
+                </div>
+                <div class="send_hot">
+                    <a style="font-size:12px">今日热门：八次男神宣布将再战影视圈!!</a>
+                </div>
+                <div class="send_box">
+                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
+                    <div class="select_whom">你想发送给：</div>
+                    <asp:TextBox ID="send_target" runat="server" style="width:100px;float:left"/>
+                    <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; float:right"/>
+                </div>
+            </div>
+            <hr class="line2" />
+            <div class="MeeBo_Box">
+                <div class="single_MeeBo">
+                    <div class="MeeBo_user">
+                        <div class="head_potrait">
+                            <img class="potrait_img" src="../image/head_potrait.jpg"/>
+                        </div>
+                    </div>
+                    <div class="MeeBo_content">
+                        <div class="user_id">
+                            <a>黑黑的张导</a>
+                        </div>
+                        <div class="text_content">
+                            嘿嘿嘿嘿
+                        </div>
+                        <div class="MeeBo_detail">
+                            <div class="Message_time">
+                                今天15:11
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <hr class="line2"/>
         </div>
         <div class="right_column">
         </div>
