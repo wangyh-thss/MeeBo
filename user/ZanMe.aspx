@@ -8,14 +8,19 @@
     <title>给我点赞的</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .upper_message {width:100%;height:40px;font-size:10px;position:relative}
+         .upper_message {width:100%;height:40px;font-size:10px;position:relative}
         .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
         .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
         .at_box {width:100%}
         .single_at{width:80%;margin:auto;padding:10px 10px}
         .at_a {text-decoration:underline;}
-        .at_info{width:100%}
-        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:10px}
+        .at_info{width:100%;position:relative}
+        .at_head{width:60px;float:left}
+        .head_img0{width:50px;height:50px}
+        .at_content{width:500px;float:left}
+        .who_at{width:100%}
+        .at_what{width:100%;font-size:12px}
+        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
     </style>
     <script type="text/javascript" src="js/ZanMe.js"></script>
 </head>
@@ -86,7 +91,7 @@
         <div class="middle_column">
              <div class="upper_message">
                 <div class="at_tips">
-                    最近，共有7个人给你点赞哦！
+                    最近，有这些人给你点赞哦！
                 </div>
                 <div class="news_box">
                     <a>号外：八次男神宣布进入歌唱界！</a>
@@ -95,13 +100,20 @@
             <div class="at_box">
                 <div class="single_at">
                     <div class="at_info">
-                        <a id="user1" class="at_a">黑黑的张导</a>在消息<a id="MeeBo1" class="at_a">嘿嘿嘿嘿嘿....</a>中为你点赞
+                        <div class="at_head">
+                            <img class="head_img0" src="../image/head_potrait.jpg" />
+                        </div>
+                        <div class="at_content">
+                            <div class="who_at">
+                                <a id="user1" class="at_a">黑黑的张导</a>消息<a id="content1" class="at_a">nimas...</a>中给你点了赞。
+                            </div>
+                        </div>
                     </div>
                     <div class="at_detail">
-                        昨天10:15
+                        前天10:11
                     </div>
                 </div>
-                <hr style="margin-left:5%;margin-top:5px; width:90%; color:#999999" />
+                <hr class="line2" />
             </div>
         </div>
         <div class="right_column">
