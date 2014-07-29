@@ -14,7 +14,12 @@
         .at_box {width:100%}
         .single_at{width:80%;margin:auto;padding:10px 10px}
         .at_a {text-decoration:underline;}
-        .at_info{width:100%}
+        .at_info{width:100%;position:relative}
+        .at_head{width:60px;float:left}
+        .head_img0{width:50px;height:50px}
+        .at_content{width:500px;float:left}
+        .who_at{width:100%}
+        .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:10px}
     </style>
 </head>
@@ -100,7 +105,17 @@
             <div class="at_box">
                 <div class="single_at">
                     <div class="at_info">
-                        <a id="user1" class="at_a">黑黑的张导</a>在消息<a id="MeeBo1" class="at_a">嘿嘿嘿嘿嘿....</a>中回复了你
+                        <div class="at_head">
+                            <img class="head_img0" src="../image/head_potrait.jpg" />
+                        </div>
+                        <div class="at_content">
+                            <div class="who_at">
+                                <a id="user1" class="at_a">黑黑的张导</a>在你的消息<a id="content1" class="at_a">nimas...</a>中说道：
+                            </div>
+                            <div class="at_what">
+                                <p>嘿嘿嘿</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="at_detail">
                         前天10:11

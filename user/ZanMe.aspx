@@ -17,6 +17,7 @@
         .at_info{width:100%}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:10px}
     </style>
+    <script type="text/javascript" src="js/ZanMe.js"></script>
 </head>
 <body class="background">
     <form id="Form1" name="search" method="post" runat="server">
