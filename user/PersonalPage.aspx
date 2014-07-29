@@ -23,18 +23,18 @@
                 <div class="head_item">
                     <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
                 </div>
-                <div class="head_item">
+                <div class="head_item_noright">
                     <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
                 </div>
              </div>
              <div class="head_search">
-                 <table style=" margin-top:-5px;">
+                 <table>
                     <tr>
                         <th>
-                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
+                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
                         </th>
                     </tr>
                  </table>
