@@ -1,13 +1,28 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="PersonalPage.aspx.cs" Inherits="user_PersonalPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MeeBoComment.aspx.cs" Inherits="user_MeeBoComment" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>个人主页</title>
+    <title>评论页面</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript" src="js/getMeeBo.js"></script>
+    <style type="text/css">
+        .Comment_Box {width:80%;margin:auto}
+        .single_Comment{width:80%;margin:auto;position:relative;margin-top:15px}
+        .Comment_user {width:60px;float:left}
+        .Comment_img{width:40px;height:40px}
+        .Comment_content {width:388px;float:left}
+        .Comment_userID {width:100%;font-size:10px;color:blue}
+        .Comment_text{width:100%;font-size:10px}
+        .Comment_detail {width:100%;position:relative}
+        .Comment_time{width:30%;float:left}
+        .Comment_floor{width:30px;float:right}
+        .detail_font{width:100%;font-size:8px}
+        .trans_or_com{width:100%;position:relative;height:25px}
+        .choose{width:160px;float:left;font-size:8px}
+        .queren{width:65px;float:right}
+    </style>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
@@ -79,27 +94,6 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
-            <div class="send_MeeBo_Box">
-                <div class="send_title">
-                    <a style="color:#888888">有什么新鲜事想分享吗？</a>
-                </div>
-                <div class="send_hot">
-                    <a style="font-size:12px">今日热门：八次男神宣布将再战影视圈!!</a>
-                </div>
-                <div class="send_box">
-                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
-                    <asp:FileUpload ID="SelectImg" Text="发布图片" runat="server" Width="70px" style="float:left;margin-left:3%" onchange="javascript:__doPostBack('UploadImg','')"/>
-                    <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%" OnClick="SendOut_Click"/>
-                </div>
-                <div class="picture_view">
-                    <!--在此动态添加图片-->
-                    <!--示例>
-                        <div class="single_pic_view">
-                            <asp:Image ID="pic_view1" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 50px; width: 50px"/>
-                        </div>
-                    <-->
-                </div>
-            </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
@@ -144,16 +138,59 @@
             </div>
             <br />
             <hr class="line2"/>
+            <div class="Comment_Box">
+                <div class="send_MeeBo_Box">
+                    <div class="send_box">
+                        <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
+                        <div class="trans_or_com">
+                            <div class="choose">
+                                <asp:RadioButtonList ID="send_type" runat="server" Height="20px" RepeatDirection="Horizontal" Width="150px">
+                                    <asp:ListItem Value="1">评论</asp:ListItem>
+                                    <asp:ListItem Value="0">转发</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                            <div class="queren">
+                                <asp:Button ID="Button1" Text="发布" runat="server" style="width:60px;height:20px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="single_Comment">
+                    <div class="Comment_user">
+                        <div class="Comment_head">
+                            <img class="Comment_img" src="../image/head_potrait.jpg"/>
+                        </div>
+                    </div>
+                    <div class="Comment_content">
+                        <div class="Comment_userID">
+                            <a>ohahaha</a>
+                        </div>
+                        <div class="Comment_text">
+                            嗯
+                        </div>
+                        <div class="Comment_detail">
+                            <div class="Comment_time">
+                                <p class="detail_font">今天12:11</p>
+                            </div>
+                            <div class="Comment_floor">
+                                <p class="detail_font">1楼</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <hr class="line3" />
+                </div>
+            </div>
         </div>
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="zan_btn" ></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" ></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" ></asp:LinkButton>
 
     </form>
-    
 </body>
 </html>
