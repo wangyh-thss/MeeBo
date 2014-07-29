@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>热门用户</title>
     <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
 </head>
@@ -43,12 +44,27 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="left_column">
+           <div class="left_column">
             <div class="left_item">
-                <br />
-                <a class="p2" href="hotTopic.aspx">热门话题</a><br /><br/>
-                <a class="p2" href="hotUser.aspx" style="color: red">热门用户</a><br /><br/>
-                <a class="p2" href="hot.aspx">热门微博</a><br /><br/>
+                <div class="left_item_a">
+                <a href="../user/PersonalPage.aspx"><span class="fa fa-home icon"></span>
+                    <div class="left_item_word">首页</div></a>
+                    </div>
+            </div>
+            <hr class="line" />
+            <div class="left_item">
+                 <div class="left_item_a">
+                <a href="hotTopic.aspx"><span class="fa fa-bullhorn icon"></span>
+                    <div class="left_item_word">热门话题</div></a>
+                    </div>
+                 <div class="left_item_a">
+                <a href="hotUser.aspx"><span class="fa fa-child icon"></span>
+                    <div class="left_item_word strongPage">热门用户</div></a>
+                    </div>
+                 <div class="left_item_a">
+                <a href="hot.aspx"><span class="fa fa-fire icon"></span>
+                    <div class="left_item_word">热门微博</div></a>
+                    </div>
             </div>
             <hr class="line" />
         </div>
