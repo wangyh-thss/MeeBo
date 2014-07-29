@@ -122,8 +122,8 @@
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="go_MeeBo_btn" OnClick="go_MeeBo_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_user_btn"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_MeeBo_btn" ></asp:LinkButton>
      </form>
 </body>
 </html>

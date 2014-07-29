@@ -8,13 +8,13 @@
     <title>评论页面</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .Comment_Box {width:80%;margin:auto}
-        .single_Comment{width:80%;margin:auto;position:relative;margin-top:15px}
-        .Comment_user {width:60px;float:left}
+        .Comment_Box {width:100%;margin:auto;margin-top:45px}
+        .single_Comment{width:90%;margin:auto;position:relative;margin-top:15px}
+        .Comment_user {width:60px;float:left;padding-top:5px}
         .Comment_img{width:40px;height:40px}
-        .Comment_content {width:388px;float:left}
-        .Comment_userID {width:100%;font-size:10px;color:blue}
-        .Comment_text{width:100%;font-size:10px}
+        .Comment_content {width:570px;float:left}
+        .Comment_userID {width:100%;font-size:20px;}
+        .Comment_text{width:100%;font-size:15px;color:#777777}
         .Comment_detail {width:100%;position:relative}
         .Comment_time{width:30%;float:left}
         .Comment_floor{width:30px;float:right}
