@@ -166,8 +166,7 @@
             <br />
             <hr class="line2"/>
         </div>
-        <div class="right_column">
-        </div>
+        <div class="right_column"></div>
     </div>
         <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
         <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
