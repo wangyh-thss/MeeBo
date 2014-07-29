@@ -39,7 +39,7 @@ public partial class user_ZanMe : System.Web.UI.Page
             singleNewsInfo.Add(new JProperty("MeeboID", singlePraise["PNID"]));
             singleNewsInfo.Add(new JProperty("content", zanNews.ContentT));
             singleNewsInfo.Add(new JProperty("pictures", zanNews.ContentP));
-            singleNewsInfo.Add(new JProperty("time", singlePraise["PDate"]));
+            singleNewsInfo.Add(new JProperty("time", singlePraise["PDate"].ToString()));
             singleNewsInfo.Add(new JProperty("praise", zanNews.ProNum));
             singleNewsInfo.Add(new JProperty("comment", zanNews.ComNum));
             singleNewsInfo.Add(new JProperty("repost", zanNews.TransmitNum));

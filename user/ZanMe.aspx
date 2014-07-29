@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ZanMe.aspx.cs" Inherits="user_ZanMe" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ZanMe.aspx.cs" Inherits="user_ZanMe" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
         .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
         .at_box {width:100%}
         .single_at{width:80%;margin:auto;padding:10px 10px}
-        .at_a {text-decoration:underline;}
+        .at_a {text-decoration:underline;cursor:pointer;}
         .at_info{width:100%;position:relative}
         .at_head{width:60px;float:left}
         .head_img0{width:50px;height:50px}
