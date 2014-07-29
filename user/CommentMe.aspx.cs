@@ -12,11 +12,14 @@ using Newtonsoft.Json.Linq;
 public partial class user_CommentMe : System.Web.UI.Page
 {
     protected CommentDB comDb;
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
         comDb = new CommentDB();
+        if(IsPostBack)
+            this.btnID = Request.Form["__EVENTARGUMENT"];
         UserDB comUser = new UserDB();
         NewsDB comNews = new NewsDB();
         List<JObject> JList = new List<JObject>();
@@ -46,4 +49,17 @@ public partial class user_CommentMe : System.Web.UI.Page
         string json = array.ToString();
         comDb.clearUncheck((Guid)Session["id"]);
     }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void go_MeeBo_Click(object sender, EventArgs e)
+    {
+        Session["commentType"] = "comment";
+        Session["commentMeeboID"] = this.btnID;
+        Response.Redirect("~/user/MeeBoComment.aspx");
+    }
+
 }
