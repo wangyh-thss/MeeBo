@@ -10,12 +10,13 @@
     .head_item {float:left;position: relative;width:59px;font-size:20px;padding-left:50px;padding-right:50px;text-align:center;border-right-width: 1px;border-right-style: solid;border-color: #e6e6e6;}
     .head_item_noright {float:left;position: relative;width:59px;font-size:20px;padding-left:50px;padding-right:50px;text-align:center;}
     .head_search {float:left;position: relative;width:250px;margin-left:30px;padding-top:4px;}
-    .wrapper {top:50px;width:1100px; margin: auto;position:relative;height:700px;z-index:2;}
-    .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:600px;padding-top:1em}
+    .wrapper {top:50px;width:1100px; margin: auto;position:relative;height:610px;z-index:2;}
+     .userInfo_box {width: 63%;height:600px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-bottom:30px;}
+    .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:590px;padding-top:14px;}
     .left_item{padding-left:2em;margin-top:5px}
     .right_item{margin-top:5px;height:auto;}
     .middle_column {float:left;position: relative;width:700px;margin-left:8px;background: #f8f8f8;padding-top:10px}
-    .right_column {float:left;position: relative;width:200px;margin-left:10px;background: #f4f4f4;height:600px;padding:0px;padding-top:20px;}
+    .right_column {float:left;position: relative;width:200px;margin-left:10px;background: #f4f4f4;height:580px;padding:0px;padding-top:20px;}
     .person_info{position: relative;height:80px;margin-left:20px;margin-right:20px;}
     .person_data{position: relative;margin:20px;padding:0px;list-style-type:none;color: #333}
     .data_li{position: relative;float: left;margin-right:10px;padding-right:5px;border-right-width: 1px;border-right-style: solid;border-color: #e6e6e6;}

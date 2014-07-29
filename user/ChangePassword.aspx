@@ -8,8 +8,6 @@
     <title>修改密码</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
-        .userInfoform{width: 80%; margin: auto;position:relative;}
-        .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 80px; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
         .p3 {font-size: 60%;font-family: "Times New Roman";}
@@ -36,42 +34,37 @@
 <body class="background">
     <form id="registerForm" name="regform" method="post" runat="server">
     <div class="header">
-        <div class="logo">
-		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
-        </div>
-        <div class="head_list">
-              <div class="head_item">
-                <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
+        <div class="headbody">
+            <div class="logo">
+		        <p class="logoText">MeeBo</p>
             </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_item">
-                <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
-            </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_item">
-                <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
-            </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_search">
-                    <table style=" margin-top:-5px;">
-                        <tr><th>
-                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
+            <div class="head_list">
+                <div class="head_item">
+                    <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
+                </div>
+                <div class="head_item">
+                    <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
+                </div>
+                <div class="head_item_noright">
+                    <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
+                </div>
+             </div>
+             <div class="head_search">
+                 <table>
+                    <tr>
+                        <th>
+                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
-                        </th></tr>
-                    </table>
-            </div>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
+                        </th>
+                    </tr>
+                 </table>
+             </div>
         </div>
     </div>
-    <div class="userInfoForm">
-        <div class="left_column" style="margin-top:80px;margin-left:50px">
+    <div class="wrapper">
+        <div class="left_column">
             <div class="left_item">
                 <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
             </div>
@@ -97,8 +90,8 @@
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href ="UserInfo.aspx">个人信息</a><br /><br/>
-                <a class="p2" href ="ChangePassword.aspx"  style="color: red">修改密码</a><br /><br/>
+                <a class="p2" href ="UserInfo.aspx" >个人信息</a><br /><br/>
+                <a class="p2" href ="ChangePassword.aspx" style="color: red">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
         </div>
