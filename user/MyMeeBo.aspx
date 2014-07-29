@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="background">
+     <form id="Form2" name="search" method="post" runat="server">
        <div class="header">
         <div class="headbody">
             <div class="logo">
@@ -76,5 +77,6 @@
         <div class="right_column">
         </div>
     </div>
+          </form >
 </body>
 </html>
