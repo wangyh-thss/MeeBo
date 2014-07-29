@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>评论我的</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .upper_message {width:100%;height:40px;font-size:10px;position:relative}
+        .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
+        .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
+        .at_box {width:100%}
+        .single_at{width:80%;margin:auto;padding:10px 10px}
+        .at_a {text-decoration:underline;}
+        .at_info{width:100%}
+        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:10px}
+    </style>
 </head>
 <body class="background">
     <div class="header">
@@ -79,6 +89,25 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
+             <div class="upper_message">
+                <div class="at_tips">
+                    最近，共有8人评论了您的MeeBo哦！
+                </div>
+                <div class="news_box">
+                    <a>号外：八次男神宣布进入歌唱界！</a>
+                </div>
+            </div>
+            <div class="at_box">
+                <div class="single_at">
+                    <div class="at_info">
+                        <a id="user1" class="at_a">黑黑的张导</a>在消息<a id="MeeBo1" class="at_a">嘿嘿嘿嘿嘿....</a>中回复了你
+                    </div>
+                    <div class="at_detail">
+                        前天10:11
+                    </div>
+                </div>
+                <hr style="margin-left:5%;margin-top:5px; width:90%; color:#999999" />
+            </div>
         </div>
         <div class="right_column">
         </div>
