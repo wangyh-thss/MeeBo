@@ -7,9 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人资料</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+     <script type="text/javascript" src="js/getMeeBo.js"></script>
      <style type="text/css">
         .head_search {float:left;position: relative;width:40%}
-        .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 80px; margin-bottom:30px;}
+        .userInfo_box {width: 63%;height:612px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
         .p3 {font-size: 60%;font-family: "Times New Roman";}
@@ -32,7 +33,7 @@
 </head>
 <body class="background">
     <form id="registerForm" name="regform" method="post" runat="server">
-    <div class="header">
+     <div class="header">
         <div class="logo">
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
         </div>
@@ -56,7 +57,6 @@
                 <a>|</a>
             </div>
             <div class="head_search">
-                
                     <table style=" margin-top:-5px;">
                         <tr><th>
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
@@ -68,10 +68,10 @@
             </div>
         </div>
     </div>
-    <div class="userInfoForm">
-        <div class="left_column"style="margin-top:80px;margin-left:50px">
+    <div class="wrapper">
+        <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
+                <a class="p1" href="PersonalPage.aspx" style="color: red">首页</a><br /><br/>
             </div>
             <hr class="line" />
             <div class="left_item">
@@ -95,7 +95,7 @@
             <hr class="line" />
             <div class="left_item">
                 <br />
-                <a class="p2" href ="UserInfo.aspx"   style="color: red">个人信息</a><br /><br/>
+                <a class="p2" href ="UserInfo.aspx">个人信息</a><br /><br/>
                 <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
             </div>
             <hr class="line" />
