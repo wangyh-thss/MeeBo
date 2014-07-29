@@ -14,10 +14,13 @@ public partial class user_ZanMe : System.Web.UI.Page
 {
     protected PraiseDB praiseDb;
     protected UserDB user;
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
+        if (IsPostBack)
+            this.btnID = Request.Form["__EVENTARGUMENT"];
         praiseDb = new PraiseDB();
         user = new UserDB();
         UserDB zanUser = new UserDB();
@@ -32,7 +35,8 @@ public partial class user_ZanMe : System.Web.UI.Page
             JObject singleNewsInfo = new JObject();
             singleNewsInfo.Add(new JProperty("head", zanUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", zanUser.Nickname));
-            singleNewsInfo.Add(new JProperty("MeeboID", (string)singlePraise["PNID"]));
+            singleNewsInfo.Add(new JProperty("userID", zanUser.ID));
+            singleNewsInfo.Add(new JProperty("MeeboID", singlePraise["PNID"]));
             singleNewsInfo.Add(new JProperty("content", zanNews.ContentT));
             singleNewsInfo.Add(new JProperty("pictures", zanNews.ContentP));
             singleNewsInfo.Add(new JProperty("time", singlePraise["PDate"]));
@@ -53,7 +57,19 @@ public partial class user_ZanMe : System.Web.UI.Page
 
 
         user.SearchByID("user", (Guid)Session["id"]);
-        
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getZanMe(" + json + ")", true);
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void go_MeeBo_Click(object sender, EventArgs e)
+    {
+        Session["commentType"] = "comment";
+        Session["commentMeeboID"] = new Guid(this.btnID);
+        Response.Redirect("~/user/MeeBoComment.aspx");
     }
 
 }
