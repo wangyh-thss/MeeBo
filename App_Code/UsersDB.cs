@@ -426,7 +426,7 @@ namespace MeeboDb
         //查找粉丝数最多的10名用户
         public DataSet Search10ByFansNum(string tbName)
         {
-            DataSet ds = data.GetData("select top 10 * from [User] order by UFansNum", "thisUser");
+            DataSet ds = data.GetData("select top 10 * from [User] order by UFansNum", tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }

@@ -23,6 +23,7 @@
         .choose{width:160px;float:left;font-size:8px}
         .queren{width:65px;float:right}
     </style>
+    <script type="text/javascript" src="js/MeeboComment.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
@@ -49,7 +50,7 @@
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2" OnClick="search_click"/>
                         </th>
                     </tr>
                  </table>
@@ -133,8 +134,7 @@
             </div>
             <br />
             <hr class="line2"/>
-            <div class="Comment_Box">
-                <div class="send_MeeBo_Box">
+            <div class="send_MeeBo_Box">
                     <div class="send_box">
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
                         <div class="trans_or_com">
@@ -151,6 +151,7 @@
                     </div>
                 </div>
                 <br />
+            <div class="Comment_Box">
                 <div class="single_Comment">
                     <div class="Comment_user">
                         <div class="Comment_head">
@@ -181,10 +182,11 @@
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton runat="server" ID="zan_btn" ></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="repost_btn" ></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="comment_btn"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="save_btn" ></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="user_btn" OnClick="user_Click"></asp:LinkButton>
 
     </form>
 </body>

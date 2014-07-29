@@ -13,7 +13,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
 {
     protected NewsDB newsDb;
     protected CommentDB comDb;
-    protected string btnNewsID;
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
@@ -24,7 +24,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             this.send_type.Items.FindByValue("1").Selected = true;
         if (IsPostBack)
         {
-            this.btnNewsID = Request.Form["__EVENTARGUMENT"];
+            this.btnID = Request.Form["__EVENTARGUMENT"];
         }
         newsDb = new NewsDB();
         comDb = new CommentDB();
@@ -39,6 +39,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             user.SearchByID("user", (Guid)singleCom["CUID"]);
             singleComInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
             singleComInfo.Add(new JProperty("nickname", user.Nickname));
+            singleComInfo.Add(new JProperty("userID", user.ID));
             singleComInfo.Add(new JProperty("content", singleCom["CContent"]));
             singleComInfo.Add(new JProperty("time", singleCom["CDate"]));
             JList.Add(singleComInfo);
@@ -55,6 +56,8 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         MeeboInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
         MeeboInfo.Add(new JProperty("nickname", user.Nickname));
         MeeboInfo.Add(new JProperty("content", newsDb.ContentT));
+        MeeboInfo.Add(new JProperty("UID", user.ID));
+        MeeboInfo.Add(new JProperty("MeeboID", newsDb.ID));
         if (newsDb.ContentP != string.Empty)
         {
             string[] picUrl = newsDb.ContentP.Split(';');
@@ -70,6 +73,8 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         JsonObj.Add(new JProperty("Meebo", MeeboInfo));
         JsonObj.Add(new JProperty("comment", array));
         string json = JsonObj.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "loadPage(" + json + ")", true);
+
 
     }
     protected void post_Click(object sender, EventArgs e)
@@ -92,10 +97,10 @@ public partial class user_MeeBoComment : System.Web.UI.Page
     {
         PraiseDB praiseDb = new PraiseDB();
         praiseDb.UserID = (Guid)Session["id"];
-        praiseDb.NewsID = new Guid(this.btnNewsID);
+        praiseDb.NewsID = new Guid(this.btnID);
         praiseDb.isCheck = false;
         NewsDB newsDb = new NewsDB();
-        newsDb.SearchByID(new Guid(this.btnNewsID), "result");
+        newsDb.SearchByID(new Guid(this.btnID), "result");
         praiseDb.NewsUserID = newsDb.UserID;
         praiseDb.Insert();
         Response.Redirect("~/user/MeeBoComment.aspx");
@@ -103,14 +108,14 @@ public partial class user_MeeBoComment : System.Web.UI.Page
 
     protected void repost_Click(object sender, EventArgs e)
     {
-        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentMeeboID"] = new Guid(this.btnID);
         Session["commentType"] = "repost";
         Response.Redirect("~/user/MeeBoComment.aspx");
     }
 
     protected void comment_Click(object sender, EventArgs e)
     {
-        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentMeeboID"] = new Guid(this.btnID);
         Session["commentType"] = "comment";
         Response.Redirect("~/user/MeeBoComment.aspx");
     }
@@ -119,7 +124,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
     {
         SaveDB saveDb = new SaveDB();
         saveDb.UserID = (Guid)Session["id"];
-        saveDb.NewsID = new Guid(this.btnNewsID);
+        saveDb.NewsID = new Guid(this.btnID);
         saveDb.Insert();
         NewsDB newsDb = new NewsDB();
         Response.Redirect("~/user/MeeBoComment.aspx");
@@ -130,5 +135,10 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+
+    protected void user_Click(object sender, EventArgs e)
+    {
+        //Response.Redirect("~/user/MeeBoComment.aspx");
     }
 }
