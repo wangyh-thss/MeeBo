@@ -68,5 +68,6 @@ public partial class user_AtMe : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        atDb.clearUncheck((Guid)Session["id"]);
     }
 }

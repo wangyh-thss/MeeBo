@@ -13,11 +13,13 @@ using Newtonsoft.Json;
 public partial class user_ZanMe : System.Web.UI.Page
 {
     protected PraiseDB praiseDb;
+    protected UserDB user;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
         praiseDb = new PraiseDB();
+        user = new UserDB();
         UserDB zanUser = new UserDB();
         NewsDB zanNews = new NewsDB();
         List<JObject> JList = new List<JObject>();
@@ -47,6 +49,11 @@ public partial class user_ZanMe : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        praiseDb.clearUncheck((Guid)Session["id"]);
+
+
+        user.SearchByID("user", (Guid)Session["id"]);
+        
     }
 
 }

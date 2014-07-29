@@ -26,6 +26,7 @@
     </style>
 </head>
 <body class="background">
+    <form id="Form1" name="form" method="post" runat="server">
     <div class="header">
         <div class="logo">
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
@@ -50,7 +51,7 @@
                 <a>|</a>
             </div>
             <div class="head_search">
-                <form id="Form1" name="search" method="post" runat="server">
+                
                     <table style=" margin-top:-5px;">
                         <tr><th>
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
@@ -59,7 +60,6 @@
                             <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
                         </th></tr>
                     </table>
-                </form>
             </div>
         </div>
     </div>
@@ -82,6 +82,7 @@
         <div class="right_column">
         </div>
     </div>
+   </form>
 </body>
 </html>
 
