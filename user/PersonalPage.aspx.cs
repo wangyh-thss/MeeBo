@@ -48,7 +48,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     string[] picUrl = singleNews["NContentP"].ToString().Split(';');
                     singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
                 }
-                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
                 singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
                 singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
                 singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));

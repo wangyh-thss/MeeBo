@@ -36,7 +36,7 @@ public partial class user_MySave : System.Web.UI.Page
                 string[] picUrl = saveNews.ContentP.Split(';');
                 singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
             }
-            singleNewsInfo.Add(new JProperty("time", saveNews.Date));
+            singleNewsInfo.Add(new JProperty("time", saveNews.Date.ToString()));
             singleNewsInfo.Add(new JProperty("praise", saveNews.ProNum));
             singleNewsInfo.Add(new JProperty("comment", saveNews.ComNum));
             singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));

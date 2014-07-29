@@ -23,7 +23,7 @@
         .choose{width:160px;float:left;font-size:8px}
         .queren{width:65px;float:right}
     </style>
-    <script type="text/javascript" src="js/MeeboComment.js"></script>
+     <script type="text/javascript" src="js/MeeboComment.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
