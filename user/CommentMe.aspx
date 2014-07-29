@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>评论我的</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         .upper_message {width:100%;height:40px;font-size:10px;position:relative}
         .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
@@ -57,36 +58,61 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="left_column">
+            <div class="left_column">
             <div class="left_item">
-                <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
+                <div class="left_item_a">
+                <a href="PersonalPage.aspx"><span class="fa fa-home icon"></span>
+                    <div class="left_item_word">首页</div></a>
+                    </div>
             </div>
             <hr class="line" />
             <div class="left_item">
-                <br />
-                <a class="p2" href="CommentMe.aspx" style="color:red">评论我的</a><br /><br/>
-                <a class="p2" href="AtMe.aspx">提到我的</a><br /><br/>
-                <a class="p2" href="ZanMe.aspx">赞</a><br /><br/>
-                <a class="p2" href="MySave.aspx">我的收藏</a><br /><br/>
+                <div class="left_item_a">
+                 <a href="CommentMe.aspx"><span class="fa fa-comments icon"></span>
+                    <div class="left_item_word strongPage">评论我的</div></a>
+                    </div>
+                 <div class="left_item_a">
+                 <a href="AtMe.aspx"><span class="fa fa-paw icon"></span>
+                    <div class="left_item_word">提到我的</div></a>
+                    </div>
+                 <div class="left_item_a">
+                 <a href="ZanMe.aspx"><span class="fa fa fa-thumbs-up icon"></span>
+                    <div class="left_item_word">赞</div></a>
+                  </div>
+                 <div class="left_item_a">
+                 <a href="MySave.aspx"><span class="fa fa-heart icon"></span>
+                    <div class="left_item_word">我的收藏</div></a>
+                  </div>
             </div>
             <hr class="line" />
             <div class="left_item">
-                <br />
-                <a class="p2" href = "MyMessage.aspx">我的私信</a><br /><br/>
-                <a class="p2" href ="MyMeeBo.aspx">我的MeeBo</a><br /><br/>
+                <div class="left_item_a">
+                 <a href="MyMessage.aspx"><span class="fa fa-paper-plane icon"></span>
+                    <div class="left_item_word">我的私信</div></a>
+                  </div>
+                <div class="left_item_a">
+                 <a href="MyMeeBo.aspx"><span class="fa fa-folder-open icon"></span>
+                    <div class="left_item_word">我的MeeBo</div></a>
+                  </div>
             </div>
             <hr class="line" />
             <div class="left_item">
-                <br />
-                <a class="p2" href ="MyTeam.aspx">分组</a><br /><br/>
+                <div class="left_item_a">
+                 <a href="MyTeam.aspx"><span class="fa fa-star icon"></span>
+                    <div class="left_item_word">分组</div></a>
+                  </div>
             </div>
             <hr class="line" />
             <div class="left_item">
-                <br />
-                <a class="p2" href ="UserInfo.aspx">个人信息</a><br /><br/>
-                <a class="p2" href ="ChangePassword.aspx">修改密码</a><br /><br/>
+                <div class="left_item_a">
+                 <a href="UserInfo.aspx"><span class="fa fa-info-circle icon"></span>
+                    <div class="left_item_word">个人信息</div></a>
+                  </div>
+                <div class="left_item_a">
+                 <a href="ChangePassword.aspx"><span class="fa fa-unlock-alt icon"></span>
+                    <div class="left_item_word">修改密码</div></a>
+                  </div>
             </div>
-            <hr class="line" />
         </div>
         <div class="middle_column">
              <div class="upper_message">
