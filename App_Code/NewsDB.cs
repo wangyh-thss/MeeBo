@@ -368,7 +368,7 @@ namespace MeeboDb
                 data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
                 data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
 			};
-            DataSet ds = data.GetData("select * from [News] where (NDate > @NDate) AND (NTopic = @NTopic) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit) order by NDate DESC", prams, tbName);
+            DataSet ds = data.GetData("select * from [News] where (NDate > @NDate)  AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit) order by NDate DESC", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
