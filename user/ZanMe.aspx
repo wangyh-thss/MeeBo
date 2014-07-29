@@ -155,7 +155,7 @@
                 <ul class= "person_data">
                     <li class= "data_li">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" runat="server" id="LikeNum">
                                 10
                                 </div>
                             <div>
@@ -165,7 +165,7 @@
                         </li>
                     <li class= "data_li">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" runat="server" id="FansNum">
                                 15
                                 </div>
                             <div>
@@ -175,7 +175,7 @@
                         </li>
                     <li class= "data_li_noright">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" runat="server" id="MeeBoNum">
                                 5
                                 </div>
                             <div>
