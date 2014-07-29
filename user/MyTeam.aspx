@@ -9,41 +9,35 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="background">
-    <div class="header">
-        <div class="logo">
-		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
-        </div>
-        <div class="head_list">
-              <div class="head_item">
-                <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
+    <form id="Form2" name="search" method="post" runat="server">
+       <div class="header">
+        <div class="headbody">
+            <div class="logo">
+		        <p class="logoText">MeeBo</p>
             </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_item">
-                <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
-            </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_item">
-                <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
-            </div>
-            <div class="head_item">
-                <a>|</a>
-            </div>
-            <div class="head_search">
-                <form id="Form1" name="search" method="post" runat="server">
-                    <table style=" margin-top:-5px;">
-                        <tr><th>
-                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
+            <div class="head_list">
+                <div class="head_item">
+                    <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
+                </div>
+                <div class="head_item">
+                    <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
+                </div>
+                <div class="head_item_noright">
+                    <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
+                </div>
+             </div>
+             <div class="head_search">
+                 <table>
+                    <tr>
+                        <th>
+                            <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
-                        </th></tr>
-                    </table>
-                </form>
-            </div>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
+                        </th>
+                    </tr>
+                 </table>
+             </div>
         </div>
     </div>
     <div class="wrapper">
@@ -83,5 +77,6 @@
         <div class="right_column">
         </div>
     </div>
+        </form>
 </body>
 </html>

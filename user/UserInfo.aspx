@@ -7,9 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人资料</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-     <script type="text/javascript" src="js/getMeeBo.js"></script>
      <style type="text/css">
-        .userInfo_box {width: 63%;height:612px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
         .p3 {font-size: 60%;font-family: "Times New Roman";}
@@ -99,9 +97,6 @@
                 <p class="p1">个人信息</p>
             </div>
             <hr class="line" />
-            <div style="margin-left: 80%;margin-top:1em;">
-                <a class="p3">修改个人信息</a><br/><br/>
-            </div>
             <div class="right_item">
                 
                     <table class="p3" style="border-spacing:10px 24px; width: 500px; height: 350px; margin-bottom:30px;margin-left:15%">
