@@ -24,17 +24,17 @@ public partial class user_CommentMe : System.Web.UI.Page
         NewsDB comNews = new NewsDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
-        DataSet comSet = comDb.SearchByUserID((Guid)Session["id"], "comment");
+        DataSet comSet = comDb.SearchByNewsUserID((Guid)Session["id"], "comment");
         foreach (DataRow singleComment in comSet.Tables["comment"].Rows)
         {
             comUser.SearchByID("comUser", (Guid)singleComment["CUID"]);
-            comNews.SearchByID((Guid)singleComment["CUID"], "comNews");
+            comNews.SearchByID((Guid)singleComment["CNID"], "comNews");
             JObject singleNewsInfo = new JObject();
             singleNewsInfo.Add(new JProperty("head", comUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", comUser.Nickname));
             singleNewsInfo.Add(new JProperty("userID", comUser.ID));
-            singleNewsInfo.Add(new JProperty("MeeboID", (string)singleComment["CNID"]));
-            singleNewsInfo.Add(new JProperty("MeeboContent", comNews.ContentT));
+            singleNewsInfo.Add(new JProperty("MeeboID", singleComment["CNID"]));
+            singleNewsInfo.Add(new JProperty("MeeboContent", singleComment["CContent"]));
             singleNewsInfo.Add(new JProperty("commentContent", singleComment["CContent"]));
             singleNewsInfo.Add(new JProperty("time", singleComment["CDate"].ToString()));
             
@@ -48,6 +48,7 @@ public partial class user_CommentMe : System.Web.UI.Page
                 );
         string json = array.ToString();
         comDb.clearUncheck((Guid)Session["id"]);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getCommentMe(" + json + ")", true);
     }
 
     protected void go_user_Click(object sender, EventArgs e)
@@ -58,7 +59,7 @@ public partial class user_CommentMe : System.Web.UI.Page
     protected void go_MeeBo_Click(object sender, EventArgs e)
     {
         Session["commentType"] = "comment";
-        Session["commentMeeboID"] = this.btnID;
+        Session["commentMeeboID"] = new Guid(this.btnID);
         Response.Redirect("~/user/MeeBoComment.aspx");
     }
 

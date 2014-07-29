@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CommentMe.aspx.cs" Inherits="user_CommentMe" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CommentMe.aspx.cs" Inherits="user_CommentMe" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
         .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
         .at_box {width:100%}
         .single_at{width:80%;margin:auto;padding:10px 10px}
-        .at_a {text-decoration:underline;}
+        .at_a {text-decoration:underline;cursor:pointer;}
         .at_info{width:100%;position:relative}
         .at_head{width:60px;float:left}
         .head_img0{width:50px;height:50px}
@@ -122,8 +122,8 @@
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton runat="server" ID="go_user_btn"></asp:LinkButton>
-        <asp:LinkButton runat="server" ID="go_MeeBo_btn" ></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_MeeBo_btn" OnClick="go_MeeBo_Click"></asp:LinkButton>
      </form>
 </body>
 </html>

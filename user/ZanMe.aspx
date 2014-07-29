@@ -22,7 +22,7 @@
         .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
     </style>
-    <script type="text/javascript" src="js/ZanMe.js"></script>
+    <script type="text/javascript" src="js/getZanMe.js"></script>
 </head>
 <body class="background">
     <form id="Form1" name="search" method="post" runat="server">
@@ -161,6 +161,8 @@
             </div>
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_MeeBo_btn" OnClick="go_MeeBo_Click"></asp:LinkButton>
     </form>
 </body>
 </html>
