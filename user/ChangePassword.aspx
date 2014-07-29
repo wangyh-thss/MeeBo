@@ -22,7 +22,7 @@
              width: 175px;
          }
          .auto-style2 {
-             width: 93px;
+             width: 125px;
          }
          .auto-style3 {
              width: 375px;
