@@ -39,7 +39,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("MeeboID", (string)singleAt["AFID"]));
                 singleNewsInfo.Add(new JProperty("content", newsDb.ContentT));
                 singleNewsInfo.Add(new JProperty("pictures", newsDb.ContentP));
-                singleNewsInfo.Add(new JProperty("time", singleAt["ADate"]));
+                singleNewsInfo.Add(new JProperty("time", singleAt["ADate"].ToString()));
                 singleNewsInfo.Add(new JProperty("praise", newsDb.ProNum));
                 singleNewsInfo.Add(new JProperty("comment", newsDb.ComNum));
                 singleNewsInfo.Add(new JProperty("repost", newsDb.TransmitNum));
@@ -57,7 +57,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("type", "Comment"));
                 singleNewsInfo.Add(new JProperty("CommentID", (string)singleAt["AFID"]));
                 singleNewsInfo.Add(new JProperty("content", commentDb.Content));
-                singleNewsInfo.Add(new JProperty("time", singleAt["ADate"]));
+                singleNewsInfo.Add(new JProperty("time", singleAt["ADate"].ToString()));
                 JList.Add(singleNewsInfo);
                 num++;
             }

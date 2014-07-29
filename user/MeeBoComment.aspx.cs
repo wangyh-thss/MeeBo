@@ -41,7 +41,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             singleComInfo.Add(new JProperty("nickname", user.Nickname));
             singleComInfo.Add(new JProperty("userID", user.ID));
             singleComInfo.Add(new JProperty("content", singleCom["CContent"]));
-            singleComInfo.Add(new JProperty("time", singleCom["CDate"]));
+            singleComInfo.Add(new JProperty("time", singleCom["CDate"].ToString()));
             JList.Add(singleComInfo);
             num++;
         }
@@ -63,7 +63,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             string[] picUrl = newsDb.ContentP.Split(';');
             MeeboInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
         }
-        MeeboInfo.Add(new JProperty("time", newsDb.Date));
+        MeeboInfo.Add(new JProperty("time", newsDb.Date.ToString()));
         MeeboInfo.Add(new JProperty("praise", newsDb.ProNum));
         MeeboInfo.Add(new JProperty("comment", newsDb.ComNum));
         MeeboInfo.Add(new JProperty("repost", newsDb.TransmitNum));

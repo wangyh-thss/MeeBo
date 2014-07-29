@@ -30,7 +30,7 @@ public partial class user_MyMeeBo : System.Web.UI.Page
             singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"]));
             singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
             singleNewsInfo.Add(new JProperty("pictures", singleNews["NContentP"]));
-            singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+            singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
             singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
             singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
             singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
