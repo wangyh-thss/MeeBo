@@ -1,9 +1,17 @@
-	.line {margin-left:10%;margin-top:5px; width:80%; color:#999999}
-	.line2 {margin-left:5%;margin-top:5px; width:90%; color:#999999}
-	.line2 {margin-top:5px; width:100%; color:#999999}
-    .background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
-    .header {width:100%;position:fixed;background: #68bde1;height:40px;z-index:3;}
-    .headbody{width:1100px;margin: auto;position:relative;height:40px}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/Fontawesome.otf');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../font/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../font/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+	
+.line {margin-left:10%;margin-top:5px; width:80%; color:#999999}
+.line2 {margin-left:5%;margin-top:5px; width:90%; color:#999999}
+.line3 {margin-top:5px; width:100%; color:#999999}
+.background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
+.header {width:100%;position:fixed;background: #68bde1;height:40px;z-index:3;}
+.headbody{width:1100px;margin: auto;position:relative;height:40px}
     .logo {font-family:"华文隶书";font-size:40px;margin-top:0px;float:left;width:140px;padding-left:30px;}
     .logoText{padding:0px 0px 0px 0px;height:40px;margin:0px;}
     .head_list {width:480px;font-family:"Times New Roman";font-size:18px;margin-left:30px;height:30px;padding-top:10px;float:left;position: relative}
@@ -12,8 +20,8 @@
     .head_search {float:left;position: relative;width:250px;margin-left:30px;padding-top:4px;}
     .wrapper {top:50px;width:1100px; margin: auto;position:relative;height:610px;z-index:2;}
      .userInfo_box {width: 63%;height:600px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-bottom:30px;}
-    .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:590px;padding-top:14px;}
-    .left_item{padding-left:2em;margin-top:5px}
+    .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:590px;}
+    .left_item{padding-left:2em;margin-top:20px;margin-bottom:20px;font-family:"微软雅黑"}
     .right_item{margin-top:5px;height:auto;}
     .middle_column {float:left;position: relative;width:700px;margin-left:8px;background: #f8f8f8;padding-top:10px}
     .right_column {float:left;position: relative;width:200px;margin-left:10px;background: #f4f4f4;height:580px;padding:0px;padding-top:20px;}
@@ -29,6 +37,23 @@
      a {text-decoration: none;color:black;}
      a:link {color: #000000}
      a:hover {color: blue}
+.left_item_a
+{
+    height:20px;
+    width:143px;
+    margin-bottom:20px;
+}
+.left_item_word
+{
+    font-size:16px;
+}
+.icon
+{
+    margin-right:10px;
+    float:left;
+    font-size:20px;
+    font-family: 'FontAwesome';
+}
 
 	 
 	 
@@ -52,3 +77,6 @@
         .CTA{float:right;margin-bottom:10px;cursor:pointer;}
         .picture_view{position:relative;width:500px;margin:auto}
         .single_pic_view{float:left;width:50px;height:50px;margin-left:25px;margin-right:25px}
+.strongPage
+{color:red;
+}
