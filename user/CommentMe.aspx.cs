@@ -29,6 +29,7 @@ public partial class user_CommentMe : System.Web.UI.Page
             JObject singleNewsInfo = new JObject();
             singleNewsInfo.Add(new JProperty("head", comUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", comUser.Nickname));
+            singleNewsInfo.Add(new JProperty("userID", comUser.ID));
             singleNewsInfo.Add(new JProperty("MeeboID", (string)singleComment["CNID"]));
             singleNewsInfo.Add(new JProperty("MeeboContent", comNews.ContentT));
             singleNewsInfo.Add(new JProperty("commentContent", singleComment["CContent"]));
