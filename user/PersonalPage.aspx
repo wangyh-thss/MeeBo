@@ -7,6 +7,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人主页</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+        .send_MeeBo_Box {width:100%;padding-top: 5px;position:relative}
+        .send_title {width:40%; font-family:"Times New Roman"; font-size:10px;float:left;padding-left:4em}
+        .send_hot {width:40%; font-family:"Times New Roman"; font-size:10px;float:right;padding-left:1em}
+        .send_box { width:90%;margin:auto;}
+        .MeeBo_Box{ width:630px;margin:auto;position:relative;margin-top:10px;margin-bottom:10px}
+        .single_MeeBo{ width:100%;margin:auto;position:relative}
+        .MeeBo_user{ width:70px;float:left}
+        .head_potrait{ width:50px;}
+        .MeeBo_content{width:560px;float:left;position:relative}
+        .user_id{width:100%;height:20px;font-size:15px;color:blue;margin-bottom:5px}
+        .potrait_img {width: 50px;height: 50px;}
+        .text_content{width:100%;height:20px;padding:2em,4em;font-size:12px;margin-bottom:5px}
+        .picture_content {width:100%;position:relative;margin-bottom:5px }
+        .MeeBo_img{width:75px;height:75px;float:left;margin-right:5px }
+        .MeeBo_detail{width:100%;position:relative;margin-bottom:5px;font-size:10px;}
+        .detail-font{color:blue;font-size:10px;}
+        .MeeBo_time{float:left;width:40%;margin-bottom:10px}
+        .CTA{float:right;margin-bottom:10px;cursor:pointer;cursor:pointer;}
+        .picture_view{position:relative;width:500px;margin:auto}
+        .single_pic_view{float:left;width:50px;height:50px;margin-left:25px;margin-right:25px}
+    </style>
     <script type="text/javascript" src="js/getMeeBo.js"></script>
 </head>
 <body class="background">

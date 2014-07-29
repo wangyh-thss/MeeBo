@@ -27,46 +27,17 @@ public partial class user_PersonalPage : System.Web.UI.Page
         {
             btnNewsID = Request.Form["__EVENTARGUMENT"];
         }
-        else
+        LikeDB like = new LikeDB();
+        List<JObject> JList = new List<JObject>();
+        int num = 0;
+        user.SearchByName((string)Session["name"], "result");
+            
+        DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
+        foreach(DataRow followUser in follow.Tables["follow"].Rows)
         {
-            LikeDB like = new LikeDB();
-            List<JObject> JList = new List<JObject>();
-            int num = 0;
-            user.SearchByName((string)Session["name"], "result");
-            
-            DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
-            foreach(DataRow followUser in follow.Tables["follow"].Rows)
+            DataSet singlePerson = news.SearchByUserID((Guid)followUser["LStarUID"], "singlePerson");
+            foreach(DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
             {
-                DataSet singlePerson = news.SearchByUserID((Guid)followUser["LStarUID"], "singlePerson");
-                foreach(DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
-                {
-                    JObject singleNewsInfo = new JObject();
-                    singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
-                    singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
-                    singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
-                    singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
-                    if (singleNews["NContentP"].ToString() != string.Empty)
-                    {
-                        string[] picUrl = singleNews["NContentP"].ToString().Split(';');
-                        singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
-                    }
-                    singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
-                    singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
-                    singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
-                    singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
-                    singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
-                    JList.Add(singleNewsInfo);
-                    num++;
-                }
-            }
-            
-            
-            /*
-            DataSet singlePerson = news.SearchByUserID((Guid)Session["id"], "singlePerson");
-            foreach (DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
-            {
-                if ((bool)singleNews["NDelete"] == true)
-                    continue;
                 JObject singleNewsInfo = new JObject();
                 singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
@@ -75,7 +46,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 if (singleNews["NContentP"].ToString() != string.Empty)
                 {
                     string[] picUrl = singleNews["NContentP"].ToString().Split(';');
-                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url)));
+                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
                 }
                 singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
                 singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
@@ -85,17 +56,43 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 JList.Add(singleNewsInfo);
                 num++;
             }
-            */
-
-            JArray array = new JArray(
-                from item in JList
-                orderby item["time"] descending
-                select new JObject(item)
-                );
-            
-            string json = array.ToString();
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
         }
+            
+            
+        /*
+        DataSet singlePerson = news.SearchByUserID((Guid)Session["id"], "singlePerson");
+        foreach (DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
+        {
+            if ((bool)singleNews["NDelete"] == true)
+                continue;
+            JObject singleNewsInfo = new JObject();
+            singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
+            singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+            singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+            singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
+            if (singleNews["NContentP"].ToString() != string.Empty)
+            {
+                string[] picUrl = singleNews["NContentP"].ToString().Split(';');
+                singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url)));
+            }
+            singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+            singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+            singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+            singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+            singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+            JList.Add(singleNewsInfo);
+            num++;
+        }
+        */
+
+        JArray array = new JArray(
+            from item in JList
+            orderby item["time"] descending
+            select new JObject(item)
+            );
+            
+        string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
     }
 
     protected void SendOut_Click(object sender, EventArgs e)
@@ -121,12 +118,6 @@ public partial class user_PersonalPage : System.Web.UI.Page
             Regex topicRegex = new Regex("#[^\"]*#");
             news.Topic = topicRegex.Match(MeeboToSend).Value.Replace("#", "");
             news.UserID = (Guid)Session["id"];
-            Regex atRegex = new Regex("@[^\x20]* ");
-            MatchCollection atSomeone = atRegex.Matches(MeeboToSend);
-            for (int i = 0; i < atSomeone.Count; i++)
-            {
-                string atNickname = atSomeone[i].ToString().Replace("@", "");
-            }
             /*
             string picPath;
             if ((int)Session["picNum"] == 0) 
@@ -145,7 +136,22 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 news.ContentP = picPath;
              * */
             Session["picNum"] = 0;
-            news.Insert();
+            Guid newsID = news.Insert();
+            //查找at
+            Regex atRegex = new Regex("@[^\x20]* ");
+            MatchCollection atSomeone = atRegex.Matches(MeeboToSend);
+            UserDB atUserNickName = new UserDB();
+            AtDB atDb = new AtDB();
+            for (int i = 0; i < atSomeone.Count; i++)
+            {
+                string atNickname = atSomeone[i].ToString().Replace("@", "");
+                atUserNickName.SearchByNickName("atNickname", atNickname);
+                atDb.Type = false;
+                atDb.UserID = atUserNickName.ID;
+                atDb.FromUserID = (Guid)Session["id"];
+                atDb.FromID = newsID;
+                atDb.Insert();
+            }
         }
     }
 
@@ -206,9 +212,9 @@ public partial class user_PersonalPage : System.Web.UI.Page
         praiseDb.isCheck = false;
         NewsDB newsDb = new NewsDB();
         newsDb.SearchByID(new Guid(this.btnNewsID), "result");
-        newsDb.ChangeProNum(new Guid(this.btnNewsID), 1);
         praiseDb.NewsUserID = newsDb.UserID;
         praiseDb.Insert();
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 
     protected void repost_Click(object sender, EventArgs e)
@@ -228,7 +234,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
         saveDb.NewsID = new Guid(this.btnNewsID);
         saveDb.Insert();
         NewsDB newsDb = new NewsDB();
-        newsDb.ChangeSaveNum(new Guid(this.btnNewsID), 1);
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)

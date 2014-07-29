@@ -46,5 +46,6 @@ public partial class user_CommentMe : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        comDb.clearUncheck((Guid)Session["id"]);
     }
 }

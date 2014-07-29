@@ -318,11 +318,11 @@ namespace MeeboDb
         }
 
         //按主题搜索未被删除的原创Meebo
-        public DataSet SearchOriginalByTopic(string topic, string tbName)
+        public DataSet SearchOriginalByTopic(string mytopic, string tbName)
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,topic),
+			    data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,mytopic),
                 data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
                 data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
 			};
@@ -332,11 +332,11 @@ namespace MeeboDb
         }
 
         //按主题模糊搜索未被删除的原创Meebo
-        public DataSet SearchMoreOriginalByTopic(string topic, string tbName)
+        public DataSet SearchMoreOriginalByTopic(string mytopic, string tbName)
         {
             SqlParameter[] prams = 
             {
-			    data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,"%"+ topic + "%"),
+			    data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,"%"+ mytopic + "%"),
                 data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
                 data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
 			};
@@ -356,6 +356,35 @@ namespace MeeboDb
                 data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
 			};
             DataSet ds = data.GetData("select * from [News] where ((NTopic like @NTopic) OR (NContent like @NContent)) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit )", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
+        //按时间搜索未被删除的原创Meebo
+        public DataSet SearchOriginalByTime(int dayNum,string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@NDate",  SqlDbType.DateTime, 8 ,DateTime.Now.AddDays(-dayNum)),
+                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where (NDate > @NDate) AND (NTopic = @NTopic) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit) order by NDate DESC", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
+        //按时间和主题搜索未被删除的原创Meebo
+        public DataSet SearchOriginalByTimeAndTopic(int dayNum , string topic, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@NDate",  SqlDbType.DateTime, 8 ,DateTime.Now.AddDays(-dayNum)),
+                data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,topic),
+                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where (NDate > @NDate) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit) order by NDate DESC", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
