@@ -30,13 +30,10 @@ public partial class user_CommentMe : System.Web.UI.Page
             singleNewsInfo.Add(new JProperty("head", comUser.HeadPortrait.Replace("~", "..")));
             singleNewsInfo.Add(new JProperty("nickname", comUser.Nickname));
             singleNewsInfo.Add(new JProperty("MeeboID", (string)singleComment["CNID"]));
-            singleNewsInfo.Add(new JProperty("content", comNews.ContentT));
-            singleNewsInfo.Add(new JProperty("pictures", comNews.ContentP));
+            singleNewsInfo.Add(new JProperty("MeeboContent", comNews.ContentT));
+            singleNewsInfo.Add(new JProperty("commentContent", singleComment["CContent"]));
             singleNewsInfo.Add(new JProperty("time", singleComment["CDate"]));
-            singleNewsInfo.Add(new JProperty("praise", comNews.ProNum));
-            singleNewsInfo.Add(new JProperty("comment", comNews.ComNum));
-            singleNewsInfo.Add(new JProperty("repost", comNews.TransmitNum));
-            singleNewsInfo.Add(new JProperty("save", comNews.SaveNum));
+            
             JList.Add(singleNewsInfo);
             num++;
         }
