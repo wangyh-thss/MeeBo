@@ -59,7 +59,6 @@
     </div>
     <div class="wrapper">
         <div class="left_column">
-            <div class="left_column">
             <div class="left_item">
                 <div class="left_item_a">
                 <a href="PersonalPage.aspx"><span class="fa fa-home icon"></span>
