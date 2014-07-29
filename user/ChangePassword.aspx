@@ -9,7 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
         .userInfoform{width: 80%; margin: auto;position:relative;}
-        .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 20px; margin-bottom:30px;}
+        .userInfo_box {width: 63%;height:700px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-top: 80px; margin-bottom:30px;}
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
         .p3 {font-size: 60%;font-family: "Times New Roman";}
@@ -34,6 +34,7 @@
     </style>
 </head>
 <body class="background">
+    <form id="registerForm" name="regform" method="post" runat="server">
     <div class="header">
         <div class="logo">
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
@@ -58,7 +59,6 @@
                 <a>|</a>
             </div>
             <div class="head_search">
-                <form id="Form1" name="search" method="post" runat="server">
                     <table style=" margin-top:-5px;">
                         <tr><th>
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
@@ -67,12 +67,11 @@
                             <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
                         </th></tr>
                     </table>
-                </form>
             </div>
         </div>
     </div>
     <div class="userInfoForm">
-        <div class="left_column">
+        <div class="left_column" style="margin-top:80px;margin-left:50px">
             <div class="left_item">
                 <a class="p1" href="PersonalPage.aspx">首页</a><br /><br/>
             </div>
@@ -109,7 +108,7 @@
             </div>
             <hr class="line" />
             <div class="right_item">
-                <form id="registerForm" name="regform" method="post" runat="server">
+                
                     <table class="p3" style="border-spacing:10px 24px; width: 421px; height: 300px; margin-bottom:10px;margin-left:15%; ">
                         <tr>
                             <th class="auto-style2" style="font-weight:lighter">当前密码：</th>
@@ -132,11 +131,12 @@
                     </table>
                     <div runat="server" id="error_password" style="color:red; height: 24px; margin-left:6em;margin-top:-30px;font-size:10px;margin-left:38%;margin-bottom:30px"></div>
                     <asp:Button ID="ChangePassword" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" tabindex="9" OnClick="ChangePassword_Click"/>
-                    <asp:LinkButton ID="LinkButton1" runat="server">LinkButton</asp:LinkButton>
-                </form>
+                    
+                
             </div>
         </div>
     </div>
+        </form>
 </body>
 </html>
 
