@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>我的MeeBo</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">

@@ -31,21 +31,21 @@
 </head>
 <body class="background">
     <form id="registerForm" name="regform" method="post" runat="server">
-    <div class="header">
-        <div class="headbody">
-            <div class="logo">
-		        <p class="logoText">MeeBo</p>
-            </div>
-            <div class="head_list">
-                <div class="head_item">
+        <div class="header">
+            <div class="headbody">
+                <div class="logo">
+		            <p class="logoText">MeeBo</p>
+                </div>
+                <div class="head_list">
+                    <div class="head_item">
                     <a style="color: #fefefe" href="PersonalPage.aspx">首页</a>
-                </div>
-                <div class="head_item">
-                    <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
-                </div>
-                <div class="head_item_noright">
-                    <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
-                </div>
+                    </div>
+                    <div class="head_item">
+                        <a style="color: #fefefe" href="../hot/hot.aspx">热门</a>
+                    </div>
+                    <div class="head_item_noright">
+                        <a style="color: #fefefe" href="../hot/hotTopic.aspx">话题</a>
+                    </div>
              </div>
              <div class="head_search">
                  <table>
