@@ -221,6 +221,7 @@ namespace MeeboDb
                 ContentT = ds.Tables["thisNews"].Rows[0]["NContentT"].ToString();
                 ContentP = ds.Tables["thisNews"].Rows[0]["NContentP"].ToString();
                 From = new Guid(ds.Tables["thisNews"].Rows[0]["NFrom"].ToString());
+                Topic = ds.Tables["thisNews"].Rows[0]["NTopic"].ToString();
             }
             ds = data.GetData("select * from [News] ", "thisNews");
             DataRow row = ds.Tables["thisNews"].NewRow();
@@ -248,6 +249,7 @@ namespace MeeboDb
             {
                 row["NVisible"] = Visible;
             }
+            row["NTransmitInf"] = TransmitInf;
             ds.Tables["thisNews"].Rows.Add(row);
             if (From == thisID)
             {
