@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="background">
+    <form id="Form1" name="search" method="post" runat="server">
     <div class="header">
         <div class="logo">
 		    <p style="padding:0px 0px 0px 0px; line-height: 0px;">MeeBo</p>
@@ -33,7 +34,6 @@
                 <a>|</a>
             </div>
             <div class="head_search">
-                <form id="Form1" name="search" method="post" runat="server">
                     <table style=" margin-top:-5px;">
                         <tr><th>
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
@@ -42,7 +42,6 @@
                             <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
                         </th></tr>
                     </table>
-                </form>
             </div>
         </div>
     </div>
@@ -84,8 +83,8 @@
             <div class="right_item">
                 <div class ="person_info">
                     <div class ="person_img">
-                        <img class="person_potrait_img" src="../image/head_potrait.jpg"/>
-                        </div>
+                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                    </div>
                     <div class ="person_nickname">
                          <a>黑黑的张导</a>
                         </div>
@@ -96,9 +95,9 @@
                             <div class ="person_data_number">
                                 10
                                 </div>
-                            <div class ="person_data_name">
-                                关注
-                                </div>
+                            <div>
+                                <a class ="person_data_name">关注</a>
+                            </div>
                             </a>
                         </li>
                     <li class= "data_li">
@@ -106,8 +105,8 @@
                             <div class ="person_data_number">
                                 15
                                 </div>
-                            <div class ="person_data_name">
-                                粉丝
+                            <div>
+                                <a class ="person_data_name">粉丝</a>
                                 </div>
                             </a>
                         </li>
@@ -116,8 +115,8 @@
                             <div class ="person_data_number">
                                 5
                                 </div>
-                            <div class ="person_data_name">
-                                微博
+                            <div>
+                                <a class ="person_data_name">微博</a>
                                 </div>
                             </a>
                         </li>
@@ -125,5 +124,6 @@
             </div>
         </div>
     </div>
+    </form>
 </body>
 </html>
