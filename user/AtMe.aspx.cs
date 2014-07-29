@@ -13,10 +13,13 @@ public partial class user_AtMe : System.Web.UI.Page
 {
     protected AtDB atDb;
     protected UserDB userDb;
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
+        if (IsPostBack)
+            this.btnID = Request.Form["__EVENTARGUMENT"];
         atDb = new AtDB();
         userDb = new UserDB();
         NewsDB newsDb = new NewsDB();
@@ -28,7 +31,7 @@ public partial class user_AtMe : System.Web.UI.Page
         DataSet atNewsSet = atDb.SearchByUserID("atResult", (Guid)Session["id"]);
         foreach (DataRow singleAt in atNewsSet.Tables["atResult"].Rows)
         {
-            if (singleAt["AType"].ToString() == "false")    //MeeBo
+            if (singleAt["AType"].ToString() == "False")    //MeeBo
             {
                 newsDb.SearchByID((Guid)singleAt["AFID"], "news");
                 atUser.SearchByID("atUser", newsDb.UserID);
@@ -36,26 +39,23 @@ public partial class user_AtMe : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
                 singleNewsInfo.Add(new JProperty("type", "MeeBo"));
-                singleNewsInfo.Add(new JProperty("MeeboID", (string)singleAt["AFID"]));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleAt["AFID"]));
                 singleNewsInfo.Add(new JProperty("content", newsDb.ContentT));
                 singleNewsInfo.Add(new JProperty("pictures", newsDb.ContentP));
                 singleNewsInfo.Add(new JProperty("time", singleAt["ADate"].ToString()));
-                singleNewsInfo.Add(new JProperty("praise", newsDb.ProNum));
-                singleNewsInfo.Add(new JProperty("comment", newsDb.ComNum));
-                singleNewsInfo.Add(new JProperty("repost", newsDb.TransmitNum));
-                singleNewsInfo.Add(new JProperty("save", newsDb.SaveNum));
                 JList.Add(singleNewsInfo);
                 num++;
             }
             else
             {
                 commentDb.SearchByID((Guid)singleAt["AFID"], "comment");
+                newsDb.SearchByID(commentDb.NewsID, "news");
                 atUser.SearchByID("atUser", commentDb.UserID);
                 JObject singleNewsInfo = new JObject();
                 singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
                 singleNewsInfo.Add(new JProperty("type", "Comment"));
-                singleNewsInfo.Add(new JProperty("CommentID", (string)singleAt["AFID"]));
+                singleNewsInfo.Add(new JProperty("MeeboID", newsDb.ID));
                 singleNewsInfo.Add(new JProperty("content", commentDb.Content));
                 singleNewsInfo.Add(new JProperty("time", singleAt["ADate"].ToString()));
                 JList.Add(singleNewsInfo);
@@ -68,6 +68,19 @@ public partial class user_AtMe : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getAtMe(" + json + ")", true);
         atDb.clearUncheck((Guid)Session["id"]);
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void go_MeeBo_Click(object sender, EventArgs e)
+    {
+        Session["commentType"] = "comment";
+        Session["commentMeeboID"] = new Guid(this.btnID);
+        Response.Redirect("~/user/MeeBoComment.aspx");
     }
 }

@@ -50,7 +50,7 @@ namespace MeeboDb
             row["AFID"] = FromID;
             row["AFUID"] = FromUserID;
             Date = DateTime.Now;
-            row["CDate"] = Date;
+            row["ADate"] = Date;
             ds.Tables["thisAt"].Rows.Add(row);
             data.UpdateData("select * from [At] ", ds, "thisAt");
             return ID;
@@ -227,7 +227,7 @@ namespace MeeboDb
             {
                 AtRow["ACheck"] = 1;
             }
-            data.UpdateData("select * from [At] where (AUID = @AUID) AND (ACheck = @ACheck", prams, ds, "thisAt");
+            data.UpdateData("select * from [At] where (AUID = @AUID) AND (ACheck = @ACheck)", prams, ds, "thisAt");
         }
 
         //用户是否有未查看

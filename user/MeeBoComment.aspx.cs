@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 using System.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -88,7 +89,21 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             comToSend.UserID = (Guid)Session["id"];
             comToSend.NewsID = (Guid)Session["commentMeeboID"];
             comToSend.NewsUserID = commentedMeebo.UserID;
-            comToSend.Insert();
+            Guid comID = comToSend.Insert();
+            Regex atRegex = new Regex("@[^\x20]* ");
+            MatchCollection atSomeone = atRegex.Matches(this.TextBox1.Text);
+            UserDB atUserNickName = new UserDB();
+            AtDB atDb = new AtDB();
+            for (int i = 0; i < atSomeone.Count; i++)
+            {
+                string atNickname = atSomeone[i].ToString().Replace("@", "");
+                atUserNickName.SearchByNickName("atNickname", atNickname);
+                atDb.Type = true;
+                atDb.UserID = atUserNickName.ID;
+                atDb.FromUserID = (Guid)Session["id"];
+                atDb.FromID = comID;
+                atDb.Insert();
+            }
             Response.Redirect("~/user/MeeBoComment.aspx");
         }
     }

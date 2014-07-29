@@ -39,8 +39,10 @@ public partial class user_PersonalPage : System.Web.UI.Page
             foreach(DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
             {
                 JObject singleNewsInfo = new JObject();
-                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
-                singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+                UserDB starUser = new UserDB();
+                starUser.SearchByID("starUser", (Guid)followUser["LStarUID"]);
+                singleNewsInfo.Add(new JProperty("head", starUser.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", starUser.Nickname));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
                 if (singleNews["NContentP"].ToString() != string.Empty)
