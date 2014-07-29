@@ -11,13 +11,18 @@
     .wrapper {top:70px;width:1100px; margin: auto;position:relative;height:700px;z-index:2;}
     .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:600px;padding-top:1em}
     .left_item{padding-left:2em;margin-top:5px}
-    .right_item{padding-left:2em;margin-top:5px}
+    .right_item{margin-top:5px;height:auto;}
     .middle_column {float:left;position: relative;width:700px;margin-left:8px;background: #f8f8f8;padding-top:10px}
-    .right_column {float:left;position: relative;width:200px;margin-left:8px;background: #f4f4f4;height:600px}
-    .person_info{position: relative;margin-left:20px;margin-right:20px;}
-    .person_data{position: relative;margin:20px;}
+    .right_column {float:left;position: relative;width:200px;margin-left:10px;background: #f4f4f4;height:600px;padding:0px;}
+    .person_info{position: relative;height:80px;margin-left:20px;margin-right:20px;}
+    .person_data{position: relative;margin:20px;padding:0px;list-style-type:none;}
     .data_li{position: relative;float: left;margin-right:5px;padding-right:5px;border-right-width: 1px;border-right-style: solid;border-color: #e6e6e6;}
     .data_li_noright{position: relative;float: left;margin-right:5px;padding-right:5px;}
+    .person_img{position: relative;width:80px;height:80px;float:left;margin-right:10px;}
+    .person_nickname{position: relative;padding-top:20px;padding-left:2px;font-size: 14px;}
+    .person_data_number{font-size: 20px;margin-bottom:5px;font-family: tahoma;}
+    .person_data_name{font-size: 14px;}
+    .person_potrait_img{position: relative;width:80px;height:80px;}
      a {text-decoration: none;color:black;}
      a:link {color: #000000}
      a:hover {color: blue}

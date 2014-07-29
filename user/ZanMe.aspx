@@ -84,7 +84,7 @@
             <div class="right_item">
                 <div class ="person_info">
                     <div class ="person_img">
-                        <img class="potrait_img" src="../image/head_potrait.jpg"/>
+                        <img class="person_potrait_img" src="../image/head_potrait.jpg"/>
                         </div>
                     <div class ="person_nickname">
                          <a>黑黑的张导</a>
@@ -94,24 +94,30 @@
                     <li class= "data_li">
                         <a>
                             <div class ="person_data_number">
+                                10
                                 </div>
                             <div class ="person_data_name">
+                                关注
                                 </div>
                             </a>
                         </li>
                     <li class= "data_li">
                         <a>
                             <div class ="person_data_number">
+                                15
                                 </div>
                             <div class ="person_data_name">
+                                粉丝
                                 </div>
                             </a>
                         </li>
                     <li class= "data_li_noright">
                         <a>
                             <div class ="person_data_number">
+                                5
                                 </div>
                             <div class ="person_data_name">
+                                微博
                                 </div>
                             </a>
                         </li>
