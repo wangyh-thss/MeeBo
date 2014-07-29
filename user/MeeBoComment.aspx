@@ -55,7 +55,7 @@
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1" style="margin-bottom:10px;" />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2"/>
+                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;margin-bottom:10px;" tabindex="2" OnClick="search_click" />
                         </th></tr>
                     </table>
             </div>
@@ -150,7 +150,7 @@
                                 </asp:RadioButtonList>
                             </div>
                             <div class="queren">
-                                <asp:Button ID="Button1" Text="发布" runat="server" style="width:60px;height:20px" />
+                                <asp:Button ID="post" Text="发布" runat="server" style="width:60px;height:20px" OnClick="post_Click" />
                             </div>
                         </div>
                     </div>

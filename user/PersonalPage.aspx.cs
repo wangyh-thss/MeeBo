@@ -152,6 +152,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 atDb.FromID = newsID;
                 atDb.Insert();
             }
+            Response.Redirect("~/user/PersonalPage.aspx");
         }
     }
 
@@ -219,12 +220,16 @@ public partial class user_PersonalPage : System.Web.UI.Page
 
     protected void repost_Click(object sender, EventArgs e)
     {
-
+        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentType"] = "repost";
+        Response.Redirect("~/user/MeeBoComment.aspx");
     }
 
     protected void comment_Click(object sender, EventArgs e)
     {
-
+        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentType"] = "comment";
+        Response.Redirect("~/user/MeeBoComment.aspx");
     }
 
     protected void save_Click(object sender, EventArgs e)
