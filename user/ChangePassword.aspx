@@ -9,6 +9,9 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
+         .p1 {font-size: 120%;font-family: "Times New Roman"}
+        .p2 {font-family: "Times New Roman";}
+        .p3 {font-size: 60%;font-family: "Times New Roman";}
          .right_item {margin-top:5px;margin-left:10%}
          a:visited {color: #000000}
          .btn_submit {width:80px; height:30px; margin-left:40%;}
