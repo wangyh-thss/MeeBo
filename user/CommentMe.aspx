@@ -22,6 +22,7 @@
         .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:10px}
     </style>
+    <script type="text/javascript" src="js/getCommentMe.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
