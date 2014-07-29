@@ -116,12 +116,14 @@
                         前天10:11
                     </div>
                 </div>
-                <hr style="margin-left:5%;margin-top:5px; width:90%; color:#999999" />
+                <hr class="line2" />
             </div>
         </div>
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_MeeBo_btn" OnClick="go_MeeBo_Click"></asp:LinkButton>
      </form>
 </body>
 </html>
