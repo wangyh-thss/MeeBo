@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/getMeeBo.js"></script>
+    <script type="text/javascript" src="js/judgeImage.js"></script>
     <style type="text/css">
         
     </style>
@@ -114,11 +115,17 @@
                 </div>
                 <div class="picture_view">
                     <!--在此动态添加图片-->
-                    <!--示例>
+                    <!--示例
                         <div class="single_pic_view">
                             <asp:Image ID="pic_view1" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 50px; width: 50px"/>
                         </div>
-                    <-->
+                    -->
+                    <asp:Image ID="pic1" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','1')"/>
+                    <asp:Image ID="pic2" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','2')"/>
+                    <asp:Image ID="pic3" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','3')"/>
+                    <asp:Image ID="pic4" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','4')"/>
+                    <asp:Image ID="pic5" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','5')"/>
+
                 </div>
             </div>
             <div class="middle_title">
@@ -264,6 +271,9 @@
         <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
         <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
         <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="delPic" OnClick="delPic_Click"></asp:LinkButton>
+        <asp:LinkButton ID="UploadImg" runat="server" OnClick="UploadImg_Click"></asp:LinkButton>
+
 
     </form>
     

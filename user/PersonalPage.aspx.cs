@@ -35,6 +35,39 @@ public partial class user_PersonalPage : System.Web.UI.Page
         UserDB starUser;
         NewsDB originNewsInfo;
         UserDB originUser;
+
+        if (Session["picNum"] == null || (int)Session["picNum"] == 0)
+        { }
+        else if ((int)Session["picNum"] == 1)
+        {
+            this.pic1.ImageUrl = (string)Session["pic1"];
+        }
+        else if ((int)Session["picNum"] == 2)
+        {
+            this.pic1.ImageUrl = (string)Session["pic1"];
+            this.pic2.ImageUrl = (string)Session["pic2"];
+        }
+        else if ((int)Session["picNum"] == 3)
+        {
+            this.pic1.ImageUrl = (string)Session["pic1"];
+            this.pic2.ImageUrl = (string)Session["pic2"];
+            this.pic3.ImageUrl = (string)Session["pic3"];
+        }
+        else if ((int)Session["picNum"] == 4)
+        {
+            this.pic1.ImageUrl = (string)Session["pic1"];
+            this.pic2.ImageUrl = (string)Session["pic2"];
+            this.pic3.ImageUrl = (string)Session["pic3"];
+            this.pic4.ImageUrl = (string)Session["pic4"];
+        }
+        else if ((int)Session["picNum"] == 5)
+        {
+            this.pic1.ImageUrl = (string)Session["pic1"];
+            this.pic2.ImageUrl = (string)Session["pic2"];
+            this.pic3.ImageUrl = (string)Session["pic3"];
+            this.pic4.ImageUrl = (string)Session["pic4"];
+            this.pic5.ImageUrl = (string)Session["pic5"];
+        }
             
         DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
         foreach(DataRow followUser in follow.Tables["follow"].Rows)
@@ -134,7 +167,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
             );
             
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ");judgeImage();", true);
         this.myName.InnerText = user.Nickname;
         this.head_potrait.ImageUrl = user.HeadPortrait;
         this.LikeNum.InnerText = user.LikesNum.ToString();
@@ -165,8 +198,8 @@ public partial class user_PersonalPage : System.Web.UI.Page
             Regex topicRegex = new Regex("#[^\"]*#");
             news.Topic = topicRegex.Match(MeeboToSend).Value.Replace("#", "");
             news.UserID = (Guid)Session["id"];
-            /*
-            string picPath;
+            
+            string picPath = "";
             if ((int)Session["picNum"] == 0) 
                 ;
             else if ((int)Session["picNum"] == 1)
@@ -181,7 +214,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 picPath = this.pic1.ImageUrl + ";" + this.pic2.ImageUrl + ";" + this.pic3.ImageUrl + ";" + this.pic4.ImageUrl + ";" + this.pic5.ImageUrl;
             if (picPath != string.Empty)
                 news.ContentP = picPath;
-             * */
+            
             Session["picNum"] = 0;
             Guid newsID = news.Insert();
             //查找at
@@ -225,24 +258,24 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 Session["picNum"] = 1;
             else
                 Session["picNum"] = (int)Session["picNum"] + 1;
-            /*
+            
             if ((int)Session["picNum"] == 1)
-                this.pic1.ImageUrl = path;
+                Session["pic1"] = path;
             else if ((int)Session["picNum"] == 2)
-                this.pic2.ImageUrl = path;
+                Session["pic2"] = path;
             else if ((int)Session["picNum"] == 3)
-                this.pic3.ImageUrl = path;
+                Session["pic3"] = path;
             else if ((int)Session["picNum"] == 4)
-                this.pic4.ImageUrl = path;
+                Session["pic4"] = path;
             else if ((int)Session["picNum"] == 5)
-                this.pic5.ImageUrl = path;
+                Session["pic5"] = path;
             else
             {
                 Response.Write("<script>alert('最多只能上传5张图片')</script>");
                 Session["picNum"] = 5;
                 return;
             }
-             */
+            
             SelectImg.PostedFile.SaveAs(Server.MapPath(path));
 
         }
@@ -250,6 +283,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
         {
             return;
         }
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 
     protected void zan_Click(object sender, EventArgs e)
@@ -305,6 +339,41 @@ public partial class user_PersonalPage : System.Web.UI.Page
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+    protected void delPic_Click(object sender, EventArgs e)
+    {
+        if(this.btnNewsID == "1")
+        {
+            Session["pic1"] = Session["pic2"];
+            Session["pic2"] = Session["pic3"];
+            Session["pic3"] = Session["pic4"];
+            Session["pic4"] = Session["pic5"];
+            Session["pic5"] = "";
+        }
+        else if (this.btnNewsID == "2")
+        {
+            Session["pic2"] = Session["pic3"];
+            Session["pic3"] = Session["pic4"];
+            Session["pic4"] = Session["pic5"];
+            Session["pic5"] = "";
+        }
+        else if (this.btnNewsID == "3")
+        {
+            Session["pic3"] = Session["pic4"];
+            Session["pic4"] = Session["pic5"];
+            Session["pic5"] = "";
+        }
+        else if (this.btnNewsID == "4")
+        {
+            Session["pic4"] = Session["pic5"];
+            Session["pic5"] = "";
+        }
+        else if (this.btnNewsID == "5")
+        {
+            Session["pic5"] = "";
+        }
+        Session["picNum"] = (int)Session["picNum"] - 1;
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 }
 

@@ -13,7 +13,7 @@ function getMeeBo(json) {
             html = html + '<div class="picture_content">';
             if (a[i].pictures) {
                 for (var j = 0; j < a[i].pictures.length; j++) {
-                    html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a[i].picture[j] + '"/>' + '</div>'
+                    html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a[i].pictures[j] + '"/>' + '</div>'
                 }
             }
             html = html + '</div>';
