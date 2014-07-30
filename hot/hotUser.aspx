@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hotUser.aspx.cs" Inherits="hot_hotUser" EnableEventValidation="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hotUser.aspx.cs" Inherits="hot_hotUser" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
