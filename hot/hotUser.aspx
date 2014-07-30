@@ -14,7 +14,7 @@
         .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
         .right_ad{float:right;font-size:10px;padding-right:10px}
         .hot_user_item{width:700px;position:relative}
-        .hot_user_title{width:100%;margin-bottom:10px;padding-left:30px;font-size:15px}
+        .hot_user_title{width:100%;margin-bottom:10px;padding-left:30px;font-size:15px;margin-top:30px}
         .hot_users{width:310px;float:left;margin-left:30px;margin-bottom:30px;position:relative;height:150px;border:1px solid gray}
         .hot_user_head{width:70px;float:left;position:relative}
         .hot_user_img{width:50px;height:50px;margin-top:20px;margin-left:10px}

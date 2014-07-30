@@ -9,6 +9,13 @@
     <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
+        .hot_user_box{width:100%;padding-top:5px 10px}
+        .ad_box{width:100%;position:relative;height:20px;}
+        .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
+        .right_ad{float:right;font-size:10px;padding-right:10px}
+        .hot_topic_title{width:100%;padding-left:2em;height:20px;margin-top:30px;}
+        .topic_box{width:100%;min-height:500px}
+        .topic_item{width:100%;margin-top:20px;padding-left:4em}
     </style>
 </head>
 <body class="background">
@@ -69,6 +76,27 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
+            <div class="ad_box">
+                <div class="left_ad">这里您可以看到最近最热门的话题</div>
+                <div class="right_ad">帮助？</div>
+            </div>
+            <div class="hot_topic_title">
+                最近热门话题
+            </div>
+            <div class="topic_box" runat="server">
+                <div class="topic_item">
+                    ·<a>#红红火火#</a>
+                </div>
+                <div class="topic_item">
+                    ·<a>#恍恍惚惚#</a>
+                </div>
+                <div class="topic_item">
+                    ·<a>#哈哈哈哈#</a>
+                </div>
+                <div class="topic_item">
+                    ·<a>#火火火火#</a>
+                </div>
+            </div>
         </div>
         <div class="right_column">
         </div>
