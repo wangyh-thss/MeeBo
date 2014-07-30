@@ -106,9 +106,6 @@
             <div class="send_MeeBo_Box">
                 <div class="home_send_top">
                     <div class="home_send_title"></div>
-                    <div class="send_hot">
-                        <a style="font-size:12px">今日热门：八次男神宣布将再战影视圈!!</a>
-                    </div>
                 </div>
                 <div class="send_box">
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
