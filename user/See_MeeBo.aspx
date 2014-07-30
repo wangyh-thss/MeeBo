@@ -136,8 +136,6 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <hr class="line3"/>
                 <div class="single_MeeBo">
                     <div class="my_head">
                         <div class="head_potrait">
@@ -154,8 +152,6 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <hr class="line2"/>
 
         </div>
         <div class="right_column">
