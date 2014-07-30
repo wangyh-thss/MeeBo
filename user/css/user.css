@@ -231,6 +231,10 @@
     width: 44px;
     height: 8px;
     margin-top: -6px;
+    background-image:url('../../image/icon.png');
+    background-position-x: -500px;
+    background-position-y: -75px;
+    margin-left:5px;
 }
 
 

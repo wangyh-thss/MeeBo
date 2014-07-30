@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人主页</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-    <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/getMeeBo.js"></script>
     <style type="text/css">

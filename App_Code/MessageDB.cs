@@ -155,7 +155,7 @@ namespace MeeboDb
 			    data.MakeInParam("@MFromUID",  SqlDbType.UniqueIdentifier, 16 ,myFromID),
                 data.MakeInParam("@MToUID",  SqlDbType.UniqueIdentifier, 16 ,myToID),
 			};
-            DataSet ds = data.GetData("select * from [Message] where ((MFromUID IN (@MFromUID,@MToUID) AND (MToUID in (@MToUID,@MFromUID))", prams, tbName);
+            DataSet ds = data.GetData("select * from [Message] where (MFromUID IN (@MFromUID,@MToUID)) AND (MToUID in (@MToUID,@MFromUID))", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
