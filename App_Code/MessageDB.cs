@@ -167,7 +167,7 @@ namespace MeeboDb
             {
 			    data.MakeInParam("@MToUID",  SqlDbType.UniqueIdentifier, 16 ,myToID),
 			};
-            DataSet ds = data.GetData("select * from [Message] where MID in(select MID MAX(MDate) from(select * from [Message] where (MToUID = @MToUID) group by MFromUID)", prams, tbName);
+            DataSet ds = data.GetData("select * from [Message] as a where a.MDate = (select MAX(MDate) from (select * from [Message] where (MToUID = @MToUID )) doubi where MFromUID = a.MFromUID)", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
