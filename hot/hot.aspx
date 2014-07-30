@@ -36,7 +36,7 @@
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
+                            <asp:ImageButton ID="submit_find" ImageUrl="~/image/search.png" runat="server" OnClick="search_click" style="width:25px; height:25px;" tabindex="2"/>
                         </th>
                     </tr>
                  </table>
@@ -69,7 +69,10 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
-            
+             <div class="middle_title">
+                <p class="middle_title_text">热门微博</p>
+                <div class="middle_title_bottom​" style="margin-left:14px;"></div>
+            </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
