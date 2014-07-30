@@ -97,7 +97,7 @@
             <div class="hot_user_box">
                 <div class="hot_user_item">
                     <div class="hot_user_title">
-                        人气最高的用户:
+                        以下是搜索结果：
                     </div>
                     <div class="hot_user_container">
                         <div class="hot_users">
