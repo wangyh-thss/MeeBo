@@ -99,133 +99,21 @@
                     <div class="hot_user_title">
                         人气最高的用户:
                     </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img1" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="hot_user0" runat="server">耿米多维奇</a>
+                    <div class="hot_user_container">
+                        <div class="hot_users">
+                            <div class="hot_user_head">
+                                <img id="Img1" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
                             </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div id="Div1" class="hot_user_detail" runat="server">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img2" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="hot_user1" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                <div class="hot_user_detail_item">关注5</div>
-                                <div class="hot_user_detail_item">粉丝100</div>
-                                <div class="hot_user_detail_item_right">MeeBo20</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img3" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A1" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img4" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A2" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img5" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A3" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img6" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A4" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img7" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A5" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img8" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A6" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
+                            <div class="hot_user_info">
+                                <div class="hot_user_name">
+                                    <a id="hot_user0" runat="server">耿米多维奇</a>
+                                </div>
+                                <div class="hot_user_describe">
+                                    这个人很懒，什么都没留下
+                                </div>
+                                <div id="Div1" class="hot_user_detail" runat="server">
+                                    关注5|粉丝100|MeeBo20
+                                </div>
                             </div>
                         </div>
                     </div>

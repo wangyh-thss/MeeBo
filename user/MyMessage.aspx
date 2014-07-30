@@ -10,6 +10,7 @@
     <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
+        .user_name {padding-top:0px}
     </style>
     <script type="text/javascript" src="js/MyMessage.js"></script>
 </head>
