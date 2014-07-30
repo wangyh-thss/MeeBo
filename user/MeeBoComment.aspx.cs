@@ -107,6 +107,28 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             }
             Response.Redirect("~/user/MeeBoComment.aspx");
         }
+        else
+        {
+            NewsDB newsDb = new NewsDB();
+            newsDb.UserID = (Guid)Session["id"];
+            newsDb.TransmitInf = this.TextBox1.Text;
+            Guid transID = newsDb.Transmit((Guid)Session["commentMeeboID"]);
+            Regex atRegex = new Regex("@[^\x20]* ");
+            MatchCollection atSomeone = atRegex.Matches(this.TextBox1.Text);
+            UserDB atUserNickName = new UserDB();
+            AtDB atDb = new AtDB();
+            for (int i = 0; i < atSomeone.Count; i++)
+            {
+                string atNickname = atSomeone[i].ToString().Replace("@", "");
+                atUserNickName.SearchByNickName("atNickname", atNickname);
+                atDb.Type = false;
+                atDb.UserID = atUserNickName.ID;
+                atDb.FromUserID = (Guid)Session["id"];
+                atDb.FromID = transID;
+                atDb.Insert();
+            }
+            Response.Redirect("~/user/MeeBoComment.aspx");
+        }
     }
 
     protected void zan_Click(object sender, EventArgs e)

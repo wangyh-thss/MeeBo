@@ -104,7 +104,7 @@ public partial class user_MySave : System.Web.UI.Page
             saveDb.Insert();
         }
         NewsDB newsDb = new NewsDB();
-        Response.Redirect("~/user/PersonalPage.aspx");
+        Response.Redirect("~/user/Mysave.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)

@@ -116,7 +116,7 @@
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
                     <div class="select_whom">你想发送给：</div>
                     <asp:TextBox ID="send_target" runat="server" style="width:100px;float:left"/>
-                    <asp:Button ID="send_out" Text="发起私信" runat="server" style="width:70px; float:right"/>
+                    <asp:Button ID="send_out" Text="发起私信" runat="server" style="width:70px; float:right" OnClick="send_out_Click"/>
                 </div>
             </div>
             <hr class="line2" />
@@ -136,7 +136,7 @@
                         </div>
                         <div class="MeeBo_detail">
                             <div class="see_Message">
-                                <asp:Button ID="See_Message" Text="查看详细" runat="server" style="width:80px; float:right"/>
+                                <asp:Button ID="See_Message" Text="查看详细" runat="server" style="width:80px; float:right" OnClick="See_Message_Click"/>
                             </div>
                             <div class="Message_time">
                                 今天15:11
