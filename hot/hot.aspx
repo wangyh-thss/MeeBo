@@ -9,10 +9,6 @@
      <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
-    <style type="text/css">
-        .single_MeeBo{height:169px}
-    </style>
-    <!--没有图片singleMeeBo是92px-->
 </head>
 <body class="background">
     <form id="Form1" name="form" method="post" runat="server">
