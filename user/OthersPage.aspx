@@ -11,6 +11,21 @@
     <style type="text/css">
     </style>
     <script type="text/javascript" src="js/MyAndOtherPage.js"></script>
+    <style>.trans_content{width:630px;float:left}
+        .trans_userid{width:630px;font-size:15px;margin-bottom:5px}
+        .trans_com{width:630px;font-size:12px;margin-bottom:5px}
+        .origin_content {
+float: left;
+position: relative;
+width: 590px;
+border: 1px solid #888888;
+margin: 10px 10px;
+padding: 5px 15px;
+background: #fafafa;
+border-radius: 10px;
+margin-left:0px;
+}
+    </style>
 </head>
 <body class="background">
     <form id="form1" runat="server">
