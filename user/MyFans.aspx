@@ -136,24 +136,10 @@
                                 <div class="hot_user_detail">
                                     关注5|粉丝100|MeeBo20
                                 </div>
-
-                    <div class="hot_users">
-                        <div class="hot_user_head">
-                            <img id="Img8" runat="server" src="../image/head_potrait.jpg" class="hot_user_img" />
-                        </div>
-                        <div class="hot_user_info">
-                            <div class="hot_user_name">
-                                <a id="A6" runat="server">耿米多维奇</a>
-                            </div>
-                            <div class="hot_user_describe">
-                                这个人很懒，什么都没留下
-                            </div>
-                            <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
-
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
