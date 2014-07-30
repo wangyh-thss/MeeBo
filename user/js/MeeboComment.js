@@ -14,7 +14,7 @@
     else
         var save = "收藏";
     Meebo_box = Meebo_box + '<div class="MeeBo_detail"><div class="MeeBo_time">' + json.Meebo.time + '</div>'
-    Meebo_box = Meebo_box + '<div class="CTA">' + '<a runat="server" id="zan" onclick="javascript:__doPostBack(\'zan_btn\',\'' + json.Meebo.MeeboID + '\')">赞</a>(' + json.Meebo.praise + ')|<a runat="server" id="repost" onclick="javascript:__doPostBack(\'repost_btn\',\'' + json.Meebo.MeeboID + '\')">转发</a>(' + json.Meebo.repost + ')|<a runat="server" id="comment" onclick="javascript:__doPostBack(\'comment_btn\',\'' + json.Meebo.MeeboID + '\')">评论</a>(' + json.Meebo.comment + ')' + ')|<a runat="server" id="save" onclick="javascript:__doPostBack(\'save_btn\',\'' + json.Meebo.MeeboID + '\')">'+ save +'</a>(' + json.Meebo.save + ')' + ' </div>';
+    Meebo_box = Meebo_box + '<div class="CTA">' + '<div class = "MeeBo_detail_item"><a runat="server" id="zan" onclick="javascript:__doPostBack(\'zan_btn\',\'' + json.Meebo.MeeboID + '\')">赞(' + json.Meebo.praise + ')</a></div><div class = "MeeBo_detail_item"><a runat="server" id="repost" onclick="javascript:__doPostBack(\'repost_btn\',\'' + json.Meebo.MeeboID + '\')">转发(' + json.Meebo.repost + ')</a></div><div class = "MeeBo_detail_item"><a runat="server" id="comment" onclick="javascript:__doPostBack(\'comment_btn\',\'' + json.Meebo.MeeboID + '\')">评论(' + json.Meebo.comment + ')</a></div><div class = "MeeBo_detail_item item_no_border"><a runat="server" id="save" onclick="javascript:__doPostBack(\'save_btn\',\'' + json.Meebo.MeeboID + '\')">' + save + '(' + json.Meebo.save + ')' + ' </a></div></div>';
     Meebo_box = Meebo_box + '</div></div></div>';
 
     document.getElementsByClassName("MeeBo_Box")[0].innerHTML = Meebo_box;
