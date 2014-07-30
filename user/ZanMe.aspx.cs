@@ -57,6 +57,11 @@ public partial class user_ZanMe : System.Web.UI.Page
 
 
         user.SearchByID("user", (Guid)Session["id"]);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getZanMe(" + json + ")", true);
     }
 

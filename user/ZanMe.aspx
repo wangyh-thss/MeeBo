@@ -149,7 +149,7 @@
                         <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
                     </div>
                     <div class ="person_nickname">
-                         <a>黑黑的张导</a>
+                         <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
                         </div>
                     </div>
                 <ul class= "person_data">

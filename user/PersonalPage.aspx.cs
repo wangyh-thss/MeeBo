@@ -30,7 +30,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
         LikeDB like = new LikeDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
-        user.SearchByName((string)Session["name"], "result");
+        user.SearchByID("user", (Guid)Session["id"]);
             
         DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
         foreach(DataRow followUser in follow.Tables["follow"].Rows)
@@ -95,6 +95,11 @@ public partial class user_PersonalPage : System.Web.UI.Page
             
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
 
     protected void SendOut_Click(object sender, EventArgs e)

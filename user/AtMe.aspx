@@ -14,7 +14,7 @@
         .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
         .at_box {width:100%}
         .single_at{width:80%;margin:auto;padding:10px 10px}
-        .at_a {text-decoration:underline;}
+        .at_a {text-decoration:underline;cursor:pointer;}
         .at_info{width:100%;position:relative}
         .at_head{width:60px;float:left}
         .head_img0{width:50px;height:50px}
@@ -143,6 +143,48 @@
             </div>
         </div>
         <div class="right_column">
+            <div class="right_item">
+                <div class ="person_info">
+                    <div class ="person_img">
+                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                    </div>
+                    <div class ="person_nickname">
+                         <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
+                        </div>
+                    </div>
+                <ul class= "person_data">
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="LikeNum">
+                                10
+                                </div>
+                            <div>
+                                <a class ="person_data_name">关注</a>
+                            </div>
+                            </a>
+                        </li>
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="FansNum">
+                                15
+                                </div>
+                            <div>
+                                <a class ="person_data_name">粉丝</a>
+                                </div>
+                            </a>
+                        </li>
+                    <li class= "data_li_noright">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="MeeBoNum">
+                                5
+                                </div>
+                            <div>
+                                <a class ="person_data_name">微博</a>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
         <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>

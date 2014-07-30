@@ -70,6 +70,13 @@ public partial class user_AtMe : System.Web.UI.Page
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getAtMe(" + json + ")", true);
         atDb.clearUncheck((Guid)Session["id"]);
+        UserDB user = new UserDB();
+        user.SearchByID("user", (Guid)Session["id"]);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
 
     protected void go_user_Click(object sender, EventArgs e)

@@ -49,6 +49,13 @@ public partial class user_CommentMe : System.Web.UI.Page
         string json = array.ToString();
         comDb.clearUncheck((Guid)Session["id"]);
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getCommentMe(" + json + ")", true);
+        UserDB user = new UserDB();
+        user.SearchByID("user", (Guid)Session["id"]);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
 
     protected void go_user_Click(object sender, EventArgs e)

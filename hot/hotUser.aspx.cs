@@ -15,8 +15,6 @@ public partial class hot_hotUser : System.Web.UI.Page
     protected string btnUserID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["name"] == null)
-            Response.Redirect("~/Login.aspx");
         hotUser = new UserDB();
         if (IsPostBack)
         {
@@ -30,18 +28,17 @@ public partial class hot_hotUser : System.Web.UI.Page
             JObject singleUserInfo = new JObject();
             singleUserInfo.Add(new JProperty("head", singleUser["UHeadPortrait"].ToString().Replace("~", "..")));
             singleUserInfo.Add(new JProperty("nickname", singleUser["UNickname"]));
-            singleUserInfo.Add(new JProperty("UID", singleUser["UID"]));
+            singleUserInfo.Add(new JProperty("userID", singleUser["UID"]));
             singleUserInfo.Add(new JProperty("gender", singleUser["UGender"]));
             singleUserInfo.Add(new JProperty("birthday", singleUser["UBirthday"]));
             singleUserInfo.Add(new JProperty("fansNum", singleUser["UFansNum"]));
-            singleUserInfo.Add(new JProperty("followNum", singleUser["ULikesNum"]));
-            singleUserInfo.Add(new JProperty("MeeboNum", singleUser["UNewsNum"]));
+            singleUserInfo.Add(new JProperty("likesNum", singleUser["ULikesNum"]));
+            singleUserInfo.Add(new JProperty("newsNum", singleUser["UNewsNum"]));
             JList.Add(singleUserInfo);
             num++;
         }
         JArray array = new JArray(
                 from item in JList
-                orderby item["time"] descending
                 select new JObject(item)
                 );
         string json = array.ToString();

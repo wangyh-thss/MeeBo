@@ -77,7 +77,7 @@ namespace MeeboDb
                 row["NVisible"] = Visible;
             }
             ds.Tables["thisNews"].Rows.Add(row);
-            thisUser.ChangeNewsNum(UserID, -1);
+            thisUser.ChangeNewsNum(UserID, 1);
             data.UpdateData("select * from [News] ", ds, "thisNews");
             return ID;
         }

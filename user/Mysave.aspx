@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MySave.aspx.cs" Inherits="user_MySave" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MySave.aspx.cs" Inherits="user_MySave" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -23,7 +23,7 @@
         .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
     </style>
-    <script type="text/javascript" src="js/MySave.js"></script>
+    <script type="text/javascript" src="js/getMeeBo.js"></script>
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">
@@ -168,8 +168,54 @@
             </div>
         </div>
         <div class="right_column">
+            <div class="right_item">
+                <div class ="person_info">
+                    <div class ="person_img">
+                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                    </div>
+                    <div class ="person_nickname">
+                         <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
+                        </div>
+                    </div>
+                <ul class= "person_data">
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="LikeNum">
+                                10
+                                </div>
+                            <div>
+                                <a class ="person_data_name">关注</a>
+                            </div>
+                            </a>
+                        </li>
+                    <li class= "data_li">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="FansNum">
+                                15
+                                </div>
+                            <div>
+                                <a class ="person_data_name">粉丝</a>
+                                </div>
+                            </a>
+                        </li>
+                    <li class= "data_li_noright">
+                        <a>
+                            <div class ="person_data_number" runat="server" id="MeeBoNum">
+                                5
+                                </div>
+                            <div>
+                                <a class ="person_data_name">微博</a>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
-          </form>
+         <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+    </form>
 </body>
 </html>

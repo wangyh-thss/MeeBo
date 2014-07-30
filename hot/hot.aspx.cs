@@ -15,8 +15,6 @@ public partial class hot_hot : System.Web.UI.Page
     protected string btnNewsID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["name"] == null)
-            Response.Redirect("~/Login.aspx");
         newsDb = new NewsDB();
         UserDB user = new UserDB();
         if (IsPostBack)
@@ -58,6 +56,8 @@ public partial class hot_hot : System.Web.UI.Page
 
     protected void zan_Click(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         PraiseDB praiseDb = new PraiseDB();
         praiseDb.UserID = (Guid)Session["id"];
         praiseDb.NewsID = new Guid(this.btnNewsID);
@@ -71,6 +71,8 @@ public partial class hot_hot : System.Web.UI.Page
 
     protected void repost_Click(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         Session["commentMeeboID"] = new Guid(this.btnNewsID);
         Session["commentType"] = "repost";
         Response.Redirect("~/user/MeeBoComment.aspx");
@@ -78,6 +80,8 @@ public partial class hot_hot : System.Web.UI.Page
 
     protected void comment_Click(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         Session["commentMeeboID"] = new Guid(this.btnNewsID);
         Session["commentType"] = "comment";
         Response.Redirect("~/user/MeeBoComment.aspx");
@@ -85,6 +89,8 @@ public partial class hot_hot : System.Web.UI.Page
 
     protected void save_Click(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         SaveDB saveDb = new SaveDB();
         saveDb.UserID = (Guid)Session["id"];
         saveDb.NewsID = new Guid(this.btnNewsID);
@@ -95,6 +101,8 @@ public partial class hot_hot : System.Web.UI.Page
 
     protected void search_click(object sender, EventArgs e)
     {
+        if (Session["name"] == null)
+            Response.Redirect("~/Login.aspx");
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
