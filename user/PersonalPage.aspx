@@ -126,7 +126,7 @@
             </div>
             <div class="middle_title">
                 <p class="middle_title_text">MeeBo</p>
-                <div class="middle_title_bottom​"></div>
+                <div class="middle_title_bottom​" style="margin-left:10px;"></div>
             </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
