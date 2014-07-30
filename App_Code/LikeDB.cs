@@ -121,6 +121,19 @@ namespace MeeboDb
             return ds;
         }
 
+        //搜索某用户的所有粉丝
+        public DataSet SearchByStarID(string tbName, Guid myStarID)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@LFanUID",SqlDbType.UniqueIdentifier,16,myStarID),
+                data.MakeInParam("@LStarUID",SqlDbType.UniqueIdentifier,16,myStarID),
+			};
+            DataSet ds = data.GetData("select * from [Like] where (LFanUID <> @LFanUID) AND (LStarUID = @LStarUID)", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
         //搜索某用户的某分组关注
         public DataSet SearchByFanIDAndGroup(string tbName, Guid myFanID,string myGroup)
         {

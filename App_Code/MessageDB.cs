@@ -160,14 +160,14 @@ namespace MeeboDb
             return ds;
         }
 
-        //查找一个用户的他收到的私信（每个人只取最近的）
+        //查找一个用户的私信（每个人只取最近的）
         public DataSet SearchNewByToID(Guid myToID, string tbName)
         {
             SqlParameter[] prams = 
             {
 			    data.MakeInParam("@MToUID",  SqlDbType.UniqueIdentifier, 16 ,myToID),
 			};
-            DataSet ds = data.GetData("select * from [Message] where MID in(select MID MAX(MDate) from(select * from [Message] where MToUID = @MToUID ) group by MFromUID)", prams, tbName);
+            DataSet ds = data.GetData("select * from [Message] where MID in(select MID MAX(MDate) from(select * from [Message] where (MToUID = @MToUID) group by MFromUID)", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
