@@ -93,7 +93,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                         string[] picUrl = originNewsInfo.ContentP.Split(';');
                         singleNewsInfo.Add(new JProperty("originPictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
                     }
-                    singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date));
+                    singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date.ToString()));
                 }
                 JList.Add(singleNewsInfo);
                 num++;

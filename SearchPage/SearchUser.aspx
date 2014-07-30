@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchUser.aspx.cs" Inherits="SearchPage_SearchUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchUser.aspx.cs" Inherits="SearchPage_SearchUser" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 

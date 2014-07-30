@@ -11,10 +11,15 @@ using MeeboDb;
 
 public partial class SearchPage_SearchUser : System.Web.UI.Page
 {
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
+        if (IsPostBack)
+        {
+            btnID = Request.Form["__EVENTARGUMENT"];
+        }
         UserDB userDb = new UserDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
@@ -40,5 +45,11 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
                 );
 
         string json = array.ToString();
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }
