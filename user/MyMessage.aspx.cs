@@ -80,4 +80,9 @@ public partial class user_MyMessage : System.Web.UI.Page
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
     }
+    protected void see_detail_btn_Click(object sender, EventArgs e)
+    {
+        Session["seeMeeboID"] = new Guid(this.btnID);
+        Response.Redirect("~/user/See_MeeBo.aspx");
+    }
 }

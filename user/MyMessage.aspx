@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyMessage.aspx.cs" Inherits="user_MyMessage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyMessage.aspx.cs" Inherits="user_MyMessage" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -187,6 +187,8 @@
             </div>
         </div>
     </div>
+         
+         <asp:LinkButton runat="server" ID="see_detail_btn" OnClick="see_detail_btn_Click"></asp:LinkButton>
      </form>
 </body>
 </html>

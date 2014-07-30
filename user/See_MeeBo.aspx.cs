@@ -44,6 +44,7 @@ public partial class user_See_MeeBo : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMessage(" + json + ")", true);
     }
 
     protected void send_out_Click(object sender, EventArgs e)

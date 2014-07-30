@@ -18,6 +18,10 @@ public partial class user_OthersPage : System.Web.UI.Page
             Response.Redirect("~/Login.aspx");
         if(Session["otherName"] == null)
             this.RegisterClientScriptBlock("E", "<script language=javascript>history.go(-2);</script>");
+        if ((Guid)Session["otherName"] == (Guid)Session["id"])
+        {
+            Response.Redirect("~/user/MyMeeBo.aspx");
+        }
         if (IsPostBack)
             this.btnNewsID = Request.Form["__EVENTARGUMENT"];
 
