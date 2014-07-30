@@ -9,22 +9,6 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .upper_message {width:100%;height:40px;font-size:10px;position:relative}
-        .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
-        .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
-        .hot_user_box{width:100%;padding-top:5px 10px}
-        .ad_box{width:100%;position:relative;height:20px;}
-        .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
-        .right_ad{float:right;font-size:10px;padding-right:10px}
-        .hot_user_item{width:700px;position:relative}
-        .hot_user_title{width:100%;margin-bottom:10px;padding-left:30px;font-size:15px;margin-top:30px}
-        .hot_users{width:310px;float:left;margin-left:30px;margin-bottom:30px;position:relative;height:150px;border:1px solid gray;border-radius:10px;background:#f0f0f0}
-        .hot_user_head{width:70px;float:left;position:relative}
-        .hot_user_img{width:50px;height:50px;margin-top:20px;margin-left:10px}
-        .hot_user_info{width:240px;height:200px;float:left}
-        .hot_user_name{width:100%;height:50px;padding-top:20px}
-        .hot_user_describe{width:100%;height:50px;}
-        .hot_user_detail{width:100%;height:30px;}
     </style>
     <script type="text/javascript" src="js/getMyLikes.js"></script>
 </head>

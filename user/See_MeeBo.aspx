@@ -9,13 +9,6 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .send_box{position:relative;margin-bottom:75px}
-        .select_whom{float:left;font-size:10px;margin-top:5px}
-        .Message_time{float:left;margin-bottom:15px}
-        .my_head{float:right;width:50px;padding-left:20px}
-        .my_content{width:560px;height:20px;padding:2em,4em;font-size:12px;margin-bottom:5px;text-align:right}
-        .Message_time{float:right;text-align:right;padding-left:2em}
-        .my_detail{width:560px;text-align:left;font-size:12px}
     </style>
 </head>
 <body class="background">

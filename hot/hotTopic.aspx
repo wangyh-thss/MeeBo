@@ -9,14 +9,6 @@
     <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .hot_user_box{width:100%;padding-top:5px 10px}
-        .ad_box{width:100%;position:relative;height:20px;}
-        .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
-        .right_ad{float:right;font-size:10px;padding-right:10px}
-        .topic_container{width:80%;overflow:hidden;margin:auto;font-family:"微软雅黑";}
-        .hot_topic_title{width:100%;padding-left:2em;height:20px;margin-top:30px;}
-        .topic_box{width:100%;min-height:500px;}
-        .topic_item{width:100%;margin-top:20px;padding-left:4em}
     </style>
 </head>
 <body class="background">

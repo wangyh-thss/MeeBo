@@ -232,3 +232,87 @@
     height: 8px;
     margin-top: -6px;
 }
+
+
+
+
+        .upper_message {width:100%;height:40px;font-size:10px;position:relative}
+        .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
+        .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
+        .hot_user_box{width:100%;padding-top:5px 10px}
+        .ad_box{width:100%;position:relative;height:20px;}
+        .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
+        .right_ad{float:right;font-size:10px;padding-right:10px}
+        .hot_user_item{width:700px;position:relative}
+        .hot_user_title{width:100%;margin-bottom:10px;padding-left:30px;font-size:15px;margin-top:30px}
+        .hot_users{width:310px;float:left;margin-left:30px;margin-bottom:30px;position:relative;height:150px;border:1px solid gray;border-radius:10px;background:#f0f0f0;font-family:"微软雅黑"}
+        .hot_user_head{width:70px;float:left;position:relative}
+        .hot_user_img{width:50px;height:50px;margin-top:20px;margin-left:10px}
+        .hot_user_info{width:240px;height:200px;float:left}
+        .hot_user_name{width:100%;height:50px;padding-top:20px}
+        .hot_user_describe{width:100%;height:50px;}
+        .hot_user_detail{width:100%;height:30px;position:relative}
+        .hot_user_detail_item {float:left;border-right:1px solid #888888;padding:1px 5px;font-size:12px;color:blue}
+        .hot_user_detail_item_right{float:left;padding:1px 5px;font-size:12px;color:blue}
+        .topic_container{width:80%;overflow:hidden;margin:auto;font-family:"微软雅黑";}
+        .hot_topic_title{width:100%;padding-left:2em;height:20px;margin-top:30px;}
+        .topic_box{width:100%;min-height:500px;}
+        .topic_item{width:100%;margin-top:20px;padding-left:4em}
+        .at_box {width:100%}
+        .single_at{width:80%;margin:auto;padding:10px 10px}
+        .at_a {text-decoration:underline;cursor:pointer;}
+        .at_info{width:100%;position:relative}
+        .at_head{width:60px;float:left}
+        .head_img0{width:50px;height:50px}
+        .at_content{width:500px;float:left}
+        .who_at{width:100%}
+        .at_what{width:100%;font-size:12px}
+        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
+        .Comment_Box {width:100%;margin:auto;margin-top:45px}
+        .single_Comment{width:90%;margin:auto;position:relative;margin-top:15px}
+        .Comment_user {width:60px;float:left;padding-top:5px}
+        .Comment_img{width:40px;height:40px}
+        .Comment_content {width:570px;float:left}
+        .Comment_userID {width:100%;font-size:20px;}
+        .Comment_text{width:100%;font-size:15px;color:#777777}
+        .Comment_detail {width:100%;position:relative}
+        .Comment_time{width:30%;float:left}
+        .Comment_floor{width:30px;float:right}
+        .detail_font{width:100%;font-size:8px}
+        .trans_or_com{width:100%;position:relative;height:25px}
+        .choose{width:160px;float:left;font-size:8px}
+        .queren{width:65px;float:right}
+        
+        .send_box{position:relative;margin-bottom:75px}
+        .select_whom{float:left;font-size:10px;margin-top:5px}
+        .Message_time{float:left;margin-bottom:15px}
+        .see_Message{float:right;text-align:right;margin-bottom:15px}
+        .my_head{float:right;width:50px;padding-left:20px}
+        .my_content{width:560px;height:20px;padding:2em,4em;font-size:12px;margin-bottom:5px;text-align:right}
+        .Message_time{float:right;text-align:right;padding-left:2em}
+        .my_detail{width:560px;text-align:left;font-size:12px}
+        
+        .user_info{width:1005px;height:250px;margin-left:45px;float:left;background:#f5f5f5;margin-bottom:5px;position:relative}
+        .user_MeeBo {width:750px;min-height:500px;margin-left:45px;float:left;background:#fafafa}
+        .something_else{width:250px;min-height:500px;margin-left:5px;float:left;background:#f0f0f0}
+        .user_head{width:150px;margin-left:50px;margin-right:50px;margin-top:25px;float:left;}
+        .user_head_potrait{width:150px;height:150px;}
+        .user_about{width:750px;height:200px;float:left;position:relative}
+        .user_name{width:200px;height:50px;padding-top:25px;float:left }
+        .like_button{width:500px;height:50px;margin-left:50px;padding-top:25px;float:left }
+        .user_describe{width:750px;height:100px;}
+        .user_tag{width:750px;height:50px;position:relative;font-size:15px;}
+        .user_gender{width:250px;height:20px;float:left}
+        .user_birthday{width:250px;height:20px;float:right}
+        .user_community{width:750px;height:100px}
+        .interest{width:230px;padding:10px 10px}
+        .interest_list{width:100%;padding-left:2em}
+        .interest_item{width:100%;margin-top:15px}
+        .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #e6e6e6;}
+        .trans_user_head{width:70px;float:left}
+        .trans_content{width:560px;float:left}
+        .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
+        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
+        .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}

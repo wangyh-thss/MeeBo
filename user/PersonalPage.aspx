@@ -10,14 +10,7 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/getMeeBo.js"></script>
     <style type="text/css">
-        .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-color: #e6e6e6;}
-        .trans_user_head{width:70px;float:left}
-        .trans_content{width:560px;float:left}
-        .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
-        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
-        .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}
+        
     </style>
 </head>
 <body class="background">

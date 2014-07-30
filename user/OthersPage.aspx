@@ -8,23 +8,6 @@
     <title>查看其他用户</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .user_info{width:1005px;height:250px;margin-left:45px;float:left;background:#f5f5f5;margin-bottom:5px;position:relative}
-        .user_MeeBo {width:750px;min-height:500px;margin-left:45px;float:left;background:#fafafa}
-        .something_else{width:250px;min-height:500px;margin-left:5px;float:left;background:#f0f0f0}
-        .user_head{width:150px;margin-left:50px;margin-right:50px;margin-top:25px;float:left;}
-        .user_head_potrait{width:150px;height:150px;}
-        .user_about{width:750px;height:200px;float:left;position:relative}
-        .user_name{width:200px;height:50px;padding-top:25px;float:left }
-        .like_button{width:500px;height:50px;margin-left:50px;padding-top:25px;float:left }
-        .user_describe{width:750px;height:100px;}
-        .user_tag{width:750px;height:50px;position:relative;font-size:15px;}
-        .user_gender{width:250px;height:20px;float:left}
-        .user_birthday{width:250px;height:20px;float:right}
-        .user_community{width:750px;height:100px}
-        .single_MeeBo{width:90%;margin-top:20px}
-        .interest{width:230px;padding:10px 10px}
-        .interest_list{width:100%;padding-left:2em}
-        .interest_item{width:100%;margin-top:15px}
     </style>
 </head>
 <body class="background">

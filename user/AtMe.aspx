@@ -9,19 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
      <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-         .upper_message {width:100%;height:40px;font-size:10px;position:relative}
-        .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
-        .news_box{width:40%;font-size:10px;float:right;text-align:right;padding:5px 5px;margin-right:5px}
-        .at_box {width:100%}
-        .single_at{width:80%;margin:auto;padding:10px 10px}
-        .at_a {text-decoration:underline;cursor:pointer;}
-        .at_info{width:100%;position:relative}
-        .at_head{width:60px;float:left}
-        .head_img0{width:50px;height:50px}
-        .at_content{width:500px;float:left}
-        .who_at{width:100%}
-        .at_what{width:100%;font-size:12px}
-        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
+         
     </style>
     <script type="text/javascript" src="js/getAtMe.js"></script>
 </head>

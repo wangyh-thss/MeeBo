@@ -9,10 +9,6 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .send_box{position:relative;margin-bottom:75px}
-        .select_whom{float:left;font-size:10px;margin-top:5px}
-        .Message_time{float:left;margin-bottom:15px}
-        .see_Message{float:right;text-align:right;margin-bottom:15px}
     </style>
     <script type="text/javascript" src="js/MyMessage.js"></script>
 </head>
