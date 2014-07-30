@@ -117,7 +117,7 @@
                 </div>
                 <div class="send_box">
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
-                    <asp:Button ID="send_out" Text="回复" runat="server" style="width:60px; float:right"/>
+                    <asp:Button ID="send_out" Text="回复" runat="server" style="width:60px; float:right" OnClick="send_out_Click"/>
                 </div>
             </div>
             <hr class="line2" />

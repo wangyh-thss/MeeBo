@@ -40,6 +40,7 @@ public partial class user_MyMessage : System.Web.UI.Page
                 );
         string json = array.ToString();
         msgDb.clearUncheck((Guid)Session["id"]);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "pageLoad(" + json + ")", true);
     }
 
 

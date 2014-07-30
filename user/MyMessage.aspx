@@ -14,6 +14,7 @@
         .Message_time{float:left;margin-bottom:15px}
         .see_Message{float:right;text-align:right;margin-bottom:15px}
     </style>
+    <script type="text/javascript" src="js/MyMessage.js"></script>
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">
