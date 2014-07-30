@@ -191,7 +191,7 @@ namespace MeeboDb
                 ContentT = ds.Tables[tbName].Rows[0]["NContentT"].ToString();
                 ContentP = ds.Tables[tbName].Rows[0]["NContentP"].ToString();
                 Topic = ds.Tables[tbName].Rows[0]["NTopic"].ToString();
-                Date = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["NDate"].ToString()).Date;
+                Date = Convert.ToDateTime(ds.Tables[tbName].Rows[0]["NDate"].ToString());
                 UserID = new Guid(ds.Tables[tbName].Rows[0]["NUserID"].ToString());
                 ProNum = (int)ds.Tables[tbName].Rows[0]["NProNum"];
                 ComNum = (int)ds.Tables[tbName].Rows[0]["NComNum"];
