@@ -19,13 +19,16 @@ public partial class user_MeeBoComment : System.Web.UI.Page
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
-        if (Session["commentType"] == "repost")
-            this.send_type.Items.FindByValue("0").Selected = true;
-        else
-            this.send_type.Items.FindByValue("1").Selected = true;
         if (IsPostBack)
         {
             this.btnID = Request.Form["__EVENTARGUMENT"];
+        }
+        else
+        {
+            if (Session["commentType"] == "repost")
+                this.send_type.Items.FindByValue("0").Selected = true;
+            else
+                this.send_type.Items.FindByValue("1").Selected = true;
         }
         newsDb = new NewsDB();
         comDb = new CommentDB();
@@ -81,7 +84,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
     }
     protected void post_Click(object sender, EventArgs e)
     {
-        if (this.send_type.SelectedValue == "1") //评论
+        if (this.send_type.SelectedItem.Value == "1") //评论
         {
             CommentDB comToSend = new CommentDB();
             NewsDB commentedMeebo = new NewsDB();
@@ -182,6 +185,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
 
     protected void user_Click(object sender, EventArgs e)
     {
-        //Response.Redirect("~/user/MeeBoComment.aspx");
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }

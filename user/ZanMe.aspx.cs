@@ -67,7 +67,8 @@ public partial class user_ZanMe : System.Web.UI.Page
 
     protected void go_user_Click(object sender, EventArgs e)
     {
-
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 
     protected void go_MeeBo_Click(object sender, EventArgs e)

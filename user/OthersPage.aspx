@@ -7,8 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>查看其他用户</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <link href="css/another.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
+    <script type="text/javascript" src="js/MyAndOtherPage.js"></script>
 </head>
 <body class="background">
     <form id="form1" runat="server">
@@ -45,12 +47,13 @@
     <div class="wrapper">
         <div class="user_info">
             <div class="user_head">
-                <img src="../image/head_potrait.jpg" class="user_head_potrait" />
+                <!-- <img src="../image/head_potrait.jpg" class="user_head_potrait" /> -->
+                <asp:Image ID="userHead" ImageUrl="../image/head_potrait.jpg" runat="server" class="user_head_potrait" />
                 <div class="user_community">
                     <ul class= "person_data">
                     <li class= "data_li">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" id="likesNum" runat="server">
                                 10
                                 </div>
                             <div>
@@ -60,7 +63,7 @@
                         </li>
                     <li class= "data_li">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" id="fansNum" runat="server">
                                 15
                                 </div>
                             <div>
@@ -70,7 +73,7 @@
                         </li>
                     <li class= "data_li_noright">
                         <a>
-                            <div class ="person_data_number">
+                            <div class ="person_data_number" id ="newsNum" runat="server">
                                 5
                                 </div>
                             <div>
@@ -83,20 +86,20 @@
             </div>
             <div class="user_about">
                 <div class="user_name">
-                    <a id="user_nickname" style="font-size:25px">黑黑的张导</a>
+                    <a id="user_nickname" style="font-size:25px" runat="server">黑黑的张导</a>
                 </div>
                 <div class="like_button">
-                    <asp:Button ID="like" Text="+关注" runat="server" style="width:60px;margin-top:5px"/>
+                    <asp:Button ID="like" Text="+关注" runat="server" style="width:70px;margin-top:5px" OnClick="like_Click"/>
                 </div>
                 <div class="user_describe">
                     <p>这个人很懒，什么都没留下（您可以通过发送私信的方式联系他来填写个人简介）</p>
                 </div>
                 <div class="user_tag">
                     <div class="user_gender">
-                        <p>性别：男</p>
+                        <p>性别：<span id="gender" runat="server">男</span></p>
                     </div>
                     <div class="user_birthday">
-                        <p>生日：XXXX年XX月XX日</p>
+                        <p>生日：<span id="birthday" runat="server">XXXX年XX月XX日</span></p>
                     </div>
                 </div>
             </div>
@@ -131,7 +134,7 @@
                             <div class="CTA">
                                 <a>赞</a>(100)|<a>转发</a>(2)|<a>评论</a>(3)|<a>收藏</a>(3)
                             </div>
-                        </div>
+                        </div>  
                 </div>
                 <hr class="line2" />
             </div>

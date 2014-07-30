@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>热门话题</title>
     <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
+    <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>

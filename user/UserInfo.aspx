@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>个人资料</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
         .p1 {font-size: 120%;font-family: "Times New Roman"}

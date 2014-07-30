@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MeeBoComment.aspx.cs" Inherits="user_MeeBoComment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MeeBoComment.aspx.cs" Inherits="user_MeeBoComment" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>评论页面</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
+    <link href="css/another.css" type="text/css" rel="stylesheet" />
      <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         
