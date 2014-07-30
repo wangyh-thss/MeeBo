@@ -178,7 +178,7 @@
                     </div>
                 <ul class= "person_data">
                     <li class= "data_li">
-                        <a href="MyLikes.aspx">
+                        <a class="right_item_a" href="MyLikes.aspx">
                             <div class ="person_data_number" runat="server" id="LikeNum">
                                 10
                                 </div>
@@ -186,7 +186,7 @@
                             </a>
                         </li>
                     <li class= "data_li">
-                        <a  href="MyFans.aspx">
+                        <a  class="right_item_a" href="MyFans.aspx">
                             <div class ="person_data_number" runat="server" id="FansNum">
                                 15
                                 </div>
@@ -194,7 +194,7 @@
                             </a>
                         </li>
                     <li class= "data_li_noright">
-                        <a href="MyMeeBo.aspx">
+                        <a class="right_item_a" href="MyMeeBo.aspx">
                             <div class ="person_data_number" runat="server" id="MeeBoNum">
                                 5
                                 </div>
