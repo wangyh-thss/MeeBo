@@ -355,7 +355,7 @@ namespace MeeboDb
                 data.MakeInParam("@NTransmitInf",  SqlDbType.Text, 2147483647 ,"%"+Word+ "%"),
                 data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
 			};
-            DataSet ds = data.GetData("select * from [News] where (((NContentT like @NContent) AND (NIsTransmit = @NIsTransmit )) OR ((NTransmitInf = @NTransmitInf) AND (NIsTransmit <> @NIsTransmit ))) AND (NDelete = @NDelete)", prams, tbName);
+            DataSet ds = data.GetData("select * from [News] where (((NContentT like @NContent) AND (NIsTransmit = @NIsTransmit )) OR ((NTransmitInf like @NTransmitInf) AND (NIsTransmit <> @NIsTransmit ))) AND (NDelete = @NDelete)", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }

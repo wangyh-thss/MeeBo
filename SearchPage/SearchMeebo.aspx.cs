@@ -27,7 +27,7 @@ public partial class SearchPage_SearchMeebp : System.Web.UI.Page
         NewsDB originNewsInfo;
         List<JObject> JList = new List<JObject>();
         int num = 0;
-        DataSet newsSet = newsDb.SearchOriginalByContent((string)Session["searchWord"], "news");
+        DataSet newsSet = newsDb.SearchByContent((string)Session["searchWord"], "news");
         foreach (DataRow singleNews in newsSet.Tables["news"].Rows)
         {
             JObject singleNewsInfo = new JObject();
@@ -37,6 +37,7 @@ public partial class SearchPage_SearchMeebp : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("type", "Meebo"));
                 singleNewsInfo.Add(new JProperty("head", userDb.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", userDb.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", userDb.ID));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
                 if (singleNews["NContentP"].ToString() != string.Empty)
