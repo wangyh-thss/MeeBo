@@ -13,8 +13,9 @@
         .something_else{width:250px;min-height:500px;margin-left:5px;float:left;background:#f0f0f0}
         .user_head{width:150px;margin-left:50px;margin-right:50px;margin-top:25px;float:left;}
         .user_head_potrait{width:150px;height:150px;}
-        .user_about{width:750px;height:200px;float:left}
-        .user_name{width:750px;height:50px;padding-top:25px}
+        .user_about{width:750px;height:200px;float:left;position:relative}
+        .user_name{width:200px;height:50px;padding-top:25px;float:left }
+        .like_button{width:500px;height:50px;margin-left:50px;padding-top:25px;float:left }
         .user_describe{width:750px;height:100px;}
         .user_tag{width:750px;height:50px;position:relative;font-size:15px;}
         .user_gender{width:250px;height:20px;float:left}
@@ -100,6 +101,9 @@
             <div class="user_about">
                 <div class="user_name">
                     <a id="user_nickname" style="font-size:25px">黑黑的张导</a>
+                </div>
+                <div class="like_button">
+                    <asp:Button ID="like" Text="+关注" runat="server" style="width:60px;margin-top:5px"/>
                 </div>
                 <div class="user_describe">
                     <p>这个人很懒，什么都没留下（您可以通过发送私信的方式联系他来填写个人简介）</p>
