@@ -178,33 +178,27 @@
                     </div>
                 <ul class= "person_data">
                     <li class= "data_li">
-                        <a>
+                        <a href="MyLikes.aspx">
                             <div class ="person_data_number" runat="server" id="LikeNum">
                                 10
                                 </div>
-                            <div>
-                                <a class ="person_data_name">关注</a>
-                            </div>
+                            <div class ="person_data_name">关注</div>
                             </a>
                         </li>
                     <li class= "data_li">
-                        <a>
+                        <a  href="MyFans.aspx">
                             <div class ="person_data_number" runat="server" id="FansNum">
                                 15
                                 </div>
-                            <div>
-                                <a class ="person_data_name">粉丝</a>
-                                </div>
+                            <div class ="person_data_name">粉丝</div>
                             </a>
                         </li>
                     <li class= "data_li_noright">
-                        <a>
+                        <a href="MyMeeBo.aspx">
                             <div class ="person_data_number" runat="server" id="MeeBoNum">
                                 5
                                 </div>
-                            <div>
-                                <a class ="person_data_name">微博</a>
-                                </div>
+                            <div class ="person_data_name">微博</div>
                             </a>
                         </li>
                     </ul>
