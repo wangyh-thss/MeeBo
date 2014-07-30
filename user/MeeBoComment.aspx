@@ -103,6 +103,10 @@
             </div>
         </div>
         <div class="middle_column">
+             <div class="middle_title">
+                <p class="middle_title_text">评论</p>
+                <div class="middle_title_bottom​" style="margin-left:6px;"></div>
+            </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
