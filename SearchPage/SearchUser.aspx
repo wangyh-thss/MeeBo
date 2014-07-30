@@ -8,6 +8,7 @@
     <title></title>
 <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
+    <link href="css/Search.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
