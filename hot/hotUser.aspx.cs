@@ -42,6 +42,7 @@ public partial class hot_hotUser : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getUsers(" + json + ")", true);
     }
     protected void go_user_Click(object sender, EventArgs e)
     {

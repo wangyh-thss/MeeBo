@@ -30,9 +30,9 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
             userDb.SearchByID("singleUser", (Guid)singleUser["UID"]);
             singleUserInfo.Add(new JProperty("head", userDb.HeadPortrait.Replace("~", "..")));
             singleUserInfo.Add(new JProperty("nickname", userDb.Nickname));
-            singleUserInfo.Add(new JProperty("followNum", userDb.LikesNum));
+            singleUserInfo.Add(new JProperty("likesNum", userDb.LikesNum));
             singleUserInfo.Add(new JProperty("fansNum", userDb.FansNum));
-            singleUserInfo.Add(new JProperty("MeeboNum", userDb.NewsNum));
+            singleUserInfo.Add(new JProperty("newsNum", userDb.NewsNum));
             singleUserInfo.Add(new JProperty("gender", userDb.Gender));  //0(false)女 1(true)男
             singleUserInfo.Add(new JProperty("birthday", userDb.Birthday));
             JList.Add(singleUserInfo);
@@ -45,6 +45,7 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
                 );
 
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getUsers(" + json + ")", true);
     }
 
     protected void go_user_Click(object sender, EventArgs e)

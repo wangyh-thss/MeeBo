@@ -86,7 +86,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     originUser = new UserDB();
                     originUser.SearchByID("originUser", originNewsInfo.UserID);
                     singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
-                    singleNewsInfo.Add(new JProperty("originUserID", originNewsInfo.ID));
+                    singleNewsInfo.Add(new JProperty("originUserID", originUser.ID));
                     singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
                     if (originNewsInfo.ContentP != string.Empty)
                     {
