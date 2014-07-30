@@ -18,7 +18,7 @@
 }
 .line3 {margin-top:5px; width:100%; color:#999999}
 .background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
-.header {width:100%;position:fixed;background: #68bde1;height:40px;z-index:3;}
+.header {width:100%;position:fixed;background: #68bde1;height:40px;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#68bde1), to(#c8e1f0));z-index:3;}
 .headbody{width:1100px;margin: auto;position:relative;height:40px}
     .logo {font-family:"华文隶书";font-size:40px;margin-top:0px;float:left;width:140px;padding-left:30px;}
     .logoText{padding:0px 0px 0px 0px;height:40px;margin:0px;}
