@@ -7,7 +7,15 @@
 }
 	
 .line {margin-left:10%;margin-top:5px; width:80%; color:#999999}
-.line2 {margin-left:5%;margin-top:5px; width:90%; color:#999999}
+
+.line2 
+{
+    margin-left:5%;
+    margin-top:5px; 
+    width:90%; 
+    height:1px;
+    color:#e6e6e6;
+}
 .line3 {margin-top:5px; width:100%; color:#999999}
 .background {background: #c8e1f0;margin-top: 0px;margin-left: 0px;}
 .header {width:100%;position:fixed;background: #68bde1;height:40px;z-index:3;}
@@ -34,26 +42,33 @@
     .person_data_number{font-size: 20px;margin-bottom:5px;font-family: tahoma;color: #333;font-weight:600; position:relative;}
     .person_data_name{font-size: 14px;color: #333; position:relative;}
     .person_potrait_img{position: relative;width:80px;height:80px;}
-     a {text-decoration: none;color:black;}
+     a {text-decoration: none;}
      a:link {color: #000000}
      a:hover {color: blue}
+
 .left_item_a
 {
     height:20px;
     width:143px;
     margin-bottom:20px;
+    color:black;
 }
+
 .left_item_word
 {
     font-size:16px;
+    color:black;
 }
+
 .icon
 {
     margin-right:10px;
     float:left;
     font-size:20px;
-    font-family: 'FontAwesome';
+    width:20px;
+    color:black;
 }
+
 
 .right_item_a
 {
@@ -66,34 +81,108 @@
 	 
 	 
 	 .send_MeeBo_Box {width:100%;padding-top: 5px;position:relative}
-        .send_title {width:40%; font-family:"Times New Roman"; font-size:10px;float:left;padding-left:4em}
-        .send_hot {width:40%; font-family:"Times New Roman"; font-size:10px;float:right;padding-left:1em}
+
+.send_title
+{
+    width:40%; 
+    font-family:"Times New Roman"; 
+    font-size:10px;
+    float:left;
+    padding-left:4em;
+}
+
+.home_send_title
+{
+    width:250px; 
+    height:26px;
+    float:left;
+    margin-left:50px;
+    background-image:url('../../image/news.png');
+    background-repeat:no-repeat;
+}
+
+.home_send_top
+{
+    width:100%; 
+    height:26px;
+    margin-bottom:15px;
+}
+
+.send_hot
+{
+    padding-top:10px;
+    width:40%;
+    font-family:"Times New Roman"; 
+    font-size:10px;
+    float:right;
+    padding-left:1em
+}
         .send_box { width:90%;margin:auto;}
         .MeeBo_Box{ width:630px;margin:auto;position:relative;margin-top:10px;margin-bottom:10px}
+
 .single_MeeBo
 {
-    overflow:hidden;
     width:100%;
     position:relative;
-    margin-bottom:20px;
-    border-bottom-width: 2px;
+    overflow:auto;
+    padding-bottom:15px;
+    margin-top:15px;
+    border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-color: #e6e6e6;
+    border-color:#e6e6e6;
 }
         .MeeBo_user{ width:70px;float:left}
         .head_potrait{ width:50px;}
         .MeeBo_content{width:560px;float:left;position:relative}
-        .user_id{width:100%;height:20px;font-size:15px;color:blue;margin-bottom:5px}
+
+.user_id
+{
+    width:100%;
+    height:20px;
+    color:blue;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
         .potrait_img {width: 50px;height: 50px;}
-        .text_content{width:100%;height:40px;padding:2em,4em;font-size:12px;margin-bottom:5px}
+.text_content
+{
+    width:100%;
+    height:20px;
+    margin-bottom:5px;
+    font-size: 14px;
+    line-height: 23px;
+    padding-bottom:15px;
+}
         .picture_content {width:100%;position:relative;margin-bottom:5px }
         .MeeBo_img{width:75px;height:75px;float:left;margin-right:5px }
         .MeeBo_detail{width:100%;position:relative;margin-bottom:5px;font-size:10px;}
         .detail-font{color:blue;font-size:10px;}
-        .MeeBo_time{float:left;width:40%;margin-bottom:10px}
-        .CTA{float:right;margin-bottom:10px;cursor:pointer;}
+
+.MeeBo_time
+{
+    float:left;
+    width:40%;
+    margin-bottom:10px;
+    color: #6cbae4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+
+}
+
+.CTA{
+    float:right;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #0a8cd2;
+}
         .picture_view{position:relative;width:500px;margin:auto}
         .single_pic_view{float:left;width:50px;height:50px;margin-left:25px;margin-right:25px}
+
 .strongPage
-{color:red;
+{
+    color:red;
 }
