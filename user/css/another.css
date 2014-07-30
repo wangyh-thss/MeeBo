@@ -20,16 +20,6 @@
         .hot_topic_title{width:100%;padding-left:2em;height:20px;margin-top:30px;}
         .topic_box{width:100%;min-height:500px;}
         .topic_item{width:100%;margin-top:20px;padding-left:4em}
-        .at_box {width:100%}
-        .single_at{width:80%;margin:auto;padding:10px 10px;border-bottom:1px solid #888888;overflow:hidden;margin-bottom:10px}
-        .at_a {text-decoration:underline;cursor:pointer;}
-        .at_info{width:100%;position:relative}
-        .at_head{width:60px;float:left}
-        .head_img0{width:50px;height:50px}
-        .at_content{width:500px;float:left}
-        .who_at{width:100%}
-        .at_what{width:100%;font-size:12px}
-        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
         .Comment_Box {width:100%;margin:auto;margin-top:45px}
         .single_Comment{width:90%;margin:auto;position:relative;margin-top:15px}
         .Comment_user {width:60px;float:left;padding-top:5px}
@@ -70,9 +60,26 @@
         .interest{width:230px;padding:10px 10px}
         .interest_list{width:100%;padding-left:2em}
         .interest_item{width:100%;margin-top:15px}
+
+        .at_box {width:100%}
+        .single_at{width:80%;margin:auto;padding:10px 10px;border-bottom:1px solid #888888;overflow:hidden;margin-bottom:10px}
+        .at_a {text-decoration:underline;cursor:pointer;}
+        .at_info{width:100%;position:relative}
+        .at_head{width:60px;float:left}
+        .head_img0{width:50px;height:50px}
+        .at_content{width:500px;float:left}
+        .who_at{width:100%}
+        .at_what{width:100%;font-size:12px}
+        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
+
+
+
         .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
     border-bottom-style: solid;
     border-color: #e6e6e6;margin-top:15px}
+
+
+
         .trans_user_head{width:70px;float:left}
         .trans_content{width:560px;float:left}
         .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
