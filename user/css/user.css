@@ -266,7 +266,7 @@
     font-weight: bold;
     line-height: 16px;
     font-family: Arial, Helvetica, sans-serif;}
-        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
+.trans_com{width:100%;font-size:12px;margin-bottom:5px}
 .origin_content{float:left;position:relative;width:510px;border:1px solid #888888;margin:10px;padding:5px 15px;background: #fafafa;border-radius: 10px;margin-left:0px;}
 
 .at_box {width:100%;margin-bottom:10px;}
