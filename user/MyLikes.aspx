@@ -11,7 +11,7 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
-    <script type="text/javascript" src="js/getMyLikes.js"></script>
+    <script type="text/javascript" src="js/getUsers.js"></script>
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">
@@ -183,6 +183,8 @@
             </div>
         </div>
     </div>
+         
+        <asp:LinkButton runat="server" ID="getUser_btn" OnClick="go_user_Click"></asp:LinkButton>
     </form>
 </body>
 </html>

@@ -7,30 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
+    <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
     <style type="text/css">
-        .search_box{width:700px;overflow:hidden;position:relative}
-        .search_text_box{width:400px;float:left;margin-left:100px}
-        .search_button_box{width:150px;float:left;margin-left:50px}
-        .search_type{width:700px;height:30px;position:relative;padding-left:100px;margin-bottom:15px}
-        .type_item{width:50px;margin-right:50px;float:left}
-        .now_choose{font-family:"微软雅黑";color:red;font-size:20px}
-        .no_choose{font-family:"微软雅黑";font-size:20px}
-        .hot_user_box{width:100%;padding-top:5px 10px}
-        .ad_box{width:100%;position:relative;height:20px;}
-        .left_ad{float:left;font-size:10px;color:#888888;padding-left:10px;}
-        .right_ad{float:right;font-size:10px;padding-right:10px}
-        .hot_user_item{width:700px;position:relative}
-        .hot_user_title{width:100%;margin-bottom:10px;padding-left:30px;font-size:15px;margin-top:30px}
-        .hot_users{width:310px;float:left;margin-left:30px;margin-bottom:30px;position:relative;height:150px;border:1px solid gray;border-radius:10px;background:#f0f0f0}
-        .hot_user_head{width:70px;float:left;position:relative}
-        .hot_user_img{width:50px;height:50px;margin-top:20px;margin-left:10px}
-        .hot_user_info{width:240px;height:200px;float:left}
-        .hot_user_name{width:100%;height:50px;padding-top:20px}
-        .hot_user_describe{width:100%;height:50px;}
-        .hot_user_detail{width:100%;height:30px;}
     </style>
+    <script type="text/javascript" src="../user/js/getUsers.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="form" method="post" runat="server">
@@ -145,7 +126,9 @@
                                 这个人很懒，什么都没留下
                             </div>
                             <div class="hot_user_detail">
-                                关注5|粉丝100|MeeBo20
+                                <div class="hot_user_detail_item">关注5</div>
+                                <div class="hot_user_detail_item">粉丝100</div>
+                                <div class="hot_user_detail_item_right">MeeBo20</div>
                             </div>
                         </div>
                     </div>
@@ -252,6 +235,7 @@
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="getUser_btn" OnClick="go_user_Click"></asp:LinkButton>
    </form>
 </body>
 </html>

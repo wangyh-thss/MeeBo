@@ -11,6 +11,8 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
+    
+    <script type="text/javascript" src="../user/js/getUsers.js"></script>
 </head>
 <body class="background">
     <form id="Form1" name="form" method="post" runat="server">
@@ -91,7 +93,9 @@
                                 这个人很懒，什么都没留下
                             </div>
                             <div class="hot_user_detail" runat="server">
-                                关注5|粉丝100|MeeBo20
+                                <div class="hot_user_detail_item">关注5</div>
+                                <div class="hot_user_detail_item">粉丝100</div>
+                                <div class="hot_user_detail_item_right">MeeBo20</div>
                             </div>
                         </div>
                     </div>
@@ -214,6 +218,7 @@
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="getUser_btn" OnClick="go_user_Click"></asp:LinkButton>
         </form>
 </body>
 </html>
