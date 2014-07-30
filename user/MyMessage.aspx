@@ -117,7 +117,6 @@
                     <asp:Button ID="send_out" Text="发起私信" runat="server" style="width:70px; float:right" OnClick="send_out_Click"/>
                 </div>
             </div>
-            <hr class="line2" />
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
@@ -144,7 +143,6 @@
                 </div>
             </div>
             <br />
-            <hr class="line2"/>
         </div>
         <div class="right_column">
         </div>
