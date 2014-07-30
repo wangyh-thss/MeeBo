@@ -388,5 +388,19 @@ namespace MeeboDb
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
+
+        //按用户ID搜索最近的未被删除的原创Meebo
+        public DataSet SearchLatestOriginalByUserID(Guid myUserID, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+			    data.MakeInParam("@NUserID",  SqlDbType.UniqueIdentifier, 16 ,myUserID),
+                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select top 1 * from [News] where (NUserID = @NUserID) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit) order by NDate", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
     }
 }
