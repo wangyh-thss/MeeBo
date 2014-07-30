@@ -26,7 +26,7 @@
         .choose{width:160px;float:left;font-size:8px}
         .queren{width:65px;float:right}
         
-        .send_box{position:relative;margin-bottom:75px}
+        .send_box{position:relative;}
         .select_whom{float:left;font-size:10px;margin-top:5px}
         .Message_time{float:left;margin-bottom:15px}
         .see_Message{float:right;text-align:right;margin-bottom:15px}
