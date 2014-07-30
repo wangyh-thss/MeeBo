@@ -121,6 +121,7 @@
                     <-->
                 </div>
             </div>
+             <hr class="line2"/>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
@@ -164,7 +165,6 @@
                 </div>
             </div>
             <br />
-            <hr class="line2"/>
         </div>
         <div class="right_column">
             <div class="right_item">
