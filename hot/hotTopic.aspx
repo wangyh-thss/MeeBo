@@ -38,7 +38,7 @@
                             <asp:TextBox ID="find_content" runat="server" maxlength="20" tabindex="1"  />
                         </th>
                         <th>
-                            <asp:Button ID="submit_find" Text="查找" runat="server" style="width:40px; height:20px;" tabindex="2"/>
+                          <asp:ImageButton ID="submit_find" ImageUrl="~/image/search.png" runat="server" OnClick="search_click" style="width:25px; height:25px;" tabindex="2"/>
                         </th>
                     </tr>
                  </table>
@@ -71,6 +71,10 @@
             <hr class="line" />
         </div>
         <div class="middle_column">
+             <div class="middle_title">
+                <p class="middle_title_text">热门话题</p>
+                <div class="middle_title_bottom​" style="margin-left:14px;"></div>
+            </div>
             <div class="ad_box">
                 <div class="left_ad">这里您可以看到最近最热门的话题</div>
                 <div class="right_ad">帮助？</div>
@@ -95,7 +99,43 @@
                 </div>
             </div>
         </div>
-        <div class="right_column">
+       <div class="right_column">
+            <div class="right_item">
+                <div class ="person_info">
+                    <div class ="person_img">
+                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                    </div>
+                    <div class ="person_nickname">
+                         <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
+                        </div>
+                    </div>
+                <ul class= "person_data">
+                    <li class= "data_li">
+                        <a class="right_item_a" href="MyLikes.aspx">
+                            <div class ="person_data_number" runat="server" id="LikeNum">
+                                10
+                                </div>
+                            <div class ="person_data_name">关注</div>
+                            </a>
+                        </li>
+                    <li class= "data_li">
+                        <a  class="right_item_a" href="MyFans.aspx">
+                            <div class ="person_data_number" runat="server" id="FansNum">
+                                15
+                                </div>
+                            <div class ="person_data_name">粉丝</div>
+                            </a>
+                        </li>
+                    <li class= "data_li_noright">
+                        <a class="right_item_a" href="MyMeeBo.aspx">
+                            <div class ="person_data_number" runat="server" id="MeeBoNum">
+                                5
+                                </div>
+                            <div class ="person_data_name">微博</div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
        <asp:LinkButton runat="server" ID="searchTopic_btn" OnClick="searchTopic_btn_Click"></asp:LinkButton>

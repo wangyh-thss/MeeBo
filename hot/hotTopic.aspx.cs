@@ -39,10 +39,25 @@ public partial class hot_hotTopic : System.Web.UI.Page
             );
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getHotTopic(" + json + ")", true);
+        UserDB user = new UserDB();
+        user.SearchByID("user", (Guid)Session["id"]);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
+
     protected void searchTopic_btn_Click(object sender, EventArgs e)
     {
         Session["searchWord"] = this.btnNewsID;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
     }
 }

@@ -30,6 +30,12 @@ public partial class hot_hot : System.Web.UI.Page
         foreach (DataRow singleNews in hotSet.Tables["hotMeebo"].Rows)
         {
             JObject singleNewsInfo = new JObject();
+            user.SearchByID("user", (Guid)Session["id"]);
+            this.myName.InnerText = user.Nickname;
+            this.head_potrait.ImageUrl = user.HeadPortrait;
+            this.LikeNum.InnerText = user.LikesNum.ToString();
+            this.FansNum.InnerText = user.FansNum.ToString();
+            this.MeeBoNum.InnerText = user.NewsNum.ToString();
             user.SearchByID("user", (Guid)singleNews["NUserID"]);
             if (singleNews["NIsTransmit"].ToString() == "False")
             {
@@ -87,6 +93,7 @@ public partial class hot_hot : System.Web.UI.Page
             );
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
+       
     }
 
     protected void zan_Click(object sender, EventArgs e)
