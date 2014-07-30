@@ -86,6 +86,11 @@ public partial class user_MyMeeBo : System.Web.UI.Page
                 );
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeebo(" + json + ")", true);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
     protected void search_click(object sender, EventArgs e)
     {
