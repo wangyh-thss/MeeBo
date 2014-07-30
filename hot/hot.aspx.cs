@@ -92,9 +92,14 @@ public partial class hot_hot : System.Web.UI.Page
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
         SaveDB saveDb = new SaveDB();
-        saveDb.UserID = (Guid)Session["id"];
-        saveDb.NewsID = new Guid(this.btnNewsID);
-        saveDb.Insert();
+        if (saveDb.isSaved((Guid)Session["id"], new Guid(this.btnNewsID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnNewsID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnNewsID);
+            saveDb.Insert();
+        }
         NewsDB newsDb = new NewsDB();
         Response.Redirect("~/user/PersonalPage.aspx");
     }

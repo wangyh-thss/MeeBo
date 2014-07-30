@@ -83,7 +83,7 @@ namespace MeeboDb
             {
                 thisUser.ChangeSaveNewsNum(thisUserID, -1);
                 thisNews.ChangeSaveNum(thisNewsID, -1);
-                ds.Tables["thisSave"].Clear();
+                ds.Tables["thisSave"].Rows[0].Delete();
             }
             data.UpdateData("select * from [Save] where (SUID = @SUID) AND (SNID = @SNID)", prams, ds, "thisSave");
         }

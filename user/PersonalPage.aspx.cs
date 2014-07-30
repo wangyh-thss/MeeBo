@@ -28,6 +28,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
             btnNewsID = Request.Form["__EVENTARGUMENT"];
         }
         LikeDB like = new LikeDB();
+        SaveDB saveDb = new SaveDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         user.SearchByID("user", (Guid)Session["id"]);
@@ -55,6 +56,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
                 singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
                 singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
                 JList.Add(singleNewsInfo);
                 num++;
             }
@@ -242,9 +244,14 @@ public partial class user_PersonalPage : System.Web.UI.Page
     protected void save_Click(object sender, EventArgs e)
     {
         SaveDB saveDb = new SaveDB();
-        saveDb.UserID = (Guid)Session["id"];
-        saveDb.NewsID = new Guid(this.btnNewsID);
-        saveDb.Insert();
+        if(saveDb.isSaved((Guid)Session["id"], new Guid(this.btnNewsID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnNewsID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnNewsID);
+            saveDb.Insert();
+        }
         NewsDB newsDb = new NewsDB();
         Response.Redirect("~/user/PersonalPage.aspx");
     }

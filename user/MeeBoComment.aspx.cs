@@ -51,7 +51,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             orderby item["time"] descending
             select new JObject(item)
             );
-
+        SaveDB saveDb = new SaveDB();
         JObject MeeboInfo = new JObject();
         user.SearchByID("user", newsDb.UserID);
         MeeboInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
@@ -69,6 +69,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         MeeboInfo.Add(new JProperty("comment", newsDb.ComNum));
         MeeboInfo.Add(new JProperty("repost", newsDb.TransmitNum));
         MeeboInfo.Add(new JProperty("save", newsDb.SaveNum));
+        MeeboInfo.Add(new JProperty("isSave", saveDb.isSaved(user.ID, newsDb.ID)));
 
         JObject JsonObj = new JObject();
         JsonObj.Add(new JProperty("Meebo", MeeboInfo));
@@ -138,11 +139,16 @@ public partial class user_MeeBoComment : System.Web.UI.Page
     protected void save_Click(object sender, EventArgs e)
     {
         SaveDB saveDb = new SaveDB();
-        saveDb.UserID = (Guid)Session["id"];
-        saveDb.NewsID = new Guid(this.btnID);
-        saveDb.Insert();
+        if (saveDb.isSaved((Guid)Session["id"], new Guid(this.btnID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnID);
+            saveDb.Insert();
+        }
         NewsDB newsDb = new NewsDB();
-        Response.Redirect("~/user/MeeBoComment.aspx");
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)

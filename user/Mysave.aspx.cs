@@ -44,6 +44,7 @@ public partial class user_MySave : System.Web.UI.Page
             singleNewsInfo.Add(new JProperty("comment", saveNews.ComNum));
             singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));
             singleNewsInfo.Add(new JProperty("save", saveNews.SaveNum));
+            singleNewsInfo.Add(new JProperty("isSave", true));
             JList.Add(singleNewsInfo);
             num++;
         }
@@ -94,11 +95,16 @@ public partial class user_MySave : System.Web.UI.Page
     protected void save_Click(object sender, EventArgs e)
     {
         SaveDB saveDb = new SaveDB();
-        saveDb.UserID = (Guid)Session["id"];
-        saveDb.NewsID = new Guid(this.btnNewsID);
-        saveDb.Insert();
+        if (saveDb.isSaved((Guid)Session["id"], new Guid(this.btnNewsID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnNewsID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnNewsID);
+            saveDb.Insert();
+        }
         NewsDB newsDb = new NewsDB();
-        Response.Redirect("~/user/Mysave.aspx");
+        Response.Redirect("~/user/PersonalPage.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)
