@@ -117,7 +117,7 @@
         <div class="middle_column">
              <div class="upper_message">
                 <div class="at_tips">
-                    最近，共有8人评论了您的MeeBo哦！
+                    最近，有这些人评论了您的MeeBo哦！
                 </div>
                 <div class="news_box">
                     <a>号外：八次男神宣布进入歌唱界！</a>
