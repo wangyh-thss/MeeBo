@@ -37,7 +37,7 @@ public partial class user_MyLikes : System.Web.UI.Page
             singleUserInfo.Add(new JProperty("fansNum", starUser.FansNum));
             singleUserInfo.Add(new JProperty("likesNum", starUser.LikesNum));
             singleUserInfo.Add(new JProperty("newsNum", starUser.NewsNum));
-            singleUserInfo.Add(new JProperty("birthday", starUser.Birthday));
+            singleUserInfo.Add(new JProperty("birthday", starUser.Birthday.ToLongDateString().ToString()));
             singleUserInfo.Add(new JProperty("gender", starUser.Gender));
             JList.Add(singleUserInfo);
         }
@@ -53,5 +53,11 @@ public partial class user_MyLikes : System.Web.UI.Page
     {
         Session["otherName"] = new Guid(this.btnID);
         Response.Redirect("~/user/OthersPage.aspx");
+    }
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
     }
 }

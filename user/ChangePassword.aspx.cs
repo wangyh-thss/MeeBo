@@ -40,4 +40,10 @@ public partial class user_ChangePassword : System.Web.UI.Page
         user.ModifyPassword((Guid)Session["id"], this.change_password.Text);
         Response.Write("<script>alert('修改密码成功')</script>");
     }
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
 }

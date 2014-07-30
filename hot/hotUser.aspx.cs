@@ -30,7 +30,7 @@ public partial class hot_hotUser : System.Web.UI.Page
             singleUserInfo.Add(new JProperty("nickname", singleUser["UNickname"]));
             singleUserInfo.Add(new JProperty("userID", singleUser["UID"]));
             singleUserInfo.Add(new JProperty("gender", singleUser["UGender"]));
-            singleUserInfo.Add(new JProperty("birthday", singleUser["UBirthday"]));
+            singleUserInfo.Add(new JProperty("birthday", ((DateTime)singleUser["UBirthday"]).ToLongDateString().ToString()));
             singleUserInfo.Add(new JProperty("fansNum", singleUser["UFansNum"]));
             singleUserInfo.Add(new JProperty("likesNum", singleUser["ULikesNum"]));
             singleUserInfo.Add(new JProperty("newsNum", singleUser["UNewsNum"]));
