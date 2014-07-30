@@ -129,7 +129,7 @@
                     </div>
                     <div class="MeeBo_content">
                         <div class="user_id">
-                            <a>黑黑的张导</a>
+                            <a class="user_name">黑黑的张导</a>
                         </div>
                         <div class="text_content">
                             嘿嘿嘿嘿
