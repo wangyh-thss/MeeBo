@@ -79,7 +79,7 @@ namespace MeeboDb
 			    data.MakeInParam("@UID",SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select * from [User] where UID = @UID", prams, "thisUser");
-            ds.Tables["thisUser"].Clear();
+            ds.Tables["thisUser"].Rows[0].Delete();
             data.UpdateData("select * from [User] where UID = @UID", prams, ds, "thisUser");
         }
 

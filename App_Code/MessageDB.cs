@@ -67,7 +67,8 @@ namespace MeeboDb
             {
                 thisUser.ChangeMsgInNum(new Guid(ds.Tables["thisMessage"].Rows[0]["MToUID"].ToString()), -1);
                 thisUser.ChangeMsgOutNum(new Guid(ds.Tables["thisMessage"].Rows[0]["MFromUID"].ToString()), -1);
-                ds.Tables["thisMessage"].Clear();
+                ds.Tables["thisMessage"].Rows[0].Delete();
+                data.UpdateData("select * from [Message] where MID = @MID", prams, ds, "thisMessage");
             }
 
 

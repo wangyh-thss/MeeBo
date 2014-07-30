@@ -68,7 +68,7 @@ namespace MeeboDb
             {
                 thisUser.ChangeFansNum(new Guid(ds.Tables["thisLike"].Rows[0]["LStarUID"].ToString()), -1);
                 thisUser.ChangeLikesNum(new Guid(ds.Tables["thisLike"].Rows[0]["LFanUID"].ToString()), -1);
-                ds.Tables["thisLike"].Clear();
+                ds.Tables["thisLike"].Rows[0].Delete();
             }
             data.UpdateData("select * from [Like] where PID = @PID", prams, ds, "thisLike");
         }

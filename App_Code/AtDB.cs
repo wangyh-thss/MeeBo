@@ -66,7 +66,7 @@ namespace MeeboDb
             DataSet ds = data.GetData("select * from [At] where AID = @AID", prams, "thisAt");
             if (ds.Tables["thisAt"].Rows.Count == 1)
             {
-                ds.Tables["thisAt"].Clear();
+                ds.Tables["thisAt"].Rows[0].Delete();
             }
             data.UpdateData("select * from [At] where AID = @AID", prams, ds, "thisAt");
         }

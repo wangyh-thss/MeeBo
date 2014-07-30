@@ -66,7 +66,7 @@ namespace MeeboDb
             if (ds.Tables["thisPraise"].Rows.Count == 1)
             {
                 thisNews.ChangeProNum(new Guid(ds.Tables["thisPraise"].Rows[0]["PNID"].ToString()), -1);
-                ds.Tables["thisPraise"].Clear();
+                ds.Tables["thisPraise"].Rows[0].Delete(); ;
             }
             data.UpdateData("select * from [Praise] where PID = @PID", prams, ds, "thisPraise");
         }

@@ -65,7 +65,7 @@ namespace MeeboDb
             {
                 thisUser.ChangeSaveNewsNum(new Guid(ds.Tables["thisSave"].Rows[0]["SUID"].ToString()), -1);
                 thisNews.ChangeSaveNum(new Guid(ds.Tables["thisSave"].Rows[0]["SNID"].ToString()), -1);
-                ds.Tables["thisSave"].Clear();
+                ds.Tables["thisSave"].Rows[0].Delete();
             }
             data.UpdateData("select * from [Save] where SID = @SID", prams, ds, "thisSave");
         }
@@ -83,7 +83,7 @@ namespace MeeboDb
             {
                 thisUser.ChangeSaveNewsNum(thisUserID, -1);
                 thisNews.ChangeSaveNum(thisNewsID, -1);
-                ds.Tables["thisSave"].Clear();
+                ds.Tables["thisSave"].Rows[0].Delete();
             }
             data.UpdateData("select * from [Save] where (SUID = @SUID) AND (SNID = @SNID)", prams, ds, "thisSave");
         }
@@ -96,6 +96,7 @@ namespace MeeboDb
 			    data.MakeInParam("@SUID",SqlDbType.UniqueIdentifier,16,thisUserID),
 			};
             DataSet ds = data.GetData("select * from [Save] where SUID = @SUID", prams, "thisSave");
+            thisUser.ChangeSaveNewsNum(thisUserID, -ds.Tables["thisSave"].Rows.Count);
             foreach (DataRow SaveRow in ds.Tables["thisSave"].Rows)
             {
                 thisNews.ChangeSaveNum(new Guid(SaveRow["SNID"].ToString()), -1);

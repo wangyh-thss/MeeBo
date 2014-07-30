@@ -59,7 +59,10 @@ namespace MeeboDb
 			    data.MakeInParam("@SenInfo",  SqlDbType.VarChar, 50,MySenInfo),
 			};
             DataSet ds = data.GetData("select * from [SenInfo] where SenInfo = @SenInfo", prams, "thisSenInfo");
-            ds.Clear();
+            if (ds.Tables["thisSenInfo"].Rows.Count == 1)
+            {
+                ds.Tables["thisSenInfo"].Rows[0].Delete();
+            }
             data.UpdateData("select * from [SenInfo]", ds, "thisUser");
         }
 
