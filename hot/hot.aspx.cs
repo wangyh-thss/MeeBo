@@ -22,26 +22,61 @@ public partial class hot_hot : System.Web.UI.Page
             btnNewsID = Request.Form["__EVENTARGUMENT"];
         }
         List<JObject> JList = new List<JObject>();
+        NewsDB originNewsInfo;
+        UserDB originUser;
+        SaveDB saveDb = new SaveDB();
         int num = 0;
-        DataSet hotSet = newsDb.SearchOriginalByTime(7, "hotMeebo");
+        DataSet hotSet = newsDb.SearchByTime(7, "hotMeebo");
         foreach (DataRow singleNews in hotSet.Tables["hotMeebo"].Rows)
         {
             JObject singleNewsInfo = new JObject();
             user.SearchByID("user", (Guid)singleNews["NUserID"]);
-            singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
-            singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
-            singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
-            singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
-            if (singleNews["NContentP"].ToString() != string.Empty)
+            if (singleNews["NIsTransmit"].ToString() == "False")
             {
-                string[] picUrl = singleNews["NContentP"].ToString().Split(';');
-                singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                singleNewsInfo.Add(new JProperty("type", "Meebo"));
+                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
+                if (singleNews["NContentP"].ToString() != string.Empty)
+                {
+                    string[] picUrl = singleNews["NContentP"].ToString().Split(';');
+                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
+                singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
             }
-            singleNewsInfo.Add(new JProperty("time", singleNews["NDate"]));
-            singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
-            singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
-            singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
-            singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+            else
+            {
+                singleNewsInfo.Add(new JProperty("type", "trans"));
+                singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", user.ID));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                singleNewsInfo.Add(new JProperty("content", singleNews["NTransmitInf"]));
+                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
+                singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
+                originNewsInfo = new NewsDB();
+                originNewsInfo.SearchByID((Guid)singleNews["NFrom"], "originNews");
+                originUser = new UserDB();
+                originUser.SearchByID("originUser", originNewsInfo.UserID);
+                singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
+                singleNewsInfo.Add(new JProperty("originUserID", originUser.ID));
+                singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
+                if (originNewsInfo.ContentP != string.Empty)
+                {
+                    string[] picUrl = originNewsInfo.ContentP.Split(';');
+                    singleNewsInfo.Add(new JProperty("originPictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date.ToString()));
+            }
             JList.Add(singleNewsInfo);
             num++;
         }
@@ -50,8 +85,8 @@ public partial class hot_hot : System.Web.UI.Page
             orderby (int)item["praise"]+(int)item["comment"]+(int)item["repost"]+(int)item["save"] descending
             select new JObject(item)
             );
-
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
     }
 
     protected void zan_Click(object sender, EventArgs e)
