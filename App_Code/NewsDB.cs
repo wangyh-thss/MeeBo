@@ -374,6 +374,19 @@ namespace MeeboDb
             return ds;
         }
 
+        //按时间搜索未被删除的Meebo
+        public DataSet SearchByTime(int dayNum, string tbName)
+        {
+            SqlParameter[] prams = 
+            {
+                data.MakeInParam("@NDate",  SqlDbType.DateTime, 8 ,DateTime.Now.AddDays(-dayNum)),
+                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
+			};
+            DataSet ds = data.GetData("select * from [News] where (NDate > @NDate)  AND (NDelete = @NDelete) order by NDate DESC", prams, tbName);
+            SearchNumber = ds.Tables[tbName].Rows.Count;
+            return ds;
+        }
+
         //按时间和主题搜索未被删除的原创Meebo
         public DataSet SearchOriginalByTimeAndTopic(int dayNum , string topic, string tbName)
         {
