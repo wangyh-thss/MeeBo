@@ -86,4 +86,10 @@ public partial class UserInfo : System.Web.UI.Page
             return;
         }
     }
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
 }

@@ -113,4 +113,10 @@ public partial class user_OthersPage : System.Web.UI.Page
         }
         Response.Redirect("~/user/OthersPage.aspx");
     }
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
 }
