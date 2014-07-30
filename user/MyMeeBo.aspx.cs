@@ -12,12 +12,21 @@ using MeeboDb;
 public partial class user_MyMeeBo : System.Web.UI.Page
 {
     protected NewsDB newsDb;
+    protected string btnID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
             Response.Redirect("~/Login.aspx");
+        if (IsPostBack)
+        {
+            btnID = Request.Form["__EVENTARGUMENT"];
+        }
         newsDb = new NewsDB();
         UserDB user = new UserDB();
+        NewsDB newsInfo = new NewsDB();
+        NewsDB originNewsInfo = new NewsDB();
+        UserDB originUser = new UserDB();
+        SaveDB saveDb = new SaveDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         DataSet newsSet = newsDb.SearchUnDeleteByUserID((Guid)Session["id"], "news");
@@ -25,16 +34,48 @@ public partial class user_MyMeeBo : System.Web.UI.Page
         foreach (DataRow singleNews in newsSet.Tables["news"].Rows)
         {
             JObject singleNewsInfo = new JObject();
-            singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
-            singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
-            singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"]));
-            singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
-            singleNewsInfo.Add(new JProperty("pictures", singleNews["NContentP"]));
-            singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
-            singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
-            singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
-            singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
-            singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+            if (singleNews["NIsTransmit"].ToString() == "False")
+            {
+                newsInfo.SearchByID((Guid)singleNews["NID"], "news");
+                singleNewsInfo.Add(new JProperty("type", "Meebo"));
+                singleNewsInfo.Add(new JProperty("content", newsInfo.ContentT));
+                singleNewsInfo.Add(new JProperty("MeeboID", newsInfo.ID));
+                if (newsInfo.ContentP != string.Empty)
+                {
+                    string[] picUrl = newsInfo.ContentP.Split(';');
+                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("time", newsInfo.Date.ToString()));
+                singleNewsInfo.Add(new JProperty("praiseNum", newsInfo.ProNum));
+                singleNewsInfo.Add(new JProperty("comNum", newsInfo.ComNum));
+                singleNewsInfo.Add(new JProperty("transNum", newsInfo.TransmitNum));
+                singleNewsInfo.Add(new JProperty("saveNum", newsInfo.SaveNum));
+                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], newsInfo.ID)));
+                }
+            else
+            {
+                newsInfo.SearchByID((Guid)singleNews["NID"], "news");
+                originNewsInfo.SearchByID(newsInfo.From, "originNews");
+                singleNewsInfo.Add(new JProperty("type", "trans"));
+                singleNewsInfo.Add(new JProperty("content", newsInfo.TransmitInf));
+                singleNewsInfo.Add(new JProperty("MeeboID", newsInfo.ID));
+                singleNewsInfo.Add(new JProperty("time", newsInfo.Date.ToString()));
+                singleNewsInfo.Add(new JProperty("praiseNum", newsInfo.ProNum));
+                singleNewsInfo.Add(new JProperty("comNum", newsInfo.ComNum));
+                singleNewsInfo.Add(new JProperty("transNum", newsInfo.TransmitNum));
+                singleNewsInfo.Add(new JProperty("saveNum", newsInfo.SaveNum));
+                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], newsInfo.ID)));
+                originUser.SearchByID("user", originNewsInfo.UserID);
+                singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
+                singleNewsInfo.Add(new JProperty("originUserID", originUser.ID));
+                singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
+                if (originNewsInfo.ContentP != string.Empty)
+                {
+                    string[] picUrl = originNewsInfo.ContentP.Split(';');
+                    singleNewsInfo.Add(new JProperty("originpictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date.ToString()));
+            }
             JList.Add(singleNewsInfo);
             num++;
         }
@@ -44,11 +85,60 @@ public partial class user_MyMeeBo : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeebo(" + json + ")", true);
     }
     protected void search_click(object sender, EventArgs e)
     {
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+
+    protected void zan_Click(object sender, EventArgs e)
+    {
+        PraiseDB praiseDb = new PraiseDB();
+        praiseDb.UserID = (Guid)Session["id"];
+        praiseDb.NewsID = new Guid(this.btnID);
+        praiseDb.isCheck = false;
+        NewsDB newsDb = new NewsDB();
+        newsDb.SearchByID(new Guid(this.btnID), "result");
+        praiseDb.NewsUserID = newsDb.UserID;
+        praiseDb.Insert();
+        Response.Redirect("~/user/MyMeeBo.aspx");
+    }
+
+    protected void repost_Click(object sender, EventArgs e)
+    {
+        Session["commentMeeboID"] = new Guid(this.btnID);
+        Session["commentType"] = "repost";
+        Response.Redirect("~/user/MeeBoComment.aspx");
+    }
+
+    protected void comment_Click(object sender, EventArgs e)
+    {
+        Session["commentMeeboID"] = new Guid(this.btnID);
+        Session["commentType"] = "comment";
+        Response.Redirect("~/user/MeeBoComment.aspx");
+    }
+
+    protected void save_Click(object sender, EventArgs e)
+    {
+        SaveDB saveDb = new SaveDB();
+        if (saveDb.isSaved((Guid)Session["id"], new Guid(this.btnID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnID);
+            saveDb.Insert();
+        }
+        NewsDB newsDb = new NewsDB();
+        Response.Redirect("~/user/MyMeeBo.aspx");
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }

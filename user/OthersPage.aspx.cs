@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 public partial class user_OthersPage : System.Web.UI.Page
 {
-    protected string btnID;
+    protected string btnNewsID;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["name"] == null)
@@ -19,9 +19,10 @@ public partial class user_OthersPage : System.Web.UI.Page
         if(Session["otherName"] == null)
             this.RegisterClientScriptBlock("E", "<script language=javascript>history.go(-2);</script>");
         if (IsPostBack)
-            this.btnID = Request.Form["__EVENTARGUMENT"];
+            this.btnNewsID = Request.Form["__EVENTARGUMENT"];
 
         UserDB targetUser = new UserDB();
+        UserDB originUser = new UserDB();
         targetUser.SearchByID("user", (Guid)Session["otherName"]);
         this.userHead.ImageUrl = targetUser.HeadPortrait;
         this.user_nickname.InnerText = targetUser.Nickname;
@@ -46,7 +47,7 @@ public partial class user_OthersPage : System.Web.UI.Page
             if (singleNews["NIsTransmit"].ToString() == "False")
             {
                 newsInfo.SearchByID((Guid)singleNews["NID"], "news");
-                singleNewsInfo.Add(new JProperty("type", "MeeBo"));
+                singleNewsInfo.Add(new JProperty("type", "Meebo"));
                 singleNewsInfo.Add(new JProperty("content", newsInfo.ContentT));
                 singleNewsInfo.Add(new JProperty("MeeboID", newsInfo.ID));
                 if (newsInfo.ContentP != string.Empty)
@@ -74,7 +75,9 @@ public partial class user_OthersPage : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("transNum", newsInfo.TransmitNum));
                 singleNewsInfo.Add(new JProperty("saveNum", newsInfo.SaveNum));
                 singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], newsInfo.ID)));
-                singleNewsInfo.Add(new JProperty("originUser", originNewsInfo.userNickName));
+                originUser.SearchByID("user", originNewsInfo.UserID);
+                singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
+                singleNewsInfo.Add(new JProperty("originUserID", originUser.ID));
                 singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
                 if (originNewsInfo.ContentP != string.Empty)
                 {
@@ -83,6 +86,7 @@ public partial class user_OthersPage : System.Web.UI.Page
                 }
                 singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date));
             }
+            JList.Add(singleNewsInfo);
         }
         JArray array = new JArray(
                 from item in JList
@@ -118,5 +122,53 @@ public partial class user_OthersPage : System.Web.UI.Page
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+
+    protected void zan_Click(object sender, EventArgs e)
+    {
+        PraiseDB praiseDb = new PraiseDB();
+        praiseDb.UserID = (Guid)Session["id"];
+        praiseDb.NewsID = new Guid(this.btnNewsID);
+        praiseDb.isCheck = false;
+        NewsDB newsDb = new NewsDB();
+        newsDb.SearchByID(new Guid(this.btnNewsID), "result");
+        praiseDb.NewsUserID = newsDb.UserID;
+        praiseDb.Insert();
+        Response.Redirect("~/user/OthersPage.aspx");
+    }
+
+    protected void repost_Click(object sender, EventArgs e)
+    {
+        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentType"] = "repost";
+        Response.Redirect("~/user/MeeBoComment.aspx");
+    }
+
+    protected void comment_Click(object sender, EventArgs e)
+    {
+        Session["commentMeeboID"] = new Guid(this.btnNewsID);
+        Session["commentType"] = "comment";
+        Response.Redirect("~/user/MeeBoComment.aspx");
+    }
+
+    protected void save_Click(object sender, EventArgs e)
+    {
+        SaveDB saveDb = new SaveDB();
+        if (saveDb.isSaved((Guid)Session["id"], new Guid(this.btnNewsID)))
+            saveDb.Delete((Guid)Session["id"], new Guid(this.btnNewsID));
+        else
+        {
+            saveDb.UserID = (Guid)Session["id"];
+            saveDb.NewsID = new Guid(this.btnNewsID);
+            saveDb.Insert();
+        }
+        NewsDB newsDb = new NewsDB();
+        Response.Redirect("~/user/OthersPage.aspx");
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnNewsID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }

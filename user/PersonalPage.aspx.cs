@@ -293,17 +293,18 @@ public partial class user_PersonalPage : System.Web.UI.Page
         NewsDB newsDb = new NewsDB();
         Response.Redirect("~/user/PersonalPage.aspx");
     }
+    
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnNewsID);
+        Response.Redirect("~/user/OthersPage.aspx");
+    }
 
     protected void search_click(object sender, EventArgs e)
     {
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
-    }
-    protected void go_user_Click(object sender, EventArgs e)
-    {
-        Session["otherName"] = new Guid(this.btnNewsID);
-        Response.Redirect("~/user/OthersPage.aspx");
     }
 }
 
