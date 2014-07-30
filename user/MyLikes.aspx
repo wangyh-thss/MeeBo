@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyLikes.aspx.cs" Inherits="user_MyLikes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyLikes.aspx.cs" Inherits="user_MyLikes" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 

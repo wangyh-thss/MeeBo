@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchMeebo.aspx.cs" Inherits="SearchPage_SearchMeebp" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchMeebo.aspx.cs" Inherits="SearchPage_SearchMeebp" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -26,6 +26,7 @@
         .trans_com{width:560px;font-size:12px;margin-bottom:5px}
         .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}
     </style>
+    <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="form" method="post" runat="server">
@@ -104,7 +105,7 @@
                     <asp:TextBox ID="search_content" runat="server" Width="400px" Height="20px"/>
                 </div>
                 <div class="search_button_box">
-                    <asp:Button ID="go_search" Text="查找" runat="server" style="width:50px; height:26px;"/>
+                    <asp:Button ID="go_search" Text="查找" runat="server" style="width:50px; height:26px;" OnClick="go_search_Click"/>
                 </div>
             </div>
             <div class="MeeBo_Box">
@@ -204,6 +205,11 @@
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
    </form>
 </body>
 </html>

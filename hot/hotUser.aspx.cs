@@ -43,4 +43,9 @@ public partial class hot_hotUser : System.Web.UI.Page
                 );
         string json = array.ToString();
     }
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnUserID);
+        Response.Redirect("~/user/OthersPage.aspx");
+    }
 }
