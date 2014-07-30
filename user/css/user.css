@@ -263,6 +263,17 @@
         .trans_com{width:560px;font-size:12px;margin-bottom:5px}
 .origin_content{float:left;position:relative;width:510px;border:1px solid #888888;margin:10px;padding:5px 15px;background: #fafafa;border-radius: 10px;margin-left:0px;}
 
+.at_box {width:100%}
+        .single_at{width:80%;margin:auto;padding:10px 10px;border-bottom:1px solid #888888;overflow:hidden;margin-bottom:10px}
+        .at_a {text-decoration:underline;cursor:pointer;}
+        .at_info{width:100%;position:relative}
+        .at_head{width:60px;float:left}
+        .head_img0{width:50px;height:50px}
+        .at_content{width:500px;float:left}
+        .who_at{width:100%}
+        .at_what{width:100%;font-size:12px}
+        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
+
 
 
         
