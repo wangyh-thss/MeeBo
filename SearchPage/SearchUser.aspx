@@ -90,7 +90,7 @@
                     <asp:TextBox ID="search_content" runat="server" Width="400px" Height="20px"/>
                 </div>
                 <div class="search_button_box">
-                    <asp:Button ID="go_search" Text="查找" runat="server" style="width:50px; height:26px;"/>
+                    <asp:Button ID="go_search" Text="查找" runat="server" style="width:50px; height:26px;" OnClick="go_search_Click"/>
                 </div>
             </div>
             <div class="hot_user_box">

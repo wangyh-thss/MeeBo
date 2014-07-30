@@ -20,6 +20,8 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
         {
             btnID = Request.Form["__EVENTARGUMENT"];
         }
+        else
+            this.search_content.Text = (string)Session["searchWord"];
         UserDB userDb = new UserDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
@@ -30,6 +32,7 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
             userDb.SearchByID("singleUser", (Guid)singleUser["UID"]);
             singleUserInfo.Add(new JProperty("head", userDb.HeadPortrait.Replace("~", "..")));
             singleUserInfo.Add(new JProperty("nickname", userDb.Nickname));
+            singleUserInfo.Add(new JProperty("userID", userDb.ID));
             singleUserInfo.Add(new JProperty("likesNum", userDb.LikesNum));
             singleUserInfo.Add(new JProperty("fansNum", userDb.FansNum));
             singleUserInfo.Add(new JProperty("newsNum", userDb.NewsNum));
@@ -52,5 +55,10 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
     {
         Session["otherName"] = new Guid(this.btnID);
         Response.Redirect("~/user/OthersPage.aspx");
+    }
+    protected void go_search_Click(object sender, EventArgs e)
+    {
+        Session["searchWord"] = this.search_content.Text;
+        Response.Redirect("~/SearchPage/SearchUser.aspx");
     }
 }
