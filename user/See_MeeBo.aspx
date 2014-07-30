@@ -158,7 +158,6 @@
         <div class="right_column">
         </div>
     </div>
-        <asp:LinkButton runat="server" ID="getUser_btn" OnClick="go_user_Click"></asp:LinkButton>
      </form>
 </body>
 </html>

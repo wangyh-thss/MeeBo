@@ -25,8 +25,51 @@
          #birthday {
              width: 175px;
          }
-         .auto-style1 {
-             width: 48px;
+         .row_item {
+             overflow:hidden;
+             width: 100%;
+             position: relative;
+         }
+         .item1 {
+             padding-top:20px;
+             width: 20%;
+             height:50px;
+             float: left;
+         }
+         .item2 {
+             padding-top:14px;
+             width: 50%;
+             height:50px;
+             float: left;
+         }
+         .item3 {
+             padding-top:17px;
+             width: 30%;
+             height:50px;
+             float: left;
+         }
+         .pic_item {
+             overflow:hidden;
+             width: 100%;
+             position: relative;
+         }
+         .pic_item1 {
+             padding-top:40px;
+             width: 20%;
+             height:100px;
+             float: left;
+         }
+         .pic_item2 {
+             padding-top:14px;
+             width: 35%;
+             height:100px;
+             float: left;
+         }
+         .pic_item3 {
+             padding-top:40px;
+             width: 30%;
+             height:100px;
+             float: left;
          }
     </style>
 </head>
@@ -126,36 +169,25 @@
             <hr class="line" />
             <div class="right_item">
                 
-                    <table class="p3" style="border-spacing:10px 24px; width: 500px; height: 350px; margin-bottom:30px;margin-left:15%">
-                        <tr>
-                            <th class="auto-style1">
+                    <div class="p3" style="border-spacing:10px 24px; width: 500px; height: 350px; margin-bottom:30px;margin-left:15%">
+                        <div class="row_item">
+                            <div class="item1">
                                 昵称：
-                            </th>
-                            <th>
+                            </div>
+                            <div class="item2">
                                 <!-- <input id="nickname" name="nickname" type="text" class="W_input" maxlength="20" tabindex="1"/> -->
                                 <asp:TextBox ID="nickname" runat="server" class="W_input" maxlength="20" tabindex="1" />
-                            </th>
-                            <th>
+                            </div>
+                            <div class="item3">
                                 <div runat="server" id="error_nickname" style="color:red"></div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="auto-style1">
-                                邮箱：
-                            </th>
-                            <th>
-                                <!-- <input id="email" name="email" type="text" class="W_input" maxlength="20" tabindex="2"/> -->
-                                <asp:TextBox ID="email" runat="server" class="W_input" maxlength="20" tabindex="2" />
-                            </th>
-                            <th>
-                                <a style="font-size: 75%; font-weight:lighter; color: red">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 注意：这将是您找回密码的重要凭据。</a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="auto-style1">
+                            </div>
+                        </div>
+                        
+                        <div class="row_item">
+                            <div class="item1">
                                 性别：
-                            </th>
-                            <th>
+                            </div>
+                            <div class="item2">
                                 <!-- <input type="radio" name="gender" value="male" tabindex="3"/> 男
                                 <input type="radio" name="gender" value="female" style="margin-left: 4em" tabindex="4"/> 女 -->
                                 <asp:RadioButtonList ID="gender" runat="server" Height="23px" RepeatDirection="Horizontal" Width="134px">
@@ -163,20 +195,20 @@
                                     <asp:ListItem Value="0">女</asp:ListItem>
 
                                 </asp:RadioButtonList>
-                            </th>
-                        </tr>
-                         <tr>
-                            <th class="auto-style1">
+                            </div>
+                            <div class="item3">
+                            </div>
+                        </div>
+                         <div>
+                            <div class="item1">
                                 生日：
-                            </th>
+                            </div>
                         <!--
                             <th>
                                 <input id="birthday" name="birthday" type="text" class="W_input" maxlength="20" tabindex="5"/>
                             </th>
                         -->
-                             <th>
-                             <table>
-                             <th>
+                             <div class="item2">
                                     <asp:DropDownList ID="year" runat="server">
                                     <asp:ListItem>1980</asp:ListItem>
                                     <asp:ListItem>1981</asp:ListItem>
@@ -214,11 +246,7 @@
                                     <asp:ListItem>2013</asp:ListItem>
                                     <asp:ListItem>2014</asp:ListItem>
                                 </asp:DropDownList>
-                            </th>
-                            <th>
                                 年
-                            </th>
-                            <th>
                                 <asp:DropDownList ID="month" runat="server">
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -233,11 +261,7 @@
                                     <asp:ListItem>11</asp:ListItem>
                                     <asp:ListItem>12</asp:ListItem>
                                 </asp:DropDownList>
-                            </th>
-                            <th>
                                 月
-                            </th>
-                            <th>
                                 <asp:DropDownList ID="day" runat="server">
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -271,28 +295,27 @@
                                     <asp:ListItem>30</asp:ListItem>
                                     <asp:ListItem>31</asp:ListItem>
                                 </asp:DropDownList>
-                            </th>
-                            <th>
                                 日
-                            </th>
-                            </table>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="auto-style1">
+                            </div>
+                             
+                            <div class="item3">
+                            </div>
+                        </div>
+                        <div class="pic_item">
+                            <div class="pic_item1">
                                 头像：
-                            </th>
-                            <th>
+                            </div>
+                            <div class="pic_item2">
                                 <!-- <img id="head_potrait" src="image/head_potrait.jpg" style="height: 80px; width: 80px"/> -->
                                 <asp:Image ID="head_potrait" runat="server" ImageUrl="image/head_potrait.jpg" style="height: 80px; width: 80px"/>
-                            </th>
-                            <th>
+                            </div>
+                            <div class="pic_item3">
                                 <!-- <button id="choose_img" name="choose_img" style="margin-left: 30px;border: none; background: #c8e1f0; border-radius: 2px; padding:3px 3px 3px 3px">选择头像</button> -->
-                                <asp:FileUpload ID="SelectImg" runat="server" Width="65px" style="margin-left:31px;" onchange="javascript:__doPostBack('UploadImg','')"/>
+                                <asp:FileUpload ID="SelectImg" runat="server" Width="70px" style="margin-left:31px;" onchange="javascript:__doPostBack('UploadImg','')"/>
                                 <asp:LinkButton ID="UploadImg" runat="server" OnClick="UploadImg_Click"></asp:LinkButton>
-                            </th>
-                        </tr>
-                    </table>
+                            </div>
+                        </div>
+                    </div>
                     <!-- <input type="submit" value="提交" style="width:80px; height:30px; margin-left:40%;" onclick="" tabindex="6"/> -->
                     <asp:Button ID="Button1" Text="保存" runat="server" style="width:60px; height:23px; margin-bottom:30px; margin-left:40%;" OnClick="submit_Click" tabindex="9"/>
                 
