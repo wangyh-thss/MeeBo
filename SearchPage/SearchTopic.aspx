@@ -8,20 +8,10 @@
     <title>搜索热门话题</title>
 <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
+    <link href="css/Search.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
     <style type="text/css">
-        .search_box{width:700px;overflow:hidden;position:relative}
-        .search_text_box{width:400px;float:left;margin-left:100px}
-        .search_button_box{width:150px;float:left;margin-left:50px}
-        .search_type{width:700px;height:30px;position:relative;padding-left:100px;margin-bottom:15px}
-        .type_item{width:50px;margin-right:50px;float:left}
-        .now_choose{font-family:"微软雅黑";color:red;font-size:20px}
-        .no_choose{font-family:"微软雅黑";font-size:20px}
-        .hot_topic_title{width:100%;padding-left:2em;height:20px;margin-top:30px;}
-        .topic_container{width:80%;overflow:hidden;margin:auto;font-family:"微软雅黑";}
-        .topic_box{width:100%;min-height:500px}
-        .topic_item{width:100%;margin-top:20px;padding-left:4em}
     </style>
 </head>
 <body class="background">

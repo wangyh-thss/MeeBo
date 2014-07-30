@@ -8,24 +8,10 @@
     <title>搜索MeeBo</title>
     <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
+    <link href="css/Search.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
     <style type="text/css">
-        .search_box{width:700px;overflow:hidden;position:relative}
-        .search_text_box{width:400px;float:left;margin-left:100px}
-        .search_button_box{width:150px;float:left;margin-left:50px}
-        .search_type{width:700px;height:30px;position:relative;padding-left:100px;margin-bottom:15px}
-        .type_item{width:50px;margin-right:50px;float:left}
-        .now_choose{font-family:"微软雅黑";color:red;font-size:20px}
-        .no_choose{font-family:"微软雅黑";font-size:20px}
-        .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-color: #e6e6e6;}
-        .trans_user_head{width:70px;float:left}
-        .trans_content{width:560px;float:left}
-        .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
-        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
-        .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}
     </style>
     <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
 </head>
