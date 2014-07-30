@@ -117,7 +117,7 @@
     float:right;
     padding-left:1em
 }
-        .send_box { width:90%;margin:auto;}
+        .send_box { width:90%;margin:auto; overflow:hidden;}
 .MeeBo_Box
 { 
     width:630px;
@@ -317,4 +317,6 @@
 
          .choose{width:160px;float:left;font-size:8px}
         .queren{width:65px;float:right}
+
+          .select_whom{float:left;font-size:10px;margin-top:5px}
         

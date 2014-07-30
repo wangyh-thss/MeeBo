@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>我的私信</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-    <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         .user_name {padding-top:0px}
@@ -112,11 +111,15 @@
                     <a style="font-size:12px">今日热门：八次男神宣布将再战影视圈!!</a>
                 </div>
                 <div class="send_box">
-                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
+                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:99%; height:120px"/>
                     <div class="select_whom">你想发送给：</div>
                     <asp:TextBox ID="send_target" runat="server" style="width:100px;float:left"/>
                     <asp:Button ID="send_out" Text="发起私信" runat="server" style="width:70px; float:right" OnClick="send_out_Click"/>
                 </div>
+            </div>
+              <div class="middle_title">
+                <p class="middle_title_text">收到的私信</p>
+                <div class="middle_title_bottom​" style="margin-left:15px;"></div>
             </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
@@ -146,6 +149,42 @@
             <br />
         </div>
         <div class="right_column">
+            <div class="right_item">
+                <div class ="person_info">
+                    <div class ="person_img">
+                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                    </div>
+                    <div class ="person_nickname">
+                         <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
+                        </div>
+                    </div>
+                <ul class= "person_data">
+                    <li class= "data_li">
+                        <a class="right_item_a" href="MyLikes.aspx">
+                            <div class ="person_data_number" runat="server" id="LikeNum">
+                                10
+                                </div>
+                            <div class ="person_data_name">关注</div>
+                            </a>
+                        </li>
+                    <li class= "data_li">
+                        <a  class="right_item_a" href="MyFans.aspx">
+                            <div class ="person_data_number" runat="server" id="FansNum">
+                                15
+                                </div>
+                            <div class ="person_data_name">粉丝</div>
+                            </a>
+                        </li>
+                    <li class= "data_li_noright">
+                        <a class="right_item_a" href="MyMeeBo.aspx">
+                            <div class ="person_data_number" runat="server" id="MeeBoNum">
+                                5
+                                </div>
+                            <div class ="person_data_name">微博</div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
      </form>
