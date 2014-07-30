@@ -11,6 +11,7 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
+    <script type="text/javascript" src="js/getMessage.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
@@ -157,6 +158,7 @@
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="getUser_btn" OnClick="go_user_Click"></asp:LinkButton>
      </form>
 </body>
 </html>
