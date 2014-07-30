@@ -34,7 +34,7 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
             singleUserInfo.Add(new JProperty("fansNum", userDb.FansNum));
             singleUserInfo.Add(new JProperty("newsNum", userDb.NewsNum));
             singleUserInfo.Add(new JProperty("gender", userDb.Gender));  //0(false)女 1(true)男
-            singleUserInfo.Add(new JProperty("birthday", userDb.Birthday));
+            singleUserInfo.Add(new JProperty("birthday", userDb.Birthday.ToLongDateString().ToString()));
             JList.Add(singleUserInfo);
             num++;
         }
