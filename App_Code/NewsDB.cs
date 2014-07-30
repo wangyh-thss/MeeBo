@@ -214,7 +214,7 @@ namespace MeeboDb
             {
 			    data.MakeInParam("@NID",  SqlDbType.UniqueIdentifier, 16 ,thisID),
 			};
-            DataSet ds = data.GetData("select * from [User] where NID = @NID", prams, "thisNews");
+            DataSet ds = data.GetData("select * from [News] where NID = @NID", prams, "thisNews");
             ID = thisID;
             if (ds.Tables["thisNews"].Rows.Count == 1)
             {

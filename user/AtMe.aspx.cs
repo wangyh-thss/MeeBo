@@ -38,6 +38,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 JObject singleNewsInfo = new JObject();
                 singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", atUser.ID));
                 singleNewsInfo.Add(new JProperty("type", "MeeBo"));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleAt["AFID"]));
                 singleNewsInfo.Add(new JProperty("content", newsDb.ContentT));
@@ -54,6 +55,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 JObject singleNewsInfo = new JObject();
                 singleNewsInfo.Add(new JProperty("head", atUser.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", atUser.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", atUser.ID));
                 singleNewsInfo.Add(new JProperty("type", "Comment"));
                 singleNewsInfo.Add(new JProperty("MeeboID", newsDb.ID));
                 singleNewsInfo.Add(new JProperty("content", commentDb.Content));
@@ -81,7 +83,8 @@ public partial class user_AtMe : System.Web.UI.Page
 
     protected void go_user_Click(object sender, EventArgs e)
     {
-
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 
     protected void go_MeeBo_Click(object sender, EventArgs e)

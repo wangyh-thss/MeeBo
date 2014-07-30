@@ -39,7 +39,7 @@ namespace MeeboDb
         public Guid Insert()
         {
             DataSet ds = data.GetData("select * from [Like]", "thisLike");
-            DataRow row = ds.Tables["thisPraise"].NewRow();
+            DataRow row = ds.Tables["thisLike"].NewRow();
             ID = Guid.NewGuid();
             row["LID"] = ID;
             row["LFanUID"] = FanID;
@@ -82,11 +82,11 @@ namespace MeeboDb
                 data.MakeInParam("@LFanUID",SqlDbType.UniqueIdentifier,16,thisFanID),
 			};
             DataSet ds = data.GetData("select * from [Like] where (LStarUID = @LStarUID) AND (LFanUID = @LFanUID)", prams, "thisLike");
-            if (ds.Tables["thisPraise"].Rows.Count > 1)
+            if (ds.Tables["thisLike"].Rows.Count == 1)
             {
-                thisUser.ChangeFansNum(thisStarID, -ds.Tables["thisPraise"].Rows.Count);
-                thisUser.ChangeLikesNum(thisFanID, -ds.Tables["thisPraise"].Rows.Count);
-                ds.Tables["thisPraise"].Clear();
+                thisUser.ChangeFansNum(thisStarID, -1);
+                thisUser.ChangeLikesNum(thisFanID, -1);
+                ds.Tables["thisLike"].Rows[0].Delete();
             }
             data.UpdateData("select * from [Like] where (LStarUID = @LStarUID) AND (LFanUID = @LFanUID)", prams, ds, "thisLike");
         }
@@ -156,7 +156,7 @@ namespace MeeboDb
 			    data.MakeInParam("@LFanUID",SqlDbType.UniqueIdentifier,16,myFanID),
                 data.MakeInParam("@LStarUID",SqlDbType.UniqueIdentifier,16,myStarID),
 			};
-            DataSet ds = data.GetData("select * from [Like] where (LFanUID = @LFanUID) AND (LStarUID <> @LStarUID)", prams, "thisLike");
+            DataSet ds = data.GetData("select * from [Like] where (LFanUID = @LFanUID) AND (LStarUID = @LStarUID)", prams, "thisLike");
             return (ds.Tables["thisLike"].Rows.Count > 0);
         }
 
