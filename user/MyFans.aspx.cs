@@ -37,7 +37,7 @@ public partial class user_MyFans : System.Web.UI.Page
             singleUserInfo.Add(new JProperty("fansNum", starUser.FansNum));
             singleUserInfo.Add(new JProperty("likesNum", starUser.LikesNum));
             singleUserInfo.Add(new JProperty("newsNum", starUser.NewsNum));
-            singleUserInfo.Add(new JProperty("birthday", starUser.Birthday));
+            singleUserInfo.Add(new JProperty("birthday", starUser.Birthday.ToLongDateString().ToString()));
             singleUserInfo.Add(new JProperty("gender", starUser.Gender));
             JList.Add(singleUserInfo);
         }
