@@ -32,6 +32,9 @@ public partial class user_PersonalPage : System.Web.UI.Page
         List<JObject> JList = new List<JObject>();
         int num = 0;
         user.SearchByID("user", (Guid)Session["id"]);
+        UserDB starUser;
+        NewsDB originNewsInfo;
+        UserDB originUser;
             
         DataSet follow = like.SearchByFanID("follow", (Guid)Session["id"]);
         foreach(DataRow followUser in follow.Tables["follow"].Rows)
@@ -40,23 +43,58 @@ public partial class user_PersonalPage : System.Web.UI.Page
             foreach(DataRow singleNews in singlePerson.Tables["singlePerson"].Rows)
             {
                 JObject singleNewsInfo = new JObject();
-                UserDB starUser = new UserDB();
-                starUser.SearchByID("starUser", (Guid)followUser["LStarUID"]);
-                singleNewsInfo.Add(new JProperty("head", starUser.HeadPortrait.Replace("~", "..")));
-                singleNewsInfo.Add(new JProperty("nickname", starUser.Nickname));
-                singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
-                singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
-                if (singleNews["NContentP"].ToString() != string.Empty)
+                if (singleNews["NIsTransmit"].ToString() == "False")
                 {
-                    string[] picUrl = singleNews["NContentP"].ToString().Split(';');
-                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                    starUser = new UserDB();
+                    starUser.SearchByID("starUser", (Guid)followUser["LStarUID"]);
+                    singleNewsInfo.Add(new JProperty("type", "Meebo"));
+                    singleNewsInfo.Add(new JProperty("head", starUser.HeadPortrait.Replace("~", "..")));
+                    singleNewsInfo.Add(new JProperty("nickname", starUser.Nickname));
+                    singleNewsInfo.Add(new JProperty("userID", starUser.ID));
+                    singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                    singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
+                    if (singleNews["NContentP"].ToString() != string.Empty)
+                    {
+                        string[] picUrl = singleNews["NContentP"].ToString().Split(';');
+                        singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                    }
+                    singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
+                    singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                    singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                    singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                    singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                    singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
                 }
-                singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
-                singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
-                singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
-                singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
-                singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
-                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
+                else
+                {
+                    starUser = new UserDB();
+                    starUser.SearchByID("starUser", (Guid)followUser["LStarUID"]);
+                    singleNewsInfo.Add(new JProperty("type", "trans"));
+                    singleNewsInfo.Add(new JProperty("head", starUser.HeadPortrait.Replace("~", "..")));
+                    singleNewsInfo.Add(new JProperty("nickname", starUser.Nickname));
+                    singleNewsInfo.Add(new JProperty("userID", starUser.ID));
+                    singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
+                    singleNewsInfo.Add(new JProperty("content", singleNews["NTransmitInf"]));
+                    singleNewsInfo.Add(new JProperty("time", singleNews["NDate"].ToString()));
+                    singleNewsInfo.Add(new JProperty("praise", singleNews["NProNum"]));
+                    singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
+                    singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
+                    singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                    singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
+                    originNewsInfo = new NewsDB();
+                    originNewsInfo.SearchByID((Guid)singleNews["NFrom"], "originNews");
+                    originUser = new UserDB();
+                    originUser.SearchByID("originUser", originNewsInfo.UserID);
+                    singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
+                    singleNewsInfo.Add(new JProperty("originUserID", originNewsInfo.ID));
+                    singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
+                    if (originNewsInfo.ContentP != string.Empty)
+                    {
+                        string[] picUrl = originNewsInfo.ContentP.Split(';');
+                        singleNewsInfo.Add(new JProperty("originPictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                    }
+                    singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date));
+                }
                 JList.Add(singleNewsInfo);
                 num++;
             }
@@ -261,6 +299,11 @@ public partial class user_PersonalPage : System.Web.UI.Page
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnNewsID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }
 
