@@ -425,7 +425,7 @@ namespace MeeboDb
                 data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
                 data.MakeInParam("@NTopic",  SqlDbType.VarChar, 50 ,""),
 			};
-            DataSet ds = data.GetData("select COUNT(*) as CountNumber,sum(NProNum),sum(NComNum),sum(NSaveNum),sum(NTransmitNum),NTopic from (select * from [News] where (NDate > @NDate)  AND (NDelete = @NDelete) AND (NTopic <> @NTopic)) haha group by NTopic", prams, tbName);
+            DataSet ds = data.GetData("select COUNT(*) as CountNumber,sum(NProNum) as NProNum,sum(NComNum) as NComNum,sum(NSaveNum) as NSaveNum,sum(NTransmitNum) as NTransmitNum,NTopic from (select * from [News] where (NDate > @NDate)  AND (NDelete = @NDelete) AND (NTopic <> @NTopic)) haha group by NTopic", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }

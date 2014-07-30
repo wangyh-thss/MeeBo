@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hotTopic.aspx.cs" Inherits="hot_hotTopic" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hotTopic.aspx.cs" Inherits="hot_hotTopic" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -11,6 +11,7 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
     </style>
+    <script type="text/javascript" src="../user/js/getHotTopic.js"></script>
 </head>
 <body class="background">
    <form id="Form1" name="form" method="post" runat="server">
@@ -78,18 +79,18 @@
                 <div class="hot_topic_title">
                     最近热门话题
                 </div>
-                <div id="Div1" class="topic_box" runat="server">
+                <div id="Div1" class="topic_box">
                     <div class="topic_item">
-                        ·<a id="A1" runat="server">#红红火火#（近日最火话题！！！）</a>
+                        ·<a id="A1">#红红火火#（近日最火话题！！！）</a>
                     </div>
                     <div class="topic_item">
-                        ·<a id="A2" runat="server">#恍恍惚惚#（原本是描述精神状态的词，近日在网络上爆红）</a>
+                        ·<a id="A2">#恍恍惚惚#（原本是描述精神状态的词，近日在网络上爆红）</a>
                     </div>
                     <div class="topic_item">
-                        ·<a id="A3" runat="server">#哈哈哈哈#（根本停不下来）</a>
+                        ·<a id="A3">#哈哈哈哈#（根本停不下来）</a>
                     </div>
                     <div class="topic_item">
-                        ·<a id="A4" runat="server">#火火火火#（你还记得大明湖畔的小苹果吗？）</a>
+                        ·<a id="A4">#火火火火#（你还记得大明湖畔的小苹果吗？）</a>
                     </div>
                 </div>
             </div>
@@ -97,6 +98,7 @@
         <div class="right_column">
         </div>
     </div>
+       <asp:LinkButton runat="server" ID="searchTopic_btn" OnClick="searchTopic_btn_Click"></asp:LinkButton>
        </form>
 </body>
 </html>
