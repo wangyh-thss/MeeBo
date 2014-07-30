@@ -131,7 +131,10 @@
                     <-->
                 </div>
             </div>
-             <hr class="line2"/>
+            <div class="middle_title">
+                <p class="middle_title_text">MeeBo</p>
+                <div class="middle_title_bottom​"></div>
+            </div>
             <div class="MeeBo_Box">
                 <div class="single_MeeBo">
                     <div class="MeeBo_user">
