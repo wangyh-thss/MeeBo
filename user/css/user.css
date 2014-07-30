@@ -237,6 +237,31 @@
     margin-left:5px;
 }
 
+.MeeBo_detail_item
+{
+    float:left;
+    position:relative;
+    border-right-width: 1px;
+    border-right-style:solid;
+    border-color:#aeaeae;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.item_no_border
+{
+    border-right-width: 0px;
+}
+
+ .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #e6e6e6;margin-top:15px}
+
+        .trans_user_head{width:70px;float:left}
+        .trans_content{width:560px;float:left}
+        .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
+        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
+.origin_content{float:left;position:relative;width:510px;border:1px solid #888888;margin:10px;padding:5px 15px;background: #fafafa;border-radius: 10px;margin-left:0px;}
 
 
 
