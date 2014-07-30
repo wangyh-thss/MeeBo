@@ -156,6 +156,11 @@
             </div>
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
     </form>
 </body>
 </html>
