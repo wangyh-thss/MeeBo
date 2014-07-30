@@ -9,6 +9,14 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/getMeeBo.js"></script>
+    <style type="text/css">
+        .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom:1px solid #888888}
+        .trans_user_head{width:70px;float:left}
+        .trans_content{width:560px;float:left}
+        .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
+        .trans_com{width:560px;font-size:12px;margin-bottom:5px}
+        .MeeBo_content{width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}
+    </style>
 </head>
 <body class="background">
     <form id="Form2" name="search" method="post" runat="server">
@@ -161,6 +169,57 @@
                                 <a>赞</a>(100)|<a>转发</a>(2)|<a>评论</a>(3)|<a>收藏</a>(3)
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="trans_MeeBo">
+                    <div class="trans_user_head">
+                        <img class="head_potrait" src="../image/head_potrait.jpg" />
+                    </div>
+                    <div class="trans_content">
+                        <div class="trans_userid">
+                            <a>白白的张导</a>
+                        </div>
+                        <div class="trans_com">
+                            黑黑黑
+                        </div>
+                        <div class="MeeBo_content">
+                            <div class="user_id">
+                                <a>黑黑的张导</a>
+                            </div>
+                            <div class="text_content">
+                                嘿嘿嘿嘿
+                            </div>
+                            <div class="picture_content">
+                                <div class="MeeBo_img">
+                                    <img class="MeeBo_img" src="./image/logo.jpg"/>
+                                </div>
+                                <div class="MeeBo_img">
+                                    <img class="MeeBo_img" src="./image/logo.jpg"/>
+                                </div>
+                                <div class="MeeBo_img">
+                                    <img class="MeeBo_img" src="./image/logo.jpg"/>
+                                </div>
+                                 <div class="MeeBo_img">
+                                    <img class="MeeBo_img" src="./image/logo.jpg"/>
+                                </div>
+                                 <div class="MeeBo_img">
+                                    <img class="MeeBo_img" src="./image/logo.jpg"/>
+                                </div>
+                            </div>
+                            <div class="MeeBo_detail">
+                                <div class="MeeBo_time">
+                                    今天15:11
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MeeBo_detail">
+                                <div class="MeeBo_time">
+                                    今天15:11
+                                </div>
+                                <div class="CTA">
+                                    <a>赞</a>(100)|<a>转发</a>(2)|<a>评论</a>(3)|<a>收藏</a>(3)
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
