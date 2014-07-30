@@ -345,16 +345,17 @@ namespace MeeboDb
             return ds;
         }
 
-        //按内容模糊搜索未被删除的原创Meebo
-        public DataSet SearchOriginalByContent(string Word, string tbName)
+        //按内容模糊搜索未被删除的Meebo
+        public DataSet SearchByContent(string Word, string tbName)
         {
             SqlParameter[] prams = 
             {
                 data.MakeInParam("@NContent",  SqlDbType.Text, 2147483647 ,"%"+Word+ "%"),
-                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
                 data.MakeInParam("@NIsTransmit",  SqlDbType.Bit, 1 ,false),
+                data.MakeInParam("@NTransmitInf",  SqlDbType.Text, 2147483647 ,"%"+Word+ "%"),
+                data.MakeInParam("@NDelete",  SqlDbType.Bit, 1 ,false),
 			};
-            DataSet ds = data.GetData("select * from [News] where (NContentT like @NContent) AND (NDelete = @NDelete) AND (NIsTransmit = @NIsTransmit )", prams, tbName);
+            DataSet ds = data.GetData("select * from [News] where (((NContentT like @NContent) AND (NIsTransmit = @NIsTransmit )) OR ((NTransmitInf = @NTransmitInf) AND (NIsTransmit <> @NIsTransmit ))) AND (NDelete = @NDelete)", prams, tbName);
             SearchNumber = ds.Tables[tbName].Rows.Count;
             return ds;
         }
