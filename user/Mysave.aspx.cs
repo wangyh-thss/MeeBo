@@ -20,6 +20,8 @@ public partial class user_MySave : System.Web.UI.Page
         saveDb = new SaveDB();
         UserDB saveUser = new UserDB();
         NewsDB saveNews = new NewsDB();
+        NewsDB originNewsInfo;
+        UserDB originUser;
         if (IsPostBack)
             btnNewsID = Request.Form["__EVENTARGUMENT"];
         DataSet saveSet = saveDb.SearchByUserID("save", (Guid)Session["id"]);
@@ -30,21 +32,53 @@ public partial class user_MySave : System.Web.UI.Page
             saveUser.SearchByID("saveUser", (Guid)singleSave["SUID"]);
             saveNews.SearchByID((Guid)singleSave["SNID"], "saveNews");
             JObject singleNewsInfo = new JObject();
-            singleNewsInfo.Add(new JProperty("head", saveUser.HeadPortrait.Replace("~", "..")));
-            singleNewsInfo.Add(new JProperty("nickname", saveUser.Nickname));
-            singleNewsInfo.Add(new JProperty("MeeboID", singleSave["SNID"].ToString()));
-            singleNewsInfo.Add(new JProperty("content", saveNews.ContentT));
-            if (saveNews.ContentP != string.Empty)
+            if (saveNews.IsTransmit)
             {
-                string[] picUrl = saveNews.ContentP.Split(';');
-                singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                singleNewsInfo.Add(new JProperty("type", "Meebo"));
+                singleNewsInfo.Add(new JProperty("head", saveUser.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", saveUser.Nickname));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleSave["SNID"].ToString()));
+                singleNewsInfo.Add(new JProperty("content", saveNews.ContentT));
+                if (saveNews.ContentP != string.Empty)
+                {
+                    string[] picUrl = saveNews.ContentP.Split(';');
+                    singleNewsInfo.Add(new JProperty("pictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("time", saveNews.Date.ToString()));
+                singleNewsInfo.Add(new JProperty("praise", saveNews.ProNum));
+                singleNewsInfo.Add(new JProperty("comment", saveNews.ComNum));
+                singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));
+                singleNewsInfo.Add(new JProperty("save", saveNews.SaveNum));
+                singleNewsInfo.Add(new JProperty("isSave", true));
             }
-            singleNewsInfo.Add(new JProperty("time", saveNews.Date.ToString()));
-            singleNewsInfo.Add(new JProperty("praise", saveNews.ProNum));
-            singleNewsInfo.Add(new JProperty("comment", saveNews.ComNum));
-            singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));
-            singleNewsInfo.Add(new JProperty("save", saveNews.SaveNum));
-            singleNewsInfo.Add(new JProperty("isSave", true));
+            else
+            {
+                singleNewsInfo.Add(new JProperty("type", "trans"));
+                singleNewsInfo.Add(new JProperty("head", saveUser.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", saveUser.Nickname));
+                singleNewsInfo.Add(new JProperty("MeeboID", singleSave["SNID"].ToString()));
+                singleNewsInfo.Add(new JProperty("content", saveNews.TransmitInf));
+                singleNewsInfo.Add(new JProperty("time", saveNews.Date.ToString()));
+                singleNewsInfo.Add(new JProperty("praise", saveNews.ProNum));
+                singleNewsInfo.Add(new JProperty("comment", saveNews.ComNum));
+                singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));
+                singleNewsInfo.Add(new JProperty("save", saveNews.SaveNum));
+                singleNewsInfo.Add(new JProperty("isSave", true));
+                originNewsInfo = new NewsDB();
+                originNewsInfo.SearchByID(saveNews.From, "originNews");
+                originUser = new UserDB();
+                originUser.SearchByID("originUser", originNewsInfo.UserID);
+                singleNewsInfo.Add(new JProperty("originUser", originUser.Nickname));
+                singleNewsInfo.Add(new JProperty("originUserID", originNewsInfo.ID));
+                singleNewsInfo.Add(new JProperty("originContent", originNewsInfo.ContentT));
+                if (originNewsInfo.ContentP != string.Empty)
+                {
+                    string[] picUrl = originNewsInfo.ContentP.Split(';');
+                    singleNewsInfo.Add(new JProperty("originPictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
+                }
+                singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date));
+
+            }
             JList.Add(singleNewsInfo);
             num++;
         }
