@@ -1,22 +1,25 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyMessage.aspx.cs" Inherits="user_MyMessage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="See_MeeBo.aspx.cs" Inherits="user_See_MeeBo" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>我的私信</title>
+    <title>查看私信</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         .send_box{position:relative;margin-bottom:75px}
         .select_whom{float:left;font-size:10px;margin-top:5px}
         .Message_time{float:left;margin-bottom:15px}
-        .see_Message{float:right;text-align:right;margin-bottom:15px}
+        .my_head{float:right;width:50px;padding-left:20px}
+        .my_content{width:560px;height:20px;padding:2em,4em;font-size:12px;margin-bottom:5px;text-align:right}
+        .Message_time{float:right;text-align:right;padding-left:2em}
+        .my_detail{width:560px;text-align:left;font-size:12px}
     </style>
 </head>
 <body class="background">
-     <form id="Form2" name="search" method="post" runat="server">
+    <form id="Form2" name="search" method="post" runat="server">
         <div class="header">
         <div class="headbody">
             <div class="logo">
@@ -114,9 +117,7 @@
                 </div>
                 <div class="send_box">
                     <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
-                    <div class="select_whom">你想发送给：</div>
-                    <asp:TextBox ID="send_target" runat="server" style="width:100px;float:left"/>
-                    <asp:Button ID="send_out" Text="发起私信" runat="server" style="width:70px; float:right"/>
+                    <asp:Button ID="send_out" Text="回复" runat="server" style="width:60px; float:right"/>
                 </div>
             </div>
             <hr class="line2" />
@@ -135,18 +136,33 @@
                             嘿嘿嘿嘿
                         </div>
                         <div class="MeeBo_detail">
-                            <div class="see_Message">
-                                <asp:Button ID="See_Message" Text="查看详细" runat="server" style="width:80px; float:right"/>
-                            </div>
                             <div class="Message_time">
                                 今天15:11
                             </div>
                         </div>
                     </div>
                 </div>
+                <br />
+                <hr class="line3"/>
+                <div class="single_MeeBo">
+                    <div class="my_head">
+                        <div class="head_potrait">
+                            <img class="potrait_img" src="../image/head_potrait.jpg"/>
+                        </div>
+                    </div>
+                    <div class="my_content">
+                        吼吼吼吼吼
+                    </div>
+                    <div class="my_detail">
+                        <div class="my_time">
+                            今天15:11
+                        </div>
+                    </div>
+                </div>
             </div>
             <br />
             <hr class="line2"/>
+
         </div>
         <div class="right_column">
         </div>
