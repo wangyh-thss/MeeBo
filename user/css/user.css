@@ -72,7 +72,7 @@
         .MeeBo_Box{ width:630px;margin:auto;position:relative;margin-top:10px;margin-bottom:10px}
 .single_MeeBo
 {
-    height:90px;
+    overflow:hidden;
     width:100%;
     position:relative;
     margin-bottom:20px;
