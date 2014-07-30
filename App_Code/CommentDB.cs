@@ -67,6 +67,8 @@ namespace MeeboDb
             if (ds.Tables["thisComment"].Rows.Count == 1)
             {
                 thisNews.ChangeComNum(new Guid(ds.Tables["thisComment"].Rows[0]["CNID"].ToString()), -1);
+                ds.Tables["thisComment"].Rows[0].Delete();
+                data.UpdateData("select * from [Comment] where CID = @CID", prams, ds, "thisComment");
             }
         }
 

@@ -54,7 +54,8 @@ namespace MeeboDb
 			    data.MakeInParam("@IID",SqlDbType.UniqueIdentifier,16,thisID),
 			};
             DataSet ds = data.GetData("select * from [Info] where IID = @IID", prams, "thisInfo");
-            ds.Tables["thisInfo"].Clear();
+            ds.Tables["thisInfo"].Rows[0].Delete();
+            data.UpdateData("select * from [Info] where IID = @IID", prams, ds, "thisInfo");
         }
 
         //修改公共消息
@@ -69,8 +70,9 @@ namespace MeeboDb
             {
                 ds.Tables["thisInfo"].Rows[0]["MContent"] = Content;
                 ds.Tables["thisInfo"].Rows[0]["MDate"] = DateTime.Now;
+
             }
-            data.UpdateData("select * from [Comment] where CID = @CID", prams, ds, "thisComment");
+            data.UpdateData("select * from [Info] where IID = @IID", prams, ds, "thisInfo");
         }
 
         //按ID搜索公共消息
