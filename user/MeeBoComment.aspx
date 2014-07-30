@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>评论页面</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-    <link href="css/another.css" type="text/css" rel="stylesheet" />
      <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         
@@ -146,8 +145,6 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <hr class="line2"/>
             <div class="send_MeeBo_Box">
                     <div class="send_box">
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>

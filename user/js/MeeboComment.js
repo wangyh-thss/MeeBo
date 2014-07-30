@@ -22,7 +22,7 @@
     var commentHTML = "";
 
     for (var i = 0; i < json.comment.length; i++) {
-        commentHTML = commentHTML + '<div class="single_Comment"><div class="Comment_user"><div class="Comment_head"><img class="Comment_img" src="' + json.comment[i].head + '"/></div></div><div class="Comment_content"><div class="Comment_userID"><a onclick="javascript:__doPostBack(\'user_btn\',\'' + json.comment[i].userID + '\')">' + json.comment[i].nickname + '</a></div><div class="Comment_text">' + json.comment[i].content + '</div><div class="Comment_detail"><div class="Comment_time"><p class="detail_font">' + json.comment[i].time + '</p></div><div class="Comment_floor"><p class="detail_font">' + (i + 1) + '楼</p></div></div></div><br /><hr class="line3" /></div>'
+        commentHTML = commentHTML + '<div class="single_Comment"><div class="Comment_user"><div class="Comment_head"><img class="Comment_img" src="' + json.comment[i].head + '"/></div></div><div class="Comment_content"><div class="Comment_userID"><a onclick="javascript:__doPostBack(\'user_btn\',\'' + json.comment[i].userID + '\')">' + json.comment[i].nickname + '</a></div><div class="Comment_text">' + json.comment[i].content + '</div><div class="Comment_detail"><div class="Comment_time"><p class="detail_font">' + json.comment[i].time + '</p></div><div class="Comment_floor"><p class="detail_font">' + (i + 1) + '楼</p></div></div></div><br /></div>'
     }
 
     document.getElementsByClassName("Comment_Box")[0].innerHTML = commentHTML;
