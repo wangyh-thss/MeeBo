@@ -120,6 +120,7 @@
                     <div class="hot_user_title">
                         您的粉丝:
                     </div>
+
                     <div class="hot_user_container">
                         <div class="hot_users">
                             <div class="hot_user_head">
@@ -138,12 +139,12 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
         </div>
-        <div class="right_column">
-            <div class="right_column">
+       <div class="right_column">
             <div class="right_item">
                 <div class ="person_info">
                     <div class ="person_img">
