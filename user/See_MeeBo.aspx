@@ -14,19 +14,25 @@
         {
             width: 490px;
 height: 20px;
-font-size: 12px;
 margin-left:70px;
 margin-bottom: 5px;
 text-align: right;
+font-size: 14px;
+    line-height: 23px;
+    padding-bottom:15px;
+    font-family: Arial, Helvetica, sans-serif;
         }
-          .text_content
-        {
-            width: 490px;
-height: 20px;
-font-size: 12px;
-margin-bottom: 5px;
-text-align: right;
-        }
+       .text_content
+{
+    width:490px;
+    height:20px;
+    margin-bottom:5px;
+    font-size: 14px;
+    line-height: 23px;
+    padding-bottom:15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+       .my_detail{width:560px;font-size:8px;text-align:right;margin-top:30px;margin-left:70px;}
     </style>
     <script type="text/javascript" src="js/getMessage.js"></script>
 </head>
