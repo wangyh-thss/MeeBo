@@ -23,9 +23,15 @@ public partial class user_PersonalPage : System.Web.UI.Page
             Response.Redirect("~/Login.aspx");
         news = new NewsDB();
         user = new UserDB();
-        if(IsPostBack)
+        if (IsPostBack)
         {
             btnNewsID = Request.Form["__EVENTARGUMENT"];
+            Session["content"] = this.send_content.Text;
+        }
+        else
+        {
+            if (Session["content"] != null)
+                this.send_content.Text = (string)Session["content"];
         }
         LikeDB like = new LikeDB();
         SaveDB saveDb = new SaveDB();
@@ -275,6 +281,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
                 atDb.FromID = newsID;
                 atDb.Insert();
             }
+            Session.Remove("content");
             Response.Redirect("~/user/PersonalPage.aspx");
         }
     }
