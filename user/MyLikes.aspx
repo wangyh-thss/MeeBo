@@ -118,7 +118,7 @@
             <div class="hot_user_box">
                 <div class="hot_user_item">
                     <div class="hot_user_title">
-                        您的粉丝:
+                        您的关注:
                     </div>
                     <div class="hot_user_container">
                         <div class="hot_users">

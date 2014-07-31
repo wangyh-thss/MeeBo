@@ -91,6 +91,13 @@ public partial class SearchPage_SearchTopic : System.Web.UI.Page
 
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
+        UserDB user = new UserDB();
+        user.SearchByID("user", (Guid)Session["id"]);
+        this.myName.InnerText = user.Nickname;
+        this.head_potrait.ImageUrl = user.HeadPortrait;
+        this.LikeNum.InnerText = user.LikesNum.ToString();
+        this.FansNum.InnerText = user.FansNum.ToString();
+        this.MeeBoNum.InnerText = user.NewsNum.ToString();
     }
 
     protected void zan_Click(object sender, EventArgs e)
