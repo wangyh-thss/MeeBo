@@ -260,6 +260,7 @@ namespace MeeboDb
                 ChangeTransmitNum(thisID, 1);
                 ChangeTransmitNum(From, 1);
             }
+            thisUser.ChangeNewsNum(UserID, 1);
             data.UpdateData("select * from [News] ", ds, "thisNews");
             return ID;
         }
