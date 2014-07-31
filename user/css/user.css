@@ -26,6 +26,7 @@
     .head_item {float:left;position: relative;width:59px;font-size:20px;padding-left:50px;padding-right:50px;text-align:center;border-right-width: 1px;border-right-style: solid;border-color: #e6e6e6;}
     .head_item_noright {float:left;position: relative;width:59px;font-size:20px;padding-left:50px;padding-right:50px;text-align:center;}
     .head_search {float:left;position: relative;width:250px;margin-left:30px;padding-top:4px;}
+.headout{float:left;position: relative;width:25px;margin-left:90px;height:25px;background-image:url('../../image/Out.png');background-size:contain;margin-top:9px;}
     .wrapper {top:50px;width:1100px; margin: auto;position:relative;height:610px;z-index:2;}
      .userInfo_box {width: 63%;height:600px; background:#fefefe;border: 2px solid #a0b4c1;float:left; border-radius: 10px; margin-left:2%; margin-bottom:30px;}
     .left_column {float:left;position: relative;width:175px;background: #f0f0f0;height:590px;}
