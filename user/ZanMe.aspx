@@ -52,7 +52,7 @@
             <div class="left_item">
                 <div class="left_item_a">
                 <a href="PersonalPage.aspx"><span class="fa fa-home icon"></span>
-                    <div class="left_item_word strongPage">首页</div></a>
+                    <div class="left_item_word">首页</div></a>
                     </div>
             </div>
             <hr class="line" />
@@ -67,7 +67,7 @@
                     </div>
                  <div class="left_item_a">
                  <a href="ZanMe.aspx"><span class="fa fa fa-thumbs-up icon"></span>
-                    <div class="left_item_word">赞</div></a>
+                    <div class="left_item_word strongPage">赞</div></a>
                   </div>
                  <div class="left_item_a">
                  <a href="MySave.aspx"><span class="fa fa-heart icon"></span>

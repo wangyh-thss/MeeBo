@@ -43,7 +43,7 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
         }
         JArray array = new JArray(
                 from item in JList
-                orderby item["nickname"].ToString().Length descending
+                orderby item["nickname"].ToString().Length
                 select new JObject(item)
                 );
 

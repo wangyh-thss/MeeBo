@@ -2,7 +2,7 @@
     var a=json;
     var html="";
     for (var i = 0; i < a.length; i++) {
-        if (a[i].gender == "True")
+        if (a[i].gender == "True" || a[i].gender == true)
             var gender = "男";
         else
             var gender = "女";
