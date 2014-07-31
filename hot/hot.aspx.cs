@@ -30,12 +30,6 @@ public partial class hot_hot : System.Web.UI.Page
         foreach (DataRow singleNews in hotSet.Tables["hotMeebo"].Rows)
         {
             JObject singleNewsInfo = new JObject();
-            user.SearchByID("user", (Guid)Session["id"]);
-            this.myName.InnerText = user.Nickname;
-            this.head_potrait.ImageUrl = user.HeadPortrait;
-            this.LikeNum.InnerText = user.LikesNum.ToString();
-            this.FansNum.InnerText = user.FansNum.ToString();
-            this.MeeBoNum.InnerText = user.NewsNum.ToString();
             user.SearchByID("user", (Guid)singleNews["NUserID"]);
             if (singleNews["NIsTransmit"].ToString() == "False")
             {
@@ -54,6 +48,8 @@ public partial class hot_hot : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
                 singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
                 singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
+                if(Session["id"] != null)
+                    singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
             }
             else
             {
@@ -68,7 +64,8 @@ public partial class hot_hot : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("comment", singleNews["NComNum"]));
                 singleNewsInfo.Add(new JProperty("repost", singleNews["NTransmitNum"]));
                 singleNewsInfo.Add(new JProperty("save", singleNews["NSaveNum"]));
-                singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
+                if (Session["id"] != null)
+                    singleNewsInfo.Add(new JProperty("isSave", saveDb.isSaved((Guid)Session["id"], (Guid)singleNews["NID"])));
                 originNewsInfo = new NewsDB();
                 originNewsInfo.SearchByID((Guid)singleNews["NFrom"], "originNews");
                 originUser = new UserDB();
@@ -93,7 +90,15 @@ public partial class hot_hot : System.Web.UI.Page
             );
         string json = array.ToString();
         Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
-       
+        if (Session["id"] != null)
+        {
+            user.SearchByID("user", (Guid)Session["id"]);
+            this.myName.InnerText = user.Nickname;
+            this.head_potrait.ImageUrl = user.HeadPortrait;
+            this.LikeNum.InnerText = user.LikesNum.ToString();
+            this.FansNum.InnerText = user.FansNum.ToString();
+            this.MeeBoNum.InnerText = user.NewsNum.ToString();
+        }
     }
 
     protected void zan_Click(object sender, EventArgs e)
@@ -108,7 +113,7 @@ public partial class hot_hot : System.Web.UI.Page
         newsDb.SearchByID(new Guid(this.btnNewsID), "result");
         praiseDb.NewsUserID = newsDb.UserID;
         praiseDb.Insert();
-        Response.Redirect("~/user/PersonalPage.aspx");
+        Response.Redirect("~/hot/hot.aspx");
     }
 
     protected void repost_Click(object sender, EventArgs e)
@@ -143,7 +148,7 @@ public partial class hot_hot : System.Web.UI.Page
             saveDb.Insert();
         }
         NewsDB newsDb = new NewsDB();
-        Response.Redirect("~/user/PersonalPage.aspx");
+        Response.Redirect("~/hot/hot.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)

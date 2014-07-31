@@ -34,7 +34,7 @@ public partial class user_CommentMe : System.Web.UI.Page
             singleNewsInfo.Add(new JProperty("nickname", comUser.Nickname));
             singleNewsInfo.Add(new JProperty("userID", comUser.ID));
             singleNewsInfo.Add(new JProperty("MeeboID", singleComment["CNID"]));
-            singleNewsInfo.Add(new JProperty("MeeboContent", singleComment["CContent"]));
+            singleNewsInfo.Add(new JProperty("MeeboContent", comNews.ContentT));
             singleNewsInfo.Add(new JProperty("commentContent", singleComment["CContent"]));
             singleNewsInfo.Add(new JProperty("time", singleComment["CDate"].ToString()));
             

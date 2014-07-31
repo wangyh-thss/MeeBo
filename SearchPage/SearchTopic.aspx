@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchTopic.aspx.cs" Inherits="SearchPage_SearchTopic" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchTopic.aspx.cs" Inherits="SearchPage_SearchTopic" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
     <style type="text/css">
     </style>
+    <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
 </head>
 <body class="background">
     <form id="Form2" name="form" method="post" runat="server">
@@ -94,6 +95,9 @@
                     <asp:Button ID="go_search" Text="查找" runat="server" style="width:50px; height:26px;"/>
                 </div>
             </div>
+            <div class="MeeBo_Box">
+            </div>
+            <!--
             <div class="topic_container">
                 <div class="hot_topic_title">
                     最近热门话题
@@ -113,10 +117,16 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
         <div class="right_column">
         </div>
     </div>
+        <asp:LinkButton runat="server" ID="zan_btn" OnClick="zan_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="repost_btn" OnClick="repost_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="comment_btn" OnClick="comment_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="save_btn" OnClick="save_Click"></asp:LinkButton>
+        <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
    </form>
 </body>
 </html>
