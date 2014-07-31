@@ -162,7 +162,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
 
         JArray array = new JArray(
             from item in JList
-            orderby item["time"] descending
+            orderby Convert.ToDateTime(item["time"]) descending
             select new JObject(item)
             );
             
@@ -200,7 +200,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
             news.UserID = (Guid)Session["id"];
             
             string picPath = "";
-            if ((int)Session["picNum"] == 0) 
+            if (Session["picNum"] == null || (int)Session["picNum"] == 0) 
                 ;
             else if ((int)Session["picNum"] == 1)
                 picPath = this.pic1.ImageUrl;
