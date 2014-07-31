@@ -36,6 +36,7 @@ public partial class hot_hot : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("type", "Meebo"));
                 singleNewsInfo.Add(new JProperty("head", user.HeadPortrait.Replace("~", "..")));
                 singleNewsInfo.Add(new JProperty("nickname", user.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", user.ID));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleNews["NID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", singleNews["NContentT"]));
                 if (singleNews["NContentP"].ToString() != string.Empty)
@@ -158,5 +159,11 @@ public partial class hot_hot : System.Web.UI.Page
         //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
         Session["searchWord"] = this.find_content.Text;
         Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnNewsID);
+        Response.Redirect("~/user/OthersPage.aspx");
     }
 }

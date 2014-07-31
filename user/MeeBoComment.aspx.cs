@@ -130,7 +130,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
                 atDb.FromID = transID;
                 atDb.Insert();
             }
-            Response.Redirect("~/user/MeeBoComment.aspx");
+            Response.Redirect("~/user/PersonalPage.aspx");
         }
     }
 
