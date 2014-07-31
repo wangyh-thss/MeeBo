@@ -49,7 +49,7 @@ public partial class user_ZanMe : System.Web.UI.Page
         }
         JArray array = new JArray(
                 from item in JList
-                orderby item["time"] descending
+                orderby Convert.ToDateTime(item["time"]) descending
                 select new JObject(item)
                 );
         string json = array.ToString();

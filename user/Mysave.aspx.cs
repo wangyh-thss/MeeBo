@@ -90,7 +90,7 @@ public partial class user_MySave : System.Web.UI.Page
         }
          JArray array = new JArray(
                 from item in JList
-                orderby item["saveTime"] descending
+                orderby Convert.ToDateTime(item["saveTime"]) descending
                 select new JObject(item)
                 );
             
