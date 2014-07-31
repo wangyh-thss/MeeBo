@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>修改密码</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
-
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
      <style type="text/css">
          .p1 {font-size: 120%;font-family: "Times New Roman"}

@@ -8,6 +8,7 @@
     <title>提到我的</title>
     <link href="css/user.css" type="text/css" rel="stylesheet" />
      <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <style type="text/css">
          
     </style>

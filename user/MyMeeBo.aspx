@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/MyAndOtherPage.js"></script>
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <style>
          .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
     border-bottom-style: solid;

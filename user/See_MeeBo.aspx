@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <style type="text/css">
         .my_content
         {
@@ -49,6 +50,7 @@ font-size: 14px;
     font-size: 12px;
         }
     </style>
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <script type="text/javascript" src="js/getMessage.js"></script>
 </head>
 <body class="background">

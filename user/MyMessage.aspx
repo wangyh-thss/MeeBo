@@ -12,6 +12,7 @@
         .user_name {padding-top:0px}
     </style>
     <script type="text/javascript" src="js/MyMessage.js"></script>
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
 </head>
 <body class="background">
      <form id="Form2" name="search" method="post" runat="server">

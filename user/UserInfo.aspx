@@ -9,6 +9,7 @@
     <link href="css/user.css" type="text/css" rel="stylesheet" />
     <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="js/judgeNewMsg.js"></script>
      <style type="text/css">
         .p1 {font-size: 120%;font-family: "Times New Roman"}
         .p2 {font-family: "Times New Roman";}
