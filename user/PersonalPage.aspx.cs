@@ -180,7 +180,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
         string MeeboToSend = this.send_content.Text;
         if (MeeboToSend == string.Empty)
         {
-
+            Response.Write("<script>alert('消息不可为空')</script>");
         }
         else
         {

@@ -30,7 +30,7 @@ public partial class user_MyFans : System.Web.UI.Page
         foreach (DataRow singleFollow in followSet.Tables["follow"].Rows)
         {
             JObject singleUserInfo = new JObject();
-            starUser.SearchByID("starUser", (Guid)singleFollow["LStarUID"]);
+            starUser.SearchByID("fanUser", (Guid)singleFollow["LFanUID"]);
             singleUserInfo.Add(new JProperty("head", starUser.HeadPortrait.Replace("~", "..")));
             singleUserInfo.Add(new JProperty("nickname", starUser.Nickname));
             singleUserInfo.Add(new JProperty("userID", starUser.ID));

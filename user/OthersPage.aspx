@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OthersPage.aspx.cs" Inherits="user_OthersPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OthersPage.aspx.cs" Inherits="user_OthersPage" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
