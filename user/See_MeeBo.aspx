@@ -13,7 +13,6 @@
         .my_content
         {
             width: 490px;
-height: 20px;
 margin-left:70px;
 margin-bottom: 5px;
 font-size: 14px;
@@ -25,7 +24,6 @@ font-size: 14px;
        .text_content
 {
     width:490px;
-    height:20px;
     margin-bottom:5px;
     font-size: 14px;
     line-height: 23px;
@@ -33,7 +31,23 @@ font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     word-break:break-all;overflow:hidden;
 }
-       .my_detail{width:560px;font-size:8px;text-align:right;margin-top:30px;margin-left:70px;}
+       .my_detail{width:560px;font-size:8px;text-align:right;margin-top:15px;margin-left:70px;
+                   overflow: hidden;
+                   color: #6cbae4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+       }
+        .MeeBo_detail
+        {
+            width: 560px;
+            font-size: 8px;
+            text-align: right;
+            margin-top: 15px;
+            overflow: hidden;
+             color: #6cbae4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+        }
     </style>
     <script type="text/javascript" src="js/getMessage.js"></script>
 </head>
