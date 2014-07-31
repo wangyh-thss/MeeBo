@@ -9,7 +9,7 @@
      <link href="../user/css/user.css" type="text/css" rel="stylesheet" />
     <link href="../user/css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript" src="../user/js/getMeeBo.js"></script>
+    <script type="text/javascript" src="../user/js/getHotMeeBO.js"></script>
 </head>
 <body class="background">
     <form id="Form1" name="form" method="post" runat="server">
