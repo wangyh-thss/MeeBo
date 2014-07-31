@@ -175,4 +175,10 @@ public partial class user_OthersPage : System.Web.UI.Page
         Session["otherName"] = new Guid(this.btnNewsID);
         Response.Redirect("~/user/OthersPage.aspx");
     }
+
+    protected void goToSendMsg_Click(object sender, EventArgs e)
+    {
+        Session["msgTarget"] = Session["otherName"];
+        Response.Redirect("~/user/MyMessage.aspx");
+    }
 }

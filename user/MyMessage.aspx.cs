@@ -18,6 +18,13 @@ public partial class user_MyMessage : System.Web.UI.Page
             Response.Redirect("~/Login.aspx");
         if(IsPostBack)
             this.btnID = Request.Form["__EVENTARGUMENT"];
+        if (Session["msgTarget"] != null)
+        {
+            UserDB targetUser = new UserDB();
+            targetUser.SearchByID("user", (Guid)Session["msgTarget"]);
+            this.send_target.Text = targetUser.Nickname;
+            Session.Remove("msgTarget");
+        }
         MessageDB msgDb = new MessageDB();
         UserDB msgUser = new UserDB();
         DataSet msgSet = msgDb.SearchNewByToID((Guid)Session["id"], "newMsg");

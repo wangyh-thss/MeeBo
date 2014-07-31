@@ -13,7 +13,7 @@ public partial class Login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UserDB userDb = new UserDB();
-        if(IsPostBack)
+        if (IsPostBack)
         {
             string uPwd = Request.Form["password"];
             string uName = Request.Form["user"];
@@ -47,7 +47,7 @@ public partial class Login : System.Web.UI.Page
                         //用户名存在，密码错误·
                         ScriptManager.RegisterStartupScript(this.error_label, typeof(string), "error", "document.getElementById('error_label').innerText = '密码错误';", true);
                         return;
-                        
+
                     }
                 }
             }
@@ -56,6 +56,13 @@ public partial class Login : System.Web.UI.Page
                 //用户名密码错误
                 ScriptManager.RegisterStartupScript(this.error_label, typeof(string), "error", "document.getElementById('error_label').innerText = '用户不存在';", true);
                 return;
+            }
+        }
+        else
+        {
+            if (Session["name"] != null)
+            {
+                Session.Clear();
             }
         }
     }
