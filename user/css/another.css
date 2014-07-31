@@ -35,7 +35,7 @@
         .Message_time{float:left;margin-bottom:15px}
         .see_Message{float:right;text-align:right;margin-bottom:15px}
         .my_head{float:right;width:50px;padding-left:20px}
-        .my_content{width:560px;height:20px;padding:2em,4em;font-size:12px;margin-bottom:5px;text-align:right}
+        .my_content{width:560px;padding:2em,4em;font-size:12px;margin-bottom:5px;}
         .Message_time{float:right;text-align:right;padding-left:2em}
         .my_detail{width:560px;text-align:left;font-size:12px}
         

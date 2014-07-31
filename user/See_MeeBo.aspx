@@ -16,7 +16,6 @@
 height: 20px;
 margin-left:70px;
 margin-bottom: 5px;
-text-align: right;
 font-size: 14px;
     line-height: 23px;
     padding-bottom:15px;
