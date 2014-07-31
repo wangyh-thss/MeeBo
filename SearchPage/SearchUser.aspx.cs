@@ -68,4 +68,11 @@ public partial class SearchPage_SearchUser : System.Web.UI.Page
         Session["searchWord"] = this.search_content.Text;
         Response.Redirect("~/SearchPage/SearchUser.aspx");
     }
+
+    protected void search_click(object sender, EventArgs e)
+    {
+        //Response.Cookies.Add(new HttpCookie("SearchWord", this.find_content.Text));
+        Session["searchWord"] = this.find_content.Text;
+        Response.Redirect("~/SearchPage/SearchMeebo.aspx");
+    }
 }

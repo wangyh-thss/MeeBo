@@ -39,6 +39,8 @@
                     </tr>
                  </table>
              </div>
+             <a class="headout" href="../Login.aspx"> 
+            </a>
         </div>
     </div>
     <div class="wrapper">
