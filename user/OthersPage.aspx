@@ -25,6 +25,7 @@ background: #fafafa;
 border-radius: 10px;
 margin-left:0px;
 }
+        div.clearfix {clear:both;height:0;}
     </style>
 </head>
 <body class="background">
@@ -106,6 +107,10 @@ margin-left:0px;
                 <div class="like_button">
                     <asp:Button ID="like" Text="+关注" runat="server" style="width:70px;margin-top:5px" OnClick="like_Click"/>
                 </div>
+                <div class="like_button">
+                    <asp:Button ID="sendMsg" Text="发送私信" runat="server" style="width:80px;margin-top:5px" OnClick="goToSendMsg_Click"/>
+                </div>
+                <div class="clearfix"></div>
                 <div class="user_describe">
                     <p>这个人很懒，什么都没留下（您可以通过发送私信的方式联系他来填写个人简介）</p>
                 </div>

@@ -50,7 +50,7 @@
         .user_head_potrait{width:150px;height:150px;}
         .user_about{width:750px;height:200px;float:left;position:relative}
         .user_name{width:200px;height:50px;padding-top:25px;float:left }
-        .like_button{width:500px;height:50px;margin-left:50px;padding-top:25px;float:left }
+        .like_button{width:100px;height:50px;margin-left:50px;padding-top:25px;float:left }
         .user_describe{width:750px;height:100px;}
         .user_tag{width:750px;height:50px;position:relative;font-size:15px;}
         .user_gender{width:250px;height:20px;float:left}
@@ -72,7 +72,6 @@
         .who_at{width:100%}
         .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
-
 
 
         .trans_MeeBo{position:relative;width:630px;overflow:hidden;border-bottom-width: 2px;
