@@ -148,7 +148,7 @@
             <div class="right_item">
                 <div class ="person_info">
                     <div class ="person_img">
-                        <asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/>
+                        <p style="text-align:center"><asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/></p>
                     </div>
                     <div class ="person_nickname">
                          <a id="myName" href="MyMeeBo.aspx" runat="server">黑黑的张导</a>
