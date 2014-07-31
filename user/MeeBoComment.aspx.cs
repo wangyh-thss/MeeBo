@@ -93,7 +93,13 @@ public partial class user_MeeBoComment : System.Web.UI.Page
             CommentDB comToSend = new CommentDB();
             NewsDB commentedMeebo = new NewsDB();
             commentedMeebo.SearchByID((Guid)Session["commentMeeboID"], "Meebo");
-            comToSend.Content = this.TextBox1.Text;
+            if(this.TextBox1.Text == string.Empty)
+            {
+                Response.Write("<script>alert('评论不可为空')</script>");
+                return;
+            }
+            else
+                comToSend.Content = this.TextBox1.Text;
             comToSend.UserID = (Guid)Session["id"];
             comToSend.NewsID = (Guid)Session["commentMeeboID"];
             comToSend.NewsUserID = commentedMeebo.UserID;
@@ -118,7 +124,10 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         {
             NewsDB newsDb = new NewsDB();
             newsDb.UserID = (Guid)Session["id"];
-            newsDb.TransmitInf = this.TextBox1.Text;
+            if (this.TextBox1.Text == string.Empty)
+                newsDb.TransmitInf = "Repost";
+            else
+                newsDb.TransmitInf = this.TextBox1.Text;
             Guid transID = newsDb.Transmit((Guid)Session["commentMeeboID"]);
             Regex atRegex = new Regex("@[^\x20]* ");
             MatchCollection atSomeone = atRegex.Matches(this.TextBox1.Text);

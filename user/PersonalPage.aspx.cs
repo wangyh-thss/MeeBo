@@ -227,7 +227,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
     protected void SendOut_Click(object sender, EventArgs e)
     {
         string MeeboToSend = this.send_content.Text;
-        if (MeeboToSend == string.Empty)
+        if (MeeboToSend == string.Empty && (Session["picNum"] == null || (int)Session["picNum"] == 0))
         {
             Response.Write("<script>alert('消息不可为空')</script>");
         }
@@ -243,7 +243,10 @@ public partial class user_PersonalPage : System.Web.UI.Page
                     return;
                 }
             }
-            news.ContentT = MeeboToSend;
+            if(MeeboToSend == string.Empty)
+                news.ContentT = "分享图片";
+            else
+                news.ContentT = MeeboToSend;
             Regex topicRegex = new Regex("#[^\"]*#");
             news.Topic = topicRegex.Match(MeeboToSend).Value.Replace("#", "");
             news.UserID = (Guid)Session["id"];
