@@ -125,14 +125,14 @@
                         <p style="text-align:center"><asp:Image ID="head_potrait" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 80px; width: 80px"/></p>
                     </div>
                     <div class ="person_nickname">
-                         <a id="myName" href="../user/MyMeeBo.aspx" runat="server">黑黑的张导</a>
+                         <a id="myName" href="../user/MyMeeBo.aspx" runat="server">游客</a>
                         </div>
                     </div>
                 <ul class= "person_data">
                     <li class= "data_li">
                         <a class="right_item_a" href="../user/MyLikes.aspx">
                             <div class ="person_data_number" runat="server" id="LikeNum">
-                                10
+                                0
                                 </div>
                             <div class ="person_data_name">关注</div>
                             </a>
@@ -140,7 +140,7 @@
                     <li class= "data_li">
                         <a  class="right_item_a" href="../user/MyFans.aspx">
                             <div class ="person_data_number" runat="server" id="FansNum">
-                                15
+                                0
                                 </div>
                             <div class ="person_data_name">粉丝</div>
                             </a>
@@ -148,7 +148,7 @@
                     <li class= "data_li_noright">
                         <a class="right_item_a" href="../user/MyMeeBo.aspx">
                             <div class ="person_data_number" runat="server" id="MeeBoNum">
-                                5
+                                0
                                 </div>
                             <div class ="person_data_name">微博</div>
                             </a>
