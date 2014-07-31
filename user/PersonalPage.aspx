@@ -120,11 +120,11 @@
                             <asp:Image ID="pic_view1" runat="server" ImageUrl="~/image/head_potrait.jpg" style="height: 50px; width: 50px"/>
                         </div>
                     -->
-                    <asp:Image ID="pic1" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','1')"/>
-                    <asp:Image ID="pic2" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','2')"/>
-                    <asp:Image ID="pic3" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','3')"/>
-                    <asp:Image ID="pic4" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','4')"/>
-                    <asp:Image ID="pic5" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px" onclick="javascript:__doPostBack('delPic','5')"/>
+                    <asp:Image ID="pic1" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px;" onclick="javascript:__doPostBack('delPic','1')"/>
+                    <asp:Image ID="pic2" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px;DISPLAY: none;" onclick="javascript:__doPostBack('delPic','2')"/>
+                    <asp:Image ID="pic3" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px;DISPLAY: none;" onclick="javascript:__doPostBack('delPic','3')"/>
+                    <asp:Image ID="pic4" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px;DISPLAY: none;" onclick="javascript:__doPostBack('delPic','4')"/>
+                    <asp:Image ID="pic5" ImageUrl="" class="picPreview" runat="server" style="height: 50px; width: 50px;DISPLAY: none;" onclick="javascript:__doPostBack('delPic','5')"/>
 
                 </div>
             </div>

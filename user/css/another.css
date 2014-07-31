@@ -11,7 +11,11 @@
         .hot_user_head{width:70px;float:left;position:relative}
         .hot_user_img{width:50px;height:50px;margin-top:20px;margin-left:10px}
         .hot_user_info{width:240px;height:200px;float:left}
-        .hot_user_name{width:100%;height:50px;padding-top:20px}
+        .hot_user_name{width:100%;height:40px;padding-top:20px; color:blue;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;}
         .hot_user_describe{width:100%;height:50px;}
         .hot_user_detail{width:100%;height:30px;position:relative}
         .hot_user_detail_item {float:left;border-right:1px solid #888888;padding:1px 5px;font-size:12px;color:blue}

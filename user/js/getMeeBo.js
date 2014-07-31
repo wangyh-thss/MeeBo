@@ -24,7 +24,7 @@ function getMeeBo(json) {
             html = html + '<div class="trans_MeeBo"><div class="trans_user_head"><img class="head_potrait" src="' + a[i].head + '" /></div><div class="trans_content"><div class="trans_userid"><a onclick="javascript:__doPostBack(\'go_user_btn\',\'' + json[i].userID + '\')" style="cursor:pointer;">' + a[i].nickname + '</a></div><div class="trans_com">' + a[i].content + '</div><div class="origin_content"><div class="user_id"><a onclick="javascript:__doPostBack(\'go_user_btn\',\'' + a[i].originUserID + '\')" style="cursor:pointer;">' + a[i].originUser + '</a></div><div class="text_content">' + a[i].originContent + '</div>';
             html = html + '<div class="picture_content">';
             if (a[i].originPictures) {
-                for (var j = 0; j < a[i].pictures.length; j++) {
+                for (var j = 0; j < a[i].originPictures.length; j++) {
                     html = html + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + a[i].originPictures[j] + '"/>' + '</div>'
                 }
             }

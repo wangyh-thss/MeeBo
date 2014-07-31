@@ -38,7 +38,7 @@
     .data_li{position: relative;float: left;margin-right:10px;padding-right:5px;border-right-width: 1px;border-right-style: solid;border-color: #e6e6e6;}
     .data_li_noright{position: relative;float: left;margin-right:10px;padding-right:5px;}
     .person_img{position: relative;width:100%;height:80px;margin-right:10px;}
-    .person_nickname{position: relative;padding-top:20px;padding-left:2px;font-size: 20px;}
+    .person_nickname{position: relative;padding-top:10px;padding-left:2px;font-size: 20px;}
     .person_data_number{font-size: 20px;margin-bottom:5px;font-family: tahoma;color: #333;font-weight:600; position:relative;}
     .person_data_name{font-size: 14px;color: #333; position:relative;}
     .person_potrait_img{position: relative;width:80px;height:80px;}
@@ -139,7 +139,7 @@
     border-color:#e6e6e6;
 }
         .MeeBo_user{ width:70px;float:left}
-        .head_potrait{ width:50px;}
+        .head_potrait{ width:50px;height:50px;}
         .MeeBo_content{width:560px;float:left;position:relative}
 
 .user_id
@@ -288,8 +288,13 @@
         .head_img0{width:50px;height:50px}
         .at_content{width:500px;float:left}
         .who_at{width:100%}
-        .at_what{width:100%;font-size:12px}
-        .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
+        .at_what{width:100%;font-size: 14px;
+    line-height: 23px;
+    padding-bottom:15px;
+    font-family: Arial, Helvetica, sans-serif;}
+        .at_detail{width:100%;text-align:right;margin-top:30px;color: #6cbae4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;}
 
         .upper_message {width:650px;height:40px;font-size:10px;position:relative;padding-left:25px}
         .at_tips{width:40%;font-size:10px;float:left;padding:5px 5px;margin-left:5px;color:#888888}
@@ -305,18 +310,47 @@
     padding-bottom:15px;
      overflow:hidden;
         }
-        .Comment_user {width:60px;float:left;padding-top:5px}
+        .Comment_user {width:60px;float:left;padding-top:5px;}
         .Comment_img{width:40px;height:40px}
         .Comment_content {width:570px;float:left}
-        .Comment_userID {width:100%;font-size:20px;}
-        .Comment_text{width:100%;font-size:15px;color:#777777}
+        .Comment_userID {width:100%;font-size:20px; color:blue;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 20px;
+        }
+        .Comment_text{width:100%;font-size: 14px;
+    line-height: 23px;
+    padding-bottom:15px;
+    font-family: Arial, Helvetica, sans-serif;}
         .Comment_detail {width:100%;position:relative}
-        .Comment_time{width:30%;float:left}
-        .Comment_floor{width:30px;float:right}
+        .Comment_time{width:30%;float:left; color: #6cbae4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;}
+        .Comment_floor{width:30px;float:right; font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #0a8cd2;}
 
 
          .choose{width:160px;float:left;font-size:8px}
         .queren{width:65px;float:right}
 
           .select_whom{float:left;font-size:10px;margin-top:5px}
+
+.at_a_name
+{
+    text-decoration:underline;
+    cursor:pointer;
+    color: blue;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.at_a_meebo
+{
+    text-decoration:underline;cursor:pointer;
+}
         

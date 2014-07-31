@@ -5,7 +5,7 @@
     if (json.Meebo.pictures) {
         Meebo_box = Meebo_box + '<div class="picture_content">'
         for (var j = 0; j < json.Meebo.pictures.length; j++) {
-            Meebo_box = Meebo_box + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + json.Meebo.picture[j] + '"/>' + '</div>'
+            Meebo_box = Meebo_box + '<div class="MeeBo_img">' + '<img class="MeeBo_img" src="' + json.Meebo.pictures[j] + '"/>' + '</div>'
         }
         Meebo_box = Meebo_box + '</div>'
     }
