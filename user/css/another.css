@@ -62,7 +62,9 @@
         .at_info{width:100%;position:relative}
         .at_head{width:60px;float:left}
         .head_img0{width:50px;height:50px}
-        .at_content{width:500px;float:left}
+        .at_content{width:500px;float:left;
+                    word-break:break-all;overflow:hidden;
+        }
         .who_at{width:100%}
         .at_what{width:100%;font-size:12px}
         .at_detail{width:100%;font-size:8px;text-align:right;margin-top:30px}
@@ -79,13 +81,13 @@
         .trans_content{width:560px;float:left}
         .trans_userid{width:560px;font-size:15px;margin-bottom:5px}
         .trans_com{width:560px;font-size:12px;margin-bottom:5px}
-        .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;}
+        .origin_content{float:left;position:relative;width:500px;border:1px solid #888888;margin:10px 10px;padding:5px 15px;background: #fafafa;border-radius: 10px;word-break:break-all;overflow:hidden;}
 
          .Comment_Box {width:100%;margin:auto;margin-top:45px}
         .single_Comment{width:90%;margin:auto;position:relative;margin-top:15px}
         .Comment_user {width:60px;float:left;padding-top:5px}
         .Comment_img{width:40px;height:40px}
-        .Comment_content {width:570px;float:left}
+        .Comment_content {width:570px;float:left;word-break:break-all;overflow:hidden;}
         .Comment_userID {width:100%;font-size:20px;}
         .Comment_text{width:100%;font-size:15px;color:#777777}
         .Comment_detail {width:100%;position:relative}

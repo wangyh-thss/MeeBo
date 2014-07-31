@@ -21,6 +21,7 @@ font-size: 14px;
     line-height: 23px;
     padding-bottom:15px;
     font-family: Arial, Helvetica, sans-serif;
+    word-break:break-all;overflow:hidden;
         }
        .text_content
 {
@@ -31,6 +32,7 @@ font-size: 14px;
     line-height: 23px;
     padding-bottom:15px;
     font-family: Arial, Helvetica, sans-serif;
+    word-break:break-all;overflow:hidden;
 }
        .my_detail{width:560px;font-size:8px;text-align:right;margin-top:30px;margin-left:70px;}
     </style>
