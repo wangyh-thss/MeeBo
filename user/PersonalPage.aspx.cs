@@ -241,7 +241,7 @@ public partial class user_PersonalPage : System.Web.UI.Page
         if (SelectImg.PostedFile != null && SelectImg.PostedFile.ContentLength > 0)
         {
             string ext = System.IO.Path.GetExtension(SelectImg.PostedFile.FileName).ToLower();
-            if (ext != ".jpg" && ext != ".png" && ext != ".bmp")
+            if (ext != ".jpg" && ext != ".png" && ext != ".bmp" && ext != ".gif")
             {
                 Response.Write("<script>alert('上传文件格式不正确')</script>");
                 return;

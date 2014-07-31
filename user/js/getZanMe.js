@@ -3,7 +3,7 @@
     var html = "";
     for (var i = 0; i < json.length; i++) {
         if (json[i].content.length > 13) {
-            var content = Mid(json[i].content, 1, 13);
+            var content = mid(json[i].content, 1, 13);
             content = content + "...";
         }
         else
