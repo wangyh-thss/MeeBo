@@ -109,7 +109,7 @@
                     <div class="home_send_title"></div>
                 </div>
                 <div class="send_box">
-                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:100%; height:120px"/>
+                    <asp:TextBox ID="send_content" runat="server" TextMode="MultiLine" style="width:99%; height:120px"/>
                     <asp:FileUpload ID="SelectImg" Text="发布图片" runat="server" Width="70px" style="float:left;margin-left:3%" onchange="javascript:__doPostBack('UploadImg','')"/>
                     <asp:Button ID="send_out" Text="发布" runat="server" style="width:60px; margin-left:70%" OnClick="SendOut_Click"/>
                 </div>

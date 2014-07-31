@@ -10,6 +10,23 @@
     <link href="css/another.css" type="text/css" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
+        .my_content
+        {
+            width: 490px;
+height: 20px;
+font-size: 12px;
+margin-left:70px;
+margin-bottom: 5px;
+text-align: right;
+        }
+          .text_content
+        {
+            width: 490px;
+height: 20px;
+font-size: 12px;
+margin-bottom: 5px;
+text-align: right;
+        }
     </style>
     <script type="text/javascript" src="js/getMessage.js"></script>
 </head>
