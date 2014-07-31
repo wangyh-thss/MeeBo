@@ -187,7 +187,7 @@
             </div>
         </div>
     </div>
-         
+         <asp:LinkButton runat="server" ID="go_user_btn" OnClick="go_user_Click"></asp:LinkButton>
          <asp:LinkButton runat="server" ID="see_detail_btn" OnClick="see_detail_btn_Click"></asp:LinkButton>
      </form>
 </body>

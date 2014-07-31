@@ -85,4 +85,10 @@ public partial class user_MyMessage : System.Web.UI.Page
         Session["seeMeeboID"] = new Guid(this.btnID);
         Response.Redirect("~/user/See_MeeBo.aspx");
     }
+
+    protected void go_user_Click(object sender, EventArgs e)
+    {
+        Session["otherName"] = new Guid(this.btnID);
+        Response.Redirect("~/user/OthersPage.aspx");
+    }
 }
