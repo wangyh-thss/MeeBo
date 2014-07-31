@@ -43,7 +43,14 @@ public partial class UserInfo : System.Web.UI.Page
     {
         if (this.nickname.Text != user.Nickname)
         {
-            user.ModifyNickname((Guid)Session["id"], this.nickname.Text);
+            user.SearchByNickName("nickname", this.nickname.Text);
+            if (user.SearchNumber > 0)
+            {
+                this.error_nickname.InnerText = "该昵称已被注册";
+                return;
+            }
+            else
+                user.ModifyNickname((Guid)Session["id"], this.nickname.Text);
         }
         if (this.gender.SelectedValue == "0" && user.Gender == true)
         {

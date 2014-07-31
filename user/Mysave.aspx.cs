@@ -20,6 +20,7 @@ public partial class user_MySave : System.Web.UI.Page
         saveDb = new SaveDB();
         UserDB saveUser = new UserDB();
         NewsDB saveNews = new NewsDB();
+        UserDB newsUser = new UserDB();
         NewsDB originNewsInfo;
         UserDB originUser;
         if (IsPostBack)
@@ -31,13 +32,14 @@ public partial class user_MySave : System.Web.UI.Page
         {
             saveUser.SearchByID("saveUser", (Guid)singleSave["SUID"]);
             saveNews.SearchByID((Guid)singleSave["SNID"], "saveNews");
+            newsUser.SearchByID("newsUser", saveNews.UserID);
             JObject singleNewsInfo = new JObject();
-            if (saveNews.IsTransmit)
+            if (!saveNews.IsTransmit)
             {
                 singleNewsInfo.Add(new JProperty("type", "Meebo"));
-                singleNewsInfo.Add(new JProperty("head", saveUser.HeadPortrait.Replace("~", "..")));
-                singleNewsInfo.Add(new JProperty("nickname", saveUser.Nickname));
-                singleNewsInfo.Add(new JProperty("userID", saveUser.ID));
+                singleNewsInfo.Add(new JProperty("head", newsUser.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", newsUser.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", newsUser.ID));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleSave["SNID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", saveNews.ContentT));
                 if (saveNews.ContentP != string.Empty)
@@ -51,13 +53,14 @@ public partial class user_MySave : System.Web.UI.Page
                 singleNewsInfo.Add(new JProperty("repost", saveNews.TransmitNum));
                 singleNewsInfo.Add(new JProperty("save", saveNews.SaveNum));
                 singleNewsInfo.Add(new JProperty("isSave", true));
+                singleNewsInfo.Add(new JProperty("saveTime", singleSave["SDate"]));
             }
             else
             {
                 singleNewsInfo.Add(new JProperty("type", "trans"));
-                singleNewsInfo.Add(new JProperty("head", saveUser.HeadPortrait.Replace("~", "..")));
-                singleNewsInfo.Add(new JProperty("nickname", saveUser.Nickname));
-                singleNewsInfo.Add(new JProperty("userID", saveUser.ID));
+                singleNewsInfo.Add(new JProperty("head", newsUser.HeadPortrait.Replace("~", "..")));
+                singleNewsInfo.Add(new JProperty("nickname", newsUser.Nickname));
+                singleNewsInfo.Add(new JProperty("userID", newsUser.ID));
                 singleNewsInfo.Add(new JProperty("MeeboID", singleSave["SNID"].ToString()));
                 singleNewsInfo.Add(new JProperty("content", saveNews.TransmitInf));
                 singleNewsInfo.Add(new JProperty("time", saveNews.Date.ToString()));
@@ -79,6 +82,7 @@ public partial class user_MySave : System.Web.UI.Page
                     singleNewsInfo.Add(new JProperty("originPictures", new JArray(from url in picUrl select url.Replace("~", ".."))));
                 }
                 singleNewsInfo.Add(new JProperty("originTime", originNewsInfo.Date));
+                singleNewsInfo.Add(new JProperty("saveTime", singleSave["SDate"]));
 
             }
             JList.Add(singleNewsInfo);
@@ -86,7 +90,7 @@ public partial class user_MySave : System.Web.UI.Page
         }
          JArray array = new JArray(
                 from item in JList
-                orderby item["time"] descending
+                orderby item["saveTime"] descending
                 select new JObject(item)
                 );
             
