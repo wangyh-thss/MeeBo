@@ -27,6 +27,10 @@ public partial class user_MyMeeBo : System.Web.UI.Page
         NewsDB originNewsInfo = new NewsDB();
         UserDB originUser = new UserDB();
         SaveDB saveDb = new SaveDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         DataSet newsSet = newsDb.SearchUnDeleteByUserID((Guid)Session["id"], "news");
@@ -85,7 +89,7 @@ public partial class user_MyMeeBo : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeebo(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeebo(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         this.myName.InnerText = user.Nickname;
         this.head_potrait.ImageUrl = user.HeadPortrait;
         this.LikeNum.InnerText = user.LikesNum.ToString();

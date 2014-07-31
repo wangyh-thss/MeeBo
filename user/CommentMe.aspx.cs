@@ -22,6 +22,10 @@ public partial class user_CommentMe : System.Web.UI.Page
             this.btnID = Request.Form["__EVENTARGUMENT"];
         UserDB comUser = new UserDB();
         NewsDB comNews = new NewsDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         DataSet comSet = comDb.SearchByNewsUserID((Guid)Session["id"], "comment");
@@ -48,7 +52,7 @@ public partial class user_CommentMe : System.Web.UI.Page
                 );
         string json = array.ToString();
         comDb.clearUncheck((Guid)Session["id"]);
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getCommentMe(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getCommentMe(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         UserDB user = new UserDB();
         user.SearchByID("user", (Guid)Session["id"]);
         this.myName.InnerText = user.Nickname;

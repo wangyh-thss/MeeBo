@@ -26,6 +26,10 @@ public partial class user_MyLikes : System.Web.UI.Page
         user.SearchByID("user", (Guid)Session["id"]);
         List<JObject> JList = new List<JObject>();
         LikeDB likeDb = new LikeDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         DataSet followSet = likeDb.SearchByFanID("follow", user.ID);
         foreach (DataRow singleFollow in followSet.Tables["follow"].Rows)
         {
@@ -46,7 +50,7 @@ public partial class user_MyLikes : System.Web.UI.Page
             select new JObject(item)
             );
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getUsers(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getUsers(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         user.SearchByID("user", (Guid)Session["id"]);
         this.myName.InnerText = user.Nickname;
         this.head_potrait.ImageUrl = user.HeadPortrait;

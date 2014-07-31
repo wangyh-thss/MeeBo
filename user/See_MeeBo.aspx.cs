@@ -21,6 +21,10 @@ public partial class user_See_MeeBo : System.Web.UI.Page
             this.btnID = Request.Form["__EVENTARGUMENT"];
         MessageDB msgDb = new MessageDB();
         UserDB msgUser = new UserDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         DataSet msgSet = msgDb.SearchByAllUesr((Guid)Session["id"], (Guid)Session["seeMeeboID"], "msgDialogue");
         foreach (DataRow singleMsg in msgSet.Tables["msgDialogue"].Rows)
@@ -44,7 +48,7 @@ public partial class user_See_MeeBo : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMessage(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMessage(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         UserDB user = new UserDB();
         user.SearchByID("user", (Guid)Session["id"]);
         this.myName.InnerText = user.Nickname;

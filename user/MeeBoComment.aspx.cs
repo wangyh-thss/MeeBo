@@ -33,6 +33,10 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         newsDb = new NewsDB();
         comDb = new CommentDB();
         UserDB user = new UserDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         newsDb.SearchByID((Guid)Session["commentMeeboID"], "news");
@@ -78,7 +82,7 @@ public partial class user_MeeBoComment : System.Web.UI.Page
         JsonObj.Add(new JProperty("Meebo", MeeboInfo));
         JsonObj.Add(new JProperty("comment", array));
         string json = JsonObj.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "loadPage(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "loadPage(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
 
 
     }

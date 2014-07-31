@@ -25,6 +25,10 @@ public partial class user_AtMe : System.Web.UI.Page
         NewsDB newsDb = new NewsDB();
         CommentDB commentDb = new CommentDB();
         UserDB atUser = new UserDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         userDb.SearchByName((string)Session["name"], "result");
@@ -70,7 +74,7 @@ public partial class user_AtMe : System.Web.UI.Page
                 select new JObject(item)
                 );
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getAtMe(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getAtMe(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         atDb.clearUncheck((Guid)Session["id"]);
         UserDB user = new UserDB();
         user.SearchByID("user", (Guid)Session["id"]);

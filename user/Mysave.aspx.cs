@@ -21,6 +21,10 @@ public partial class user_MySave : System.Web.UI.Page
         UserDB saveUser = new UserDB();
         NewsDB saveNews = new NewsDB();
         UserDB newsUser = new UserDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         NewsDB originNewsInfo;
         UserDB originUser;
         if (IsPostBack)
@@ -95,7 +99,7 @@ public partial class user_MySave : System.Web.UI.Page
                 );
             
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         UserDB user = new UserDB();
         user.SearchByID("user", (Guid)Session["id"]);
         this.myName.InnerText = user.Nickname;

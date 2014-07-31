@@ -29,6 +29,10 @@ public partial class user_MyMessage : System.Web.UI.Page
         UserDB msgUser = new UserDB();
         DataSet msgSet = msgDb.SearchNewByToID((Guid)Session["id"], "newMsg");
         List<JObject> JList = new List<JObject>();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         foreach (DataRow singleMsg in msgSet.Tables["newMsg"].Rows)
         {
             JObject singleMsgInfo = new JObject();
@@ -47,7 +51,7 @@ public partial class user_MyMessage : System.Web.UI.Page
                 );
         string json = array.ToString();
         msgDb.clearUncheck((Guid)Session["id"]);
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "pageLoad(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "pageLoad(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         UserDB user = new UserDB();
         user.SearchByID("user", (Guid)Session["id"]);
         this.myName.InnerText = user.Nickname;

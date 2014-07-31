@@ -25,6 +25,10 @@ public partial class user_ZanMe : System.Web.UI.Page
         user = new UserDB();
         UserDB zanUser = new UserDB();
         NewsDB zanNews = new NewsDB();
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
         List<JObject> JList = new List<JObject>();
         int num = 0;
         DataSet praiseSet = praiseDb.SearchByUserID("praise", (Guid)Session["id"]);
@@ -62,7 +66,7 @@ public partial class user_ZanMe : System.Web.UI.Page
         this.LikeNum.InnerText = user.LikesNum.ToString();
         this.FansNum.InnerText = user.FansNum.ToString();
         this.MeeBoNum.InnerText = user.NewsNum.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getZanMe(" + json + ")", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getZanMe(" + json + ");judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
     }
 
     protected void go_user_Click(object sender, EventArgs e)
