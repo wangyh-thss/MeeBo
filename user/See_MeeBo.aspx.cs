@@ -61,6 +61,7 @@ public partial class user_See_MeeBo : System.Web.UI.Page
         msgDb.ToID = (Guid)Session["seeMeeboID"];
         msgDb.Content = this.send_content.Text;
         msgDb.Insert();
+        Response.Redirect("~/user/See_MeeBo.aspx");
     }
     protected void search_click(object sender, EventArgs e)
     {

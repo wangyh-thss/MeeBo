@@ -206,7 +206,11 @@ public partial class user_PersonalPage : System.Web.UI.Page
             );
             
         string json = array.ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ");judgeImage();", true);
+        CommentDB uncheckCom = new CommentDB();
+        AtDB uncheckAt = new AtDB();
+        PraiseDB uncheckZan = new PraiseDB();
+        MessageDB uncheckMsg = new MessageDB();
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "getMeeBo(" + json + ");judgeImage();judgeNewMsg('" + uncheckCom.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckAt.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckZan.haveUncheck((Guid)Session["id"]).ToString() + "', '" + uncheckMsg.haveUncheck((Guid)Session["id"]).ToString() + "')", true);
         this.myName.InnerText = user.Nickname;
         this.head_potrait.ImageUrl = user.HeadPortrait;
         this.LikeNum.InnerText = user.LikesNum.ToString();

@@ -110,7 +110,7 @@ public partial class SearchPage_SearchTopic : System.Web.UI.Page
         newsDb.SearchByID(new Guid(this.btnNewsID), "result");
         praiseDb.NewsUserID = newsDb.UserID;
         praiseDb.Insert();
-        Response.Redirect("~/user/PersonalPage.aspx");
+        Response.Redirect("~/SearchPage/SearchTopic.aspx");
     }
 
     protected void repost_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ public partial class SearchPage_SearchTopic : System.Web.UI.Page
             saveDb.Insert();
         }
         NewsDB newsDb = new NewsDB();
-        Response.Redirect("~/user/PersonalPage.aspx");
+        Response.Redirect("~/SearchPage/SearchTopic.aspx");
     }
 
     protected void search_click(object sender, EventArgs e)

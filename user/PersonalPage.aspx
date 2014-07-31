@@ -10,6 +10,7 @@
     <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/getMeeBo.js"></script>
     <script type="text/javascript" src="js/judgeImage.js"></script>
+    <script type="text/javascript" src="js/judgeNewMsg.js"></script>
     <style type="text/css">
         
     </style>
