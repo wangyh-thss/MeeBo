@@ -11,6 +11,14 @@
         label { display: inline-block; float:left; margin-right: 15px; text-align: right; width: 60px; font-size: 14px; line-height: 30px; vertical-align: baseline }
         .btn-submit { cursor: pointer;color: #ffffff;background: #e64141; border: 1px solid #528641; font-size: 14px; font-weight: bold; margin-left: 75px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; *width: 100px;*height:30px; }
         .footer_nologin_new {background: #c8e1f0;}
+        .slogan_read
+        {
+            padding: 17px 0 17px 0px;
+            line-height: 20px;
+            font-size:18px;
+            font-family: "Microsoft Yahei";
+            font-style: italic;
+        }
     </style>
     <title>MeeBo-分享身边的新鲜事儿</title>
 </head>
@@ -38,6 +46,9 @@
                 </div>
                 <form id="lzform" name="lzform" method="post" action="login.aspx" runat="server">
 				<div class="loginbox">
+                    <div class="slogan_read">
+						热门抢先看->				<a class="btn_reg_red"  href="hot/hot.aspx"><span style="width: 100px;height: 20px;line-height: 18px;">热门</span></a>
+					</div>
                     <div class="login_switch" id="pl_login_form">
                         <div class="item">
                             <h4>用户登录：</h4>
